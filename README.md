@@ -1,4 +1,4 @@
-# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS) <a><img src="hex.png" align="right" height="138" /></a>
+# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS) `<a><img src="hex.png" align="right" height="138" />``</a>`
 
 This repository provides scripts for developing PAQS queries. Follow the steps below to set up your local environment, develop and test PAQS queries.
 
@@ -20,7 +20,7 @@ This repository provides scripts for developing PAQS queries. Follow the steps b
 
 Developemnt can be done in the container or natively. However, we recommend to use the container for easier dependency management and portablity of the package.
 
-Ensure you have container management software such as Docker or Podman installed.
+[Ensure you have container management software such as Docker or Podman installed.](https://docs.docker.com/get-started/get-docker/)
 
 ## Clone this repo
 
@@ -91,7 +91,7 @@ Run below command in terminal. Please replace `{home_dir}` with the home directo
 docker run --rm -p 8787:8787 -e PASSWORD=pass -e ROOT=TRUE -v {home_dir}:/home/rstudio pcornetqf/qf-r-base-rstudio:2.0.1
 ```
 
-Open web browser and go to `localhost:8787`. Log in with `username=rstudio` and `password=pass`.
+Open web browser and go to [localhost:8787](localhost:8787). Log in with `username=rstudio` and `password=pass`.
 
 For more details on pre-built docker image see [here](https://github.com/Query-Fulfillment/qf-r-base-image).
 
