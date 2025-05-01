@@ -1,0 +1,11 @@
+{
+  "src_name" : "duckdb",
+  "src_args" : {
+    "dbdir"     : "/root/pcornet_db.duckdb"
+  },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : true
+     }
+}

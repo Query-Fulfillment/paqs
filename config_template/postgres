@@ -1,0 +1,22 @@
+{
+   "src_name" : "Postgres",
+   "src_args" : {
+         "host"     : "my.database.server",
+         "port"     : 5432,
+         "dbname"   : "my_database",
+         "user"     : "my_username",
+         "password" : "DO_NOT_EDIT_IF_YOU_WISH_TO_ENTER_IT_ON_DOCKER_RUN",
+         "sslmode"  : "require",
+         "options"  : "-c search_path=",
+         "bigint": "numeric"
+    },
+    "post_connect_sql": [
+        
+    ],
+    "src_site": {
+        "SiteName" : "DataMart ID",
+        "db_schema" : "Schema for PCORnet CDM on the Database",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : "If your database can creates indexes | choices : (without quotes) true/false"
+     }
+}

@@ -1,0 +1,17 @@
+{
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "ODBC Driver 18 for SQL Server",
+          "Server": "my.database.server",
+          "Port": 1433,
+          "Database": "my_database",
+          "Trusted_Connection": "yes",
+          "TrustServerCertificate": "yes"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "db_schema" : "Schema for PCORnet CDM on the Database",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : "If your database can creates indexes | choices : (without quotes) true/false"
+     }
+ }

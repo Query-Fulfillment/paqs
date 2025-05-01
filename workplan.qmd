@@ -1,0 +1,1270 @@
+---
+title: "Paramaterized Advanced Querying System v1.1 - Query Workplan"
+subtitle: ""
+description: "Please treat content as confidential"
+author: Query Fullfilment Center for PCORnet®
+date: last-modified
+date-format: "MM-DD-YYYY"
+title-block-banner: "white"
+title-block-style: default
+title-block-banner-color: "#272A59FF"
+format:  
+  html:
+    grid: 
+      body-width: 2160px
+      gutter-width: 10px
+      sidebar-width: 300px
+      margin-width: 300px
+    embed-resources: true
+    smooth-scroll: true
+    toc: true
+    toc-location: left
+    toc-depth: 0
+    toc-expand: true
+backgroundcolor: "#fff"
+css: tools/pcornet-style-sheet.css
+---
+
+
+```{r include=FALSE}
+library(tibble)
+library(knitr)
+library(fs)
+library(htmltools)
+params <- list()
+params$query_name <- basename(getwd())
+```
+
+
+# Query Metadata 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+knitr::kable(  tibble::tribble( ~Item, ~Value,
+               'Title', "",
+               'Requester', "",
+               'PCORnet® CDM Version', "6.1",
+               'Package Version', "1",
+			         'Due Date', "",
+			    	   "Runtime" , "",
+			   	     "Level of PHI Disclosure" , "Aggregate",
+		    		   "Level(s) of aggregation", "Network-level (total counts within PCORnet®)"))
+```
+
+&nbsp;
+
+::: panel-tabset
+
+
+# Request Summary
+
+#### Description
+
+
+#### Purpose of Use
+
+
+
+#### Query Request
+
+
+
+
+#### Recipients 
+
+Query is sent to the participating DataMarts with PCORnet® on the most recently approved PCORnet® CDM 6.1 Data Curation (or your currently approved CDM version).
+
+#### Confidentiality
+
+Treat request topic as confidential until final release of public report.
+
+#### Response
+
+Network-level aggregated data can be presented or published on public-facing websites (e.g. PCORnet.org), in a manuscript, and/or used in marketing or educational materials describing these populations in PCORnet®. DataMart (DM) response to this query is acknowledgement that data can be aggregated into a network-level report for public-facing venues.
+
+The Coordinating Center (CC) may reuse network aggregate and DM-level data for internal planning and to inform potential funding and research opportunities.
+
+Low cell count masking is not permitted in DataMart output returned to the CC; however, the CC will always mask low cell counts (<11) in any resulting data report to be shared with the requester.
+
+
+```{=html}
+
+<script>
+function updateSectionDisplay() {
+  var osSelected = document.querySelector('input[name="os-option"]:checked');
+  var execSelected = document.querySelector('input[name="exec-meth"]:checked');
+  var dbSelected = document.querySelector('input[name="db-option"]:checked');
+  var setup_execute = document.querySelector('input[name="pre-req"]:checked');
+  
+  // Hide all sections initially
+  var allSections = [
+    'unix_native', 'unix_containerized', 'win_native', 'win_containerized',
+    'pre_req_containerized','dir_info_containerized','setup_containerized',
+    'dir_info_native','setup_native','pre_req_native', 'pre-requisites', 'setup', 'execute',
+    'ms-sql---database-authenticated-user','ms-sql---database-authenticated-user-1',
+    'ms-sql---active-directory-authenticated-user','ms-sql---active-directory-authenticated-user-1',
+    'postgres','postgres-1','snowflake','snowflake-1',
+    'oracle', 'oracle-1', 'duckdb', 'duckdb-1', 'databricks', 'databricks-1', 'bigquery', 'bigquery-1',
+    'unix-mac-os-linux','unix-mac-os-linux-1','windows','windows-1'
+  ];
+  
+  allSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  
+   if (osSelected && execSelected && dbSelected) {
+      document.getElementById('pre-requisites').style.display = 'block';
+    } else {
+      document.getElementById('pre-requisites').style.display = 'none';
+    }
+    
+  if (setup_execute) {
+  
+  if (setup_execute.value === 'No') {
+  
+  document.getElementById('setup').style.display = 'block';
+  
+  } else if (setup_execute.value === 'Yes') { 
+  
+  document.getElementById('execute').style.display = 'block';
+ 
+ }
+
+}
+  
+
+  // Show OS-specific setup sections
+  if (osSelected && execSelected) {
+    if (osSelected.value === 'mac_linux') {
+      if (execSelected.value === 'native') document.getElementById('unix_native').style.display = 'block';
+      else document.getElementById('unix_containerized').style.display = 'block';
+    } else if (osSelected.value === 'windows') {
+      if (execSelected.value === 'native') document.getElementById('win_native').style.display = 'block';
+      else document.getElementById('win_containerized').style.display = 'block';
+    }
+  }
+
+  // Show execution method prerequisites
+  if (execSelected) {
+    if (execSelected.value === 'native') {
+      ['dir_info_native','setup_native','pre_req_native'].forEach(id => {
+        document.getElementById(id).style.display = 'block';
+      });
+      // Show database sections if selected
+      if (dbSelected) {
+        const dbSections = {
+          'mssql_db': ['ms-sql---database-authenticated-user','ms-sql---database-authenticated-user-1'],
+          'mssql_ad': ['ms-sql---active-directory-authenticated-user','ms-sql---active-directory-authenticated-user-1'],
+          'postgres': ['postgres','postgres-1'],
+          'snowflake': ['snowflake','snowflake-1'],
+          'oracle': ['oracle','oracle-1'],
+          'duckdb': ['duckdb','duckdb-1'],
+          'databricks': ['databricks','databricks-1'],
+          'bigquery': ['bigquery','bigquery-1']
+        };
+        (dbSections[dbSelected.value] || []).forEach(id => {
+          document.getElementById(id).style.display = 'block';
+        });
+      }
+        // Show OS prerequisites if selected
+      if (osSelected) {
+        const osSections = {
+          'mac_linux': ['unix-mac-os-linux-1'],
+          'windows': ['windows-1']
+        };
+        (osSections[osSelected.value] || []).forEach(id => {
+          document.getElementById(id).style.display = 'block';
+        });
+      }
+    } else {
+      ['dir_info_containerized','setup_containerized','pre_req_containerized'].forEach(id => {
+        document.getElementById(id).style.display = 'block';
+      });
+      // Show database sections if selected
+      if (dbSelected) {
+        const dbSections = {
+          'mssql_db': ['ms-sql---database-authenticated-user-1'],
+          'mssql_ad': ['ms-sql---active-directory-authenticated-user-1'],
+          'postgres': ['postgres-1'],
+          'snowflake': ['snowflake-1'],
+          'oracle': ['oracle-1'],
+          'duckdb': ['duckdb-1'],
+          'databricks': ['databricks-1'],
+          'bigquery': ['bigquery-1']
+        };
+        (dbSections[dbSelected.value] || []).forEach(id => {
+          document.getElementById(id).style.display = 'block';
+        });
+      }
+      
+      // Show OS prerequisites if selected
+      if (osSelected) {
+        const osSections = {
+          'mac_linux': ['unix-mac-os-linux','unix-mac-os-linux-1'],
+          'windows': ['windows','windows-1']
+        };
+        (osSections[osSelected.value] || []).forEach(id => {
+          document.getElementById(id).style.display = 'block';
+        });
+      }
+    }
+  }
+}
+
+// Update radio button event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', updateSectionDisplay);
+  });
+  updateSectionDisplay(); // Initial call to set initial state
+});
+
+</script>
+
+<style>
+  nav {
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  nav li {
+    float: left;
+    margin-right: 10px;
+  }
+  nav a {
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+  }
+  nav a:hover {
+    background-color: #ddd;
+  }
+  /* Clear float */
+  .clearfix { clear: both; }
+</style>
+```
+
+
+# Execution Process
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| error: false
+
+library(htmltools)
+
+tags$div(
+    style = "display: flex; flex-direction: row;",
+ tags$div(style = "width: 33%;",
+    tags$h3(HTML("Select Operating <br> System: ")),
+    
+    # Radio buttons (form)
+    tags$form(
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "os-option", 
+        					 value = "mac_linux"),
+        "UNIX (Mac OS, Linux)"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "os-option",
+        					 value = "windows"),
+        "Windows"
+      )
+    )
+  ),
+  tags$div(style = "width: 33%;",
+  tags$h3(HTML("Select Query Execution <br> Method: ")),
+    # Radio buttons (form)
+    tags$form(
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "exec-meth", 
+        					 value = "container"),
+        "Containerized (Docker, Podman)"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "exec-meth",
+        					 value = "native"),
+        "Native R"
+      )
+    )
+  ),
+ tags$div(style = "width: 33%;",
+    tags$h3(HTML("Select Relational Database <br> Management System:")),
+    
+    # Radio buttons (form)
+    tags$form(
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "mssql_db"),
+        "MS SQL - Database Authenticated User"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option",
+        					 value = "mssql_ad"),
+        "MS SQL - Active Directory Authenticated User"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "postgres"),
+        "Postgres"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "snowflake"),
+        "Snowflake"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "oracle"),
+        "Oracle"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "duckdb"),
+        "DuckDB"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "databricks"),
+        "Databricks"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "db-option", 
+        					 value = "bigquery"),
+        "BigQuery"
+      )
+    )
+  )
+)
+```
+
+
+::: callout-important
+# Advanced Querying System will support Microsoft SQL Server, Postgres, Oracle, and Snowflake. CC provides ongoing operational and upgrade support on these core systems, however CC will provide guidance for alternative RDBMS or cloud platforms to the best of our ability. CC strongly advocates for the use of a containerized execution method but recognizes the DataMart-specific governance requirements for setting up Docker or Podman. In cases where Docker or Podman are not available, CC has developed and packaged native execution pathway, please reach out [qf@pcornet.org](mailto:qf@pcornet.org) to receive the native execution pacakge.
+:::
+
+## Pre-requisites
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| error: false
+
+ tags$div(
+    tags$h3("Does your machine satisfy the below mentioned pre-requisites to execute this query?"),
+    
+    # Radio buttons (form)
+    tags$form(
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "pre-req", 
+        					 value = "Yes"),
+        "Yes"
+      ),
+      tags$br(),
+      tags$label(
+        tags$input(type = "radio", 
+        					 name = "pre-req",
+        					 value = "No"),
+        "No"
+      )
+    )
+  )
+
+```
+
+### pre_req_native {style="display: none;"}
+
+```{r include=FALSE}
+# Replace with current versions if updated
+params$r_version = "4.4.0 or higher"
+params$sql_odbc = "18"
+params$snowflake_odbc = "3.2.0"
+params$oracle_odbc = "23"
+params$databricks_odbc = "2.9.1"
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+native_r_data  <- tibble::tribble( ~Item, ~Version, ~Description,
+               'R', params$r_version, 'Software environment and programming language of the query',
+							 'RStudio', '', 'R integrated development environment (IDE)',
+							 'ODBC Driver', '', 'ODBC driver specific to your RDBMS or cloud platform',
+							 'ODBC Driver Manager', "", 'Library for managing communication between applications and drivers')
+
+knitr::kable(native_r_data)
+
+```
+
+1. **R & RStudio**
+    - Ensure R and RStudio are installed on your machine
+
+2. **Database Dependencies**
+    - Ensure the required database driver and package manager are installed on your machine, along with other required libraries needed to connect to your database 
+    - Additional details can be found under 'Setup' if you select 'No' above
+
+3. **Database**
+    - This query operates on data structured according to the PCORnet® CDM type and version described above 
+    - This query package requires `SELECT` permissions to `DIAGNOSIS`, `DEMOGRAPHIC`, `DEATH`, `ENCOUNTER`, `LAB_RESULT_CM`, `LDS_ADDESS_HISTORY`, `PRESCRIBING`, `PROCEDURES`, `MED_ADMIN`, & `PROVIDER` tables
+
+::: {.callout-important}
+#### [This query package also requires permission to create intermediate temporary tables on the connected database for a successful execution. Due to the temporary nature of the intermediate tables, they will be deleted as soon as the query execution is completed and the connection is voided]{style="color:red"}
+:::	
+
+### pre_req_containerized {style="display: none;"}
+
+1. **Docker**
+    - Ensure Docker Desktop (or another supported container management tool such as Podman) is installed on your machine
+
+2. **Database**
+    - This query operates on data structured according to the PCORnet® CDM type and version described above
+    - This query package requires `SELECT` permissions to `DIAGNOSIS`, `DEMOGRAPHIC`, `DEATH`, `ENCOUNTER`, `LAB_RESULT_CM`, `LDS_ADDESS_HISTORY`, `PRESCRIBING`, `PROCEDURES`, `MED_ADMIN`, & `PROVIDER` tables
+
+::: {.callout-important}
+#### [This query package also requires permission to create intermediate temporary tables on the connected database for a successful execution. Due to the temporary nature of the intermediate tables, they will be deleted as soon as the query execution is completed and the connection is voided]{style="color:red"}
+:::	
+
+## Setup 
+
+#### setup_native {style="display: none;"}
+
+1. **R & RStudio**
+    - Ensure R is downloaded to your machine. Our current package is compatible with **R version `r paste0(params$r_version)`**. Instructions for downloading R can be found at [r-project.org](https://www.r-project.org/)
+    - RStudio is an IDE that can be utilized for executing the query. Rstudio can be downloaded for your particular machine from the [posit website](https://posit.co/download/rstudio-desktop/)
+    - If you are planning to execute the query using the command line instead of RStudio, please ensure you have [Quarto CLI](https://quarto.org/docs/get-started/) installed on your machine. This will allow the query package to produce an HTML report summarizing the query results
+
+2. **Database Dependencies**
+    - Ensure the required database driver and package manager are installed on your machine according to the directions below: 
+
+#### MS SQL - Database Authenticated User
+
+###### Steps for downloading the ODBC Driver for SQL Server
+
+::: callout-important
+Our current package is built using **Microsoft ODBC Driver `r paste0(params$sql_odbc)`**, please ensure you are downloading this version. Please ensure that the driver name aligns with the `Driver` parameter of the config file.
+:::
+
+1. Navigate to the [Microsoft website](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16) to download the driver corresponding to your machine. Install the Microsoft ODBC driver for SQL Server:
+	- [Linux](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=alpine18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline)
+	- [macOS](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver16)
+	- [Windows](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16)
+2. The driver manager dependency ([unixODBC](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-driver-manager?view=sql-server-ver16)) is resolved automatically by the package management system when you install the Microsoft ODBC Driver 18 for SQL Server on Linux or macOS by following the instructions in the articles linked above. Installation can be verified using `odbcinst -j` with additional troubleshooting information provided in the articles. 
+
+
+#### MS SQL - Active Directory Authenticated User
+
+###### Steps for downloading the ODBC Driver for SQL Server
+
+::: callout-important
+Our current package is built using **Microsoft ODBC Driver `r paste0(params$sql_odbc)`**, please ensure you are downloading this version. Please ensure that the driver name aligns with the `Driver` parameter of the config file.
+:::
+
+1. Navigate to the [Microsoft website](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16) to download the driver corresponding to your machine. Install the Microsoft ODBC driver for SQL Server:
+	- [Linux](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=alpine18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline)
+	- [macOS](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver16)
+	- [Windows](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver16)
+2. The driver manager dependency ([unixODBC](https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-driver-manager?view=sql-server-ver16)) is resolved automatically by the package management system when you install the Microsoft ODBC Driver 18 for SQL Server on Linux or macOS by following the instructions in the articles linked above. Installation can be verified using `odbcinst -j` with additional troubleshooting information provided in the articles. 
+3. If you are planning on using Active Directory authentication, you will need to to have the Kerberos (krb5) package installed on your machine as well. The following commands provide a guideline for installation on your Linux machine:
+	- Linux: 
+		- CentOS or Red Hat Enterprise Linux: `yum install krb5-workstation`
+		- SUSE Linux Enterprise Server: `zypper install krb5-client`
+		- Debian or Ubuntu: `apt-get install krb5-user`
+	- To verify installation (on macOS and Linux), you can issue the following command: `kinit --version`
+
+
+#### Postgres
+
+###### Steps for installing PostgreSQL dependencies
+
+1. Depending on your operating system, additional libraries may be required for query execution against a PostgreSQL database (such as `libpq-dev`). If you encounter any error messages, they should indicate which additional dependencies are required for query execution.  
+
+
+
+#### Snowflake
+
+###### Steps for downloading the ODBC Driver for Snowflake
+
+::: callout-important
+Our current package is built using **Snowflake Driver `r paste0(params$snowflake_odbc)`**, please ensure you are downloading this version.  Please ensure that the driver name aligns with the `Driver` parameter of the config file.
+:::
+
+1. Navigate to the [Snowflake website](https://docs.snowflake.com/en/developer-guide/odbc/odbc-download) to install the driver corresponding to your machine. Installing and configuring the ODBC Driver for:
+	- [Linux](https://docs.snowflake.com/en/developer-guide/odbc/odbc-linux)
+	- [macOS](https://docs.snowflake.com/en/developer-guide/odbc/odbc-mac)
+	- [Windows](https://docs.snowflake.com/en/developer-guide/odbc/odbc-windows)
+2. The driver manager can be installed by following the directions provided in the articles linked above.
+
+#### Oracle
+
+###### Steps for downloading the ODBC Driver for Oracle
+
+::: callout-important
+Our current package is built using **Oracle `r paste0(params$oracle_odbc)` ODBC Driver**, please ensure you are downloading this version. Please ensure that the driver name aligns with the `Driver` parameter of the config file.
+:::
+
+1. Navigate to the [Oracle website](https://www.oracle.com/database/technologies/instant-client/downloads.html) to install the driver corresponding to your machine. This page contains the download links and installation instructions for your particular operating system.
+2. Depending on your operating system, additional libraries may be required for query execution against an Oracle database (such as `libaio`). If you encounter any error messages, they should indicate which additional dependencies are required for query execution.  
+3. Additional information can be found in Oracle's [ODBC Developer's Guide](https://docs.oracle.com/en/database/oracle/oracle-database/23/odbcd/getting-started.html#GUID-E700225C-C71E-4E71-8BB9-3B0D9FD78199).
+
+#### DuckDB
+
+###### There are no additional steps needed for your site to execute the native R package against a DuckDB instance. The native R package will install `duckdb` R library required to execute queries against BigQuery.
+
+
+#### Databricks
+
+###### Steps for downloading the ODBC Driver for Databricks
+
+::: callout-important
+Our current package is built using **Databricks `r paste0(params$databricks_odbc)` ODBC Driver**, please ensure you are downloading this version. Please ensure that the driver name aligns with the `Driver` parameter of the config file.
+:::
+
+1. Navigate to the [Databricks website](https://www.databricks.com/spark/odbc-drivers-download) to install the driver corresponding to your machine. This page contains the download links and installation instructions for your particular operating system.
+2. Depending on your operating system, additional libraries may be required for query execution against a Databricks database (such as `libsasl2-modules`). If you encounter any error messages, they should indicate which additional dependencies are required for query execution.  
+
+
+#### BigQuery
+
+###### There are no additional steps needed for your site to execute the native R package against a Google BigQuery instance. The native R package will install `bigrquery` R library required to execute queries against BigQuery.
+
+
+
+#### setup_containerized {style="display: none;"}
+
+#### Unix (Mac OS, Linux)
+###### Mac
+
+[How to Install Docker on Mac (2022)](https://www.youtube.com/watch?v=SGmFGYCuJK4) provides step-by-step instructions for Docker Desktop Mac installation
+
+1.	Go to:  [https://docs.docker.com/desktop/install/mac-install/](https://docs.docker.com/desktop/install/mac-install/)
+
+2.	Download the appropriate version based on your Mac chipset at top of the page
+
+3.	Confirm system requirements based upon chipset
+
+4.	Follow the install and run Docker Desktop steps (the interactive process is recommended)
+
+
+###### Linux 
+Although Docker does provide a desktop UI for Linux systems most organizations run Docker engine on their Linux systems. Docker engine is the core component of Docker. The following YouTube videos show Docker engine instructions for Redhat 9 and Ubuntu 22.04 with additional instruction materials existing for other Linux versions:
+
+- [How To Install Docker on RHEL 9](https://www.youtube.com/watch?v=E1uk_lL5Sm4)
+
+- [How To Install and Use Docker on Ubuntu 22.04 LTE Linux](https://www.youtube.com/watch?v=EuSVD7kVCUY)
+
+
+1.	Go to the following page to find installation instructions: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+
+2.	Click on the version of Linux you have and follow installation instructions from there
+
+3.	Create Docker group and add your linux user: [https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+
+
+#### Windows
+[How To Install Docker on Windows 11](https://www.youtube.com/watch?v=WDEdRmTCSs8) provides step-by-step instructions for Docker Desktop Windows installation. 
+**Note:** Docker Desktop on Windows requires WSL (Windows Subsystem for Linux) to be active. 
+
+1.	Go to: [https://docs.docker.com/desktop/install/windows-install/](https://docs.docker.com/desktop/install/windows-install/)
+
+2.	Download Windows Docker Desktop file
+
+3.	Confirm system requirements 
+
+4.	Utilize WSL 2 as a backend (please [follow these instructions](https://learn.microsoft.com/en-us/windows/wsl/install) to install/confirm/update WSL on Windows)
+
+5.	If this is being installed on a VMWare Esx virtual machine, please confirm the settings noted here:
+    - Verify that Virtualization Technology (VT) is enabled on the VMware host.  
+    - In the VMware vSphere Web Client, right-click the virtual machine and select Edit Settings. 
+    - On to the Virtual Hardware tab, expand CPU. 
+    - Enable Expose hardware-assisted virtualization to guest OS. 
+    - Click OK. 
+
+6.	Follow the install and run Docker desktop steps (the interactive process is recommended)
+
+
+## Execute 
+
+#### dir_info_containerized {style="display: none;"}
+
+The query is executed in a Docker container build in your local query execution machine utilizing a pre-built image available on [PCORnet® QF Docker Hub](https://hub.docker.com/u/pcornetqf).
+The images available on the [PCORnet® QF Docker Hub](https://hub.docker.com/u/pcornetqf) are pre-built with R programming and language and the required R libraries to successfully execute the provided query package.
+
+##### Program Package File Structure 
+
+Download and unzip ``r paste0(params$query_name)`_docker.zip` distributed by the PCORnet® Query Fulfillment team on JIRA. 
+
+The unzipped file contains several folders to organize program inputs and outputs as following:  
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| error: false
+
+#' `DO NOT EDIT ANYTHING IN THIS CHUNK`
+
+
+tree <- capture.output(fs::dir_tree("temp_dir_docker/"))
+tree[1] <- paste0('path/to/',params$query_name,'_docker')
+cat(tree,sep='\n')
+# query_folder_names <- strsplit(list.files(getwd(),pattern= "driver.R",recursive = T),"/")[[1]][[2]]
+# **`{query-folder}` for this request:** ``r paste0(query_folder_names)``
+```
+
+-  **Dockerfile:** Contains the recipe to build a query specific image from a pre-built image and execute the query within the container
+-  **config_template/:** Contains configuration templates for establishing a connection to the database
+-  **query/code_sets/:** Contains codeset files when required to execute the request
+-  **query/results/:** Initially empty. Will store query results in the container which will be mounted to `../results`
+-  **query/script/:** Contains query execution code needed to execute the request
+-  **query/execute_req.R:** Contains code to drive query execution using an R function
+-  **tools/:** Contains miscellaneous files required for the query
+-  **results**: Initially empty. This directory will be mounted with the `query/results` directory within the container. Output generated by the query are to be returned via your site’s PCORnet® AWS S3 bucket. These tables consist of aggregate data/output and transfers the minimum information required to answer the analytic question. Please see Step 4 of the Returning Results section of this workplan for information on returning query output generated in this folder
+
+##### [Preparing configuration files - **SENSITIVE STEP**]{style="color:red"}
+
+[The **config_template** folder within the ``r paste0(params$query_name)`_docker` folder contains 7 JSON file templates: bigquery, databricks, duckdb, mssql, oracle, postgres, snowflake. This file will contain sensitive information such as hostname, and user credentials to establish connection to the your datamart's database for query execution. Save it to a secure location on your local query execution machine and rename the file **dbconfig**.]{style="color:red"}
+
+
+#### dir_info_native {style="display: none;"}
+
+##### Program Package File Structure 
+
+Download and unzip ``r paste0(params$query_name)`_nativeR.zip` distributed by the PCORnet® Query Fulfillment team on JIRA. 
+
+The unzipped file contains several folders to organize program inputs and outputs as following:  
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| error: false
+
+#' `DO NOT EDIT ANYTHING IN THIS CHUNK`
+
+tree <- capture.output(
+  fs::dir_tree("temp_dir_native/", all = TRUE)
+)
+#tree <- capture.output(fs::dir_tree("temp_dir/"))
+tree[1] <- paste0('path/to/',params$query_name, '_nativeR')
+cat(tree,sep='\n')
+#query_folder_names <- strsplit(list.files(getwd(),pattern= "driver.R",recursive = T),"/")[[1]][[2]]
+#**`{query-folder}` for this request:** ``r paste0(params$query_name)``
+```
+
+-  **argos:** Standard package for affordances with connection and query handling
+-  **query/.Rprofile:** Initializes the environment, restoring libraries and configurations for query execution
+-  **config_template/:** Contains configuration templates for establishing a connection to the database
+-  **query/`r paste0(params$query_name)`.Rproj:** Contains R settings specific to the query
+-  **query/code_sets/:** Contains codeset files when required to execute the request
+-  **query/execute_req.R:** Contains code to drive query execution using an R function
+-  **query/script/:** Contains query execution code needed to execute the request
+-  **query/results/:** Initially empty. This folder is intended to save the query output. Output generated by the query are to be returned via your site’s PCORnet® AWS S3 bucket. These tables consist of aggregate data/output and transfers the minimum information required to answer the analytic question. Please see Step 4 of the Returning Results section of this workplan for information on returning query output generated in this folder
+-  **renv/:** Contains code to automate loading required libraries needed to execute the request
+-  **renv.lock:** Query specific package versioning lock
+-  **tools/:** Contains miscellaneous files required for the query
+
+##### [Preparing configuration files - **SENSITIVE STEP**]{style="color:red"}
+
+[The **config_template** folder within the ``r paste0(params$query_name)`_nativeR` folder contains 7 JSON file templates: bigquery, databricks, duckdb, mssql, oracle, postgres and snowflake. This file will contain sensitive information such as hostname, and user credentials to establish connection to the your datamart's database for query execution. Save it to a secured location on your local query execution machine and rename the file **dbconfig**.]{style="color:red"}
+
+
+#### MS SQL - Database Authenticated User
+
+###### config file : config_template/mssql
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/mssql` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `Server`, `Database`, `UID`, `SiteName`, `db_schema`, `cdm_case` & `can_index`
+4. Do not modify `Driver` value
+5. [By default parameter `Trusted_Connection` is set to `N/A`. For database authenticated user, this parameter should stay as `N/A`]{style="color:red"}
+
+```json
+{
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "ODBC Driver 18 for SQL Server",
+          "Server": "my.database.server",
+          "Port": 1433,
+          "Database": "my_database",
+          "UID": "my_username",
+          "Trusted_Connection": "N/A",
+          "TrustServerCertificate": "yes"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "db_schema" : "Schema for PCORnet® CDM on the Database",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : "If your database can create indexes | choices : true/false"
+     }
+ }
+ ```
+
+#### MS SQL - Active Directory Authenticated User
+
+###### config file : config_template/mssql
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/mssql` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `Server`, `Database`, `SiteName`, `db_schema`, `cdm_case` & `can_index`
+4. Do not modify `Driver` value
+5. [By default parameter `Trusted_Connection` is set to `N/A`. Edit parameter `Trusted_Connection` to `yes` (See example below)]{style="color:red"}
+5. [Parameter `UID` is not required for Active Directory authenticated user. Leave as is. The query connection step will account for the required parameters based on the authentication type.]{style="color:red"}
+
+```json
+{
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "ODBC Driver 18 for SQL Server",
+          "Server": "my.database.server",
+          "Port": 1433,
+          "Database": "my_database",
+          "UID": "my_username",
+          "Trusted_Connection": "yes",
+          "TrustServerCertificate": "yes"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "db_schema" : "Schema for PCORnet® CDM on the Database",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : "If your database can create indexes | choices : true/false"
+     }
+ }
+ ```
+To check if you have any Kerberos tickets cached on your machine for your user, you can issue the command `klist` in Terminal (macOS/Linux) or Command Prompt (Windows). 
+
+#### Postgres
+
+###### config file : config_template/postgres
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/postgres` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `host`, `dbname`, `user`, `SiteName`, `db_schema`, `cdm_case` & `can_index`. Edit `options` to add search_path to the schema where CDM resides. Add `post_connect_sql` parameters required for your connection.
+
+```json
+{
+   "src_name" : "Postgres",
+   "src_args" : {
+         "host"     : "my.database.server",
+         "port"     : 5432,
+         "dbname"   : "my_database",
+         "user"     : "my_username",
+         "sslmode"  : "require",
+         "options"  : "-c search_path=",
+         "bigint": "numeric"
+    },
+    "post_connect_sql": [
+    ],
+    "src_site": {
+        "SiteName" : "DataMart ID",
+        "db_schema" : "Schema for PCORnet® CDM on the Database",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : "If your database can create indexes | choices : true/false"
+     }
+}
+```
+
+
+#### Snowflake
+
+###### config file : config_template/snowflake
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/snowflake` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `Server`, `SCHEMA`, `Database`, `UID`, `Role`, `WAREHOUSE`, `SiteName`, `cdm_case` & `can_index`
+4. Do not modify `Driver` value
+5. [Parameter `temp_schema` should be populated if there is a specific schema that you'd like the temporary tables to be populated for the session. If left empty, the query will try to use the schema defined in parameter `SCHEMA` (your CDM schema), this may result into permissions issues if the user has restrictions on creating temporary tables on CDM schema. However, if you would like to use the CDM schema do not edit the parameter `temp_schema`]{style="color:red"}
+
+```json
+{
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "SnowflakeDSIIDriver",
+          "Server": "my_server",
+          "SCHEMA": "my_schema",
+          "Database": "my_database",
+          "UID": "my_username",
+          "Role":"my_role",
+          "WAREHOUSE":"my_warehouse",
+          "LogLevel": 2
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "temp_schema": "",
+        "can_index" : false
+     }
+ }
+ ```
+
+#### Oracle
+
+###### config file : config_template/oracle
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/oracle` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `DBQ`, `UID`, `SiteName`, `db_schema`, `cdm_case` & `can_index`
+4. Do not modify `Driver` value
+
+```json
+{
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "Oracle 23 ODBC driver",
+          "DBQ" : "HOST:PORT/SERVICE_NAME",
+          "UID" : "my_username"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "db_schema" : "Schema for PCORnet CDM on the Database",
+        "temp_schema" : "Enter schema where intermediate tables will be saved",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : "If your database can create indexes | choices : true/false"
+     }
+}
+```
+
+#### DuckDB
+
+###### config file : config_template/duckdb
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/duckdb` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `SiteName` & `cdm_case`
+4. Do not modify `dbdir` value
+
+```json
+{
+  "src_name" : "duckdb",
+  "src_args" : {
+      "dbdir"  : "/root/pcornet_db.duckdb"
+  },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : true
+     }
+}
+```
+
+#### Databricks
+
+###### config file : config_template/databricks
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/databricks` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `Host`, `HTTPPath`, `Schema`, `Catalog`, `SiteName`, `db_schema`, & `cdm_case`
+5. Do not modify `Driver` value
+4. [Parameter `temp_schema` should be populated if there is a specific schema that you'd like the temporary tables to be populated for the session. If left empty, the query will try to use the schema defined in parameter `Schema` (your CDM schema), this may result into permissions issues if the user has restrictions on creating temporary tables on CDM schema. However, if you would like to use the CDM schema do not edit the parameter `temp_schema`]{style="color:red"}
+
+Host & HTTPPath:  You can get the information from Databricks:
+
+  - Log in to your Databricks workspace.
+  - In the sidebar, click Compute.
+  - In the list of available clusters, click the target cluster’s name.
+  - Click Connection Details , you will then see your Databricks Host and HTTPPath
+
+UID: always literal "token"
+
+PWD: Databricks User Token. You can create a new token if you don't have one yet:
+
+  - In your Databricks workspace, click your Databricks username in the top bar, and then select Settings from the drop down.
+  - Click Developer.
+  - Next to Access tokens, click Manage.
+  - Click Generate new token.
+  - Enter a comment that helps you to identify this token in the future.
+  - Set the token’s lifetime in days.
+  - Click Generate.
+  - Copy the displayed token to a secure location, and then click Done.
+
+```json
+ {
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "Simba Spark ODBC Driver",
+          "Host": "my_host",
+          "UID": "token",
+          "PWD": "DO_NOT_EDIT_IF_YOU_WISH_TO_ENTER_IT_ON_DOCKER_RUN",
+          "Port": 443,
+          "AuthMech": 3,
+          "SSL": 1,
+          "ThriftTransport": 2,
+          "LogLevel": 2,
+          "HTTPPath": "myHTTPPath",
+          "Schema": "my_cdm_schema",
+          "Catalog": "my_catalog"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "temp_schema": "",
+        "can_index" : false
+     }
+ }
+```
+
+#### BigQuery
+
+###### config file : config_template/bigquery
+###### Steps for preparing the configuration file:
+
+1. Copy `config_template/bigquery` to a **secure location** on your local query execution machine and rename the file to `dbconfig`
+2. Open the file in a simple text editor
+3. Edit the file for required `project`, `dataset`, `SiteName`, `codeset_dataset`, & `cdm_case`
+
+Please see details below to obtain the service token: 
+
+  - Log in Google Cloud Console
+  - Navigation Menu
+  - IAM & Admin Service
+  - Service Accounts
+  - Create Service Account (if not already have one). Include appropriate permission so this service user can access bq.
+  - Create JSON Key, and save to a JSON file named ‘bq_token’
+
+Note that admin permission will be required to obtain service token.
+
+```json
+{
+    "src_name" : "src_bigquery",
+    "src_args" : {
+        "project": "myProject",
+        "dataset": "myDataset"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "codeset_dataset" : "myCodesetDataset",
+        "path_to_service_token" : "/root/bq_token",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "can_index" : false
+     }
+ }
+```
+
+
+### UNIX (Mac OS, Linux)
+
+#### unix_native {style="display: none;"}
+
+###### **Click on the tabset specific to your preferred query execution method and follow the steps**
+::: {.panel-tabset}
+# RStudio 
+
+#### Step 1: Open the Rproject
+
+Double click on the `r paste0(params$query_name)`.Rproj file within ``r paste0(params$query_name)`_nativeR/` to launch RStudio and initialize loading the required R packages.
+
+
+#### Step 2: Set HOME Environment Variable
+Using the console (traditionally in the bottom left of the Rstudio IDE), declare an environment variable `HOME` set to the location of the folder containing your `dbconfig` file.
+
+```sh
+Sys.setenv(HOME = "folder/containing/dbconfig")
+```
+
+This will tell the query where to look for your `dbconfig` file.
+
+#### Step 3: Execute the Query Request
+Execute the query by running the following line of code in the Rstudio console:
+
+```sh
+execute_request()
+```
+
+This will initiate query execution and the results will be populated in the `results` folder within ``r paste0(params$query_name)`_nativeR/`
+
+# Command Line
+
+If you cannot install Rstudio or otherwise prefer to execute the query request using the command line, please follow the instructions below as an alternative method. 
+
+#### Step 1: Change Directory
+Open terminal and change to the ``r paste0(params$query_name)`/` directory:
+
+```sh
+cd path/to/`r paste0(params$query_name)`_nativeR/
+```
+
+#### Step 2: Initialize an R session
+You can initialize an R session using the command line by exectuting:
+
+```sh
+R
+```
+
+By doing this in the ``r paste0(params$query_name)`_nativeR/` folder, it will automatically load the required R libraries and code.
+
+#### Step 3: Set HOME environment variable
+Declare an environment variable `HOME` set to the location of the folder containing your `dbconfig` file.
+
+```sh
+Sys.setenv(HOME = "folder/containing/dbconfig")
+```
+
+This will tell the query where to look for your `dbconfig` file.
+
+#### Step 4: Execute the Query Request
+Execute the query by running the following line of code:
+
+```sh
+execute_request()
+```
+
+This will initiate query execution and the results will be populated in the `results` folder within ``r paste0(params$query_name)`/`
+
+If you are using the command line and are ready to exit the R session, type `q()` to quit R.
+:::
+
+
+#### unix_containerized {style="display: none;"}
+
+###### Step 1: Change Directory
+
+Open terminal and change the directory to ``r paste0(params$query_name)`_docker` folder.
+
+```sh
+cd /path/to/`r paste0(params$query_name)`_docker
+```
+
+###### Step 2: Build Docker Image
+Build the Docker image for the query with the following command:\
+[Note: The period at the end of the following command (after `r paste0(params$query_name)`_img) is required]{style="color:red"}
+
+
+```sh
+docker build -t `r paste0(params$query_name)`_img . 
+```
+
+This will create a Docker image tagged as ``r paste0(params$query_name)`_img`
+
+###### Step 3: Run Docker Container
+Execute the following command to run the Docker container:
+
+```sh
+docker run --rm -it -v secured/path/to/dbconfig:/root/dbconfig -v ./results:/app/query/results `r paste0(params$query_name)`_img 
+```
+
+* Replace `secured/path/to/dbconfig` file with the path of your config file **(with the file name `dbconfig` included)** prepared before
+* This command will initiate a Docker container to execute query
+* The results will be populated in the `results` folder within ``r paste0(params$query_name)`_docker`
+
+### Windows
+
+#### win_native {style="display: none;"}
+
+###### **Click on the tabset specific to your preferred query execution method and follow the steps**
+::: {.panel-tabset}
+# RStudio 
+
+#### Step 1: Open the Rproject
+
+Double click on the `r paste0(params$query_name)`.Rproj file within ``r paste0(params$query_name)`_nativeR/` to launch RStudio and initialize loading the required R packages.
+
+
+#### Step 2: Set HOME Environment Variable
+Using the console (traditionally in the bottom left of the Rstudio IDE), declare an environment variable `HOME` set to the location of the folder containing your `dbconfig` file.
+
+```sh
+Sys.setenv(HOME = "folder\\containing\\dbconfig")
+```
+[Note: two backslashes (\\\\) are required as one is used as an escape character in R]{style="color:red"}
+
+This will tell the query where to look for your `dbconfig` file.
+
+#### Step 3: Execute the Query Request
+Execute the query by running the following line of code in the Rstudio console:
+
+```sh
+execute_request()
+```
+
+This will initiate query execution and the results will be populated in the `results` folder within ``r paste0(params$query_name)`/`
+
+
+# Command Line
+
+If you cannot install Rstudio or otherwise prefer to execute the query request using the command line, please follow the instructions below as an alternative method. 
+
+#### Step 1: Change Directory
+Open Command Prompt and change to the ``r paste0(params$query_name)`` directory:
+
+```sh
+cd path\to\`r paste0(params$query_name)`\
+```
+
+#### Step 2: Initialize an R session
+You can initialize an R session using the command line by exectuting:
+
+```sh
+R
+```
+By doing this in the ``r paste0(params$query_name)`_nativeR\` folder, it will automatically load the required R libraries and code.
+
+#### Step 3: Set HOME environment variable
+Declare an environment variable `HOME` set to the location of the folder containing your `dbconfig` file.
+
+```sh
+Sys.setenv(HOME = "folder\\containing\\dbconfig")
+```
+[Note: two backslashes (\\\\) are required as one is used as an escape character in R]{style="color:red"}
+
+This will tell the query where to look for your `dbconfig` file.
+
+#### Step 4: Execute the Query Request
+Execute the query by running the following line of code:
+
+```sh
+execute_request()
+```
+
+This will initiate query execution and the results will be populated in the `results` folder within ``r paste0(params$query_name)`_nativeR\`
+
+If you are using the command line and are ready to exit the R session, type `q()` to quit R.
+
+:::
+
+
+#### win_containerized {style="display: none;"}
+
+
+###### Step 1: Change Directory
+Open command prompt as **administrator** and change the directory to ``r paste0(params$query_name)`_docker` folder.
+
+```cmd
+cd path\to\`r paste0(params$query_name)`_docker
+```
+
+###### Step 2: Build Docker Image
+Build the Docker image for the query with the following command:\
+[Note: The period at the end of the following command (after `r paste0(params$query_name)`_img) is required]{style="color:red"}
+
+
+```cmd
+docker build -t `r paste0(params$query_name)`_img .
+```
+
+This will create a Docker image tagged as ``r paste0(params$query_name)`_img`
+
+###### Step 3: Run Docker Container
+Execute the following command to run the Docker container:
+
+```cmd
+docker run --rm -it -v secured\path\to\dbconfig:/root/dbconfig -v .\results:/app/query/results `r paste0(params$query_name)`_img 
+```
+
+* Replace `secured\path\to\dbconfig` file with the path of your config file **(with the file name `dbconfig` included)** prepared before
+* This command will initiate a Docker container to execute query
+* The results will be populated in the `results` folder within ``r paste0(params$query_name)`_docker`
+
+
+# Returning Results
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| error: false
+# This is a custom step that is specific to each query. Please make sure to add the right path that can populate the files that the query will return.
+res_tree <- capture.output(fs::dir_tree("query/results/"))
+res_tree[1] <- paste0('results/')
+cat(res_tree,sep='\n')
+```
+
+#### Step 1: Total output files inspection
+Please review the output in the `results` folder to confirm that the layout and contents conform to the items in the directory tree above. This query package will generate files as described in the directory tree above.
+
+#### Step 2: Query log inspection
+After completion of the query, the log will be examined by the package itself; however, we recommend examining the log file(s) that the query returns in the `results` directory/sub-directory for errors. If there are no error messages, the query ran correctly. Should you encounter any errors in the query log, please contact [qf@pcornet.org](mailto:qf@pcornet.org) attaching the query log file.
+
+#### Step 3: Query output zip preparation
+Zip the `results` folder with a name `<DATAMARTID>_results_`r paste0(params$query_name)``, replacing `<DATAMARTID>` with your site’s DataMart ID. 
+For e.g. **C7CHOP_results_`r paste0(params$query_name)`.zip** consisting of the folder named `results` with the listed files in the tree above.
+
+[**DATAMARTS SHOULD ONLY RETURN THE FOLDER LABELED ‘results’ TO THE CC.**]{style="color:red"}
+
+#### Step 4: Query output upload to AWS bucket
+Once approval for returning results for this query has been received for your DataMart, upload the zipped folder created in Step 3 to your site’s AWS S3 bucket under a folder named **`r paste0(params$query_name)`**.
+[**JIRA or email must NOT be used for uploading results.**  ]{style="color:red"}
+
+A technical guide on how to respond to file distribution query requests via AWS S3 buckets is available on [AWS technical guide](https://pcornet.imeetcentral.com/p/aQAAAAAE7q9L).
+
+# Removing Image
+
+Upon successful execution of the query, the container will be removed by default. However, the image that was built to run the query would still exist on the local query execution machine. You can remove the query image ``r paste0(params$query_name)`_img` by running the following command in the Terminal or Command Prompt for UNIX systems or Windows respectively:
+
+```sh
+docker image rm `r paste0(params$query_name)`_img
+
+```
+
+# Troubleshooting
+
+##### Please review this list of common errors before contacting us via email:
+  - Many errors stem from not following the steps outlined in this workplan. Please ensure you are following the steps exactly as described in the workplan for successful query exection. 
+    - Common mistakes:
+      - Not executing the query in the proper directory
+      - Not editing and renaming your `dbconfig` file properly
+      - Accidentally skipping a step in the workplan
+
+  - Errors Related to Docker Desktop 
+    - If the Docker Desktop application is shared by multiple users, the application must be fully quit out of for another user to use it, as it is not meant to be shared by multiple users. Users may see an error message similar to the following: **Initializing Backend API: listening on: ... Access is denied.** If you are sharing the application with other users (for example, through a Virtual Machine), follow these steps to quit Docker Desktop:
+      1. Clicking the up arrow in the lower right of Windows (next to the system tray/clock)
+      2. Right click on the Docker icon (looks like a whale)
+      3. Select 'Quit Docker Desktop'
+    - If you are utilizing a Windows operating system for query execution, please ensure you have Windows Subsystem for Linux (WSL) 2 installed on your machine. See [this resource](https://learn.microsoft.com/en-us/windows/wsl/install) for guidelines on how to install WSL 2 on Windows.
+    - The PAQS Docker container is built as a Linux container, which may interfere with your Docker Desktop settings if your application is set to run Windows Containers. You may encounter an error similar to **no matching manifest for windows/amd64 in the manifest list entries** when attempting to build the image. To resolve this error, please:
+      1. Ensure you have WSL 2 installed on your machine (see above)
+      2. Right-click on the Docker icon
+      3. Click 'Switch to Linux Containers...'
+ 
+  - Active Directory v/s Database User Authentication 
+    - If you are attemping to use Active Directory authentication for SQL Server, but recieve an error such as **No credentials were supplied, or the credentials were unavailable or inaccessible. No Kerberos credentials available**, you may not have provided the correct details for your site's realm. For example, the CHOP realm is uppercase (CHOP.EDU). You can locate the details on your site's realm in the krb5.conf file (see [this resource](https://www.ibm.com/docs/en/was/9.0.5?topic=scripting-kerberos-configuration-file) for full file paths). 
+    - You may also encounter an error if your are attempting to use Active Directory authentication for SQL Server if you do not have a kerberos ticket with your credentials cached in your system. To list cached tickets run `klist`, if no tickets are listed you may have to initialize one by running `kinit`.
+  
+  - Errors Related to Database Definition
+    - You may recieve an error message regarding a collation conflict when attempting to join two columns. For instance, if one column is case-sensitive, while the other is not. This can happen when your system's tempDB collation setting is not the same as your PCORnet® CDM table collations which causes a mismatch between the CDM tables and temporary tables resulting in failed joins. Please make sure your database settings regarding the collation of temporary tables match that of your PCORnet® CDM tables. 
+
+  - Notes for Native Execution
+    - Native execution prompts a list of R packages to be installed during query execution. Some of these packages may be pulled from GitHub repositories, which requires GitHub authentication credentials to be specified first. You may see a message such as **GitHub authentication credentials are not available. Please set GITHUB_PAT, or ensure the 'gitcreds' package is installed. See [https://usethis.r-lib.org/articles/git-credentials.html](https://usethis.r-lib.org/articles/git-credentials.html) for more details.** The link provides steps on how to set your GitHub credentials using `gitcreds::gitcreds_set()` and entering your Personal Access Token (PAT). 
+:::
+
+::: {.callout-note}
+
+## Support
+
+For any issues or questions regarding the setup or execution, please review the Troubleshooting section of the workplan, then contact [qf@pcornet.org](mailto:qf@pcornet.org).
+
+:::

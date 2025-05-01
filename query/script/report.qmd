@@ -1,0 +1,84 @@
+---
+title: ""
+description: ""
+author: Query Fulfillment Center for PCORnet®
+date: last-modified
+date-format: "MM-DD-YYYY"
+title-block-banner: "white"
+title-block-style: default
+title-block-banner-color: "#272A59FF"
+format:
+  html:
+    output-file: paqs_query_0_report
+    grid: 
+      body-width: 2160px
+      gutter-width: 10px
+      sidebar-width: 300px
+      margin-width: 600px
+    embed-resources: true
+    smooth-scroll: true
+    toc: true
+    toc-location: left
+    toc-depth: 3
+    toc-expand: true
+backgroundcolor: "#fff"
+css: ../../tools/pcornet-style-sheet.css
+---
+
+
+# Request Summary
+
+#### Description
+
+
+
+#### Inclusion Criteria
+
+N/A
+
+#### Planned Use
+
+
+
+#### Recipients 
+
+Query is sent to the participating volunteer pilot DataMarts on the most recently approved PCORnet CDM 6.1 Data Curation (or your currently approved CDM version).
+
+#### Confidentiality
+
+Treat request topic as confidential until final release of public report.
+
+#### Response
+
+Network-level aggregated data can be presented or published on public-facing websites (e.g. PCORnet.org), in a manuscript, and/or used in marketing or educational materials describing these populations in PCORnet®. DataMart (DM) response to this query is acknowledgement that data can be aggregated into a network-level report for public-facing venues.
+
+The Coordinating Center (CC) may reuse network aggregate and DM-level data for internal planning and to inform potential funding and research opportunities.
+
+Low cell count masking is not permitted in DataMart output returned to the CC; however, the CC will always mask low cell counts (<11) in any resulting data report to be shared with the requester.
+
+
+
+```{r include=FALSE}
+library(tibble)
+library(knitr)
+library(fs)
+library(htmltools)
+library(reactable)
+library(dplyr)
+library(readr)
+
+
+
+load_results <- function(name) {
+    rslt <-  tryCatch(
+    {read_csv(name)},
+    error = function(e) {
+      return(tibble())
+    }
+  )
+  rslt
+}
+
+```
+
+&nbsp;

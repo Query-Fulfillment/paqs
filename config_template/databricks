@@ -1,0 +1,22 @@
+ {
+    "src_name" : "odbc",
+    "src_args" : {
+          "Driver": "Simba Spark ODBC Driver",
+          "Host": "my_host",
+          "UID": "token",
+          "Port": 443,
+          "AuthMech": 3,
+          "SSL": 1,
+          "ThriftTransport": 2,
+          "LogLevel": 2,
+          "HTTPPath": "myHTTPPath",
+          "Schema": "my_cdm_schema",
+          "Catalog": "my_catalog"
+     },
+     "src_site": {
+        "SiteName" : "DataMart ID",
+        "cdm_case" : "Enter your CDM's case | choices : lower,upper",
+        "temp_schema": "",
+        "can_index" : false
+     }
+ }
