@@ -1,4 +1,4 @@
-# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS)
+# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS) <a><img src="hex.png" align="right" height="138" /></a>
 
 This repository provides scripts for developing PAQS queries. Follow the steps below to set up your local environment, develop and test PAQS queries.
 
@@ -25,6 +25,8 @@ Ensure you have container management software such as Docker or Podman installed
 ## Clone this repo
 
 You'll need this base pacakge to start query development from regardless of environment
+
+> **Note:** Avoid direct edits to the cloned directory to maintain integrity.
 
 ```sh
 git clone https://github.com/Query-Fulfillment/paqs.git
@@ -90,6 +92,8 @@ docker run --rm -p 8787:8787 -e PASSWORD=pass -e ROOT=TRUE -v {home_dir}:/home/r
 ```
 
 Open web browser and go to `localhost:8787`. Log in with `username=rstudio` and `password=pass`.
+
+For more details on pre-built docker image see [here](https://github.com/Query-Fulfillment/qf-r-base-image).
 
 ## New request
 
