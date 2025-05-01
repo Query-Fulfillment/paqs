@@ -1,4 +1,4 @@
-# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS) `<a><img src="hex.png" align="right" height="138" />``</a>`
+# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS) <a><img src="hex.png" align="right" height="138" /></a>
 
 This repository provides scripts for developing PAQS queries. Follow the steps below to set up your local environment, develop and test PAQS queries.
 
