@@ -1,0 +1,14 @@
+{
+  "src_name": "src_bigquery",
+  "src_args": {
+    "project": "your_data_project_id",
+    "dataset": "your_pcornet_dataset"
+  },
+  "src_site": {
+    "SiteName": "YOUR_SITE_ID",
+    "codeset_dataset": "your_temp_tables_dataset",
+    "codeset_project": "your_writable_project_id",
+    "cdm_case": "lower",
+    "can_index": false
+  }
+}

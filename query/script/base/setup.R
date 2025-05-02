@@ -92,8 +92,8 @@ initialize_session <- function(session_name,
 
   suppressMessages(conflicted::conflict_prefer_all("dplyr"))
 
-
-  patch_argos()
+  source('query/script/base/load_codeset_methods.R')
+  patch_argos2()
   patch_srcr()
 
   # Establish session
@@ -105,16 +105,23 @@ initialize_session <- function(session_name,
   if (!is_json) {
     get_argos_default()$config("db_src", db_conn)
   } else {
-    if (
-      jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_name ==
-        "src_bigquery"
-    ) {
-      bigrquery::bq_auth(
-        path = jsonlite::fromJSON(srcr::find_config_files(
-          db_conn
-        ))$src_site$path_to_service_token
-      )
-    }
+    if (jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_name == "src_bigquery") {
+     # Read configuration data once to avoid repeated parsing
+     config_data <- jsonlite::fromJSON(srcr::find_config_files(db_conn))
+     tryCatch({
+       # Use default ADC lookup, specifying required scopes
+       required_scopes <- c("https://www.googleapis.com/auth/bigquery", "https://www.googleapis.com/auth/cloud-platform")
+       bigrquery::bq_auth(scopes = required_scopes)
+       cli::cli_alert_success("Successfully authenticated using Application Default Credentials.")
+     }, error = function(e) {
+       # Error when attempting ADC
+       cli::cli_abort(c(
+         "Failed to authenticate using Application Default Credentials (ADC).",
+         "x" = "Ensure ADC is configured correctly for the environment (e.g., 'gcloud auth application-default login' on host and mounted to container's ADC path, or GCE metadata service).",
+         "i" = paste("Original Error:", conditionMessage(e))
+       ))
+     })
+   }
     get_argos_default()$config("db_src", srcr::srcr(db_conn))
   }
 
@@ -132,22 +139,29 @@ initialize_session <- function(session_name,
       db_conn
     ))$src_arg$SCHEMA,
 
-    # MS SQL Server variants
+    # MS SQL Server
     "Microsoft SQL Server" = jsonlite::fromJSON(srcr::find_config_files(
       db_conn
     ))$src_site$db_schema,
+    # Postgres
     "PqConnection" = jsonlite::fromJSON(srcr::find_config_files(
       db_conn
     ))$src_site$db_schema,
+    # Oracle
     "Oracle" = jsonlite::fromJSON(srcr::find_config_files(
       db_conn
     ))$src_site$db_schema,
+    # Oracle using ROracle (untested)
     "OraConnection" = jsonlite::fromJSON(srcr::find_config_files(
       db_conn
     ))$src_site$db_schema,
+    # Databricks
     "Spark SQL" = jsonlite::fromJSON(srcr::find_config_files(
       db_conn
     ))$src_args$Schema,
+    "src_BigQueryConnection" = jsonlite::fromJSON(find_config_files(
+      db_conn
+    ))$src_args$dataset,
     NA
   )
 
@@ -168,9 +182,30 @@ initialize_session <- function(session_name,
     "Spark SQL" = jsonlite::fromJSON(srcr::find_config_files(
       db_conn
     ))$src_args$temp_schema,
-    "src_BigQueryConnection" = jsonlite::fromJSON(srcr::find_config_files(
-      db_conn
-    ))$src_site$codeset_dataset,
+    "src_BigQueryConnection" = {
+       # Store the codeset dataset name
+    codeset_dataset <- jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_site$codeset_dataset
+
+    # Check if a codeset_project is specified
+    codeset_project <- jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_site$codeset_project
+
+    # If codeset_project is specified, create a fully qualified dataset name with project
+    if (!is.null(codeset_project) && nzchar(codeset_project)) {
+      # Also store the unqualified name (needed for some operations)
+      get_argos_default()$config("codeset_dataset_name", codeset_dataset)
+      # Store the project separately
+      get_argos_default()$config("codeset_project", codeset_project)
+      cli::cli_alert_info("Using codeset_project '{codeset_project}' for codesets")
+      # Store the project-qualified dataset name for use in queries
+      paste0(codeset_project, ".", codeset_dataset)
+    } else {
+      # No separate project specified, use the dataset name as is
+
+      get_argos_default()$config("codeset_dataset_name", codeset_dataset)
+      get_argos_default()$config("codeset_project", NULL)
+      codeset_dataset
+    }
+    },
     cdm_schema
   )
 
@@ -949,4 +984,34 @@ pkgLoad <- function() {
       suppressPackageStartupMessages(library(j, character.only = TRUE, quietly = TRUE))
     }
   }
+}
+
+
+load_codesets_bq <- function(name) {
+   # Check if we have a separate codeset project specified
+   codeset_project <- get_argos_default()$config("codeset_project")
+   codeset_dataset <- get_argos_default()$config("codeset_dataset_name")
+
+   if (!is.null(codeset_project) && nzchar(codeset_project)) {
+     # Use bigrquery's native functions for more direct control
+     cli::cli_alert_info("Creating codeset table '{name}' in project '{codeset_project}', dataset '{codeset_dataset}'")
+
+     # Create a BigQuery table reference with explicit project and dataset
+     bq_conn <- bigrquery::bq_project_query(codeset_project, "SELECT 1")
+     table_id <- bigrquery::bq_table(project = codeset_project, dataset = codeset_dataset, table = name)
+
+     # Delete the table if it exists (for overwrite)
+     if (bigrquery::bq_table_exists(table_id)) {
+       bigrquery::bq_table_delete(table_id)
+     }
+
+     # Upload data to BigQuery table
+     bigrquery::bq_table_upload(table_id, codeset_data, write_disposition = "WRITE_TRUNCATE")
+
+     # Create a dplyr reference to the table with explicit project.dataset.table format
+     qualified_table_name <- paste0("`", codeset_project, ".", codeset_dataset, ".", name, "`")
+     # Fix for BigQuery syntax - use standard BigQuery syntax without parentheses
+     sql_query <- paste0("SELECT * FROM ", qualified_table_name, " as q")
+     codes <- dplyr::tbl(db, dplyr::sql(sql_query))
+}
 }
