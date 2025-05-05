@@ -92,8 +92,7 @@ initialize_session <- function(session_name,
 
   suppressMessages(conflicted::conflict_prefer_all("dplyr"))
 
-  source('query/script/base/load_codeset_methods.R')
-  patch_argos2()
+  patch_argos()
   patch_srcr()
 
   # Establish session
@@ -782,7 +781,11 @@ patch_argos <- function() {
       }
 
       # Upload data to BigQuery table
-      bigrquery::bq_table_upload(table_id, codeset_data, write_disposition = "WRITE_TRUNCATE")
+      bigrquery::bq_table_upload(table_id, self$read_codeset(
+        name,
+        col_types = col_types,
+        full_path = full_path
+      ), write_disposition = "WRITE_TRUNCATE")
 
       # Create a dplyr reference to the table with explicit project.dataset.table format
       qualified_table_name <- paste0("`", codeset_project, ".", codeset_dataset, ".", name, "`")
@@ -803,14 +806,14 @@ patch_argos <- function() {
                                                name = paste0(sample(letters, 12, replace = TRUE), collapse = ""),
                                                temporary = !self$config("retain_intermediates"),
                                                ...) {
-    conn_class <- class(db)[1]
-    method_name <- paste0("compute_new", conn_class)
+    conn_class <- class(get_argos_default()$config('db_src'))[1]
+    method_name <- paste0("compute_new.", conn_class)
 
 
     if (method_name %in% names(self)) {
-      return(self[[method_name]](name, col_types, table_name, indexes, full_path, db))
+      return(self[[method_name]](tblx, name, temporary, ...))
     } else {
-      return(self$`load_codeset.default`(name, col_types, table_name, indexes, full_path, db))
+      return(self$`compute_new.default`(tblx, name, temporary, ...))
     }
   }
 
@@ -864,6 +867,12 @@ patch_argos <- function() {
                                                                       name = paste0(sample(letters, 12, replace = TRUE), collapse = ""),
                                                                       temporary = !self$config("retain_intermediates"),
                                                                       ...) {
+    if (!inherits(name, c("ident_q", "dbplyr_schema")) && length(name) == 1) {
+      name <- gsub("\\s+", "_", name, perl = TRUE)
+      name <- self$intermed_name(name, temporary)
+    }
+    con <- self$dbi_con(tblx)
+
     if (temporary) {
       if (self$db_exists_table(con, paste0("#", name))) {
         self$db_remove_table(con, paste0("#", name))
@@ -901,6 +910,12 @@ patch_argos <- function() {
                                                         name = paste0(sample(letters, 12, replace = TRUE), collapse = ""),
                                                         temporary = !self$config("retain_intermediates"),
                                                         ...) {
+    if (!inherits(name, c("ident_q", "dbplyr_schema")) && length(name) == 1) {
+      name <- gsub("\\s+", "_", name, perl = TRUE)
+      name <- self$intermed_name(name, temporary)
+    }
+    con <- self$dbi_con(tblx)
+
     if (self$config("db_trace")) {
       show_query(tblx)
       if (self$config("can_explain")) explain(tblx)
@@ -935,14 +950,14 @@ patch_argos <- function() {
                                                overwrite = TRUE,
                                                temporary = !self$config("retain_intermediates"),
                                                ...) {
-    conn_class <- class(db)[1]
-    method_name <- paste0("copy_to_new", conn_class)
+    conn_class <-  class(get_argos_default()$config('db_src'))[1]
+    method_name <- paste0("copy_to_new.", conn_class)
 
 
     if (method_name %in% names(self)) {
-      return(self[[method_name]](name, col_types, table_name, indexes, full_path, db))
+      return(self[[method_name]](dest, name, overwrite, temporary,...))
     } else {
-      return(self$`load_codeset.default`(name, col_types, table_name, indexes, full_path, db))
+      return(self$`copy_to_new.default`(dest, name, overwrite, temporary,...))
     }
   }
 
@@ -1096,11 +1111,13 @@ patch_argos <- function() {
 
   argos$private_methods$.ora_env_setup <-
     function(db) {
+      if(class(db) == "Oracle") {
       DBI::dbExecute(db, "alter session set nls_date_format = 'YYYY-MM-DD'")
       DBI::dbExecute(
         db,
         "alter session set nls_timestamp_tz_format = 'YYYY-MM-DD HH24:MI:SS TZHTZM'"
       )
+      }
     }
 
 
@@ -1246,34 +1263,4 @@ pkgLoad <- function() {
       suppressPackageStartupMessages(library(j, character.only = TRUE, quietly = TRUE))
     }
   }
-}
-
-
-load_codesets_bq <- function(name) {
-   # Check if we have a separate codeset project specified
-   codeset_project <- get_argos_default()$config("codeset_project")
-   codeset_dataset <- get_argos_default()$config("codeset_dataset_name")
-
-   if (!is.null(codeset_project) && nzchar(codeset_project)) {
-     # Use bigrquery's native functions for more direct control
-     cli::cli_alert_info("Creating codeset table '{name}' in project '{codeset_project}', dataset '{codeset_dataset}'")
-
-     # Create a BigQuery table reference with explicit project and dataset
-     bq_conn <- bigrquery::bq_project_query(codeset_project, "SELECT 1")
-     table_id <- bigrquery::bq_table(project = codeset_project, dataset = codeset_dataset, table = name)
-
-     # Delete the table if it exists (for overwrite)
-     if (bigrquery::bq_table_exists(table_id)) {
-       bigrquery::bq_table_delete(table_id)
-     }
-
-     # Upload data to BigQuery table
-     bigrquery::bq_table_upload(table_id, codeset_data, write_disposition = "WRITE_TRUNCATE")
-
-     # Create a dplyr reference to the table with explicit project.dataset.table format
-     qualified_table_name <- paste0("`", codeset_project, ".", codeset_dataset, ".", name, "`")
-     # Fix for BigQuery syntax - use standard BigQuery syntax without parentheses
-     sql_query <- paste0("SELECT * FROM ", qualified_table_name, " as q")
-     codes <- dplyr::tbl(db, dplyr::sql(sql_query))
-}
 }

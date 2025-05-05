@@ -29,7 +29,7 @@ if(Sys.getenv('native_execution')) {
 }
 
 initialize_session(session_name = "qf_query_session",
-                   db_conn = "dbconfig",
+                   db_conn = "bigQuery",
 									 base_directory ='./query',
                    is_json = TRUE,
                    results_schema = NA,

@@ -32,7 +32,8 @@ run <- function() {
   sink(file = logFile, type = "message", append = TRUE)
   sink(file = logFile, type = "output", append = TRUE)
 
-  get_argos_default()$config('ora_drop_me', character(0))
+  get_argos_default()$config('temp_table_drop_me', character(0))
+  get_argos_default()$.__enclos_env__$private$.ora_env_setup(db = get_argos_default()$config('db_src'))
   # ===================================================================================================
   #' **WRITE YOUR QUERY FROM HERE ->**
   # ===================================================================================================
@@ -40,7 +41,7 @@ run <- function() {
 
   rslt <- list()
 
-  
+
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**
