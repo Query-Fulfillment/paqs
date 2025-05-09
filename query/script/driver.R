@@ -42,6 +42,17 @@ run <- function() {
   rslt <- list()
 
 
+  rslt$cancer_dx <- define_hei(codeset = load_codeset('dx_cancer',col_types = "ccc", indexes = "code"),
+                               start_date = "01-01-2021",
+                               end_date = "12-31-2023",
+                               n_code_req = 1,
+                               days_sep = 0)
+
+  rslt$bariatric_surgery_px <- define_hei(codeset = load_codeset('px_bariatric_surgery',col_types = "ccc", indexes = "code"),
+                               start_date = "01-01-2021",
+                               end_date = "12-31-2023",
+                               n_code_req = 1,
+                               days_sep = 0)
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**

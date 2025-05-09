@@ -637,9 +637,9 @@ utils::assignInNamespace(
 
 patch_argos <- function() {
   argos$public_methods$load_codeset <- function(name,
-                                                col_types = "iccc",
+                                                col_types = "cccc",
                                                 table_name = name,
-                                                indexes = list("concept_code"),
+                                                indexes = list("Code"),
                                                 full_path = FALSE,
                                                 db = self$config("db_src")) {
     conn_class <- class(db)[1]
@@ -654,9 +654,9 @@ patch_argos <- function() {
   }
 
   argos$public_methods$`load_codeset.default` <- function(name,
-                                                          col_types = "iccc",
+                                                          col_types = "cccc",
                                                           table_name = name,
-                                                          indexes = list("concept_code"),
+                                                          indexes = list("Code"),
                                                           full_path = FALSE,
                                                           db = self$config("db_src")) {
     if (self$config("cache_enabled")) {
@@ -696,7 +696,7 @@ patch_argos <- function() {
 
 
   argos$public_methods$`load_codeset.Oracle` <- function(name,
-                                                         col_types = "iccc",
+                                                         col_types = "cccc",
                                                          table_name = name,
                                                          indexes = list("concept_code"),
                                                          full_path = FALSE,
@@ -738,7 +738,7 @@ patch_argos <- function() {
   }
 
   argos$public_methods$`load_codeset.src_BigQueryConnection` <- function(name,
-                                                                         col_types = "iccc",
+                                                                         col_types = "cccc",
                                                                          table_name = name,
                                                                          indexes = list("concept_code"),
                                                                          full_path = FALSE,
@@ -955,9 +955,9 @@ patch_argos <- function() {
 
 
     if (method_name %in% names(self)) {
-      return(self[[method_name]](dest, name, overwrite, temporary,...))
+      return(self[[method_name]](dest, df, name, overwrite, temporary,...))
     } else {
-      return(self$`copy_to_new.default`(dest, name, overwrite, temporary,...))
+      return(self$`copy_to_new.default`(dest, df, name, overwrite, temporary,...))
     }
   }
 
