@@ -56,6 +56,7 @@ paqs
 │       ├── base
 │       │   ├── helper.R
 │       │   └── setup.R
+│       ├── study
 │       ├── driver.R
 │       ├── report.qmd
 │       └── study
@@ -78,6 +79,7 @@ paqs
 - **query/results/:** Initially empty. Will store query results in the container which will be mounted to `../results`
 - **query/script/:** Contains query execution code needed to execute the request
 - **query/script/base:** Contains query execution code that is standard for all queries [DO NOT EDIT]
+- **query/script/study:** Empty initially. Should contain query execution code that is specific to the current request [ALWAYS CUSTOM CODE]
 - **query/script/query:** Contains query execution code that is specific to the query that is being developed [Add new code/scripts in this directory]
 - **query/execute_req.R:** Contains code to drive query execution using an R function
 - **tools/:** Contains miscellaneous files required for the query
