@@ -24,7 +24,11 @@ fi
 
 cd "$src"
 
-cp -r config_template package query results script renv renv.lock tools Dockerfile workplan.qmd .gitignore .Rprofile "$target_path"
+cp -r config_template package query results renv.lock tools Dockerfile workplan.qmd .gitignore .Rprofile "$target_path"
+
+mkdir "$target_path"/renv
+
+cp renv/activate.R renv/settings.json "$target_path"/renv
 
 cd "$target_path"
 
