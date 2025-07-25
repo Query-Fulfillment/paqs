@@ -1,6 +1,6 @@
 # Original define_criteria function and mapping functions
 
-#' Define Health Event of Interest (HEI)
+#' Define a clinical criteria
 #'
 #' This function dispatches to the appropriate method based on the codetype in the codeset.
 #'
@@ -316,7 +316,7 @@ define_criteria.diagnosis <- function(cohort = NULL, codeset, start_date, end_da
 		end_date = end_date, 
 		days_sep = days_sep,
 		qual_event = qual_event,
-		encounterid_criterion = paste0('criterion_',criterion_suffix, "_date")
+		encounterid_criterion = paste0('encounterid_',criterion_suffix)
 	)
 
 	# Validate and return
@@ -387,7 +387,7 @@ define_criteria.procedure <- function(cohort = NULL, codeset, start_date, end_da
 		end_date = end_date, 
 		days_sep = days_sep,
 		qual_event = qual_event,
-		encounterid_criterion = paste0('criterion_',criterion_suffix, "_date")	
+		encounterid_criterion = paste0('encounterid_',criterion_suffix)
 	)
 
 	# Validate and return
