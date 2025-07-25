@@ -1,18 +1,3 @@
-# Constants and Configuration
-COLUMN_NAMES <- list(
-  PATIENT_ID = "patid",
-  ENCOUNTER_ID = "encounterid", 
-  DIAGNOSIS_CODE = "dx",
-  DIAGNOSIS_DATE = "dx_date",
-  PROCEDURE_CODE = "px",
-  PROCEDURE_DATE = "px_date",
-  ADMIT_DATE = "admit_date",
-  DISPENSE_DATE = "dispense_date",
-  RX_ORDER_DATE = "rx_order_date",
-  LAB_ORDER_DATE = "lab_order_date",
-  RESULT_DATE = "result_date"
-)
-
 # Table configurations for different code types
 TABLE_CONFIGS <- list(
   diagnosis = list(
