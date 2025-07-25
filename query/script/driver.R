@@ -41,18 +41,24 @@ run <- function() {
 
   rslt <- list()
 
+  codesets <- load_all_codesets()
 
-  rslt$cancer_dx <- define_hei(codeset = load_codeset('dx_cancer',col_types = "ccc", indexes = "code"),
-                               start_date = "01-01-2021",
-                               end_date = "12-31-2023",
-                               n_code_req = 1,
-                               days_sep = 0)
+  rslt$cancer_dx <- define_criteria(codeset = codesets$dx_cancer,
+                                    start_date = "01-01-2021",
+                                    end_date = "12-31-2023",
+                                    n_code_req = 1,
+                                    days_sep = 0,
+                                    qual_event = 'first',
+                                    criterion_suffix = "cancer_dx")
 
-  rslt$bariatric_surgery_px <- define_hei(codeset = load_codeset('px_bariatric_surgery',col_types = "ccc", indexes = "code"),
-                               start_date = "01-01-2021",
-                               end_date = "12-31-2023",
-                               n_code_req = 1,
-                               days_sep = 0)
+  rslt$bariatric_surgery_px <- define_criteria(cohort = rslt$cancer_dx,
+                                               codeset = codesets$px_bariatric_surgery,
+                                               start_date = "criterion_cancer_dx_date",
+                                               end_date = "12-31-2023",
+                                               n_code_req = 1,
+                                               days_sep = 0,
+                                               qual_event = 'first',
+                                               criterion_suffix = "px_bariatric_surgery")
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**
