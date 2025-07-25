@@ -31,13 +31,13 @@ TABLE_CONFIGS <- list(
     table = "dispensing",
     code_column = "ndc",
     primary_date_column = "dispense_date",
-    fallback_date_column = NULL
+    fallback_date_column = "admit_date"
   ),
   prescribing = list(
     table = "prescribing",
     code_column = "rxnorm_cui",
     primary_date_column = "rx_order_date", 
-    fallback_date_column = NULL
+    fallback_date_column = "admit_date"
   ),
   lab_result_cm = list(
     table = "lab_result_cm",
@@ -49,25 +49,25 @@ TABLE_CONFIGS <- list(
     table = "med_admin",
     code_column = "medadmin_code",
     primary_date_column = "medadmin_start_date",
-    fallback_date_column = NULL
+    fallback_date_column = "admit_date"
   ),
   obs_clin = list(
     table = "obs_clin",
     code_column = "obsclin_code", 
     primary_date_column = "obsclin_date",
-    fallback_date_column = NULL
+    fallback_date_column = "admit_date"
   ),
   immunization = list(
     table = "immunization",
     code_column = "vx_code",
     primary_date_column = "vx_admin_date",
-    fallback_date_column = NULL
+    fallback_date_column = "admit_date"
   ),
   death = list(
     table = "death",
     code_column = "death_cause_code",
     primary_date_column = "death_date", 
-    fallback_date_column = NULL
+    fallback_date_column = "admit_date"
   )
 )
 

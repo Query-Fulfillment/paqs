@@ -1,0 +1,16 @@
+concept_id,concept_name,concept_code,vocabulary_id
+3001649,US.doppler Head vessels,24733-8,LOINC
+4257891,Transcranial Doppler ultrasonography of intracranial artery using microbubble contrast media for detection of emboli,440036001,SNOMED
+4208188,Transcranial Doppler ultrasonography of intracranial artery for detection of emboli,440044001,SNOMED
+4233449,Transcranial Doppler ultrasonography of intracranial artery with study of vasoreactivity,440119007,SNOMED
+2787579,"Ultrasonography of Right Internal Carotid Artery, Intravascular",B346ZZ3,ICD10PCS
+2787580,Ultrasonography of Right Internal Carotid Artery,B346ZZZ,ICD10PCS
+2787584,Ultrasonography of Bilateral Internal Carotid Arteries,B348ZZZ,ICD10PCS
+2787591,"Ultrasonography of Intracranial Arteries, Intravascular",B34RZZ3,ICD10PCS
+2787592,Ultrasonography of Intracranial Arteries,B34RZZZ,ICD10PCS
+2313979,Transcranial Doppler study of the intracranial arteries; vasoreactivity study,93890,CPT4
+2313978,Transcranial Doppler study of the intracranial arteries; limited study,93888,CPT4
+2313977,Transcranial Doppler study of the intracranial arteries; complete study,93886,CPT4
+2313981,Transcranial Doppler study of the intracranial arteries; emboli detection with intravenous microbubble injection,93893,CPT4
+2313980,Transcranial Doppler study of the intracranial arteries; emboli detection without intravenous microbubble injection,93892,CPT4
+45887750,Transcranial Doppler study of the intracranial arteries,1013181,CPT4
