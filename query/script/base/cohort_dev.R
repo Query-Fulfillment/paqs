@@ -6,7 +6,7 @@ TABLE_CONFIGS <- list(
     primary_date_column = "dx_date",
     fallback_date_column = "admit_date"
   ),
-  procedure = list(
+  procedures = list(
     table = "procedures", 
     code_column = "px",
     primary_date_column = "px_date",
