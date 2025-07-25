@@ -329,9 +329,7 @@ min_days_separation = -10   # Must be >= 0
 ### Performance Tips
 
 1. **Use existing cohorts**: Pass a `cohort` parameter to limit the search space
-2. **Optimize date ranges**: Use the narrowest possible date range
-3. **Consider indexes**: Ensure your CDM tables have proper indexes on `patid` and date columns
-4. **Start simple**: Begin with `min_codes_required = 1` and `min_days_separation = 0`, then add complexity
+2. **Consider indexes**: Ensure your CDM tables have proper indexes on `patid` and date columns
 
 ### Debugging Steps
 
