@@ -46,18 +46,18 @@ run <- function() {
   rslt$cancer_dx <- define_criteria(codeset = codesets$dx_cancer,
                                     start_date = "01-01-2021",
                                     end_date = "12-31-2023",
-                                    n_code_req = 1,
-                                    days_sep = 0,
-                                    qual_event = 'first',
+                                    min_codes_required = 1,
+                                    min_days_separation = 0,
+                                    qualifying_event = 'first',
                                     criterion_suffix = "cancer_dx")
 
   rslt$bariatric_surgery_px <- define_criteria(cohort = rslt$cancer_dx,
                                                codeset = codesets$px_bariatric_surgery,
                                                start_date = "criterion_cancer_dx_date",
                                                end_date = "12-31-2023",
-                                               n_code_req = 1,
-                                               days_sep = 0,
-                                               qual_event = 'first',
+                                               min_codes_required = 1,
+                                               min_days_separation = 0,
+                                               qualifying_event = 'first',
                                                criterion_suffix = "px_bariatric_surgery")
 
   # ===================================================================================================
