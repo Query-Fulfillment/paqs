@@ -43,46 +43,106 @@ get_table_one <- function(cohort,
 
 	if (!is.null(cat_vars)) {
 		for (i in cat_vars) {
-			result[[i]] <- cohort %>% count(!!sym(i)) %>%
+			result[[i]] <- cohort %>%
+				count(!!sym(i)) %>%
 				mutate(
-					variable = paste0(i, '_', !!sym(i)),
+					variable = paste0(i, "_", !!sym(i)),
 					block = i,
-					var_type = "cat"
+					var_type = "cat",
+					n = as.numeric(n)
 				) %>%
-				rename(Characteristics = !!sym(i),
-							 value = n)
+
+				rename(
+					Characteristics = !!sym(i),
+					value = n
+				) %>% collect_new()
 		}
 	}
 
 	if (!is.null(cont_var)) {
-		for (i in cont_var) {
-			result[[i]] <- cohort %>%
-				summarise(
-					mean = mean(!!sym(i), na.rm = T),
-					sd = sd(!!sym(i), na.rm = T),
-					median = median(!!sym(i)),
-					quantile_25 = quantile(!!sym(i), 0.25),
-					quantile_75 = quantile(!!sym(i), 0.75),
-					block = i,
-					var_type = "cont"
-				) %>%
-				tidyr::pivot_longer(
-					cols = c("mean", "median", "sd", "quantile_25", "quantile_75"),
-					values_to = "value"
-				) %>%
-				mutate(variable = paste0(block, name)) %>%
-				rename(Characteristics = name)
+		if (!any(class(get_argos_default()$config("db_src"))[1] == c("PqConnection","duckdb_connection","src_BigQueryConnection"))) {
+			for (i in cont_var) {
+				result[[i]] <- cohort %>%
+					mutate(
+						mean = mean(!!sym(i), na.rm = T),
+						sd = sd(!!sym(i), na.rm = T),
+						median = median(!!sym(i)),
+						quantile_25 = quantile(!!sym(i), 0.25),
+						quantile_75 = quantile(!!sym(i), 0.75),
+						block = i,
+						var_type = "cont"
+					) %>%
+					distinct(mean, sd, median, quantile_25, quantile_75, block, var_type) %>%
+					tidyr::pivot_longer(
+						cols = c("mean", "median", "sd", "quantile_25", "quantile_75"),
+						values_to = "value"
+					) %>%
+					mutate(
+						variable = paste0(i, "_", name),
+						block = i,
+						var_type = "cont"
+					) %>%
+					rename(Characteristics = name) %>% collect_new()
+			}
+		} else {
+			for (i in cont_var) {
+				result[[i]] <- try(cohort %>%
+					summarise(
+						mean = mean(!!sym(i), na.rm = T),
+						sd = sd(!!sym(i), na.rm = T),
+						median = median(!!sym(i)),
+						quantile_25 = quantile(!!sym(i), 0.25),
+						quantile_75 = quantile(!!sym(i), 0.75),
+						block = i,
+						var_type = "cont"
+					) %>%
+					tidyr::pivot_longer(
+						cols = c("mean", "median", "sd", "quantile_25", "quantile_75"),
+						values_to = "value"
+					) %>%
+					mutate(variable = paste0(block, name)) %>%
+					mutate(name = paste0(block, " ", name)) %>%
+					rename(Characteristics = name) %>% collect_new(), silent = TRUE)
+
+
+				if(any(class(result[[i]]) == "try-error")) {
+					result[[i]] <- cohort %>%
+						collect_new() %>%
+						summarise(
+							mean = mean(!!sym(i), na.rm = T),
+							sd = sd(!!sym(i), na.rm = T),
+							median = median(!!sym(i)),
+							quantile_25 = quantile(!!sym(i), 0.25),
+							quantile_75 = quantile(!!sym(i), 0.75),
+							block = i,
+							var_type = "cont"
+						) %>%
+						tidyr::pivot_longer(
+							cols = c("mean", "median", "sd", "quantile_25", "quantile_75"),
+							values_to = "value"
+						) %>%
+						mutate(variable = paste0(block, name)) %>%
+						mutate(name = paste0(block, " ", name)) %>%
+						rename(Characteristics = name)
+				}
+			}
 		}
 	}
-result[["total"]] <- cohort %>% count() %>%
-	mutate(block = "Total",
-				 variable = "Total",
-				 Characteristics = "Total",
-				 var_type = "Total") %>%
-	rename(value = n)
+
+	result[["total"]] <- cohort %>%
+		count() %>%
+		mutate(
+			block = "Total",
+			variable = "Total",
+			Characteristics = "Total",
+			var_type = "Total"
+		) %>%
+		mutate(n = as.numeric(n)) %>%
+		rename(value = n) %>%
+		collect_new()
 
 	table_1 <- reduce(result, union_all) %>%
-		select(block,variable,Characteristics,var_type,value)
+		select(block, variable, Characteristics, var_type, value)
 	return(table_1)
 }
 
@@ -200,6 +260,57 @@ show_progress <- function(step, message) {
 	
 }
 
+
+#' Function to sink into log file
+#'
+#' @returns
+#'
+#' @export
+#' @examples
+start_log <- function() {
+logFile <- file(file.path(
+    get_argos_default()$config("base_dir"),
+    get_argos_default()$config("subdirs")$result_dir,
+    paste0(.GlobalEnv$query_name,".log")
+  ), open = "wt")
+
+  sink(file = logFile, type = "message", append = TRUE)
+  sink(file = logFile, type = "output", append = TRUE)
+}
+
+
+#' Function to sink out of log file
+#'
+#' @returns
+#'
+#' @export
+#' @examples
+end_log <- function() {
+	sink(type = "output")
+  sink(type = "message")
+	close.connection(logFile)
+}
+
+
+#' Function to start rendering an html file
+#'
+#' @returns
+#'
+#' @export
+#' @examples
+render_report <- function() {
+
+if (Sys.getenv("native_execution") != "") {
+  if (!as.logical(Sys.getenv("native_execution"))) {
+    system("quarto render query/script/report.qmd --output-dir ../results/ --execute-dir query/results/ --to html")
+  } else {
+    quarto::quarto_render("query/script/report.qmd", execute_dir = "query/results/")
+    file.rename(paste0("query/script/",.GlobalEnv$query_name,"_report.html"), paste0("query/results/",.GlobalEnv$query_name,"_report.html"))
+  }
+} else {
+  system("quarto render query/script/report.qmd --output-dir ../results/ --execute-dir query/results/ --to html")
+}
+}
 
 #' Function to get sql code for number of days between date1 and date2. Adapted for sql dialects for Postgres and MS SQL.
 #' Should always be wrapped by sql()

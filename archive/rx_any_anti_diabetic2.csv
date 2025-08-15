@@ -1,0 +1,1283 @@
+concept_id,code,codetype,descrip
+747296,2670443,PR00,sitagliptin 100 MG [Zituvio]
+747297,2670444,PR00,Zituvio Oral Product
+747298,2670445,PR00,Zituvio Pill
+747299,2670446,PR00,sitagliptin Oral Tablet [Zituvio]
+747300,2670447,PR00,sitagliptin 100 MG Oral Tablet [Zituvio]
+747301,2670448,PR00,sitagliptin 25 MG [Zituvio]
+747302,2670449,PR00,sitagliptin 25 MG Oral Tablet [Zituvio]
+747303,2670450,PR00,sitagliptin 50 MG [Zituvio]
+747304,2670451,PR00,sitagliptin 50 MG Oral Tablet [Zituvio]
+747680,2644768,PR00,"{9 (insulin, regular, human 12 UNT Inhalation Powder) / 9 (insulin, regular, human 4 UNT Inhalation Powder) / 9 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+747681,2644769,PR00,"{9 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 9 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 9 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza Sample Pack]"
+793293,1992672,PR00,ertugliflozin
+793296,1992680,PR00,ertugliflozin 2.5 MG
+793297,1992681,PR00,ertugliflozin / metformin Oral Product
+793298,1992682,PR00,ertugliflozin / metformin Pill
+793299,1992683,PR00,ertugliflozin / metformin Oral Tablet
+793300,1992685,PR00,ertugliflozin 2.5 MG / metformin hydrochloride 1000 MG Oral Tablet
+793302,1992687,PR00,ertugliflozin 2.5 MG / metformin hydrochloride 1000 MG [Segluromet]
+793303,1992688,PR00,ertugliflozin / metformin Oral Tablet [Segluromet]
+793304,1992689,PR00,Segluromet Oral Product
+793305,1992690,PR00,Segluromet Pill
+793306,1992691,PR00,ertugliflozin 2.5 MG / metformin hydrochloride 1000 MG Oral Tablet [Segluromet]
+793307,1992693,PR00,ertugliflozin 2.5 MG / metformin hydrochloride 500 MG Oral Tablet
+793308,1992694,PR00,ertugliflozin 2.5 MG / metformin hydrochloride 500 MG [Segluromet]
+793309,1992695,PR00,ertugliflozin 2.5 MG / metformin hydrochloride 500 MG Oral Tablet [Segluromet]
+793310,1992697,PR00,ertugliflozin 7.5 MG
+793311,1992698,PR00,ertugliflozin 7.5 MG / metformin hydrochloride 1000 MG Oral Tablet
+793312,1992699,PR00,ertugliflozin 7.5 MG / metformin hydrochloride 1000 MG [Segluromet]
+793313,1992700,PR00,ertugliflozin 7.5 MG / metformin hydrochloride 1000 MG Oral Tablet [Segluromet]
+793314,1992701,PR00,ertugliflozin 7.5 MG / metformin hydrochloride 500 MG Oral Tablet
+793315,1992702,PR00,ertugliflozin 7.5 MG / metformin hydrochloride 500 MG [Segluromet]
+793316,1992703,PR00,ertugliflozin 7.5 MG / metformin hydrochloride 500 MG Oral Tablet [Segluromet]
+793317,1992806,PR00,ertugliflozin 5 MG
+793318,1992807,PR00,ertugliflozin Oral Product
+793319,1992808,PR00,ertugliflozin Pill
+793320,1992809,PR00,ertugliflozin Oral Tablet
+793321,1992810,PR00,ertugliflozin 5 MG Oral Tablet
+793323,1992812,PR00,ertugliflozin 5 MG [Steglatro]
+793324,1992813,PR00,ertugliflozin Oral Tablet [Steglatro]
+793325,1992814,PR00,Steglatro Oral Product
+793326,1992815,PR00,Steglatro Pill
+793327,1992816,PR00,ertugliflozin 5 MG Oral Tablet [Steglatro]
+793328,1992818,PR00,ertugliflozin 15 MG
+793329,1992819,PR00,ertugliflozin 15 MG Oral Tablet
+793330,1992820,PR00,ertugliflozin 15 MG [Steglatro]
+793331,1992821,PR00,ertugliflozin 15 MG Oral Tablet [Steglatro]
+793332,1992822,PR00,ertugliflozin / sitagliptin Oral Product
+793333,1992823,PR00,ertugliflozin / sitagliptin Pill
+793334,1992824,PR00,ertugliflozin / sitagliptin Oral Tablet
+793335,1992826,PR00,ertugliflozin 15 MG / sitagliptin 100 MG Oral Tablet
+793337,1992828,PR00,ertugliflozin 15 MG / sitagliptin 100 MG [Steglujan]
+793338,1992829,PR00,ertugliflozin / sitagliptin Oral Tablet [Steglujan]
+793339,1992830,PR00,Steglujan Oral Product
+793340,1992831,PR00,Steglujan Pill
+793341,1992832,PR00,ertugliflozin 15 MG / sitagliptin 100 MG Oral Tablet [Steglujan]
+793342,1992835,PR00,ertugliflozin 5 MG / sitagliptin 100 MG Oral Tablet
+793343,1992836,PR00,ertugliflozin 5 MG / sitagliptin 100 MG [Steglujan]
+793344,1992837,PR00,ertugliflozin 5 MG / sitagliptin 100 MG Oral Tablet [Steglujan]
+793825,1940495,PR00,dapagliflozin 2.5 MG
+793826,1940496,PR00,24 HR dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+793827,1940497,PR00,dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG [Xigduo]
+793828,1940498,PR00,24 HR dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Xigduo]
+793829,1940499,PR00,dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+793830,1940500,PR00,dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Xigduo]
+1145898,2371722,PR00,dapagliflozin / metformin / saxagliptin Oral Product
+1145899,2371723,PR00,dapagliflozin / metformin / saxagliptin Pill
+1145900,2371724,PR00,dapagliflozin / metformin / saxagliptin Extended Release Oral Tablet
+1145902,2371727,PR00,dapagliflozin 10 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG [Qternmet]
+1145903,2371728,PR00,dapagliflozin / metformin / saxagliptin Extended Release Oral Tablet [Qternmet]
+1145904,2371729,PR00,Qternmet Oral Product
+1145905,2371730,PR00,Qternmet Pill
+1145906,2371732,PR00,dapagliflozin 10 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet
+1145907,2371733,PR00,dapagliflozin 10 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Qternmet]
+1145908,2371735,PR00,dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG [Qternmet]
+1145909,2371737,PR00,dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet
+1145910,2371738,PR00,dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Qternmet]
+1145911,2371741,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG [Qternmet]
+1145912,2371743,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet
+1145913,2371744,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Qternmet]
+1145914,2371746,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG [Qternmet]
+1145915,2371748,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet
+1145916,2371749,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Qternmet]
+1146738,2371725,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet
+1146739,2371731,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Qternmet]
+1146740,2371734,PR00,24 HR dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet
+1146741,2371736,PR00,24 HR dapagliflozin 2.5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Qternmet]
+1146742,2371740,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet
+1146743,2371742,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Qternmet]
+1146744,2371745,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet
+1146745,2371747,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Qternmet]
+1356241,2108525,PR00,"insulin, regular, human Inhalation Powder"
+1356242,2108527,PR00,"insulin, regular, human Inhalation Powder [Afrezza]"
+1361258,2179742,PR00,"insulin, regular, human 1 UNT/ML"
+1361259,2179743,PR00,"insulin, regular, human Injection"
+1361261,2179746,PR00,"insulin, regular, human 1 UNT/ML [Myxredlin]"
+1361262,2179747,PR00,"insulin, regular, human Injection [Myxredlin]"
+1361263,2179748,PR00,Myxredlin Injectable Product
+1361264,2179750,PR00,"insulin, regular, human 1 UNT/ML Injection"
+1361265,2179751,PR00,"insulin, regular, human 1 UNT/ML Injection [Myxredlin]"
+1361675,2179744,PR00,"100 ML insulin, regular, human 1 UNT/ML Injection"
+1361676,2179749,PR00,"100 ML insulin, regular, human 1 UNT/ML Injection [Myxredlin]"
+1396414,2169274,PR00,dapagliflozin 5 MG / saxagliptin 5 MG Oral Tablet
+1396415,2169275,PR00,dapagliflozin 5 MG / saxagliptin 5 MG [Qtern]
+1396416,2169276,PR00,dapagliflozin 5 MG / saxagliptin 5 MG Oral Tablet [Qtern]
+1503297,6809,PR00,metformin
+1503327,316255,PR00,metformin 1000 MG
+1503328,316256,PR00,metformin 500 MG
+1510202,30009,PR00,miglitol
+1510206,213485,PR00,miglitol 25 MG Oral Tablet [Glyset]
+1510207,213486,PR00,miglitol 50 MG Oral Tablet [Glyset]
+1510208,213487,PR00,miglitol 100 MG Oral Tablet [Glyset]
+1525215,33738,PR00,pioglitazone
+1525216,261266,PR00,pioglitazone 15 MG Oral Tablet [Actos]
+1525217,261267,PR00,pioglitazone 30 MG Oral Tablet [Actos]
+1525218,261268,PR00,pioglitazone 45 MG Oral Tablet [Actos]
+1525220,312441,PR00,pioglitazone 45 MG Oral Tablet
+1525221,317573,PR00,pioglitazone 15 MG Oral Tablet
+1525242,331478,PR00,pioglitazone 30 MG
+1525243,332435,PR00,pioglitazone 15 MG
+1525244,332436,PR00,pioglitazone 45 MG
+1529331,16681,PR00,acarbose
+1529352,199149,PR00,acarbose 50 MG Oral Tablet
+1529358,315246,PR00,acarbose 100 MG
+1529359,315247,PR00,acarbose 25 MG
+1529360,315248,PR00,acarbose 50 MG
+1547504,84108,PR00,rosiglitazone
+1547505,261241,PR00,rosiglitazone 2 MG Oral Tablet [Avandia]
+1547506,261242,PR00,rosiglitazone 4 MG Oral Tablet [Avandia]
+1547507,261243,PR00,rosiglitazone 8 MG Oral Tablet [Avandia]
+1547508,312859,PR00,rosiglitazone 2 MG Oral Tablet
+1547510,312861,PR00,rosiglitazone 8 MG Oral Tablet
+1547554,358499,PR00,rosiglitazone 4 MG
+1559684,4815,PR00,glyburide
+1559685,197737,PR00,glyburide 1.25 MG Oral Tablet
+1559728,261351,PR00,glyburide 4.5 MG Oral Tablet [Glycron]
+1559729,261974,PR00,glyburide 3 MG Oral Tablet [Glycron]
+1559760,315987,PR00,glyburide 1.25 MG
+1559761,315988,PR00,glyburide 1.5 MG
+1559782,315989,PR00,glyburide 2.5 MG
+1559784,315991,PR00,glyburide 5 MG
+1559785,315992,PR00,glyburide 6 MG
+1559786,331496,PR00,glyburide 4.5 MG
+1560004,2049379,PR00,"insulin isophane / insulin, regular, human Pen Injector [Novolin]"
+1560005,2049381,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Pen Injector [Novolin]"
+1560168,2049380,PR00,"3 ML insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Pen Injector [Novolin]"
+1560171,4821,PR00,glipizide
+1560233,317379,PR00,glipizide 10 MG
+1580747,593411,PR00,sitagliptin
+1592314,1925495,PR00,dapagliflozin / saxagliptin Oral Product
+1592315,1925496,PR00,dapagliflozin / saxagliptin Pill
+1592316,1925497,PR00,dapagliflozin / saxagliptin Oral Tablet
+1592317,1925498,PR00,dapagliflozin 10 MG / saxagliptin 5 MG Oral Tablet
+1592319,1925500,PR00,dapagliflozin 10 MG / saxagliptin 5 MG [Qtern]
+1592320,1925501,PR00,dapagliflozin / saxagliptin Oral Tablet [Qtern]
+1592321,1925502,PR00,Qtern Oral Product
+1592322,1925503,PR00,Qtern Pill
+1592323,1925504,PR00,dapagliflozin 10 MG / saxagliptin 5 MG Oral Tablet [Qtern]
+1592652,1862684,PR00,empagliflozin / metformin Extended Release Oral Tablet
+1592653,1862685,PR00,24 HR empagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592654,1862686,PR00,empagliflozin 10 MG / metformin hydrochloride 1000 MG [Synjardy]
+1592655,1862687,PR00,empagliflozin / metformin Extended Release Oral Tablet [Synjardy]
+1592656,1862688,PR00,24 HR empagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592657,1862689,PR00,empagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592793,1862690,PR00,empagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592794,1862691,PR00,24 HR empagliflozin 12.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592795,1862692,PR00,24 HR empagliflozin 12.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592796,1862693,PR00,empagliflozin 12.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592797,1862694,PR00,empagliflozin 12.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592798,1862695,PR00,24 HR empagliflozin 25 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592799,1862696,PR00,empagliflozin 25 MG / metformin hydrochloride 1000 MG [Synjardy]
+1592800,1862697,PR00,24 HR empagliflozin 25 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592801,1862698,PR00,empagliflozin 25 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592802,1862699,PR00,empagliflozin 25 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592803,1862700,PR00,24 HR empagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592804,1862701,PR00,24 HR empagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1592805,1862702,PR00,empagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1592806,1862703,PR00,empagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Synjardy]
+1596916,213442,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension [Novolin]"
+1596917,245264,PR00,"insulin isophane, human 85 UNT/ML / insulin, regular, human 15 UNT/ML Injectable Suspension"
+1596918,245265,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension"
+1596919,247511,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML Injectable Suspension"
+1596920,247512,PR00,"insulin isophane, human 80 UNT/ML / insulin, regular, human 20 UNT/ML Injectable Suspension"
+1596921,247513,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML Injectable Suspension"
+1596956,847187,PR00,"3 ML insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Pen Injector"
+1596957,847189,PR00,"3 ML insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Pen Injector [Humulin]"
+1596972,847256,PR00,"1.5 ML insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Prefilled Syringe"
+1596973,847257,PR00,"1.5 ML insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Prefilled Syringe [Novolin]"
+1596976,847343,PR00,"1.5 ML insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Prefilled Syringe [Humulin]"
+1596977,253182,PR00,"insulin, regular, human"
+1596998,343258,PR00,"insulin, regular, human 50 UNT/ML"
+1596999,351859,PR00,"insulin, regular, human 500 UNT/ML Injectable Solution [Humulin R]"
+1597000,359125,PR00,"insulin, regular, human 15 UNT/ML"
+1597001,359126,PR00,"insulin, regular, human 10 UNT/ML"
+1597012,359127,PR00,"insulin, regular, human 20 UNT/ML"
+1597756,25789,PR00,glimepiride
+1597757,153591,PR00,glimepiride 2 MG Oral Tablet [Amaryl]
+1597758,153842,PR00,glimepiride 3 MG Oral Tablet
+1597759,153843,PR00,glimepiride 1 MG Oral Tablet [Amaryl]
+1597760,153845,PR00,glimepiride 4 MG Oral Tablet [Amaryl]
+1597761,199245,PR00,glimepiride 1 MG Oral Tablet
+1597772,199246,PR00,glimepiride 2 MG Oral Tablet
+1597773,199247,PR00,glimepiride 4 MG Oral Tablet
+1597774,315978,PR00,glimepiride 1 MG
+1597775,315979,PR00,glimepiride 4 MG
+1597776,317637,PR00,glimepiride 2 MG
+1597781,647237,PR00,glimepiride 2 MG / pioglitazone 30 MG Oral Tablet
+1597792,647239,PR00,glimepiride 4 MG / pioglitazone 30 MG Oral Tablet
+1597795,731457,PR00,glimepiride 4 MG / pioglitazone 30 MG Oral Tablet [Duetact]
+1597796,731463,PR00,glimepiride 2 MG / pioglitazone 30 MG Oral Tablet [Duetact]
+1597798,847712,PR00,glimepiride 2 MG / rosiglitazone 4 MG Oral Tablet [Avandaryl]
+1597799,847716,PR00,glimepiride 1 MG / rosiglitazone 4 MG Oral Tablet [Avandaryl]
+1597801,847724,PR00,glimepiride 4 MG / rosiglitazone 8 MG Oral Tablet [Avandaryl]
+1718876,1862101,PR00,"{60 (insulin, regular, human 12 UNT Inhalation Powder) / 60 (insulin, regular, human 4 UNT Inhalation Powder) / 60 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+1718889,1862102,PR00,"{60 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 180 Titration Pack- 60 (4 UNT), 60 (8 UNT..."
+1718898,1810996,PR00,canagliflozin / metformin Extended Release Oral Tablet
+1718899,1810997,PR00,24 HR canagliflozin 150 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1718900,1810998,PR00,canagliflozin / metformin Extended Release Oral Tablet [Invokamet]
+1718901,1810999,PR00,24 HR canagliflozin 150 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Invokamet]
+1718902,1811000,PR00,canagliflozin 150 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1718903,1811001,PR00,canagliflozin 150 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Invokamet]
+1718904,1811002,PR00,24 HR canagliflozin 150 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+1718905,1811003,PR00,24 HR canagliflozin 150 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Invokamet]
+1718906,1811004,PR00,canagliflozin 150 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+1718907,1811005,PR00,canagliflozin 150 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Invokamet]
+1718908,1811006,PR00,24 HR canagliflozin 50 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1718909,1811007,PR00,24 HR canagliflozin 50 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Invokamet]
+1718910,1811008,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+1718911,1811009,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Invokamet]
+1718912,1811010,PR00,24 HR canagliflozin 50 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+1718913,1811011,PR00,24 HR canagliflozin 50 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Invokamet]
+1718914,1811012,PR00,canagliflozin 50 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+1718915,1811013,PR00,canagliflozin 50 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Invokamet]
+2313872,93312,PR00,glyburide Oral Tablet [Micronase]
+3195766,1368003,PR00,alogliptin Oral Product
+3249959,861008,PR00,metformin hydrochloride 500 MG Oral Tablet [Glucophage]
+3416283,1811008,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+4028983,1368003,PR00,alogliptin Oral Product
+4107963,1811008,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+4311259,861008,PR00,metformin hydrochloride 500 MG Oral Tablet [Glucophage]
+19001408,102845,PR00,glyburide 5 MG Oral Tablet [Daonil]
+19006908,105371,PR00,glyburide 2.5 MG Oral Tablet [Calabren]
+19006909,105372,PR00,glyburide 5 MG Oral Tablet [Calabren]
+19006910,105373,PR00,glipizide 5 MG Oral Tablet [Minidiab]
+19006932,105376,PR00,metformin hydrochloride 500 MG Oral Tablet [Glucamet]
+19006933,105377,PR00,metformin hydrochloride 850 MG Oral Tablet [Glucamet]
+19007871,575147,PR00,"insulin, regular, human 100 UNT/ML [Velosulin]"
+19009384,106892,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension [Humulin]"
+19009386,106894,PR00,"insulin isophane, human 85 UNT/ML / insulin, regular, human 15 UNT/ML Injectable Suspension [Pur-In Mix]"
+19009387,106895,PR00,"insulin isophane, human 75 UNT/ML / insulin, regular, human 25 UNT/ML Injectable Suspension [Pur-In Mix]"
+19009388,106896,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension [Pur-In Mix]"
+19009390,106899,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML Injectable Suspension [Humulin]"
+19009421,106900,PR00,"insulin isophane, human 80 UNT/ML / insulin, regular, human 20 UNT/ML Injectable Suspension [Humulin]"
+19009422,106901,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML Injectable Suspension [Humulin]"
+19010204,108407,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension [Humulin]"
+19010510,108813,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML Injectable Suspension [Human Mixtard]"
+19010531,108814,PR00,"insulin isophane, human 80 UNT/ML / insulin, regular, human 20 UNT/ML Injectable Suspension [Human Mixtard]"
+19010532,108815,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension [Human Mixtard]"
+19010533,108816,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension [Human Mixtard]"
+19010534,108822,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML Injectable Suspension [Human Mixtard]"
+19012266,150659,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Pur-In Neutral]"
+19012507,150831,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Human Actrapid Penfill]"
+19012678,150973,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Human Actrapid]"
+19012679,150974,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Humulin S]"
+19017142,731455,PR00,glimepiride 4 MG / pioglitazone 30 MG [Duetact]
+19017144,731461,PR00,glimepiride 2 MG / pioglitazone 30 MG [Duetact]
+19018043,153844,PR00,glimepiride 3 MG Oral Tablet [Amaryl]
+19021312,199150,PR00,acarbose 100 MG Oral Tablet
+19021786,569871,PR00,acarbose 50 MG [Precose]
+19021787,569872,PR00,acarbose 100 MG [Precose]
+19023063,200132,PR00,acarbose 25 MG Oral Tablet
+19023585,565327,PR00,glimepiride 2 MG [Amaryl]
+19024502,201056,PR00,glyburide 2.5 MG Oral Tablet [Libanil]
+19024503,201057,PR00,glyburide 2.5 MG Oral Tablet [Semi-Daonil]
+19024504,201058,PR00,glyburide 2.5 MG Oral Tablet [Euglucon]
+19024505,201059,PR00,glyburide 2.5 MG Oral Tablet [Malix]
+19024506,201060,PR00,glyburide 2.5 MG Oral Tablet [Diabetamide]
+19024507,201061,PR00,glyburide 5 MG Oral Tablet [Libanil]
+19024508,201062,PR00,glyburide 5 MG Oral Tablet [Euglucon]
+19024509,201063,PR00,glyburide 5 MG Oral Tablet [Malix]
+19024510,201064,PR00,glyburide 5 MG Oral Tablet [Diabetamide]
+19025946,201921,PR00,glipizide 5 MG Oral Tablet [Glibenese]
+19025947,201922,PR00,glipizide 2.5 MG Oral Tablet [Minidiab]
+19027257,204045,PR00,metformin hydrochloride 500 MG Oral Tablet [Orabet Metformin]
+19027259,204047,PR00,metformin hydrochloride 850 MG Oral Tablet [Orabet Metformin]
+19029029,205329,PR00,miglitol 25 MG Oral Tablet
+19029030,205330,PR00,miglitol 50 MG Oral Tablet
+19029061,205331,PR00,miglitol 100 MG Oral Tablet
+19030443,205828,PR00,glipizide 5 MG Oral Tablet [Glucotrol]
+19030445,205830,PR00,glipizide 10 MG Oral Tablet [Glucotrol]
+19030572,205872,PR00,glyburide 1.25 MG Oral Tablet [Diabeta]
+19030573,205873,PR00,glyburide 1.25 MG Oral Tablet [Micronase]
+19030575,205875,PR00,glyburide 2.5 MG Oral Tablet [Diabeta]
+19030576,205876,PR00,glyburide 2.5 MG Oral Tablet [Micronase]
+19030579,205879,PR00,glyburide 5 MG Oral Tablet [Diabeta]
+19030580,205880,PR00,glyburide 5 MG Oral Tablet [Micronase]
+19040969,209247,PR00,acarbose 50 MG Oral Tablet [Precose]
+19040970,209248,PR00,acarbose 100 MG Oral Tablet [Precose]
+19045624,566762,PR00,glyburide 1.25 MG [Micronase]
+19045625,566765,PR00,glyburide 2.5 MG [Micronase]
+19045626,566769,PR00,glyburide 5 MG [Micronase]
+19045628,566761,PR00,glyburide 1.25 MG [Diabeta]
+19045629,566764,PR00,glyburide 2.5 MG [Diabeta]
+19045630,566768,PR00,glyburide 5 MG [Diabeta]
+19047612,213170,PR00,acarbose 25 MG Oral Tablet [Precose]
+19047638,566718,PR00,glipizide 5 MG [Glucotrol]
+19048032,847714,PR00,glimepiride 1 MG / rosiglitazone 4 MG [Avandaryl]
+19048034,847718,PR00,glimepiride 2 MG / rosiglitazone 8 MG [Avandaryl]
+19048036,847722,PR00,glimepiride 4 MG / rosiglitazone 8 MG [Avandaryl]
+19060409,246391,PR00,glyburide 2.5 MG / phenformin 25 MG Oral Tablet
+19060469,246522,PR00,chlorpropamide 125 MG / metformin 400 MG Oral Tablet
+19060491,246524,PR00,glyburide 5 MG / phenformin 50 MG Oral Tablet
+19061542,249026,PR00,"insulin, regular, human 40 UNT/ML Injectable Solution"
+19061670,249220,PR00,"insulin, regular, human 500 UNT/ML Injectable Solution"
+19062458,575148,PR00,"insulin, regular, human 100 UNT/ML [Humulin R]"
+19062459,575628,PR00,"insulin, regular, human 500 UNT/ML [Humulin R]"
+19062999,573331,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML [Novolin]"
+19063035,575146,PR00,"insulin, regular, human 100 UNT/ML [Novolin R]"
+19063991,250919,PR00,glyburide 2.5 MG / metformin 400 MG Oral Tablet
+19065480,252960,PR00,glyburide 4.5 MG Oral Tablet
+19067200,573373,PR00,miglitol 25 MG [Glyset]
+19067231,573374,PR00,miglitol 50 MG [Glyset]
+19067232,573375,PR00,miglitol 100 MG [Glyset]
+19067365,260286,PR00,glyburide 1.5 MG Oral Tablet [Glycron]
+19067366,260287,PR00,glyburide 6 MG Oral Tablet [Glycron]
+19077636,310488,PR00,glipizide 10 MG Oral Tablet
+19077637,310489,PR00,24 HR glipizide 2.5 MG Extended Release Oral Tablet
+19077638,310490,PR00,glipizide 5 MG Oral Tablet
+19077659,310534,PR00,glyburide 2.5 MG Oral Tablet
+19077681,310536,PR00,glyburide 3 MG Oral Tablet
+19077682,310537,PR00,glyburide 5 MG Oral Tablet
+19077684,310539,PR00,glyburide 6 MG Oral Tablet
+19078554,311033,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Novolin R]"
+19078555,311034,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution"
+19078556,311035,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Velosulin]"
+19078557,311036,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Humulin R]"
+19078603,311048,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension"
+19079293,312440,PR00,pioglitazone 30 MG Oral Tablet
+19079465,312860,PR00,rosiglitazone 4 MG Oral Tablet
+19079986,314000,PR00,glyburide 1.5 MG Oral Tablet
+19079990,314006,PR00,24 HR glipizide 5 MG Extended Release Oral Tablet
+19080793,315107,PR00,24 HR glipizide 10 MG Extended Release Oral Tablet
+19081295,315980,PR00,glipizide 5 MG
+19081296,315990,PR00,glyburide 3 MG
+19081704,316304,PR00,miglitol 100 MG
+19081705,316305,PR00,miglitol 25 MG
+19081706,316306,PR00,miglitol 50 MG
+19085004,330349,PR00,glipizide 2.5 MG
+19086484,330861,PR00,metformin 250 MG
+19088818,332809,PR00,metformin 400 MG
+19094121,340325,PR00,"insulin, regular, human 100 UNT/ML"
+19094122,340326,PR00,"insulin, regular, human 40 UNT/ML"
+19094123,340327,PR00,"insulin, regular, human 500 UNT/ML"
+19095218,343083,PR00,"insulin, regular, human 30 UNT/ML"
+19099055,358500,PR00,rosiglitazone 8 MG
+19099070,358530,PR00,rosiglitazone 2 MG
+19099207,574495,PR00,pioglitazone 15 MG [Actos]
+19099208,574496,PR00,pioglitazone 30 MG [Actos]
+19099209,574497,PR00,pioglitazone 45 MG [Actos]
+19099245,574471,PR00,rosiglitazone 4 MG [Avandia]
+19099246,574472,PR00,rosiglitazone 8 MG [Avandia]
+19099278,358809,PR00,rosiglitazone 1 MG
+19099408,574571,PR00,glyburide 4.5 MG [Glycron]
+19099409,574612,PR00,glyburide 3 MG [Glycron]
+19100128,360894,PR00,"insulin, regular, human 25 UNT/ML"
+19100559,379804,PR00,glipizide 2.5 MG Oral Tablet
+19100593,380849,PR00,glimepiride 3 MG
+19101876,392660,PR00,"insulin isophane, human 75 UNT/ML / insulin, regular, human 25 UNT/ML Injectable Suspension"
+19104092,412453,PR00,"insulin, regular, human 5 UNT/ML Injectable Solution"
+19104173,412978,PR00,"insulin isophane, human 16 UNT/ML / insulin, regular, human 24 UNT/ML Injectable Suspension"
+19104457,415088,PR00,"insulin isophane, human 28 UNT/ML / insulin, regular, human 12 UNT/ML Injectable Suspension"
+19104458,415089,PR00,"insulin isophane, human 30 UNT/ML / insulin, regular, human 10 UNT/ML Injectable Suspension"
+19104459,415090,PR00,"insulin isophane, human 34 UNT/ML / insulin, regular, human 6 UNT/ML Injectable Suspension"
+19104469,415184,PR00,"insulin isophane, human 32 UNT/ML / insulin, regular, human 8 UNT/ML Injectable Suspension"
+19104470,415185,PR00,"insulin isophane, human 36 UNT/ML / insulin, regular, human 4 UNT/ML Injectable Suspension"
+19106521,428759,PR00,metformin 250 MG Oral Tablet
+19106860,429841,PR00,glyburide 5 MG / metformin 1000 MG Oral Tablet
+19106974,430102,PR00,glyburide 3.5 MG Oral Tablet
+19106975,430103,PR00,glyburide 1.75 MG Oral Tablet
+19106976,430104,PR00,glyburide 1 MG Oral Tablet
+19107077,430343,PR00,rosiglitazone 1 MG Oral Tablet
+19107329,431724,PR00,12 HR metformin hydrochloride 850 MG Extended Release Oral Tablet
+19107377,432366,PR00,chlorpropamide 125 MG / metformin 513 MG Oral Tablet
+19107624,432780,PR00,chlorpropamide 125 MG / metformin 500 MG Oral Tablet
+19109284,438507,PR00,metformin 513 MG
+19110153,440285,PR00,glyburide 1.75 MG
+19110154,440286,PR00,glyburide 1 MG
+19110155,440287,PR00,glyburide 3.5 MG
+19110220,440399,PR00,"insulin, regular, human 24 UNT/ML"
+19110353,440650,PR00,"insulin, regular, human 12 UNT/ML"
+19110356,440653,PR00,"insulin, regular, human 6 UNT/ML"
+19110357,440654,PR00,"insulin, regular, human 5 UNT/ML"
+19111796,451437,PR00,"insulin, regular, human 8 UNT/ML"
+19111798,451439,PR00,"insulin, regular, human 4 UNT/ML"
+19113780,541775,PR00,metformin 500 MG / ropinirole 2 MG Oral Tablet
+19115458,563154,PR00,glyburide 5 MG [Daonil]
+19116146,564036,PR00,glyburide 2.5 MG [Calabren]
+19116147,564037,PR00,glyburide 5 MG [Calabren]
+19116148,564038,PR00,glipizide 5 MG [Minidiab]
+19116449,564395,PR00,"insulin isophane, human 85 UNT/ML / insulin, regular, human 15 UNT/ML [Pur-In Mix]"
+19116450,564396,PR00,"insulin isophane, human 75 UNT/ML / insulin, regular, human 25 UNT/ML [Pur-In Mix]"
+19116451,564397,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML [Pur-In Mix]"
+19116453,564399,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML [Humulin]"
+19116454,564400,PR00,"insulin isophane, human 80 UNT/ML / insulin, regular, human 20 UNT/ML [Humulin]"
+19116455,564401,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML [Humulin]"
+19116559,564531,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML [Humulin]"
+19116609,564601,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML [Human Mixtard]"
+19116610,564602,PR00,"insulin isophane, human 80 UNT/ML / insulin, regular, human 20 UNT/ML [Human Mixtard]"
+19116611,564603,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML [Human Mixtard]"
+19116613,564605,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML [Human Mixtard]"
+19116726,564766,PR00,"insulin, regular, human 100 UNT/ML [Pur-In Neutral]"
+19116760,564820,PR00,"insulin, regular, human 100 UNT/ML [Human Actrapid Penfill]"
+19116790,564881,PR00,"insulin, regular, human 100 UNT/ML [Human Actrapid]"
+19116791,564882,PR00,"insulin, regular, human 100 UNT/ML [Humulin S]"
+19117028,565176,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML [Human Mixtard]"
+19117198,565408,PR00,glimepiride 1 MG [Amaryl]
+19117199,565409,PR00,glimepiride 3 MG [Amaryl]
+19117200,565410,PR00,glimepiride 4 MG [Amaryl]
+19117416,565667,PR00,glyburide 2.5 MG [Libanil]
+19117417,565668,PR00,glyburide 2.5 MG [Semi-Daonil]
+19117418,565669,PR00,glyburide 2.5 MG [Euglucon]
+19117419,565670,PR00,glyburide 2.5 MG [Malix]
+19117420,565671,PR00,glyburide 2.5 MG [Diabetamide]
+19117421,565672,PR00,glyburide 5 MG [Libanil]
+19117422,565673,PR00,glyburide 5 MG [Euglucon]
+19117423,565674,PR00,glyburide 5 MG [Malix]
+19117424,565675,PR00,glyburide 5 MG [Diabetamide]
+19117692,566056,PR00,glipizide 5 MG [Glibenese]
+19117693,566057,PR00,glipizide 2.5 MG [Minidiab]
+19117945,566720,PR00,glipizide 10 MG [Glucotrol]
+19120257,573095,PR00,acarbose 25 MG [Precose]
+19120315,573330,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML [Humulin]"
+19120562,574089,PR00,glyburide 1.5 MG [Glycron]
+19120563,574090,PR00,glyburide 6 MG [Glycron]
+19120648,574470,PR00,rosiglitazone 2 MG [Avandia]
+19121940,583195,PR00,metformin hydrochloride 850 MG Oral Tablet [Metforming]
+19122366,602544,PR00,glimepiride 1 MG / rosiglitazone 4 MG Oral Tablet
+19122367,602549,PR00,glimepiride 2 MG / rosiglitazone 4 MG Oral Tablet
+19122368,602550,PR00,glimepiride 4 MG / rosiglitazone 4 MG Oral Tablet
+19125040,665031,PR00,sitagliptin 100 MG
+19125041,665033,PR00,sitagliptin 100 MG Oral Tablet
+19125042,665034,PR00,sitagliptin 100 MG [Januvia]
+19125043,665036,PR00,sitagliptin 100 MG Oral Tablet [Januvia]
+19125044,665037,PR00,sitagliptin 25 MG
+19125045,665038,PR00,sitagliptin 25 MG Oral Tablet
+19125046,665039,PR00,sitagliptin 25 MG [Januvia]
+19125047,665040,PR00,sitagliptin 25 MG Oral Tablet [Januvia]
+19125048,665041,PR00,sitagliptin 50 MG
+19125049,665042,PR00,sitagliptin 50 MG Oral Tablet
+19125050,665043,PR00,sitagliptin 50 MG [Januvia]
+19125051,665044,PR00,sitagliptin 50 MG Oral Tablet [Januvia]
+19125218,669981,PR00,glyburide 1.25 MG [Glyburase]
+19125219,669983,PR00,glyburide 1.25 MG Oral Tablet [Glyburase]
+19125220,669984,PR00,glyburide 2.5 MG [Glyburase]
+19125221,669985,PR00,glyburide 2.5 MG Oral Tablet [Glyburase]
+19125222,669986,PR00,glyburide 5 MG [Glyburase]
+19125223,669987,PR00,glyburide 5 MG Oral Tablet [Glyburase]
+19126618,706895,PR00,glimepiride 2 MG / rosiglitazone 8 MG Oral Tablet
+19126619,706896,PR00,glimepiride 4 MG / rosiglitazone 8 MG Oral Tablet
+19134624,844809,PR00,glipizide 2.5 MG Extended Release Oral Tablet
+19134639,844824,PR00,glipizide 5 MG Extended Release Oral Tablet
+19134642,844827,PR00,glipizide 10 MG Extended Release Oral Tablet
+19135264,847203,PR00,"3 ML insulin, regular, human 100 UNT/ML Prefilled Syringe"
+19135265,847205,PR00,"3 ML insulin, regular, human 100 UNT/ML Prefilled Syringe [Novolin R]"
+19135320,847417,PR00,"1.5 ML insulin, regular, human 100 UNT/ML Prefilled Syringe"
+19135385,847706,PR00,glimepiride 4 MG / rosiglitazone 4 MG [Avandaryl]
+19135386,847708,PR00,glimepiride 4 MG / rosiglitazone 4 MG Oral Tablet [Avandaryl]
+19135387,847710,PR00,glimepiride 2 MG / rosiglitazone 4 MG [Avandaryl]
+19135388,847720,PR00,glimepiride 2 MG / rosiglitazone 8 MG Oral Tablet [Avandaryl]
+35201903,2100028,PR00,"{90 (insulin, regular, human 12 UNT Inhalation Powder) / 90 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+35201904,2100029,PR00,"{90 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 90 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 180 - 90 (8 UNT), 90 (12 UNT)]"
+35605619,1731314,PR00,"insulin, regular, human Pen Injector"
+35605620,1731315,PR00,"3 ML insulin, regular, human 500 UNT/ML Pen Injector"
+35605621,1731316,PR00,"insulin, regular, human Pen Injector [Humulin R]"
+35605622,1731317,PR00,"3 ML insulin, regular, human 500 UNT/ML Pen Injector [Humulin R]"
+35605623,1731318,PR00,"insulin, regular, human 500 UNT/ML Pen Injector"
+35605624,1731319,PR00,"insulin, regular, human 500 UNT/ML Pen Injector [Humulin R]"
+35806745,33738,PR00,pioglitazone
+35812740,25789,PR00,glimepiride
+35874922,108814,PR00,"insulin isophane, human 80 UNT/ML / insulin, regular, human 20 UNT/ML Injectable Suspension [Human Mixtard]"
+35946743,30009,PR00,miglitol
+35954802,4821,PR00,glipizide
+35956905,6809,PR00,metformin
+35959947,33738,PR00,pioglitazone
+35960977,25789,PR00,glimepiride
+35968745,566057,PR00,glipizide 2.5 MG [Minidiab]
+35971166,363120,PR00,"insulin, regular, human Injectable Solution [Velosulin]"
+36213837,1156197,PR00,glyburide / metformin Pill
+36213838,1156198,PR00,glyburide / phenformin Oral Product
+36213839,1156199,PR00,glyburide / phenformin Pill
+36213840,1156200,PR00,glyburide Oral Product
+36213841,1156201,PR00,glyburide Pill
+36214817,1155467,PR00,chlorpropamide / metformin Oral Product
+36214818,1155468,PR00,chlorpropamide / metformin Pill
+36214980,1157240,PR00,glimepiride / pioglitazone Oral Product
+36214981,1157241,PR00,glimepiride / pioglitazone Pill
+36214982,1157242,PR00,glimepiride / rosiglitazone Oral Product
+36214983,1157243,PR00,glimepiride / rosiglitazone Pill
+36214984,1157244,PR00,glimepiride Oral Product
+36214985,1157245,PR00,glimepiride Pill
+36215710,1157268,PR00,miglitol Oral Product
+36215711,1157269,PR00,miglitol Pill
+36216897,1153649,PR00,acarbose Oral Product
+36216898,1153650,PR00,acarbose Pill
+36218765,1165205,PR00,glipizide / metformin Oral Product
+36218766,1165206,PR00,glipizide / metformin Pill
+36218767,1165207,PR00,glipizide Oral Product
+36218768,1165208,PR00,glipizide Pill
+36220120,1163231,PR00,pioglitazone Oral Product
+36220121,1163232,PR00,pioglitazone Pill
+36220647,1168162,PR00,Daonil Oral Product
+36220648,1168163,PR00,Daonil Pill
+36221103,1164670,PR00,linagliptin Oral Product
+36221104,1164671,PR00,linagliptin Pill
+36221230,1167810,PR00,Janumet Oral Product
+36221231,1167811,PR00,Janumet Pill
+36221232,1167814,PR00,Januvia Oral Product
+36221233,1167815,PR00,Januvia Pill
+36221460,1165845,PR00,glyburide / metformin Oral Product
+36221713,1164824,PR00,"insulin, regular, human Injectable Product"
+36222784,1166403,PR00,Duetact Oral Product
+36222785,1166404,PR00,Duetact Pill
+36223131,1161597,PR00,metformin / pioglitazone Oral Product
+36223132,1161598,PR00,metformin / pioglitazone Pill
+36223133,1161599,PR00,metformin / repaglinide Oral Product
+36223134,1161600,PR00,metformin / repaglinide Pill
+36223135,1161601,PR00,metformin / ropinirole Oral Product
+36223136,1161602,PR00,metformin / ropinirole Pill
+36223137,1161603,PR00,metformin / rosiglitazone Oral Product
+36223138,1161604,PR00,metformin / rosiglitazone Pill
+36223139,1161605,PR00,metformin / saxagliptin Oral Product
+36223140,1161606,PR00,metformin / saxagliptin Pill
+36223141,1161607,PR00,metformin / sitagliptin Oral Product
+36223142,1161608,PR00,metformin / sitagliptin Pill
+36223143,1161609,PR00,metformin Oral Liquid Product
+36223144,1161610,PR00,metformin Oral Product
+36223145,1161611,PR00,metformin Pill
+36224108,1158518,PR00,saxagliptin Oral Product
+36224321,1158519,PR00,saxagliptin Pill
+36224403,1159662,PR00,sitagliptin Oral Product
+36224404,1159663,PR00,sitagliptin Pill
+36227624,1157987,PR00,rosiglitazone Oral Product
+36227625,1157988,PR00,rosiglitazone Pill
+36229116,1175658,PR00,Avandaryl Oral Product
+36229117,1175659,PR00,Avandaryl Pill
+36229291,1181729,PR00,Onglyza Oral Product
+36229292,1181730,PR00,Onglyza Pill
+36229365,1175666,PR00,Avandia Oral Product
+36229366,1175667,PR00,Avandia Pill
+36229565,1179163,PR00,Tradjenta Oral Product
+36229566,1179164,PR00,Tradjenta Pill
+36229921,1179291,PR00,Minidiab Oral Product
+36229922,1179292,PR00,Minidiab Pill
+36230035,1175878,PR00,Diabeta Oral Product
+36230036,1175879,PR00,Diabeta Pill
+36230037,1175880,PR00,Diabetamide Oral Product
+36230038,1175881,PR00,Diabetamide Pill
+36231169,1178082,PR00,Micronase Oral Product
+36231170,1178083,PR00,Micronase Pill
+36231233,1179740,PR00,Malix Oral Product
+36231234,1179741,PR00,Malix Pill
+36231456,1178125,PR00,Novolin Injectable Product
+36231459,1178128,PR00,Novolin R Injectable Product
+36232128,1178368,PR00,Semi-Daonil Oral Product
+36232129,1178369,PR00,Semi-Daonil Pill
+36233481,1171919,PR00,Glyburase Oral Product
+36233482,1171920,PR00,Glyburase Pill
+36233491,1171929,PR00,Glycron Oral Product
+36233492,1171930,PR00,Glycron Pill
+36233495,1171933,PR00,Glynase Oral Product
+36233496,1171934,PR00,Glynase Pill
+36233498,1171936,PR00,Glyset Oral Product
+36233499,1171937,PR00,Glyset Pill
+36233552,1171997,PR00,Humulin Injectable Product
+36234085,1170663,PR00,Amaryl Oral Product
+36234086,1170664,PR00,Amaryl Pill
+36234721,1170866,PR00,Calabren Oral Product
+36234722,1170867,PR00,Calabren Pill
+36235405,1171148,PR00,Euglucon Oral Product
+36235406,1171149,PR00,Euglucon Pill
+36235581,1175016,PR00,Avandamet Oral Product
+36235582,1175021,PR00,Avandamet Pill
+36235739,1171233,PR00,Glibenese Oral Product
+36235740,1171234,PR00,Glibenese Pill
+36235744,1171242,PR00,Glucamet Oral Product
+36235745,1171243,PR00,Glucamet Pill
+36235746,1171244,PR00,Glucophage Oral Product
+36235747,1171245,PR00,Glucophage Pill
+36235748,1171246,PR00,Glucotrol Oral Product
+36235749,1171247,PR00,Glucotrol Pill
+36235750,1171248,PR00,Glucovance Oral Product
+36235751,1171249,PR00,Glucovance Pill
+36235752,1171254,PR00,Glumetza Oral Product
+36235753,1171255,PR00,Glumetza Pill
+36235787,1172629,PR00,Fortamet Oral Product
+36235788,1172630,PR00,Fortamet Pill
+36235841,1172692,PR00,Humulin R Injectable Product
+36235842,1172693,PR00,Humulin S Injectable Product
+36236034,1171292,PR00,Human Actrapid Injectable Product
+36236035,1171293,PR00,Human Actrapid Penfill Injectable Product
+36236038,1171296,PR00,Human Mixtard Injectable Product
+36236322,1169920,PR00,Actoplus Met Oral Product
+36236323,1169923,PR00,Actoplus Met Pill
+36236324,1169928,PR00,Actos Oral Product
+36236325,1169929,PR00,Actos Pill
+36236480,1172860,PR00,Kombiglyze Pill
+36236481,1172861,PR00,Kombiglyze Oral Product
+36238284,1243016,PR00,linagliptin / metformin Oral Product
+36238285,1243017,PR00,linagliptin / metformin Pill
+36238286,1243038,PR00,Jentadueto Oral Product
+36238287,1243039,PR00,Jentadueto Pill
+36239236,1185624,PR00,Metaglip Pill
+36239257,1185653,PR00,Metforming Oral Product
+36239258,1185654,PR00,Metforming Pill
+36239753,1182890,PR00,Orabet Metformin Oral Product
+36239754,1182891,PR00,Orabet Metformin Pill
+36240261,1189800,PR00,simvastatin / sitagliptin Oral Product
+36240262,1189801,PR00,simvastatin / sitagliptin Pill
+36240263,1189812,PR00,Juvisync Oral Product
+36240264,1189813,PR00,Juvisync Pill
+36240427,1184627,PR00,PrandiMet Oral Product
+36240428,1184628,PR00,PrandiMet Pill
+36240751,1186169,PR00,Libanil Oral Product
+36240752,1186170,PR00,Libanil Pill
+36241497,1183566,PR00,Pur-In Mix Injectable Product
+36241498,1183568,PR00,Pur-In Neutral Injectable Product
+36241808,1185049,PR00,Metaglip Oral Product
+36242198,1185237,PR00,Precose Oral Product
+36242199,1185238,PR00,Precose Pill
+36242327,1187762,PR00,Velosulin Injectable Product
+36242510,1185325,PR00,Riomet Oral Liquid Product
+36242511,1185326,PR00,Riomet Oral Product
+36246193,1368003,PR00,alogliptin Oral Product
+36246194,1368004,PR00,alogliptin Pill
+36246195,1368010,PR00,Nesina Oral Product
+36246196,1368011,PR00,Nesina Pill
+36246265,1368381,PR00,alogliptin / metformin Oral Product
+36246266,1368382,PR00,alogliptin / metformin Pill
+36246267,1368396,PR00,Kazano Oral Product
+36246268,1368397,PR00,Kazano Pill
+36246269,1368399,PR00,alogliptin / pioglitazone Oral Product
+36246270,1368400,PR00,alogliptin / pioglitazone Pill
+36246271,1368435,PR00,Oseni Oral Product
+36246272,1368436,PR00,Oseni Pill
+36246400,1373460,PR00,canagliflozin Oral Product
+36246401,1373461,PR00,canagliflozin Pill
+36246430,1373467,PR00,Invokana Oral Product
+36246431,1373468,PR00,Invokana Pill
+36246877,1545154,PR00,Invokamet Oral Product
+36246878,1545155,PR00,Invokamet Pill
+36246884,1545655,PR00,empagliflozin Oral Product
+36246885,1545656,PR00,empagliflozin Pill
+36246886,1545662,PR00,Jardiance Oral Product
+36246887,1545663,PR00,Jardiance Pill
+36247260,1543200,PR00,"insulin, regular, human Inhalant Product"
+36247261,1543206,PR00,Afrezza Inhalant Product
+36247438,1545146,PR00,canagliflozin / metformin Oral Product
+36247439,1545147,PR00,canagliflozin / metformin Pill
+36247667,1488566,PR00,dapagliflozin Oral Product
+36247668,1488567,PR00,dapagliflozin Pill
+36247907,1486975,PR00,Farxiga Oral Product
+36247908,1486976,PR00,Farxiga Pill
+36248374,1664311,PR00,empagliflozin / metformin Oral Product
+36248375,1664312,PR00,empagliflozin / metformin Pill
+36248376,1664319,PR00,Synjardy Oral Product
+36248377,1664320,PR00,Synjardy Pill
+36248557,1592709,PR00,dapagliflozin / metformin Oral Product
+36248558,1592710,PR00,dapagliflozin / metformin Pill
+36248559,1592716,PR00,Xigduo Oral Product
+36248560,1592717,PR00,Xigduo Pill
+36248787,1602106,PR00,empagliflozin / linagliptin Oral Product
+36248788,1602107,PR00,empagliflozin / linagliptin Pill
+36248789,1602113,PR00,Glyxambi Oral Product
+36248790,1602114,PR00,Glyxambi Pill
+36249004,1653899,PR00,"insulin isophane / insulin, regular, human Injectable Product"
+36249546,1798387,PR00,"{90 (insulin, regular, human 4 UNT Inhalation Powder) / 90 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+36249657,1798388,PR00,"{90 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 90 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza Titration Pack]"
+36249790,1796088,PR00,linagliptin / metformin Extended Release Oral Tablet
+36249791,1796089,PR00,24 HR linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+36249792,1796090,PR00,linagliptin / metformin Extended Release Oral Tablet [Jentadueto]
+36249793,1796091,PR00,24 HR linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Jentadueto]
+36249794,1796092,PR00,linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+36249795,1796093,PR00,linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Jentadueto]
+36249796,1796094,PR00,24 HR linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+36249797,1796095,PR00,linagliptin 5 MG / metformin hydrochloride 1000 MG [Jentadueto]
+36249798,1796096,PR00,24 HR linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Jentadueto]
+36249799,1796097,PR00,linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+36249800,1796098,PR00,linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Jentadueto]
+36620463,199150,PR00,acarbose 100 MG Oral Tablet
+36621742,261268,PR00,pioglitazone 45 MG Oral Tablet [Actos]
+36622529,201056,PR00,glyburide 2.5 MG Oral Tablet [Libanil]
+36625328,106892,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension [Humulin]"
+36628226,204045,PR00,metformin hydrochloride 500 MG Oral Tablet [Orabet Metformin]
+36628514,106896,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension [Pur-In Mix]"
+36629200,205876,PR00,glyburide 2.5 MG Oral Tablet [Micronase]
+36629226,106899,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML Injectable Suspension [Humulin]"
+36630601,201921,PR00,glipizide 5 MG Oral Tablet [Glibenese]
+36631510,108813,PR00,"insulin isophane, human 90 UNT/ML / insulin, regular, human 10 UNT/ML Injectable Suspension [Human Mixtard]"
+36632464,153591,PR00,glimepiride 2 MG Oral Tablet [Amaryl]
+36632619,108815,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension [Human Mixtard]"
+36633620,201922,PR00,glipizide 2.5 MG Oral Tablet [Minidiab]
+36637140,261267,PR00,pioglitazone 30 MG Oral Tablet [Actos]
+36638378,205880,PR00,glyburide 5 MG Oral Tablet [Micronase]
+36642859,108816,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension [Human Mixtard]"
+36643564,260287,PR00,glyburide 6 MG Oral Tablet [Glycron]
+36644238,108822,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML Injectable Suspension [Human Mixtard]"
+36650943,102845,PR00,glyburide 5 MG Oral Tablet [Daonil]
+36651406,213442,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Injectable Suspension [Novolin]"
+36653943,260286,PR00,glyburide 1.5 MG Oral Tablet [Glycron]
+36654815,246391,PR00,glyburide 2.5 MG / phenformin 25 MG Oral Tablet
+36655871,261351,PR00,glyburide 4.5 MG Oral Tablet [Glycron]
+36655906,106901,PR00,"insulin isophane, human 60 UNT/ML / insulin, regular, human 40 UNT/ML Injectable Suspension [Humulin]"
+36657436,106894,PR00,"insulin isophane, human 85 UNT/ML / insulin, regular, human 15 UNT/ML Injectable Suspension [Pur-In Mix]"
+36658327,261241,PR00,rosiglitazone 2 MG Oral Tablet [Avandia]
+36791204,2371722,PR00,dapagliflozin / metformin / saxagliptin Oral Product
+36792980,1156199,PR00,glyburide / phenformin Pill
+36799820,1544568,PR00,"{60 (insulin, regular, human 4 UNT Inhalation Powder) / 30 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+37496782,2200517,PR00,metformin Extended Release Suspension
+37496783,2200518,PR00,metformin hydrochloride 100 MG/ML Extended Release Suspension
+37496784,2200519,PR00,metformin Extended Release Suspension [Riomet]
+37496785,2200520,PR00,metformin hydrochloride 100 MG/ML Extended Release Suspension [Riomet]
+37497419,2206091,PR00,"insulin, regular, human Pen Injector [Novolin R]"
+37497420,2206093,PR00,"insulin, regular, human 100 UNT/ML Pen Injector"
+37497421,2206094,PR00,"insulin, regular, human 100 UNT/ML Pen Injector [Novolin R]"
+37499584,2359276,PR00,empagliflozin / linagliptin / metformin Oral Product
+37499585,2359277,PR00,empagliflozin / linagliptin / metformin Pill
+37499586,2359278,PR00,empagliflozin / linagliptin / metformin Extended Release Oral Tablet
+37499588,2359281,PR00,empagliflozin 10 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG [Trijardy]
+37499589,2359282,PR00,empagliflozin / linagliptin / metformin Extended Release Oral Tablet [Trijardy]
+37499590,2359283,PR00,Trijardy Oral Product
+37499591,2359284,PR00,Trijardy Pill
+37499592,2359286,PR00,empagliflozin 10 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499593,2359287,PR00,empagliflozin 10 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499594,2359289,PR00,empagliflozin 12.5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG [Trijardy]
+37499595,2359291,PR00,empagliflozin 12.5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499596,2359292,PR00,empagliflozin 12.5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499618,2359352,PR00,empagliflozin 25 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG [Trijardy]
+37499619,2359354,PR00,empagliflozin 25 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499620,2359355,PR00,empagliflozin 25 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499621,2359357,PR00,empagliflozin 5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG [Trijardy]
+37499622,2359359,PR00,empagliflozin 5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499623,2359360,PR00,empagliflozin 5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499744,2206090,PR00,"3 ML insulin, regular, human 100 UNT/ML Pen Injector"
+37499745,2206092,PR00,"3 ML insulin, regular, human 100 UNT/ML Pen Injector [Novolin R]"
+37499832,2359279,PR00,24 HR empagliflozin 10 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499833,2359285,PR00,24 HR empagliflozin 10 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499834,2359288,PR00,24 HR empagliflozin 12.5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499835,2359290,PR00,24 HR empagliflozin 12.5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499836,2359351,PR00,24 HR empagliflozin 25 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499837,2359353,PR00,24 HR empagliflozin 25 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+37499838,2359356,PR00,24 HR empagliflozin 5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+37499839,2359358,PR00,24 HR empagliflozin 5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Trijardy]
+40003412,370504,PR00,acarbose Oral Tablet
+40003413,368300,PR00,acarbose Oral Tablet [Precose]
+40030438,371466,PR00,chlorpropamide / metformin Oral Tablet
+40044224,378730,PR00,glipizide / metformin Oral Tablet
+40044251,372320,PR00,glipizide Oral Tablet
+40044252,379803,PR00,glipizide Oral Tablet [Glibenese]
+40044253,369500,PR00,glipizide Oral Tablet [Glucotrol]
+40044254,379802,PR00,glipizide Oral Tablet [Minidiab]
+40046143,374635,PR00,glyburide / metformin Oral Tablet
+40046145,372334,PR00,glyburide / phenformin Oral Tablet
+40046201,372333,PR00,glyburide Oral Tablet
+40046202,379570,PR00,glyburide Oral Tablet [Calabren]
+40046203,369562,PR00,glyburide Oral Tablet [Daonil]
+40046204,369373,PR00,glyburide Oral Tablet [Diabeta]
+40046205,379565,PR00,glyburide Oral Tablet [Diabetamide]
+40046206,379559,PR00,glyburide Oral Tablet [Euglucon]
+40046207,368204,PR00,glyburide Oral Tablet [Glycron]
+40046209,379572,PR00,glyburide Oral Tablet [Libanil]
+40046210,379568,PR00,glyburide Oral Tablet [Malix]
+40046211,93312,PR00,glyburide Oral Tablet [Micronase]
+40046212,369557,PR00,glyburide Oral Tablet [Semi-Daonil]
+40051377,378857,PR00,"insulin isophane / insulin, regular, human Injectable Suspension"
+40051379,379740,PR00,"insulin isophane / insulin, regular, human Injectable Suspension [Human Mixtard]"
+40051382,365679,PR00,"insulin isophane / insulin, regular, human Injectable Suspension [Humulin]"
+40051689,365672,PR00,"insulin isophane / insulin, regular, human Injectable Suspension [Novolin]"
+40051690,365668,PR00,"insulin isophane / insulin, regular, human Injectable Suspension [Pur-In Mix]"
+40052768,376915,PR00,"insulin, regular, human Injectable Solution"
+40052769,379747,PR00,"insulin, regular, human Injectable Solution [Human Actrapid Penfill]"
+40052770,379744,PR00,"insulin, regular, human Injectable Solution [Human Actrapid]"
+40052771,362622,PR00,"insulin, regular, human Injectable Solution [Humulin R]"
+40052772,379734,PR00,"insulin, regular, human Injectable Solution [Humulin S]"
+40052773,363221,PR00,"insulin, regular, human Injectable Solution [Novolin R]"
+40052774,385896,PR00,"insulin, regular, human Injectable Solution [Pur-In Neutral]"
+40052775,363120,PR00,"insulin, regular, human Injectable Solution [Velosulin]"
+40056705,372926,PR00,miglitol Oral Tablet
+40056706,368246,PR00,miglitol Oral Tablet [Glyset]
+40059665,372319,PR00,glimepiride Oral Tablet
+40059666,367762,PR00,glimepiride Oral Tablet [Amaryl]
+40063306,378729,PR00,metformin / rosiglitazone Oral Tablet
+40063350,372804,PR00,metformin Extended Release Oral Tablet
+40063352,406082,PR00,metformin Oral Solution
+40063353,406257,PR00,metformin Oral Solution [Riomet]
+40063354,372803,PR00,metformin Oral Tablet
+40063355,368526,PR00,metformin Oral Tablet [Glucamet]
+40063356,368254,PR00,metformin Oral Tablet [Glucophage]
+40063357,361841,PR00,metformin Oral Tablet [Orabet Metformin]
+40099632,373801,PR00,rosiglitazone Oral Tablet
+40099633,368234,PR00,rosiglitazone Oral Tablet [Avandia]
+40099897,374606,PR00,pioglitazone Oral Tablet
+40099898,368230,PR00,pioglitazone Oral Tablet [Actos]
+40117725,541774,PR00,metformin / ropinirole Oral Tablet
+40117785,541768,PR00,metformin Extended Release Oral Tablet [Fortamet]
+40126689,577093,PR00,metformin / pioglitazone Oral Tablet
+40126695,583194,PR00,metformin Oral Tablet [Metforming]
+40129534,602543,PR00,glimepiride / rosiglitazone Oral Tablet
+40135391,647236,PR00,glimepiride / pioglitazone Oral Tablet
+40135481,647241,PR00,metformin Extended Release Oral Tablet [Glumetza]
+40136769,665032,PR00,sitagliptin Oral Tablet
+40136770,665035,PR00,sitagliptin Oral Tablet [Januvia]
+40136854,669982,PR00,glyburide Oral Tablet [Glyburase]
+40139022,700835,PR00,glipizide Extended Release Oral Tablet
+40139098,700516,PR00,metformin / sitagliptin Oral Tablet
+40143322,731442,PR00,metformin / pioglitazone Oral Tablet [Actoplus Met]
+40143966,731462,PR00,glimepiride / pioglitazone Oral Tablet [Duetact]
+40146999,757603,PR00,metformin / sitagliptin Oral Tablet [Janumet]
+40153147,802742,PR00,metformin / repaglinide Oral Tablet
+40153151,802051,PR00,metformin Extended Release Oral Tablet [Glucophage]
+40153892,805670,PR00,metformin / repaglinide Oral Tablet [PrandiMet]
+40153895,806287,PR00,metformin / rosiglitazone Oral Tablet [Avandamet]
+40159519,847186,PR00,"insulin isophane / insulin, regular, human Prefilled Syringe"
+40159520,847188,PR00,"insulin isophane / insulin, regular, human Prefilled Syringe [Humulin]"
+40159521,847194,PR00,"insulin isophane / insulin, regular, human Prefilled Syringe [Novolin]"
+40159688,847202,PR00,"insulin, regular, human Prefilled Syringe"
+40159689,847204,PR00,"insulin, regular, human Prefilled Syringe [Novolin R]"
+40159908,847707,PR00,glimepiride / rosiglitazone Oral Tablet [Avandaryl]
+40160874,849585,PR00,glipizide / metformin Oral Tablet [Metaglip]
+40163922,860998,PR00,Osmotic 24 HR metformin hydrochloride 1000 MG Extended Release Oral Tablet [Fortamet]
+40163923,861015,PR00,Modified 24 HR metformin hydrochloride 1000 MG Extended Release Oral Tablet [Glumetza]
+40163924,860975,PR00,24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet
+40163925,861002,PR00,Osmotic 24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet [Fortamet]
+40163926,860977,PR00,24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet [Glucophage]
+40163927,861018,PR00,Modified 24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet [Glumetza]
+40163928,860981,PR00,24 HR metformin hydrochloride 750 MG Extended Release Oral Tablet
+40163929,860983,PR00,24 HR metformin hydrochloride 750 MG Extended Release Oral Tablet [Glucophage]
+40164880,861024,PR00,metformin hydrochloride 100 MG/ML
+40164881,861025,PR00,metformin hydrochloride 100 MG/ML Oral Solution
+40164882,861027,PR00,metformin hydrochloride 100 MG/ML Oral Solution [Riomet]
+40164883,861026,PR00,metformin hydrochloride 100 MG/ML [Riomet]
+40164884,860995,PR00,metformin hydrochloride 1000 MG
+40164885,861760,PR00,metformin hydrochloride 1000 MG / rosiglitazone 2 MG Oral Tablet
+40164886,861762,PR00,metformin hydrochloride 1000 MG / rosiglitazone 2 MG Oral Tablet [Avandamet]
+40164887,861761,PR00,metformin hydrochloride 1000 MG / rosiglitazone 2 MG [Avandamet]
+40164888,861763,PR00,metformin hydrochloride 1000 MG / rosiglitazone 4 MG Oral Tablet
+40164889,861765,PR00,metformin hydrochloride 1000 MG / rosiglitazone 4 MG Oral Tablet [Avandamet]
+40164890,861764,PR00,metformin hydrochloride 1000 MG / rosiglitazone 4 MG [Avandamet]
+40164891,861769,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG Oral Tablet
+40164892,861771,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG Oral Tablet [Janumet]
+40164893,861770,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG [Janumet]
+40164894,860999,PR00,metformin hydrochloride 1000 MG Extended Release Oral Tablet
+40164895,861000,PR00,metformin hydrochloride 1000 MG Extended Release Oral Tablet [Fortamet]
+40164896,861016,PR00,metformin hydrochloride 1000 MG Extended Release Oral Tablet [Glumetza]
+40164897,861004,PR00,metformin hydrochloride 1000 MG Oral Tablet
+40164898,861006,PR00,metformin hydrochloride 1000 MG Oral Tablet [Glucophage]
+40164899,860997,PR00,metformin hydrochloride 1000 MG [Fortamet]
+40164900,861005,PR00,metformin hydrochloride 1000 MG [Glucophage]
+40164901,861014,PR00,metformin hydrochloride 1000 MG [Glumetza]
+40164902,861730,PR00,metformin hydrochloride 250 MG
+40164903,860974,PR00,metformin hydrochloride 500 MG
+40164904,861783,PR00,metformin hydrochloride 500 MG / pioglitazone 15 MG Oral Tablet
+40164905,861785,PR00,metformin hydrochloride 500 MG / pioglitazone 15 MG Oral Tablet [Actoplus Met]
+40164906,861784,PR00,metformin hydrochloride 500 MG / pioglitazone 15 MG [Actoplus Met]
+40164907,861787,PR00,metformin hydrochloride 500 MG / repaglinide 1 MG Oral Tablet
+40164908,861789,PR00,metformin hydrochloride 500 MG / repaglinide 1 MG Oral Tablet [PrandiMet]
+40164909,861788,PR00,metformin hydrochloride 500 MG / repaglinide 1 MG [PrandiMet]
+40164910,861790,PR00,metformin hydrochloride 500 MG / repaglinide 2 MG Oral Tablet
+40164911,861792,PR00,metformin hydrochloride 500 MG / repaglinide 2 MG Oral Tablet [PrandiMet]
+40164912,861791,PR00,metformin hydrochloride 500 MG / repaglinide 2 MG [PrandiMet]
+40164913,861795,PR00,metformin hydrochloride 500 MG / rosiglitazone 1 MG Oral Tablet
+40164914,861797,PR00,metformin hydrochloride 500 MG / rosiglitazone 1 MG Oral Tablet [Avandamet]
+40164915,861796,PR00,metformin hydrochloride 500 MG / rosiglitazone 1 MG [Avandamet]
+40164916,861806,PR00,metformin hydrochloride 500 MG / rosiglitazone 2 MG Oral Tablet
+40164917,861808,PR00,metformin hydrochloride 500 MG / rosiglitazone 2 MG Oral Tablet [Avandamet]
+40164918,861807,PR00,metformin hydrochloride 500 MG / rosiglitazone 2 MG [Avandamet]
+40164919,861816,PR00,metformin hydrochloride 500 MG / rosiglitazone 4 MG Oral Tablet
+40164920,861818,PR00,metformin hydrochloride 500 MG / rosiglitazone 4 MG Oral Tablet [Avandamet]
+40164921,861817,PR00,metformin hydrochloride 500 MG / rosiglitazone 4 MG [Avandamet]
+40164922,861819,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG Oral Tablet
+40164923,861821,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG Oral Tablet [Janumet]
+40164924,861820,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG [Janumet]
+40164925,860978,PR00,metformin hydrochloride 500 MG Extended Release Oral Tablet
+40164926,861003,PR00,metformin hydrochloride 500 MG Extended Release Oral Tablet [Fortamet]
+40164927,860979,PR00,metformin hydrochloride 500 MG Extended Release Oral Tablet [Glucophage]
+40164928,861019,PR00,metformin hydrochloride 500 MG Extended Release Oral Tablet [Glumetza]
+40164929,861007,PR00,metformin hydrochloride 500 MG Oral Tablet
+40164930,861008,PR00,metformin hydrochloride 500 MG Oral Tablet [Glucophage]
+40164931,861001,PR00,metformin hydrochloride 500 MG [Fortamet]
+40164932,860976,PR00,metformin hydrochloride 500 MG [Glucophage]
+40164933,861017,PR00,metformin hydrochloride 500 MG [Glumetza]
+40164934,861020,PR00,metformin hydrochloride 625 MG
+40164935,861021,PR00,metformin hydrochloride 625 MG Oral Tablet
+40164936,861023,PR00,metformin hydrochloride 625 MG Oral Tablet [Glucophage]
+40164937,861022,PR00,metformin hydrochloride 625 MG [Glucophage]
+40164938,860980,PR00,metformin hydrochloride 750 MG
+40164939,860984,PR00,metformin hydrochloride 750 MG Extended Release Oral Tablet
+40164940,860985,PR00,metformin hydrochloride 750 MG Extended Release Oral Tablet [Glucophage]
+40164941,860982,PR00,metformin hydrochloride 750 MG [Glucophage]
+40164942,861009,PR00,metformin hydrochloride 850 MG
+40164943,861822,PR00,metformin hydrochloride 850 MG / pioglitazone 15 MG Oral Tablet
+40164944,861824,PR00,metformin hydrochloride 850 MG / pioglitazone 15 MG Oral Tablet [Actoplus Met]
+40164945,861823,PR00,metformin hydrochloride 850 MG / pioglitazone 15 MG [Actoplus Met]
+40164946,861010,PR00,metformin hydrochloride 850 MG Oral Tablet
+40164947,861012,PR00,metformin hydrochloride 850 MG Oral Tablet [Glucophage]
+40164948,861011,PR00,metformin hydrochloride 850 MG [Glucophage]
+40165969,861731,PR00,glipizide 2.5 MG / metformin hydrochloride 250 MG Oral Tablet
+40165970,861733,PR00,glipizide 2.5 MG / metformin hydrochloride 250 MG Oral Tablet [Metaglip]
+40165971,861732,PR00,glipizide 2.5 MG / metformin hydrochloride 250 MG [Metaglip]
+40165972,861736,PR00,glipizide 2.5 MG / metformin hydrochloride 500 MG Oral Tablet
+40165973,861738,PR00,glipizide 2.5 MG / metformin hydrochloride 500 MG Oral Tablet [Metaglip]
+40165974,861737,PR00,glipizide 2.5 MG / metformin hydrochloride 500 MG [Metaglip]
+40165975,861740,PR00,glipizide 5 MG / metformin hydrochloride 500 MG Oral Tablet
+40165976,861742,PR00,glipizide 5 MG / metformin hydrochloride 500 MG Oral Tablet [Metaglip]
+40165977,861741,PR00,glipizide 5 MG / metformin hydrochloride 500 MG [Metaglip]
+40165993,861756,PR00,glyburide / metformin Oral Tablet [Glucovance]
+40165994,861743,PR00,glyburide 1.25 MG / metformin hydrochloride 250 MG Oral Tablet
+40165995,861747,PR00,glyburide 1.25 MG / metformin hydrochloride 250 MG Oral Tablet [Glucovance]
+40165996,861745,PR00,glyburide 1.25 MG / metformin hydrochloride 250 MG [Glucovance]
+40165997,861748,PR00,glyburide 2.5 MG / metformin hydrochloride 500 MG Oral Tablet
+40165998,861752,PR00,glyburide 2.5 MG / metformin hydrochloride 500 MG Oral Tablet [Glucovance]
+40166001,861750,PR00,glyburide 2.5 MG / metformin hydrochloride 500 MG [Glucovance]
+40166002,861753,PR00,glyburide 5 MG / metformin hydrochloride 500 MG Oral Tablet
+40166003,861757,PR00,glyburide 5 MG / metformin hydrochloride 500 MG Oral Tablet [Glucovance]
+40166004,861755,PR00,glyburide 5 MG / metformin hydrochloride 500 MG [Glucovance]
+40166035,857974,PR00,saxagliptin
+40166036,858041,PR00,saxagliptin 2.5 MG
+40166037,858042,PR00,saxagliptin 2.5 MG Oral Tablet
+40166038,858044,PR00,saxagliptin 2.5 MG Oral Tablet [Onglyza]
+40166039,858043,PR00,saxagliptin 2.5 MG [Onglyza]
+40166040,858034,PR00,saxagliptin 5 MG
+40166041,858036,PR00,saxagliptin 5 MG Oral Tablet
+40166042,858040,PR00,saxagliptin 5 MG Oral Tablet [Onglyza]
+40166043,858038,PR00,saxagliptin 5 MG [Onglyza]
+40166044,858035,PR00,saxagliptin Oral Tablet
+40166045,858039,PR00,saxagliptin Oral Tablet [Onglyza]
+40166814,865568,PR00,24 HR glipizide 10 MG Extended Release Oral Tablet [Glucotrol]
+40166815,865571,PR00,24 HR glipizide 2.5 MG Extended Release Oral Tablet [Glucotrol]
+40166816,865573,PR00,24 HR glipizide 5 MG Extended Release Oral Tablet [Glucotrol]
+40167189,875864,PR00,metformin hydrochloride 500 MG [Glucamet]
+40167190,876009,PR00,metformin hydrochloride 500 MG [Orabet Metformin]
+40167191,875865,PR00,metformin hydrochloride 850 MG [Glucamet]
+40167192,876033,PR00,metformin hydrochloride 850 MG [Metforming]
+40167193,876010,PR00,metformin hydrochloride 850 MG [Orabet Metformin]
+40167634,865569,PR00,glipizide 10 MG Extended Release Oral Tablet [Glucotrol]
+40167635,865572,PR00,glipizide 2.5 MG Extended Release Oral Tablet [Glucotrol]
+40167636,865570,PR00,glipizide 2.5 MG [Glucotrol]
+40167637,865574,PR00,glipizide 5 MG Extended Release Oral Tablet [Glucotrol]
+40167638,865567,PR00,glipizide Extended Release Oral Tablet [Glucotrol]
+40168368,881407,PR00,glyburide 1.5 MG Oral Tablet [Glynase]
+40168369,881405,PR00,glyburide 1.5 MG [Glynase]
+40168370,881409,PR00,glyburide 3 MG Oral Tablet [Glynase]
+40168371,881408,PR00,glyburide 3 MG [Glynase]
+40168374,881411,PR00,glyburide 6 MG Oral Tablet [Glynase]
+40168375,881410,PR00,glyburide 6 MG [Glynase]
+40168376,881406,PR00,glyburide Oral Tablet [Glynase]
+40171448,899989,PR00,24 HR metformin hydrochloride 1000 MG / pioglitazone 15 MG Extended Release Oral Tablet
+40171449,899993,PR00,24 HR metformin hydrochloride 1000 MG / pioglitazone 15 MG Extended Release Oral Tablet [Actoplus Met]
+40171450,899996,PR00,24 HR metformin hydrochloride 1000 MG / pioglitazone 30 MG Extended Release Oral Tablet
+40171451,900000,PR00,24 HR metformin hydrochloride 1000 MG / pioglitazone 30 MG Extended Release Oral Tablet [Actoplus Met]
+40173226,899988,PR00,metformin / pioglitazone Extended Release Oral Tablet
+40173227,899992,PR00,metformin / pioglitazone Extended Release Oral Tablet [Actoplus Met]
+40173234,899994,PR00,metformin hydrochloride 1000 MG / pioglitazone 15 MG Extended Release Oral Tablet
+40173235,899995,PR00,metformin hydrochloride 1000 MG / pioglitazone 15 MG Extended Release Oral Tablet [Actoplus Met]
+40173236,899991,PR00,metformin hydrochloride 1000 MG / pioglitazone 15 MG [Actoplus Met]
+40173237,900001,PR00,metformin hydrochloride 1000 MG / pioglitazone 30 MG Extended Release Oral Tablet
+40173238,900002,PR00,metformin hydrochloride 1000 MG / pioglitazone 30 MG Extended Release Oral Tablet [Actoplus Met]
+40173239,899998,PR00,metformin hydrochloride 1000 MG / pioglitazone 30 MG [Actoplus Met]
+40176046,977566,PR00,metformin hydrochloride 850 MG Extended Release Oral Tablet
+40220371,1807888,PR00,Modified 24 HR metformin hydrochloride 1000 MG Extended Release Oral Tablet
+40220373,1807894,PR00,Osmotic 24 HR metformin hydrochloride 1000 MG Extended Release Oral Tablet
+40220375,1807915,PR00,Modified 24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet
+40220376,1807917,PR00,Osmotic 24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet
+40229045,1043563,PR00,24 HR metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet
+40229046,1043567,PR00,24 HR metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Kombiglyze]
+40229047,1043570,PR00,24 HR metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet
+40229048,1043574,PR00,24 HR metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]
+40229049,1043578,PR00,24 HR metformin hydrochloride 500 MG / saxagliptin 5 MG Extended Release Oral Tablet
+40229050,1043582,PR00,24 HR metformin hydrochloride 500 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]
+40231387,1043561,PR00,metformin / saxagliptin Extended Release Oral Tablet
+40231388,1043566,PR00,metformin / saxagliptin Extended Release Oral Tablet [Kombiglyze]
+40231391,1043568,PR00,metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet
+40231392,1043569,PR00,metformin hydrochloride 1000 MG / saxagliptin 2.5 MG Extended Release Oral Tablet [Kombiglyze]
+40231393,1043565,PR00,metformin hydrochloride 1000 MG / saxagliptin 2.5 MG [Kombiglyze]
+40231394,1043575,PR00,metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet
+40231395,1043576,PR00,metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]
+40231396,1043572,PR00,metformin hydrochloride 1000 MG / saxagliptin 5 MG [Kombiglyze]
+40231402,1043583,PR00,metformin hydrochloride 500 MG / saxagliptin 5 MG Extended Release Oral Tablet
+40231403,1043584,PR00,metformin hydrochloride 500 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]
+40231404,1043580,PR00,metformin hydrochloride 500 MG / saxagliptin 5 MG [Kombiglyze]
+40239216,1100699,PR00,linagliptin
+40239217,1100700,PR00,linagliptin 5 MG
+40239218,1100702,PR00,linagliptin 5 MG Oral Tablet
+40239219,1100706,PR00,linagliptin 5 MG Oral Tablet [Tradjenta]
+40239220,1100704,PR00,linagliptin 5 MG [Tradjenta]
+40239221,1100701,PR00,linagliptin Oral Tablet
+40239222,1100705,PR00,linagliptin Oral Tablet [Tradjenta]
+40243622,1189802,PR00,simvastatin / sitagliptin Oral Tablet
+40243624,1189811,PR00,simvastatin / sitagliptin Oral Tablet [Juvisync]
+40243626,1189804,PR00,simvastatin 10 MG / sitagliptin 100 MG Oral Tablet
+40243627,1189818,PR00,simvastatin 10 MG / sitagliptin 100 MG Oral Tablet [Juvisync]
+40243628,1189806,PR00,simvastatin 10 MG / sitagliptin 100 MG [Juvisync]
+40243629,1189808,PR00,simvastatin 20 MG / sitagliptin 100 MG Oral Tablet
+40243630,1189814,PR00,simvastatin 20 MG / sitagliptin 100 MG Oral Tablet [Juvisync]
+40243631,1189810,PR00,simvastatin 20 MG / sitagliptin 100 MG [Juvisync]
+40243632,1189821,PR00,simvastatin 40 MG / sitagliptin 100 MG Oral Tablet
+40243633,1189827,PR00,simvastatin 40 MG / sitagliptin 100 MG Oral Tablet [Juvisync]
+40243634,1189823,PR00,simvastatin 40 MG / sitagliptin 100 MG [Juvisync]
+41893074,315247,PR00,acarbose 25 MG
+41894072,315107,PR00,24 HR glipizide 10 MG Extended Release Oral Tablet
+41894578,332809,PR00,metformin 400 MG
+41895786,315246,PR00,acarbose 100 MG
+41896173,315248,PR00,acarbose 50 MG
+41898128,331478,PR00,pioglitazone 30 MG
+41929657,1664322,PR00,empagliflozin 12.5 MG
+41933877,1189806,PR00,simvastatin 10 MG / sitagliptin 100 MG [Juvisync]
+41934394,1161611,PR00,metformin Pill
+41935529,1243833,PR00,24 HR metformin hydrochloride 1000 MG / sitagliptin 100 MG Extended Release Oral Tablet [Janumet]
+41939328,1043582,PR00,24 HR metformin hydrochloride 500 MG / saxagliptin 5 MG Extended Release Oral Tablet [Kombiglyze]
+41940425,153844,PR00,glimepiride 3 MG Oral Tablet [Amaryl]
+41942456,1664319,PR00,Synjardy Oral Product
+41943487,1164670,PR00,linagliptin Oral Product
+41944660,105372,PR00,glyburide 5 MG Oral Tablet [Calabren]
+41944770,1167811,PR00,Janumet Pill
+41944889,1167815,PR00,Januvia Pill
+41950144,1361492,PR00,glimepiride 6 MG
+41950491,1664321,PR00,empagliflozin 5 MG / metformin hydrochloride 500 MG Oral Tablet [Synjardy]
+41950806,1161610,PR00,metformin Oral Product
+41954864,1664323,PR00,empagliflozin 12.5 MG / metformin hydrochloride 500 MG Oral Tablet
+41955592,1171997,PR00,Humulin Injectable Product
+41956741,153845,PR00,glimepiride 4 MG Oral Tablet [Amaryl]
+41957400,1664320,PR00,Synjardy Pill
+41957644,105373,PR00,glipizide 5 MG Oral Tablet [Minidiab]
+41959197,1862102,PR00,"{60 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 180 Titration Pack- 60 (4 UNT), 60 (8 UNT..."
+41960206,1664326,PR00,empagliflozin 5 MG / metformin hydrochloride 1000 MG Oral Tablet
+41961851,1159663,PR00,sitagliptin Pill
+41961973,1243826,PR00,metformin / sitagliptin Extended Release Oral Tablet
+41962188,108407,PR00,"insulin isophane, human 50 UNT/ML / insulin, regular, human 50 UNT/ML Injectable Suspension [Humulin]"
+41962785,1368398,PR00,alogliptin 12.5 MG / metformin hydrochloride 500 MG Oral Tablet [Kazano]
+41964345,1368385,PR00,alogliptin 12.5 MG / metformin hydrochloride 1000 MG Oral Tablet
+41974453,30009,PR00,miglitol
+41989176,310539,PR00,glyburide 6 MG Oral Tablet
+42023261,340327,PR00,"insulin, regular, human 500 UNT/ML"
+42023773,343258,PR00,"insulin, regular, human 50 UNT/ML"
+42027984,340326,PR00,"insulin, regular, human 40 UNT/ML"
+42031211,368254,PR00,metformin Oral Tablet [Glucophage]
+42032916,1731315,PR00,"3 ML insulin, regular, human 500 UNT/ML Pen Injector"
+42033462,1731319,PR00,"insulin, regular, human 500 UNT/ML Pen Injector [Humulin R]"
+42033477,1731316,PR00,"insulin, regular, human Pen Injector [Humulin R]"
+42033521,1731318,PR00,"insulin, regular, human 500 UNT/ML Pen Injector"
+42609321,2677157,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG [Zituvimet]
+42609322,2677158,PR00,Zituvimet Oral Product
+42609323,2677159,PR00,Zituvimet Pill
+42609324,2677160,PR00,metformin / sitagliptin Oral Tablet [Zituvimet]
+42609325,2677162,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG Oral Tablet [Zituvimet]
+42609326,2677163,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG [Zituvimet]
+42609327,2677164,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG Oral Tablet [Zituvimet]
+42705856,1243015,PR00,linagliptin 2.5 MG
+42705857,1243018,PR00,linagliptin / metformin Oral Tablet
+42705859,1243022,PR00,linagliptin 2.5 MG / metformin hydrochloride 1000 MG [Jentadueto]
+42705862,1243029,PR00,linagliptin 2.5 MG / metformin hydrochloride 500 MG [Jentadueto]
+42705865,1243036,PR00,linagliptin 2.5 MG / metformin hydrochloride 850 MG [Jentadueto]
+42705866,1243037,PR00,linagliptin / metformin Oral Tablet [Jentadueto]
+42705988,1243826,PR00,metformin / sitagliptin Extended Release Oral Tablet
+42705990,1243829,PR00,metformin hydrochloride 1000 MG / sitagliptin 100 MG [Janumet]
+42705992,1243839,PR00,metformin / sitagliptin Extended Release Oral Tablet [Janumet]
+42708086,1243020,PR00,linagliptin 2.5 MG / metformin hydrochloride 1000 MG Oral Tablet
+42708087,1243026,PR00,linagliptin 2.5 MG / metformin hydrochloride 1000 MG Oral Tablet [Jentadueto]
+42708088,1243027,PR00,linagliptin 2.5 MG / metformin hydrochloride 500 MG Oral Tablet
+42708089,1243033,PR00,linagliptin 2.5 MG / metformin hydrochloride 500 MG Oral Tablet [Jentadueto]
+42708090,1243034,PR00,linagliptin 2.5 MG / metformin hydrochloride 850 MG Oral Tablet
+42708091,1243040,PR00,linagliptin 2.5 MG / metformin hydrochloride 850 MG Oral Tablet [Jentadueto]
+42708166,1243827,PR00,24 HR metformin hydrochloride 1000 MG / sitagliptin 100 MG Extended Release Oral Tablet
+42708167,1243833,PR00,24 HR metformin hydrochloride 1000 MG / sitagliptin 100 MG Extended Release Oral Tablet [Janumet]
+42708168,1243834,PR00,metformin hydrochloride 1000 MG / sitagliptin 100 MG Extended Release Oral Tablet
+42708169,1243835,PR00,metformin hydrochloride 1000 MG / sitagliptin 100 MG Extended Release Oral Tablet [Janumet]
+42708170,1243842,PR00,24 HR metformin hydrochloride 1000 MG / sitagliptin 50 MG Extended Release Oral Tablet
+42708171,1243843,PR00,24 HR metformin hydrochloride 1000 MG / sitagliptin 50 MG Extended Release Oral Tablet [Janumet]
+42708172,1243844,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG Extended Release Oral Tablet
+42708173,1243845,PR00,metformin hydrochloride 1000 MG / sitagliptin 50 MG Extended Release Oral Tablet [Janumet]
+42708174,1243846,PR00,24 HR metformin hydrochloride 500 MG / sitagliptin 50 MG Extended Release Oral Tablet
+42708175,1243848,PR00,24 HR metformin hydrochloride 500 MG / sitagliptin 50 MG Extended Release Oral Tablet [Janumet]
+42708176,1243849,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG Extended Release Oral Tablet
+42708177,1243850,PR00,metformin hydrochloride 500 MG / sitagliptin 50 MG Extended Release Oral Tablet [Janumet]
+42900896,1312411,PR00,simvastatin 10 MG / sitagliptin 50 MG [Juvisync]
+42900899,1312418,PR00,simvastatin 20 MG / sitagliptin 50 MG [Juvisync]
+42900902,1312425,PR00,simvastatin 40 MG / sitagliptin 50 MG [Juvisync]
+42901618,1312409,PR00,simvastatin 10 MG / sitagliptin 50 MG Oral Tablet
+42901619,1312415,PR00,simvastatin 10 MG / sitagliptin 50 MG Oral Tablet [Juvisync]
+42901620,1312416,PR00,simvastatin 20 MG / sitagliptin 50 MG Oral Tablet
+42901621,1312422,PR00,simvastatin 20 MG / sitagliptin 50 MG Oral Tablet [Juvisync]
+42901622,1312423,PR00,simvastatin 40 MG / sitagliptin 50 MG Oral Tablet
+42901623,1312429,PR00,simvastatin 40 MG / sitagliptin 50 MG Oral Tablet [Juvisync]
+42902607,1359720,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Prefilled Syringe [Humulin]"
+42903059,1360172,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Prefilled Syringe"
+42903113,1360226,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Prefilled Syringe [Novolin]"
+42903322,1360435,PR00,"insulin, regular, human 100 UNT/ML Prefilled Syringe [Novolin R]"
+42903369,1360482,PR00,"insulin, regular, human 100 UNT/ML Prefilled Syringe"
+43011498,1361492,PR00,glimepiride 6 MG
+43011499,1361494,PR00,glimepiride 8 MG
+43011830,1361493,PR00,glimepiride 6 MG Oral Tablet
+43011831,1361495,PR00,glimepiride 8 MG Oral Tablet
+43013884,1368001,PR00,alogliptin
+43013885,1368383,PR00,alogliptin / metformin Oral Tablet
+43013887,1368395,PR00,alogliptin / metformin Oral Tablet [Kazano]
+43013888,1368401,PR00,alogliptin / pioglitazone Oral Tablet
+43013893,1368434,PR00,alogliptin / pioglitazone Oral Tablet [Oseni]
+43013895,1368033,PR00,alogliptin 12.5 MG
+43013896,1368385,PR00,alogliptin 12.5 MG / metformin hydrochloride 1000 MG Oral Tablet
+43013897,1368391,PR00,alogliptin 12.5 MG / metformin hydrochloride 1000 MG Oral Tablet [Kazano]
+43013898,1368387,PR00,alogliptin 12.5 MG / metformin hydrochloride 1000 MG [Kazano]
+43013899,1368392,PR00,alogliptin 12.5 MG / metformin hydrochloride 500 MG Oral Tablet
+43013900,1368398,PR00,alogliptin 12.5 MG / metformin hydrochloride 500 MG Oral Tablet [Kazano]
+43013901,1368394,PR00,alogliptin 12.5 MG / metformin hydrochloride 500 MG [Kazano]
+43013902,1368403,PR00,alogliptin 12.5 MG / pioglitazone 15 MG Oral Tablet
+43013903,1368409,PR00,alogliptin 12.5 MG / pioglitazone 15 MG Oral Tablet [Oseni]
+43013904,1368405,PR00,alogliptin 12.5 MG / pioglitazone 15 MG [Oseni]
+43013905,1368410,PR00,alogliptin 12.5 MG / pioglitazone 30 MG Oral Tablet
+43013906,1368416,PR00,alogliptin 12.5 MG / pioglitazone 30 MG Oral Tablet [Oseni]
+43013907,1368412,PR00,alogliptin 12.5 MG / pioglitazone 30 MG [Oseni]
+43013908,1368417,PR00,alogliptin 12.5 MG / pioglitazone 45 MG Oral Tablet
+43013909,1368423,PR00,alogliptin 12.5 MG / pioglitazone 45 MG Oral Tablet [Oseni]
+43013910,1368419,PR00,alogliptin 12.5 MG / pioglitazone 45 MG [Oseni]
+43013911,1368034,PR00,alogliptin 12.5 MG Oral Tablet
+43013912,1368036,PR00,alogliptin 12.5 MG Oral Tablet [Nesina]
+43013913,1368035,PR00,alogliptin 12.5 MG [Nesina]
+43013914,1368002,PR00,alogliptin 25 MG
+43013915,1368424,PR00,alogliptin 25 MG / pioglitazone 15 MG Oral Tablet
+43013916,1368430,PR00,alogliptin 25 MG / pioglitazone 15 MG Oral Tablet [Oseni]
+43013917,1368426,PR00,alogliptin 25 MG / pioglitazone 15 MG [Oseni]
+43013918,1368431,PR00,alogliptin 25 MG / pioglitazone 30 MG Oral Tablet
+43013919,1368437,PR00,alogliptin 25 MG / pioglitazone 30 MG Oral Tablet [Oseni]
+43013920,1368433,PR00,alogliptin 25 MG / pioglitazone 30 MG [Oseni]
+43013921,1368438,PR00,alogliptin 25 MG / pioglitazone 45 MG Oral Tablet
+43013922,1368444,PR00,alogliptin 25 MG / pioglitazone 45 MG Oral Tablet [Oseni]
+43013923,1368440,PR00,alogliptin 25 MG / pioglitazone 45 MG [Oseni]
+43013924,1368006,PR00,alogliptin 25 MG Oral Tablet
+43013925,1368012,PR00,alogliptin 25 MG Oral Tablet [Nesina]
+43013926,1368008,PR00,alogliptin 25 MG [Nesina]
+43013927,1368017,PR00,alogliptin 6.25 MG
+43013928,1368018,PR00,alogliptin 6.25 MG Oral Tablet
+43013929,1368020,PR00,alogliptin 6.25 MG Oral Tablet [Nesina]
+43013930,1368019,PR00,alogliptin 6.25 MG [Nesina]
+43013931,1368005,PR00,alogliptin Oral Tablet
+43013932,1368009,PR00,alogliptin Oral Tablet [Nesina]
+43224689,4815,PR00,glyburide
+43246420,2206094,PR00,"insulin, regular, human 100 UNT/ML Pen Injector [Novolin R]"
+43526465,1373458,PR00,canagliflozin
+43526466,1373459,PR00,canagliflozin 100 MG
+43526467,1373463,PR00,canagliflozin 100 MG Oral Tablet
+43526468,1373469,PR00,canagliflozin 100 MG Oral Tablet [Invokana]
+43526469,1373465,PR00,canagliflozin 100 MG [Invokana]
+43526470,1373470,PR00,canagliflozin 300 MG
+43526471,1373471,PR00,canagliflozin 300 MG Oral Tablet
+43526472,1373473,PR00,canagliflozin 300 MG Oral Tablet [Invokana]
+43526473,1373472,PR00,canagliflozin 300 MG [Invokana]
+43526474,1373462,PR00,canagliflozin Oral Tablet
+43526475,1373466,PR00,canagliflozin Oral Tablet [Invokana]
+44546978,1992813,PR00,ertugliflozin Oral Tablet [Steglatro]
+44563661,2371723,PR00,dapagliflozin / metformin / saxagliptin Pill
+44582519,899992,PR00,metformin / pioglitazone Extended Release Oral Tablet [Actoplus Met]
+44607041,865567,PR00,glipizide Extended Release Oral Tablet [Glucotrol]
+44626713,2359286,PR00,empagliflozin 10 MG / linagliptin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+44642177,2371731,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 1000 MG / saxagliptin 5 MG Extended Release Oral Tablet [Qternmet]
+44664260,2359278,PR00,empagliflozin / linagliptin / metformin Extended Release Oral Tablet
+44665618,700835,PR00,glipizide Extended Release Oral Tablet
+44684982,875864,PR00,metformin hydrochloride 500 MG [Glucamet]
+44686909,2359359,PR00,empagliflozin 5 MG / linagliptin 2.5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+44785473,1486977,PR00,dapagliflozin 10 MG Oral Tablet [Farxiga]
+44785477,1486981,PR00,dapagliflozin 5 MG Oral Tablet [Farxiga]
+44785829,1488564,PR00,dapagliflozin
+44785830,1488565,PR00,dapagliflozin 10 MG
+44785831,1488569,PR00,dapagliflozin 10 MG Oral Tablet
+44785832,1488573,PR00,dapagliflozin 5 MG
+44785833,1488574,PR00,dapagliflozin 5 MG Oral Tablet
+44785834,1488568,PR00,dapagliflozin Oral Tablet
+44815995,1534343,PR00,dapagliflozin Oral Tablet [Farxiga]
+44815996,1534344,PR00,dapagliflozin 5 MG [Farxiga]
+44816049,1534397,PR00,dapagliflozin 10 MG [Farxiga]
+45413106,4815,PR00,glyburide
+45521593,1543200,PR00,"insulin, regular, human Inhalant Product"
+45774398,1544488,PR00,"insulin, regular, human 8 UNT Inhalation Powder"
+45774400,1544490,PR00,"insulin, regular, human 8 UNT Inhalation Powder [Afrezza]"
+45774708,1545145,PR00,canagliflozin 150 MG
+45774709,1545148,PR00,canagliflozin / metformin Oral Tablet
+45774710,1545150,PR00,canagliflozin 150 MG / metformin hydrochloride 1000 MG Oral Tablet
+45774712,1545152,PR00,canagliflozin 150 MG / metformin hydrochloride 1000 MG [Invokamet]
+45774713,1545153,PR00,canagliflozin / metformin Oral Tablet [Invokamet]
+45774714,1545156,PR00,canagliflozin 150 MG / metformin hydrochloride 1000 MG Oral Tablet [Invokamet]
+45774715,1545157,PR00,canagliflozin 150 MG / metformin hydrochloride 500 MG Oral Tablet
+45774716,1545158,PR00,canagliflozin 150 MG / metformin hydrochloride 500 MG [Invokamet]
+45774717,1545159,PR00,canagliflozin 150 MG / metformin hydrochloride 500 MG Oral Tablet [Invokamet]
+45774718,1545160,PR00,canagliflozin 50 MG
+45774719,1545161,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG Oral Tablet
+45774720,1545162,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG [Invokamet]
+45774721,1545163,PR00,canagliflozin 50 MG / metformin hydrochloride 1000 MG Oral Tablet [Invokamet]
+45774722,1545164,PR00,canagliflozin 50 MG / metformin hydrochloride 500 MG Oral Tablet
+45774723,1545165,PR00,canagliflozin 50 MG / metformin hydrochloride 500 MG [Invokamet]
+45774724,1545166,PR00,canagliflozin 50 MG / metformin hydrochloride 500 MG Oral Tablet [Invokamet]
+45774751,1545653,PR00,empagliflozin
+45774752,1545654,PR00,empagliflozin 10 MG
+45774753,1545657,PR00,empagliflozin Oral Tablet
+45774754,1545658,PR00,empagliflozin 10 MG Oral Tablet
+45774756,1545660,PR00,empagliflozin 10 MG [Jardiance]
+45774757,1545661,PR00,empagliflozin Oral Tablet [Jardiance]
+45774758,1545664,PR00,empagliflozin 10 MG Oral Tablet [Jardiance]
+45774759,1545665,PR00,empagliflozin 25 MG
+45774893,1545666,PR00,empagliflozin 25 MG Oral Tablet
+45774894,1545667,PR00,empagliflozin 25 MG [Jardiance]
+45774895,1545668,PR00,empagliflozin 25 MG Oral Tablet [Jardiance]
+45775388,1592722,PR00,dapagliflozin 10 MG / metformin hydrochloride 1000 MG [Xigduo]
+45775454,1593057,PR00,dapagliflozin / metformin Extended Release Oral Tablet
+45775455,1593058,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+45775456,1593059,PR00,dapagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+45775619,1593068,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+45775620,1593069,PR00,dapagliflozin 10 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+45775621,1593070,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+45775622,1593071,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet
+45775623,1593072,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+45775624,1593073,PR00,dapagliflozin 5 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet
+45775859,1593774,PR00,dapagliflozin / metformin Extended Release Oral Tablet [Xigduo]
+45775860,1593775,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Xigduo]
+45775861,1593776,PR00,dapagliflozin 10 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Xigduo]
+45775862,1593826,PR00,dapagliflozin 10 MG / metformin hydrochloride 500 MG [Xigduo]
+45775863,1593827,PR00,dapagliflozin 10 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Xigduo]
+45775864,1593828,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG [Xigduo]
+45775865,1593829,PR00,dapagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Xigduo]
+45775866,1593830,PR00,dapagliflozin 5 MG / metformin hydrochloride 500 MG [Xigduo]
+45775867,1593831,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Xigduo]
+45775868,1593832,PR00,dapagliflozin 5 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Xigduo]
+45775999,1593833,PR00,24 HR dapagliflozin 5 MG / metformin hydrochloride 1000 MG Extended Release Oral Tablet [Xigduo]
+45776000,1593835,PR00,24 HR dapagliflozin 10 MG / metformin hydrochloride 500 MG Extended Release Oral Tablet [Xigduo]
+45776621,1543202,PR00,"insulin, regular, human 4 UNT Inhalation Powder"
+45776625,1543207,PR00,"insulin, regular, human 4 UNT Inhalation Powder [Afrezza]"
+45777022,1544568,PR00,"{60 (insulin, regular, human 4 UNT Inhalation Powder) / 30 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+45777023,1544569,PR00,"{60 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 30 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 90 - 60 (4 UNT), 30 (8 UNT)]"
+45777024,1544570,PR00,"{30 (insulin, regular, human 4 UNT Inhalation Powder) / 60 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+45777025,1544571,PR00,"{30 (insulin, regular, human 4 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 90 - 30 (4 UNT), 60 (8 UNT)]"
+45892171,1602108,PR00,empagliflozin / linagliptin Oral Tablet
+45892172,1602109,PR00,empagliflozin 10 MG / linagliptin 5 MG Oral Tablet
+45892174,1602111,PR00,empagliflozin 10 MG / linagliptin 5 MG [Glyxambi]
+45892175,1602112,PR00,empagliflozin / linagliptin Oral Tablet [Glyxambi]
+45892176,1602115,PR00,empagliflozin 10 MG / linagliptin 5 MG Oral Tablet [Glyxambi]
+45892177,1602118,PR00,empagliflozin 25 MG / linagliptin 5 MG Oral Tablet
+45892178,1602119,PR00,empagliflozin 25 MG / linagliptin 5 MG [Glyxambi]
+45892179,1602120,PR00,empagliflozin 25 MG / linagliptin 5 MG Oral Tablet [Glyxambi]
+45911388,150973,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Human Actrapid]"
+45913387,84108,PR00,rosiglitazone
+45917066,153845,PR00,glimepiride 4 MG Oral Tablet [Amaryl]
+45926642,153591,PR00,glimepiride 2 MG Oral Tablet [Amaryl]
+45926653,153844,PR00,glimepiride 3 MG Oral Tablet [Amaryl]
+45933595,150974,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Humulin S]"
+45950586,150659,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Pur-In Neutral]"
+45950853,150831,PR00,"insulin, regular, human 100 UNT/ML Injectable Solution [Human Actrapid Penfill]"
+46233728,1650256,PR00,"insulin, regular, human 4 UNT"
+46233729,1650260,PR00,"insulin, regular, human 4 UNT [Afrezza]"
+46233730,1650262,PR00,"insulin, regular, human 8 UNT"
+46233731,1650264,PR00,"insulin, regular, human 8 UNT [Afrezza]"
+46234216,1654651,PR00,"insulin isophane / insulin, regular, human Pen Injector"
+46234233,1654855,PR00,"insulin isophane / insulin, regular, human Pen Injector [Humulin]"
+46234234,1654857,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Pen Injector"
+46234235,1654858,PR00,"insulin isophane, human 70 UNT/ML / insulin, regular, human 30 UNT/ML Pen Injector [Humulin]"
+46234241,1654909,PR00,"insulin, regular, human 12 UNT"
+46234242,1654910,PR00,"insulin, regular, human 12 UNT Inhalation Powder"
+46234243,1654911,PR00,"insulin, regular, human 12 UNT [Afrezza]"
+46234244,1654912,PR00,"insulin, regular, human 12 UNT Inhalation Powder [Afrezza]"
+46275390,1656705,PR00,"{30 (insulin, regular, human 12 UNT Inhalation Powder) / 60 (insulin, regular, human 8 UNT Inhalation Powder) } Pack"
+46275452,1656706,PR00,"{30 (insulin, regular, human 12 UNT Inhalation Powder [Afrezza]) / 60 (insulin, regular, human 8 UNT Inhalation Powder [Afrezza]) } Pack [Afrezza 90 - 60 (8 UNT), 30 (12 UNT)]"
+46287408,1665367,PR00,empagliflozin 12.5 MG / metformin hydrochloride 1000 MG Oral Tablet
+46287409,1665368,PR00,empagliflozin 12.5 MG / metformin hydrochloride 1000 MG [Synjardy]
+46287410,1665369,PR00,empagliflozin 12.5 MG / metformin hydrochloride 1000 MG Oral Tablet [Synjardy]
+46287678,1664310,PR00,empagliflozin 5 MG
+46287679,1664313,PR00,empagliflozin / metformin Oral Tablet
+46287680,1664315,PR00,empagliflozin 5 MG / metformin hydrochloride 500 MG Oral Tablet
+46287682,1664317,PR00,empagliflozin 5 MG / metformin hydrochloride 500 MG [Synjardy]
+46287683,1664318,PR00,empagliflozin / metformin Oral Tablet [Synjardy]
+46287684,1664321,PR00,empagliflozin 5 MG / metformin hydrochloride 500 MG Oral Tablet [Synjardy]
+46287685,1664322,PR00,empagliflozin 12.5 MG
+46287686,1664323,PR00,empagliflozin 12.5 MG / metformin hydrochloride 500 MG Oral Tablet
+46287687,1664324,PR00,empagliflozin 12.5 MG / metformin hydrochloride 500 MG [Synjardy]
+46287688,1664325,PR00,empagliflozin 12.5 MG / metformin hydrochloride 500 MG Oral Tablet [Synjardy]
+46287689,1664326,PR00,empagliflozin 5 MG / metformin hydrochloride 1000 MG Oral Tablet
+46287690,1664327,PR00,empagliflozin 5 MG / metformin hydrochloride 1000 MG [Synjardy]
+46287691,1664328,PR00,empagliflozin 5 MG / metformin hydrochloride 1000 MG Oral Tablet [Synjardy]

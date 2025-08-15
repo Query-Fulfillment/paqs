@@ -80,14 +80,11 @@ initialize_session <- function(session_name,
     "duckdb",
     "quarto",
     "tidyverse",
-    "scuba.gen"
+    "squba.gen"
   )
 
   for (pak in packages) {
-    suppressWarnings(suppressPackageStartupMessages(require(
-      pak,
-      character.only = TRUE
-    )))
+    suppressWarnings(suppressPackageStartupMessages(require(pak,character.only = TRUE)))
   }
 
   suppressMessages(conflicted::conflict_prefer_all("dplyr"))
@@ -166,6 +163,10 @@ initialize_session <- function(session_name,
 
   get_argos_default()$config("cdm_schema", cdm_schema)
 
+  cdm_type <- ifelse(any(dbListTables(get_argos_default()$config('db_src'), schema = cdm_schema) %in% c('demographic', 'diagnosis','procedures')), "pcornet", "omop")
+  
+  get_argos_default()$config("cdm_type", cdm_type)
+
   temp_schema <- switch(db_class,
 
     # Snowflake
@@ -209,6 +210,7 @@ initialize_session <- function(session_name,
   )
 
   get_argos_default()$config("temp_table_schema", temp_schema)
+  get_argos_default()$config('temp_table_drop_me', character(0))
 
   get_argos_default()$config(
     "qry_site",
@@ -274,12 +276,6 @@ initialize_session <- function(session_name,
     "can_index",
     index_val
   )
-
-  if (prep_dir) {
-    dir.create("code")
-    dir.create("specs")
-    dir.create("results")
-  }
 }
 
 #' Load Query Files
@@ -347,9 +343,10 @@ create_paqs_package <- function() {
   system2("tools/build_package.sh")
 }
 
+
 exit <- function(db = get_argos_default()$config("db_src")) {
-  if (class(db)[1] %in% c("Oracle")) {
-    get_argos_default()$.__enclos_env__$private$.ora_env_cleanup(db = db)
+  if (class(db)[1] %in% c("Oracle","src_BigQueryConnection","Spark SQL")) {
+    get_argos_default()$.__enclos_env__$private$.ora_bq_db_env_cleanup(db = db)
   }
 
   DBI::dbDisconnect(conn = db)
@@ -637,9 +634,9 @@ utils::assignInNamespace(
 
 patch_argos <- function() {
   argos$public_methods$load_codeset <- function(name,
-                                                col_types = "cccc",
+                                                col_types = "iccc",
                                                 table_name = name,
-                                                indexes = list("Code"),
+                                                indexes = list("concept_code"),
                                                 full_path = FALSE,
                                                 db = self$config("db_src")) {
     conn_class <- class(db)[1]
@@ -654,9 +651,9 @@ patch_argos <- function() {
   }
 
   argos$public_methods$`load_codeset.default` <- function(name,
-                                                          col_types = "cccc",
+                                                          col_types = "iccc",
                                                           table_name = name,
-                                                          indexes = list("Code"),
+                                                          indexes = list("concept_code"),
                                                           full_path = FALSE,
                                                           db = self$config("db_src")) {
     if (self$config("cache_enabled")) {
@@ -696,7 +693,7 @@ patch_argos <- function() {
 
 
   argos$public_methods$`load_codeset.Oracle` <- function(name,
-                                                         col_types = "cccc",
+                                                         col_types = "iccc",
                                                          table_name = name,
                                                          indexes = list("concept_code"),
                                                          full_path = FALSE,
@@ -738,7 +735,7 @@ patch_argos <- function() {
   }
 
   argos$public_methods$`load_codeset.src_BigQueryConnection` <- function(name,
-                                                                         col_types = "cccc",
+                                                                         col_types = "iccc",
                                                                          table_name = name,
                                                                          indexes = list("concept_code"),
                                                                          full_path = FALSE,
@@ -945,6 +942,64 @@ patch_argos <- function() {
     rslt
   }
 
+
+  argos$public_methods$`compute_new.Spark SQL` <- function(tblx,
+                                                           name = paste0(sample(letters, 12, replace = TRUE), collapse = ""),
+                                                           temporary = !self$config("retain_intermediates"),
+                                                           overwrite = TRUE,
+                                                           ...) {
+    if (!inherits(name, c("ident_q", "dbplyr_schema")) && length(name) == 1) {
+      name <- gsub("\\s+", "_", name, perl = TRUE)
+      name <- self$intermed_name(name, temporary)
+    }
+    con <- self$dbi_con(tblx)
+
+    if (self$config("db_trace")) {
+      show_query(tblx)
+      if (self$config("can_explain")) explain(tblx)
+      message(
+        " -> ",
+        base::ifelse(packageVersion("dbplyr") < "2.0.0", dbplyr::as.sql(name), dbplyr::as.sql(name, con))
+      )
+      start <- Sys.time()
+      message(start)
+    }
+
+    ellipsis_args <- list(...)
+    if (self$config_exists("can_index")) {
+      if (!self$config("can_index")) {
+        ellipsis_args$indexes <- c()
+      }
+    }
+
+    self$config("temp_table_drop_me", append(self$config("temp_table_drop_me"), name))
+
+    sql <- dbplyr::sql_render(tblx)
+
+    schema_qualified_name <- DBI::Id(schema = self$config("temp_table_schema"), table = name)
+    quoted_name <- DBI::dbQuoteIdentifier(con, schema_qualified_name)
+
+    sql_statement <- paste0(
+      "CREATE ",
+      if (overwrite) "OR REPLACE " else "",
+      "TABLE ",
+      quoted_name,
+      " AS\n",
+      sql
+    )
+
+    DBI::dbExecute(con, sql_statement)
+
+    rslt <- tbl(con, in_schema(schema = self$config('temp_table_schema'), table = name))
+
+    if (self$config("db_trace")) {
+      end <- Sys.time()
+      message(end, " ==> ", format(end - start))
+    }
+    rslt
+  }
+
+
   argos$public_methods$copy_to_new <- function(dest = self$config("db_src"), df,
                                                name = deparse(substitute(df)),
                                                overwrite = TRUE,
@@ -960,6 +1015,7 @@ patch_argos <- function() {
       return(self$`copy_to_new.default`(dest, df, name, overwrite, temporary,...))
     }
   }
+
 
 
   argos$public_methods$`copy_to_new.default` <- function(dest = self$config("db_src"), df,
@@ -1111,7 +1167,7 @@ patch_argos <- function() {
 
   argos$private_methods$.ora_env_setup <-
     function(db) {
-      if(class(db) == "Oracle") {
+      if(class(db)[1] == "Oracle") {
       DBI::dbExecute(db, "alter session set nls_date_format = 'YYYY-MM-DD'")
       DBI::dbExecute(
         db,
@@ -1121,7 +1177,7 @@ patch_argos <- function() {
     }
 
 
-  argos$private_methods$.ora_env_cleanup <- function(db) {
+  argos$private_methods$.ora_bq_db_env_cleanup <- function(db) {
     dm <- self$config("temp_table_drop_me")
     if (length(dm) == 0) {
       return(invisible(TRUE))
@@ -1130,14 +1186,34 @@ patch_argos <- function() {
     vapply(
       unique(dm),
       function(t) {
-        tryCatch(
-          get_argos_default()$db_remove_table(db, t, temporary = TRUE),
-          error = function(e) {
-            message(t, " - ", e)
-            0L
-          }
-        )
-      },
+        if (class(db)[1] == "Oracle") {
+          tryCatch(
+            get_argos_default()$db_remove_table(db, t, temporary = TRUE),
+            error = function(e) {
+              message(t, " - ", e)
+              0L
+            }
+          )
+        } else if (class(db)[1] == "src_BigQueryConnection") {
+          tryCatch(
+            if (bigrquery::bq_table_exists(bigrquery::bq_table(project = self$config('codeset_project'), dataset = self$config('codeset_dataset_name'), table = t))) {
+              bigrquery::bq_table_delete(bigrquery::bq_table(project = self$config('codeset_project'), dataset = self$config('codeset_dataset_name'), table = t))
+            },
+            error = function(e) {
+              message(t, " - ", e)
+              0L
+            }
+          )
+        } else if (class(db)[1] == "Spark SQL") {
+          tryCatch(
+            get_argos_default()$db_remove_table(db, in_schema(schema = get_argos_default()$config('temp_table_schema'),table = t), temporary = TRUE),
+            error = function(e) {
+              message(t, " - ", e)
+              0L
+            }
+          )
+
+        }},
       FUN.VALUE = 0L
     )
   }

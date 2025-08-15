@@ -1,5 +1,20 @@
 # Table configurations for different code types
-TABLE_CONFIGS <- list(
+
+#' Setting PCORnet or OMOP Table Configs
+#'
+#' @param cdm_type string value, `pcornet` | `omop`
+#'
+#' @returns
+#'
+#' @export
+#' @examples
+set_cdm_config <- function(cdm_type) {
+
+.GlobalEnv$cdm_type <- cdm_type
+  
+.GlobalEnv$TABLE_CONFIGS <- 
+  if (cdm_type == 'pcornet') {
+  list(
   diagnosis = list(
     table = "diagnosis",
     code_column = "dx",
@@ -55,8 +70,46 @@ TABLE_CONFIGS <- list(
     fallback_date_column = "admit_date"
   )
 )
+  } else {
+  list(
+  diagnosis = list(
+    table = "condition_occurrence",
+    code_column = "condition_concept_id",
+    primary_date_column = "condition_start_date",
+    fallback_date_column = NULL
+  ),
+  procedures = list(
+    table = "procedure_occurrence", 
+    code_column = "procedure_concept_id",
+    primary_date_column = "procedure_start_date",
+    fallback_date_column = NULL
+  ),
+  prescribing = list(
+    table = "drug_exposure", 
+    code_column = "drug_concept_id",
+    primary_date_column = "drug_exposure_start_date",
+    fallback_date_column = NULL
+  )
+)
+  }
+}
+
 
 # Input validation functions
+#' Title
+#'
+#' @param codeset
+#' @param start_date
+#' @param end_date
+#' @param min_codes_required
+#' @param min_days_separation
+#' @param qualifying_event
+#' @param criterion_suffix
+#'
+#' @returns
+#'
+#' @export
+#' @examples
 validate_all_inputs <- function(codeset, start_date, end_date, min_codes_required, 
                                min_days_separation, qualifying_event, criterion_suffix) {
   
@@ -122,6 +175,14 @@ validate_date_range <- function(start_date, end_date) {
 }
 
 # Enhanced date resolution function
+#' Title
+#'
+#' @param x
+#'
+#' @returns
+#'
+#' @export
+#' @examples
 resolve_date_input <- function(x) {
   if (inherits(x, "Date")) {
     return(x)
@@ -144,6 +205,12 @@ resolve_date_input <- function(x) {
 }
 
 # Enhanced codetype to table mapping
+#' Title
+#'
+#' @returns
+#'
+#' @export
+#' @examples
 match_codetype_to_table <- function() {
   tibble::tribble(~codetype, ~table,
     # diagnosis
@@ -186,7 +253,7 @@ match_codetype_to_table <- function() {
     # death
     'DTH', 'death'
   ) %>%
-    copy_to_new(df = ., name = "crosswalk", overwrite = TRUE, temporary = TRUE)
+    copy_to_new(df = ., name = "crosswalk", overwrite = TRUE)
 }
 
 get_table_config <- function(codeset) {
@@ -394,8 +461,8 @@ validate_final_cohort <- function(final_cohort, table_name) {
     ))
   } else {
     message(sprintf(
-      "Cohort development for table '%s' returned %d patient(s). Further computations can continue.",
-      table_name, patient_count
+      "Cohort development for table '%s' returned non-zero patient(s). Further computations can continue.",
+      table_name
     ))
   }
   
@@ -424,8 +491,13 @@ define_criteria.generic <- function(cohort = NULL, codeset, start_date, end_date
   }
   
   # Step 1: Filter for codes of interest
-  cohort_with_codes <- input_tbl %>%
-    inner_join(codeset, by = setNames("code", table_config$code_column))
+  if(.GlobalEnv$cdm_type == "pcornet") {
+    cohort_with_codes <- input_tbl %>%
+      inner_join(codeset, by = setNames("code", table_config$code_column))
+  } else {
+      cohort_with_codes <- input_tbl %>%
+      inner_join(codeset, by = setNames("concept_id", table_config$code_column))
+  }
   
   echo_text(sprintf("Filtered for at least one %s code of interest", table_config$code_column))
   
@@ -478,6 +550,18 @@ define_criteria.diagnosis <- function(cohort = NULL, codeset, start_date, end_da
                          qualifying_event, criterion_suffix)
 }
 
+# Specific S3 methods that delegate to generic (with option for customization)
+
+#' @export
+define_criteria.condition_occurrence <- function(cohort = NULL, codeset, start_date, end_date, 
+                                    min_codes_required = 1, min_days_separation = 0, 
+                                    qualifying_event = "first", criterion_suffix) {
+  define_criteria.generic(cohort, codeset, start_date, end_date, 
+                         min_codes_required, min_days_separation, 
+                         qualifying_event, criterion_suffix)
+}
+
+
 #' @export  
 define_criteria.procedures <- function(cohort = NULL, codeset, start_date, end_date,
                                     min_codes_required = 1, min_days_separation = 0,
@@ -507,6 +591,15 @@ define_criteria.prescribing <- function(cohort = NULL, codeset, start_date, end_
 
 #' @export
 define_criteria.med_admin <- function(cohort = NULL, codeset, start_date, end_date,
+                                    min_codes_required = 1, min_days_separation = 0,
+                                    qualifying_event = "first", criterion_suffix) {
+  define_criteria.generic(cohort, codeset, start_date, end_date,
+                         min_codes_required, min_days_separation,
+                         qualifying_event, criterion_suffix)
+}
+
+
+define_criteria.drug_exposure <- function(cohort = NULL, codeset, start_date, end_date,
                                     min_codes_required = 1, min_days_separation = 0,
                                     qualifying_event = "first", criterion_suffix) {
   define_criteria.generic(cohort, codeset, start_date, end_date,
@@ -569,7 +662,7 @@ define_criteria.default <- function(cohort = NULL,codeset, start_date, end_date,
                                   min_days_separation, qualifying_event, criterion_suffix) {
   
   # Get available codetypes from the codeset
-  available_codetypes <- unique(codeset %>% distinct(codetype))
+  available_codetypes <- unique(codeset %>% distinct(codetype) %>% pull())
   
   cli_abort(
     c("✗" = "Error: Unknown or unsupported codetype value(s)",

@@ -15,25 +15,25 @@ run <- function() {
   # ===================================================================================================
   #' **Standard code DO NOT EDIT | Fill values where necessary**
   # ===================================================================================================
-  # init_progress_bar(total_steps = 13)
 
-  init_message(query_title = "")
+  init_message(query_title = "PAQS Query Development")
+
 
   .GlobalEnv$total_steps <- 0L
-  .GlobalEnv$query_name <- ""
+  .GlobalEnv$query_name <- "PAQS_DEV"
 
   .GlobalEnv$test_stat <- init_sum(Test = "Start of Query", Status = "", set_default = NULL)
-  logFile <- file(file.path(
-    get_argos_default()$config("base_dir"),
-    get_argos_default()$config("subdirs")$result_dir,
-    paste0(.GlobalEnv$query_name,".log")
-  ), open = "wt")
 
-  sink(file = logFile, type = "message", append = TRUE)
-  sink(file = logFile, type = "output", append = TRUE)
+  start_log()
 
-  get_argos_default()$config('temp_table_drop_me', character(0))
-  get_argos_default()$.__enclos_env__$private$.ora_env_setup(db = get_argos_default()$config('db_src'))
+  # ===================================================================================================
+  #' **IMPORTANT**
+  #' **SET YOUR CONNECTION CDM TYPE | Permitted Values are `pcornet` or `omop`->** 
+  #' 
+    set_cdm_config('pcornet')
+  # ===================================================================================================
+  
+
   # ===================================================================================================
   #' **WRITE YOUR QUERY FROM HERE ->**
   # ===================================================================================================
@@ -42,43 +42,67 @@ run <- function() {
   rslt <- list()
 
   codesets <- load_all_codesets()
+  
+  # Diabetes
+  
+  # Atleast one occurrence of T2 Diabetes code between 2021 - 2024
+  rslt$dx_t2_diabetes <- define_criteria(codeset = codesets$dx_t2_diabetes,
+                                         start_date = "01-01-2015",
+                                         end_date = "12-31-2024",
+                                         min_codes_required = 1,
+                                         min_days_separation = 0,
+                                         qualifying_event = 'first',
+                                         criterion_suffix = "dx_t2_diabetes") 
+  
+  # Atleast one occurrence of T2 Diabetes code between diagnosis date and 2024
+  rslt$dx_t2_any_anti_diabetic_post_dx <- define_criteria(cohort = rslt$dx_t2_diabetes,
+                                                  codeset = codesets$rx_any_anti_diabetic,
+                                                  start_date = "criterion_dx_t2_diabetes_date",
+                                                  end_date = "12-31-2024",
+                                                  min_codes_required = 1,
+                                                  min_days_separation = 0,
+                                                  qualifying_event = 'first',
+                                                  criterion_suffix = "any_anti_diabetic_post")
+  
+  rslt$dx_t2_any_anti_diabetic_pre_dx <- define_criteria(cohort = rslt$dx_t2_diabetes,
+                                                  codeset = codesets$rx_any_anti_diabetic,
+                                                  start_date = "01-01-2015",
+                                                  end_date = "criterion_dx_t2_diabetes_date",
+                                                  min_codes_required = 1,
+                                                  min_days_separation = 0,
+                                                  qualifying_event = 'first',
+                                                  criterion_suffix = "any_anti_diabetic_pre")
 
-  rslt$cancer_dx <- define_criteria(codeset = codesets$dx_cancer,
-                                    start_date = "01-01-2021",
-                                    end_date = "12-31-2023",
-                                    min_codes_required = 1,
-                                    min_days_separation = 0,
-                                    qualifying_event = 'first',
-                                    criterion_suffix = "cancer_dx")
+  # Filtering patients who had an anti-diabetic medication exposure prior to their T2D diagnosis
+  
+  rslt$dx_t2_any_anti_diabetic_post_dx_no_prior <- rslt$dx_t2_any_anti_diabetic_post_dx %>% 
+    anti_join(rslt$dx_t2_any_anti_diabetic_pre_dx, by = c('patid'))
 
-  rslt$bariatric_surgery_px <- define_criteria(cohort = rslt$cancer_dx,
-                                               codeset = codesets$px_bariatric_surgery,
-                                               start_date = "criterion_cancer_dx_date",
-                                               end_date = "12-31-2023",
+   # Atleast one occurrence of T2 Diabetes code between diagnosis date and end of query period
+  rslt$post_any_adb_any_glp <- define_criteria(cohort =   rslt$dx_t2_any_anti_diabetic_post_dx_no_prior,
+                                               codeset = codesets$rx_any_glp,
+                                               start_date = "criterion_any_anti_diabetic_post_date",
+                                               end_date = "12-31-2024",
                                                min_codes_required = 1,
                                                min_days_separation = 0,
                                                qualifying_event = 'first',
-                                               criterion_suffix = "px_bariatric_surgery")
+                                               criterion_suffix = "any_glp")
+   
+  # Patients with a t2dm dx code and anti-diabetic medication + any glp 2 + bariatric surgery post dx date
+    rslt$tdx_with_bariatric_surgery <- define_criteria(cohort = rslt$dx_t2_diabetes %>% inner_join(rslt$post_any_adb_any_glp %>% distinct(patid)),
+                                                       codeset = codesets$px_bariatric_surgery,
+                                                       start_date = "01-01-2015",
+                                                       end_date = "12-31-2024",
+                                                       min_codes_required = 1,
+                                                       min_days_separation = 0,
+                                                       qualifying_event = 'first',
+                                                       criterion_suffix = "bariatric_surgery")
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**
   # ===================================================================================================
-  sink(type = "output")
-  sink(type = "message")
 
-  close.connection(logFile)
-
+  end_log()
   on.exit(exit())
-
-if (Sys.getenv("native_execution") != "") {
-  if (!as.logical(Sys.getenv("native_execution"))) {
-    system("quarto render query/script/report.qmd --output-dir ../results/ --execute-dir query/results/ --to html")
-  } else {
-    quarto::quarto_render("query/script/report.qmd", execute_dir = "query/results/")
-    file.rename(paste0("query/script/",.GlobalEnv$query_name,"_report.html"), paste0("query/results/",.GlobalEnv$query_name,"_report.html"))
-  }
-} else {
-  system("quarto render query/script/report.qmd --output-dir ../results/ --execute-dir query/results/ --to html")
-}
-
+  render_report()
 }
