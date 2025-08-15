@@ -43,22 +43,40 @@ run <- function() {
 
   codesets <- load_all_codesets()
 
-  rslt$cancer_dx <- define_criteria(codeset = codesets$dx_cancer,
-                                    start_date = "01-01-2021",
+  rslt$dx_ckd <- define_criteria(codeset = codesets$dx_ckd,
+                                    start_date = "01-01-2018",
                                     end_date = "12-31-2023",
                                     min_codes_required = 1,
                                     min_days_separation = 0,
                                     qualifying_event = 'first',
-                                    criterion_suffix = "cancer_dx")
+                                    criterion_suffix = "dx_ckd")
 
-  rslt$bariatric_surgery_px <- define_criteria(cohort = rslt$cancer_dx,
-                                               codeset = codesets$px_bariatric_surgery,
-                                               start_date = "criterion_cancer_dx_date",
+  rslt$px_kidney_transplant <- define_criteria(cohort = rslt$dx_ckd,
+                                               codeset = codesets$px_kidney_transplant,
+                                               start_date = "criterion_dx_ckd_date",
                                                end_date = "12-31-2023",
                                                min_codes_required = 1,
                                                min_days_separation = 0,
                                                qualifying_event = 'first',
-                                               criterion_suffix = "px_bariatric_surgery")
+                                               criterion_suffix = "px_kidney_transplant")
+
+  rslt$lab_egfr <- define_criteria(cohort = rslt$dx_ckd,
+  																						 codeset = codesets$lab_egfr,
+  																						 start_date = "criterion_dx_ckd_date",
+  																						 end_date = "12-31-2023",
+  																						 min_codes_required = 1,
+  																						 min_days_separation = 0,
+  																						 qualifying_event = 'first',
+  																						 criterion_suffix = "lab_egfr")
+
+  rslt$rx_eplerenone <- define_criteria(cohort = rslt$dx_ckd,
+  																 codeset = codesets$rx_eplerenone,
+  																 start_date = "criterion_dx_ckd_date",
+  																 end_date = "12-31-2023",
+  																 min_codes_required = 1,
+  																 min_days_separation = 0,
+  																 qualifying_event = 'first',
+  																 criterion_suffix = "rx_eplerenone")
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**
