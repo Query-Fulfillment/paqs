@@ -214,7 +214,7 @@ resolve_date_input <- function(x) {
 #' @export
 #' @examples
 match_codetype_to_table <- function() {
-  tibble::tribble(~codetype, ~table,pcornet_vocab_type,
+  tibble::tribble(~codetype, ~table, ~pcornet_vocab_type,
     # diagnosis
     'DX09', 'diagnosis',"09",
     'DX10', 'diagnosis',"10",
