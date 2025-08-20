@@ -18,20 +18,21 @@ run <- function() {
 
   .GlobalEnv$total_steps <- 0L
   .GlobalEnv$test_stat <- init_sum(Test = "Start of Query", N = as.numeric(0), set_default = NULL)
-  
+  .GlobalEnv$query_start_time <- Sys.time()
+
   start_log()
 
   # ===================================================================================================
   #' **IMPORTANT**
-  #' **SET YOUR CONNECTION CDM TYPE | Permitted Values are `pcornet` or `omop`->** 
-  #' 
+  #' **SET YOUR CONNECTION CDM TYPE | Permitted Values are `pcornet` or `omop`->**
+  #'
     set_cdm_config('pcornet')
-  
-  #' **SET YOUR QUERY NAME** 
+
+  #' **SET YOUR QUERY NAME**
     .GlobalEnv$query_name <- ""
 
   # ===================================================================================================
-  
+
   # ===================================================================================================
   #' **WRITE YOUR QUERY FROM HERE ->**
   # ===================================================================================================
@@ -40,9 +41,9 @@ run <- function() {
   rslt <- list()
 
   codesets <- load_all_codesets()
-  
-  
-  
+
+
+
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**
@@ -51,4 +52,15 @@ run <- function() {
   end_log()
   on.exit(exit())
   render_report()
+
+  .GlobalEnv$query_end_time <- Sys.time()
+
+  signature <-
+    tibble(
+      `Query Start Time` =  .GlobalEnv$query_start_time,
+      `Query End Time` =  .GlobalEnv$query_end_time,
+      `Total Run Time` = .GlobalEnv$query_end_time - .GlobalEnv$query_start_time
+    )
+  output_tbl(rslt$signature,
+             name = paste0('signature'))
 }
