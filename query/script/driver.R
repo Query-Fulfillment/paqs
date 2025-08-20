@@ -17,10 +17,8 @@ run <- function() {
   # ===================================================================================================
 
   .GlobalEnv$total_steps <- 0L
-  .GlobalEnv$query_name <- "paqs_dev"
-
-  .GlobalEnv$test_stat <- init_sum(Test = "Start of Query", Status = "", set_default = NULL)
-
+  .GlobalEnv$test_stat <- init_sum(Test = "Start of Query", N = as.numeric(0), set_default = NULL)
+  
   start_log()
 
   # ===================================================================================================
@@ -28,6 +26,10 @@ run <- function() {
   #' **SET YOUR CONNECTION CDM TYPE | Permitted Values are `pcornet` or `omop`->** 
   #' 
     set_cdm_config('pcornet')
+  
+  #' **SET YOUR QUERY NAME** 
+    .GlobalEnv$query_name <- ""
+
   # ===================================================================================================
   
   # ===================================================================================================
@@ -38,6 +40,7 @@ run <- function() {
   rslt <- list()
 
   codesets <- load_all_codesets()
+  
   
   
 
