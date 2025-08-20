@@ -13,14 +13,11 @@
 #' @md
 run <- function() {
   # ===================================================================================================
-  #' **Standard code DO NOT EDIT | Fill values where necessary**
+  #' **Standard code DO NOT EDIT | Only fill values where necessary**
   # ===================================================================================================
 
-  init_message(query_title = "PAQS Query Development")
-
-
   .GlobalEnv$total_steps <- 0L
-  .GlobalEnv$query_name <- "PAQS_DEV"
+  .GlobalEnv$query_name <- "paqs_dev"
 
   .GlobalEnv$test_stat <- init_sum(Test = "Start of Query", Status = "", set_default = NULL)
 
@@ -50,7 +47,7 @@ run <- function() {
                                          end_date = "12-31-2024",
                                          min_codes_required = 1,
                                          min_days_separation = 0,
-                                         qualifying_event = 'first',
+                                         qualifying_event = 'all',
                                          criterion_suffix = "dx_t2_diabetes") 
   
   # Atleast one occurrence of T2 Diabetes code between diagnosis date and 2024

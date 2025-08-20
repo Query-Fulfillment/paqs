@@ -31,7 +31,6 @@ if(Sys.getenv('native_execution')) {
 initialize_session(session_name = "qf_query_session",
                    db_conn = "dbconfig",
 									 base_directory ='./query',
-                   is_json = TRUE,
                    results_schema = NA,
                    retain_intermediates = FALSE,
                    default_file_output = TRUE,
