@@ -59,6 +59,7 @@ initialize_session <- function(session_name,
                                results_subdirectory = "results",
                                default_file_output = FALSE,
                                cdm_schema = NA,
+                               table_names,
                                results_schema = NA,
                                vocabulary_schema = NA,
                                results_tag = NULL,
@@ -96,6 +97,10 @@ initialize_session <- function(session_name,
   argos_session <- argos::argos$new(session_name)
 
   set_argos_default(argos_session)
+
+  get_argos_default()$config(
+    'table_names', table_names
+  )
 
   # Set db_src
   if (!is_json) {
@@ -162,10 +167,6 @@ initialize_session <- function(session_name,
   )
 
   get_argos_default()$config("cdm_schema", cdm_schema)
-
-  cdm_type <- ifelse(any(dbListTables(get_argos_default()$config('db_src'), schema = cdm_schema) %in% c('demographic', 'diagnosis','procedures')), "pcornet", "omop")
-  
-  get_argos_default()$config("cdm_type", cdm_type)
 
   temp_schema <- switch(db_class,
 
@@ -942,64 +943,6 @@ patch_argos <- function() {
     rslt
   }
 
-
-  argos$public_methods$`compute_new.Spark SQL` <- function(tblx,
-                                                           name = paste0(sample(letters, 12, replace = TRUE), collapse = ""),
-                                                           temporary = !self$config("retain_intermediates"),
-                                                           overwrite = TRUE,
-                                                           ...) {
-    if (!inherits(name, c("ident_q", "dbplyr_schema")) && length(name) == 1) {
-      name <- gsub("\\s+", "_", name, perl = TRUE)
-      name <- self$intermed_name(name, temporary)
-    }
-    con <- self$dbi_con(tblx)
-
-    if (self$config("db_trace")) {
-      show_query(tblx)
-      if (self$config("can_explain")) explain(tblx)
-      message(
-        " -> ",
-        base::ifelse(packageVersion("dbplyr") < "2.0.0", dbplyr::as.sql(name), dbplyr::as.sql(name, con))
-      )
-      start <- Sys.time()
-      message(start)
-    }
-
-    ellipsis_args <- list(...)
-    if (self$config_exists("can_index")) {
-      if (!self$config("can_index")) {
-        ellipsis_args$indexes <- c()
-      }
-    }
-
-    self$config("temp_table_drop_me", append(self$config("temp_table_drop_me"), name))
-
-    sql <- dbplyr::sql_render(tblx)
-
-    schema_qualified_name <- DBI::Id(schema = self$config("temp_table_schema"), table = name)
-    quoted_name <- DBI::dbQuoteIdentifier(con, schema_qualified_name)
-
-    sql_statement <- paste0(
-      "CREATE ",
-      if (overwrite) "OR REPLACE " else "",
-      "TABLE ",
-      quoted_name,
-      " AS\n",
-      sql
-    )
-
-    DBI::dbExecute(con, sql_statement)
-
-    rslt <- tbl(con, in_schema(schema = self$config('temp_table_schema'), table = name))
-
-    if (self$config("db_trace")) {
-      end <- Sys.time()
-      message(end, " ==> ", format(end - start))
-    }
-    rslt
-  }
-
-
   argos$public_methods$copy_to_new <- function(dest = self$config("db_src"), df,
                                                name = deparse(substitute(df)),
                                                overwrite = TRUE,
@@ -1015,7 +958,6 @@ patch_argos <- function() {
       return(self$`copy_to_new.default`(dest, df, name, overwrite, temporary,...))
     }
   }
-
 
 
   argos$public_methods$`copy_to_new.default` <- function(dest = self$config("db_src"), df,
@@ -1177,7 +1119,7 @@ patch_argos <- function() {
     }
 
 
-  argos$private_methods$.ora_bq_db_env_cleanup <- function(db) {
+  argos$private_methods$.ora_env_cleanup <- function(db) {
     dm <- self$config("temp_table_drop_me")
     if (length(dm) == 0) {
       return(invisible(TRUE))
@@ -1186,34 +1128,14 @@ patch_argos <- function() {
     vapply(
       unique(dm),
       function(t) {
-        if (class(db)[1] == "Oracle") {
-          tryCatch(
-            get_argos_default()$db_remove_table(db, t, temporary = TRUE),
-            error = function(e) {
-              message(t, " - ", e)
-              0L
-            }
-          )
-        } else if (class(db)[1] == "src_BigQueryConnection") {
-          tryCatch(
-            if (bigrquery::bq_table_exists(bigrquery::bq_table(project = self$config('codeset_project'), dataset = self$config('codeset_dataset_name'), table = t))) {
-              bigrquery::bq_table_delete(bigrquery::bq_table(project = self$config('codeset_project'), dataset = self$config('codeset_dataset_name'), table = t))
-            },
-            error = function(e) {
-              message(t, " - ", e)
-              0L
-            }
-          )
-        } else if (class(db)[1] == "Spark SQL") {
-          tryCatch(
-            get_argos_default()$db_remove_table(db, in_schema(schema = get_argos_default()$config('temp_table_schema'),table = t), temporary = TRUE),
-            error = function(e) {
-              message(t, " - ", e)
-              0L
-            }
-          )
-
-        }},
+        tryCatch(
+          get_argos_default()$db_remove_table(db, t, temporary = TRUE),
+          error = function(e) {
+            message(t, " - ", e)
+            0L
+          }
+        )
+      },
       FUN.VALUE = 0L
     )
   }
@@ -1269,6 +1191,7 @@ patch_argos <- function() {
     self$tbl_case_corrector(self$qual_tbl(name, "cdm_schema", db))
   }
 }
+  
 
 
 

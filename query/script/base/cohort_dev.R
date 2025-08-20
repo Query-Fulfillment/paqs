@@ -18,12 +18,14 @@ set_cdm_config <- function(cdm_type) {
   diagnosis = list(
     table = "diagnosis",
     code_column = "dx",
+    type_column = "dx_type",
     primary_date_column = "dx_date",
     fallback_date_column = "admit_date"
   ),
   procedures = list(
     table = "procedures", 
     code_column = "px",
+    type_column = "px_type",
     primary_date_column = "px_date",
     fallback_date_column = "admit_date"
   ),
@@ -144,8 +146,8 @@ validate_all_inputs <- function(codeset, start_date, end_date, min_codes_require
   }
   
   # Validate qualifying_event
-  if (!qualifying_event %in% c("first", "last", "random")) {
-    stop("qualifying_event must be one of: 'first', 'last', 'random'")
+  if (!qualifying_event %in% c("first", "last", "random", "all")) {
+    stop("qualifying_event must be one of: 'first', 'last', 'random' or 'all'")
   }
   
   # Validate criterion_suffix
@@ -212,46 +214,46 @@ resolve_date_input <- function(x) {
 #' @export
 #' @examples
 match_codetype_to_table <- function() {
-  tibble::tribble(~codetype, ~table,
+  tibble::tribble(~codetype, ~table,pcornet_vocab_type,
     # diagnosis
-    'DX09', 'diagnosis',
-    'DX10', 'diagnosis', 
-    'DX11', 'diagnosis',
-    'DXSM', 'diagnosis',
+    'DX09', 'diagnosis',"09",
+    'DX10', 'diagnosis',"10",
+    'DX11', 'diagnosis',"11",
+    'DXSM', 'diagnosis',"SM",
     # dispensing
-    'RX01', 'dispensing',
-    'RX11', 'dispensing', 
-    'RX09', 'dispensing',
+    'RX01', 'dispensing',"",
+    'RX11', 'dispensing',"",
+    'RX09', 'dispensing',"",
     # procedure
-    'PX09', 'procedures',
-    'PX10', 'procedures',
-    'PX11', 'procedures', 
-    'PXCH', 'procedures',
-    'PXLC', 'procedures',
-    'PXND', 'procedures',
-    'PXRE', 'procedures',
+    'PX09', 'procedures',"09",
+    'PX10', 'procedures',"10",
+    'PX11', 'procedures',"11",
+    'PXCH', 'procedures',"CH",
+    'PXLC', 'procedures',"LC",
+    'PXND', 'procedures',"ND",
+    'PXRE', 'procedures',"RE",
     # prescribing
-    'PR00', 'prescribing',
+    'PR00', 'prescribing',"",
     # lab_result_cm
-    'LBLC', 'lab_result_cm',
-    'LBCH', 'lab_result_cm',
-    'LB09', 'lab_result_cm',
-    'LB10', 'lab_result_cm', 
-    'LB11', 'lab_result_cm',
+    'LBLC', 'lab_result_cm',"LC",
+    'LBCH', 'lab_result_cm',"CH",
+    'LB09', 'lab_result_cm',"09",
+    'LB10', 'lab_result_cm',"10",
+    'LB11', 'lab_result_cm',"11",
     # med_admin
-    'MA09', 'med_admin',
-    'MA11', 'med_admin',
-    'MA00', 'med_admin',
+    'MA09', 'med_admin',"",
+    'MA11', 'med_admin',"",
+    'MA00', 'med_admin',"",
     # obs_clin
-    'OCSM', 'obs_clin',
-    'OCLC', 'obs_clin',
+    'OCSM', 'obs_clin',"",
+    'OCLC', 'obs_clin',"",
     # immunization
-    'VXCX', 'immunization',
-    'VXND', 'immunization',
-    'VXCH', 'immunization', 
-    'VXRX', 'immunization',
+    'VXCX', 'immunization',"CX",
+    'VXND', 'immunization',"ND",
+    'VXCH', 'immunization',"CH",
+    'VXRX', 'immunization',"RX",
     # death
-    'DTH', 'death'
+    'DTH', 'death',""
   ) %>%
     copy_to_new(df = ., name = "crosswalk", overwrite = TRUE)
 }
@@ -437,6 +439,8 @@ apply_days_separation <- function(summary_data, cohort_data, date_col, start_dat
       group_by(patid) %>%
       slice_sample(n = 1) %>%
       ungroup()
+  } else if (qualifying_event == "all") {
+   result <- summarized
   } else {
     stop(sprintf("Unsupported qualifying_event: %s", qualifying_event))
   }
