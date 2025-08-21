@@ -1261,35 +1261,3 @@ pkgLoad <- function() {
     }
   }
 }
-
-utils::assignInNamespace(
-    x = "getPass",
-    value =
-      function(msg="PASSWORD: ", noblank=FALSE, forcemask=FALSE)
-{
-  if (!is.character(msg) || length(msg) != 1 || is.na(msg))
-    stop("argument 'msg' must be a single string")
-  if (!is.logical(noblank) || length(noblank) != 1 || is.na(noblank))
-    stop("argument 'noblank' must be one of 'TRUE' or 'FALSE'")
-  if (!is.logical(forcemask) || length(forcemask) != 1 || is.na(forcemask))
-    stop("argument 'forcemask' must be one of 'TRUE' or 'FALSE'")
-  
-  if (tolower(.Platform$GUI) %in% c("rstudio", 'x11'))
-    pw <- getPass:::readline_masked_rstudio(msg=msg, noblank=noblank, forcemask=forcemask)
-  else if (getPass:::isaterm())
-    pw <- getPass:::readline_masked_term(msg=msg, showstars=TRUE, noblank=noblank)
-  else if (getPass:::os_windows())
-    pw <- getPass:::readline_masked_wincred(msg=msg, noblank=noblank)
-  else if (getPass:::hastcltk())
-    pw <- getPass:::readline_masked_tcltk(msg=msg, noblank=noblank)
-  else if (!forcemask)
-    pw <- getPass:::readline_nomask(msg, noblank=noblank)
-  else
-    stop("Masking is not supported on your platform!")
-  
-  
-  if (is.null(pw))
-    invisible()
-  else
-    pw
-},ns = "getPass")
