@@ -120,7 +120,7 @@ initialize_session <- function(session_name,
        ))
      })
    }
-  
+
   get_argos_default()$config("db_src", srcr::srcr(db_conn))
 
   db_class <- class(get_argos_default()$config("db_src"))[1]
@@ -248,7 +248,7 @@ initialize_session <- function(session_name,
   ## Drop path to base directory if present
   specs_drop_wd <- str_remove(specs_subdirectory, base_directory)
   results_drop_wd <- str_remove(results_subdirectory, base_directory)
-  
+
   get_argos_default()$config(
     "subdirs",
     list(
@@ -314,7 +314,7 @@ load_query <- function(package) {
     )
 
   for (file in files) {
-    if (grepl("execute_req.R|renv", file)) {
+    if (grepl("execute_req.R|renv|locode", file)) {
       next
     }
     source(file)
@@ -1189,7 +1189,7 @@ patch_argos <- function() {
     self$tbl_case_corrector(self$qual_tbl(name, "cdm_schema", db))
   }
 }
-  
+
 
 
 

@@ -1,0 +1,194 @@
+code,codetype,descrip
+157.2,DX09,Malignant neoplasm of tail of pancreas
+153.8,DX09,Malignant neoplasm of other specified sites of large intestine
+150.1,DX09,Malignant neoplasm of thoracic esophagus
+150,DX09,Malignant neoplasm of cervical esophagus
+157.4,DX09,Malignant neoplasm of islets of langerhans
+V10.42,DX09,Personal history of malignant neoplasm of other parts of uterus
+153.5,DX09,Malignant neoplasm of appendix vermiformis
+156.8,DX09,Malignant neoplasm of other specified sites of gallbladder and extrahepatic bile ducts
+203,DX09,Multiple myeloma
+153.1,DX09,Malignant neoplasm of transverse colon
+189.1,DX09,Malignant neoplasm of renal pelvis
+150.3,DX09,Malignant neoplasm of upper third of esophagus
+155,DX09,"Malignant neoplasm of liver, primary"
+174.3,DX09,Malignant neoplasm of lower-inner quadrant of female breast
+174.1,DX09,Malignant neoplasm of central portion of female breast
+153.2,DX09,Malignant neoplasm of descending colon
+156,DX09,Malignant neoplasm of gallbladder
+182.8,DX09,Malignant neoplasm of other specified sites of body of uterus
+203.1,DX09,Plasma cell leukemia
+153.6,DX09,Malignant neoplasm of ascending colon
+150.2,DX09,Malignant neoplasm of abdominal esophagus
+V10.22,DX09,"Personal history of malignant neoplasm of nasal cavities, middle ear, and accessory sinuses"
+174,DX09,Malignant neoplasm of nipple and areola of female breast
+Z85.01,DX10,Personal history of malignant neoplasm of esophagus
+Z85.03,DX10,Personal history of malignant neoplasm of large intestine
+Z85.038,DX10,Personal history of other malignant neoplasm of large intestine
+Z85.04,DX10,"Personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus"
+Z85.07,DX10,Personal history of malignant neoplasm of pancreas
+Z85.3,DX10,Personal history of malignant neoplasm of breast
+Z85.42,DX10,Personal history of malignant neoplasm of other parts of uterus
+Z85.43,DX10,Personal history of malignant neoplasm of ovary
+Z85.46,DX10,Personal history of malignant neoplasm of prostate
+Z85.51,DX10,Personal history of malignant neoplasm of bladder
+Z85.79,DX10,"Personal history of other malignant neoplasms of lymphoid, hematopoietic and related tissues"
+Z85.81,DX10,"Personal history of malignant neoplasm of lip, oral cavity, and pharynx"
+C56.0,DX10,Malignant neoplasm of right ovary
+C64.0,DX10,"Malignant neoplasm of right kidney, except renal pelvis"
+C65.0,DX10,Malignant neoplasm of right renal pelvis
+C15.4,DX10,Malignant neoplasm of middle third of esophagus
+C15.5,DX10,Malignant neoplasm of lower third of esophagus
+C15.8,DX10,Malignant neoplasm of overlapping sites of esophagus
+C15.9,DX10,"Malignant neoplasm of esophagus, unspecified"
+C18.0,DX10,Malignant neoplasm of cecum
+C18.1,DX10,Malignant neoplasm of appendix
+C18.2,DX10,Malignant neoplasm of ascending colon
+C18.3,DX10,Malignant neoplasm of hepatic flexure
+C18.4,DX10,Malignant neoplasm of transverse colon
+C25.0,DX10,Malignant neoplasm of head of pancreas
+C25.1,DX10,Malignant neoplasm of body of pancreas
+C25.2,DX10,Malignant neoplasm of tail of pancreas
+C25.3,DX10,Malignant neoplasm of pancreatic duct
+C25.4,DX10,Malignant neoplasm of endocrine pancreas
+C25.7,DX10,Malignant neoplasm of other parts of pancreas
+C25.8,DX10,Malignant neoplasm of overlapping sites of pancreas
+C25.9,DX10,"Malignant neoplasm of pancreas, unspecified"
+C50.8,DX10,Malignant neoplasm of overlapping sites of breast
+C79.71,DX10,Secondary malignant neoplasm of right adrenal gland
+189,DX09,"Malignant neoplasm of kidney, except pelvis"
+183.9,DX09,"Malignant neoplasm of uterine adnexa, unspecified site"
+157,DX09,Malignant neoplasm of head of pancreas
+157.3,DX09,Malignant neoplasm of pancreatic duct
+182.1,DX09,Malignant neoplasm of isthmus
+V10.3,DX09,Personal history of malignant neoplasm of breast
+175,DX09,Malignant neoplasm of nipple and areola of male breast
+153,DX09,Malignant neoplasm of hepatic flexure
+174.8,DX09,Malignant neoplasm of other specified sites of female breast
+175.9,DX09,Malignant neoplasm of other and unspecified sites of male breast
+174.9,DX09,"Malignant neoplasm of breast (female), unspecified"
+155.1,DX09,Malignant neoplasm of intrahepatic bile ducts
+174.4,DX09,Malignant neoplasm of upper-outer quadrant of female breast
+174.5,DX09,Malignant neoplasm of lower-outer quadrant of female breast
+183,DX09,Malignant neoplasm of ovary
+155.2,DX09,"Malignant neoplasm of liver, not specified as primary or secondary"
+V10.03,DX09,Personal history of malignant neoplasm of esophagus
+182,DX09,"Malignant neoplasm of corpus uteri, except isthmus"
+V10.46,DX09,Personal history of malignant neoplasm of prostate
+150.4,DX09,Malignant neoplasm of middle third of esophagus
+156.1,DX09,Malignant neoplasm of extrahepatic bile ducts
+V10.05,DX09,Personal history of malignant neoplasm of large intestine
+183.8,DX09,Malignant neoplasm of other specified sites of uterine adnexa
+189.9,DX09,"Malignant neoplasm of urinary organ, site unspecified"
+174.6,DX09,Malignant neoplasm of axillary tail of female breast
+157.9,DX09,"Malignant neoplasm of pancreas, part unspecified"
+157.8,DX09,Malignant neoplasm of other specified sites of pancreas
+203.8,DX09,Other immunoproliferative neoplasms
+153.7,DX09,Malignant neoplasm of splenic flexure
+150.9,DX09,"Malignant neoplasm of esophagus, unspecified site"
+153.9,DX09,"Malignant neoplasm of colon, unspecified site"
+C25.3,DX10,Malignant neoplasm: Pancreatic duct
+C15.0,DX10,Malignant neoplasm: Cervical part of oesophagus
+C15.1,DX10,Malignant neoplasm: Thoracic part of oesophagus
+C15.2,DX10,Malignant neoplasm: Abdominal part of oesophagus
+C15.3,DX10,Malignant neoplasm: Upper third of oesophagus
+C15.4,DX10,Malignant neoplasm: Middle third of oesophagus
+C15.5,DX10,Malignant neoplasm: Lower third of oesophagus
+C15.8,DX10,Malignant neoplasm: Overlapping lesion of oesophagus
+C25.0,DX10,Malignant neoplasm: Head of pancreas
+C15.9,DX10,"Malignant neoplasm: Oesophagus, unspecified"
+C18.6,DX10,Malignant neoplasm: Descending colon
+C18.7,DX10,Malignant neoplasm: Sigmoid colon
+C18.8,DX10,Malignant neoplasm: Overlapping lesion of colon
+C18.9,DX10,"Malignant neoplasm: Colon, unspecified"
+C19,DX10,Malignant neoplasm of rectosigmoid junction
+C20,DX10,Malignant neoplasm of rectum
+C25.9,DX10,"Malignant neoplasm: Pancreas, unspecified"
+C25.4,DX10,Malignant neoplasm: Endocrine pancreas
+C25.7,DX10,Malignant neoplasm: Other parts of pancreas
+C25.8,DX10,Malignant neoplasm: Overlapping lesion of pancreas
+C50.0,DX10,Malignant neoplasm: Nipple and areola
+C50.1,DX10,Malignant neoplasm: Central portion of breast
+C50.2,DX10,Malignant neoplasm: Upper-inner quadrant of breast
+C50.3,DX10,Malignant neoplasm: Lower-inner quadrant of breast
+C50.4,DX10,Malignant neoplasm: Upper-outer quadrant of breast
+C90.0,DX10,Multiple myeloma
+D05.0,DX10,Lobular carcinoma in situ
+D05.1,DX10,Intraductal carcinoma in situ
+Z85.3,DX10,Personal history of malignant neoplasm of breast
+C18.0,DX10,Malignant neoplasm: Caecum
+C18.1,DX10,Malignant neoplasm: Appendix
+C18.2,DX10,Malignant neoplasm: Ascending colon
+C18.3,DX10,Malignant neoplasm: Hepatic flexure
+C18.4,DX10,Malignant neoplasm: Transverse colon
+C18.5,DX10,Malignant neoplasm: Splenic flexure
+C21.8,DX10,"Malignant neoplasm: Overlapping lesion of rectum, anus and anal canal"
+C22.0,DX10,Malignant neoplasm: Liver cell carcinoma
+C22.1,DX10,Malignant neoplasm: Intrahepatic bile duct carcinoma
+C22.7,DX10,Malignant neoplasm: Other specified carcinomas of liver
+C22.9,DX10,"Malignant neoplasm: Liver, unspecified"
+C25.1,DX10,Malignant neoplasm: Body of pancreas
+C25.2,DX10,Malignant neoplasm: Tail of pancreas
+C50.5,DX10,Malignant neoplasm: Lower-outer quadrant of breast
+C50.6,DX10,Malignant neoplasm: Axillary tail of breast
+C50.8,DX10,Malignant neoplasm: Overlapping lesion of breast
+C50.9,DX10,"Malignant neoplasm: Breast, unspecified"
+C54.0,DX10,Malignant neoplasm: Isthmus uteri
+C54.1,DX10,Malignant neoplasm: Endometrium
+C54.2,DX10,Malignant neoplasm: Myometrium
+C54.3,DX10,Malignant neoplasm: Fundus uteri
+C54.8,DX10,Malignant neoplasm: Overlapping lesion of corpus uteri
+C54.9,DX10,"Malignant neoplasm: Corpus uteri, unspecified"
+C90.1,DX10,Plasma cell leukaemia
+C90.2,DX10,Extramedullary plasmacytoma
+C15.3,DX10,Malignant neoplasm of upper third of esophagus
+C18.5,DX10,Malignant neoplasm of splenic flexure
+C18.6,DX10,Malignant neoplasm of descending colon
+C18.7,DX10,Malignant neoplasm of sigmoid colon
+C18.8,DX10,Malignant neoplasm of overlapping sites of colon
+C18.9,DX10,"Malignant neoplasm of colon, unspecified"
+C19,DX10,Malignant neoplasm of rectosigmoid junction
+C20,DX10,Malignant neoplasm of rectum
+C21.8,DX10,"Malignant neoplasm of overlapping sites of rectum, anus and anal canal"
+C22.0,DX10,Liver cell carcinoma
+C22.1,DX10,Intrahepatic bile duct carcinoma
+C22.7,DX10,Other specified carcinomas of liver
+C22.9,DX10,"Malignant neoplasm of liver, not specified as primary or secondary"
+C50.0,DX10,Malignant neoplasm of nipple and areola
+C50.1,DX10,Malignant neoplasm of central portion of breast
+C50.2,DX10,Malignant neoplasm of upper-inner quadrant of breast
+C50.3,DX10,Malignant neoplasm of lower-inner quadrant of breast
+C50.4,DX10,Malignant neoplasm of upper-outer quadrant of breast
+C50.5,DX10,Malignant neoplasm of lower-outer quadrant of breast
+C50.6,DX10,Malignant neoplasm of axillary tail of breast
+C50.9,DX10,Malignant neoplasm of breast of unspecified site
+C54.0,DX10,Malignant neoplasm of isthmus uteri
+C54.1,DX10,Malignant neoplasm of endometrium
+C54.2,DX10,Malignant neoplasm of myometrium
+C54.3,DX10,Malignant neoplasm of fundus uteri
+C54.8,DX10,Malignant neoplasm of overlapping sites of corpus uteri
+C54.9,DX10,"Malignant neoplasm of corpus uteri, unspecified"
+C56.1,DX10,Malignant neoplasm of right ovary
+C56.2,DX10,Malignant neoplasm of left ovary
+C56.9,DX10,Malignant neoplasm of unspecified ovary
+C64.1,DX10,"Malignant neoplasm of right kidney, except renal pelvis"
+C64.9,DX10,"Malignant neoplasm of unspecified kidney, except renal pelvis"
+C65.1,DX10,Malignant neoplasm of right renal pelvis
+C65.9,DX10,Malignant neoplasm of unspecified renal pelvis
+C79.81,DX10,Secondary malignant neoplasm of breast
+C79.82,DX10,Secondary malignant neoplasm of genital organs
+C90.0,DX10,Multiple myeloma
+C90.1,DX10,Plasma cell leukemia
+C90.2,DX10,Extramedullary plasmacytoma
+D05.0,DX10,Lobular carcinoma in situ of breast
+D05.1,DX10,Intraductal carcinoma in situ of breast
+153.3,DX09,Malignant neoplasm of sigmoid colon
+V10.85,DX09,Personal history of malignant neoplasm of brain
+150.8,DX09,Malignant neoplasm of other specified part of esophagus
+174.2,DX09,Malignant neoplasm of upper-inner quadrant of female breast
+V10.9,DX09,Other and unspecified personal history of malignant neoplasm
+V10.06,DX09,"Personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus"
+150.5,DX09,Malignant neoplasm of lower third of esophagus
+156.9,DX09,"Malignant neoplasm of biliary tract, part unspecified site"
+157.1,DX09,Malignant neoplasm of body of pancreas
+189.8,DX09,Malignant neoplasm of other specified sites of urinary organs

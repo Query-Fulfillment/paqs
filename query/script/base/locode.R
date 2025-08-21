@@ -1,7 +1,6 @@
-dx_any_icd10  <- read_csv(file = 'query/code_sets/dx_any_icd_10.csv')
-
-
 if(all(pull(codesets$dx_any_icd_10, code) == "*")) {
+  
+echo_text('Wild card entry detected')
 
 codetype <- codeset %>% pull(codetype)
  

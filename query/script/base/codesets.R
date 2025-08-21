@@ -6,6 +6,7 @@ load_all_codesets <- function(path = paste0('./query/',get_argos_default()$confi
   lapply(files, load_codeset, col_types = "ccc", indexes = "code"),
   basename(files)
   )
-  
+
+codesets$crosswalk <- match_codetype_to_table()
 codesets
 }
