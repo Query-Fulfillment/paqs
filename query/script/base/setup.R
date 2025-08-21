@@ -53,7 +53,7 @@
 #' @export
 initialize_session <- function(session_name,
                                db_conn,
-                               is_json = FALSE,
+                               query_title = "",
                                base_directory = "./query/",
                                specs_subdirectory = "code_sets",
                                results_subdirectory = "results",
@@ -103,9 +103,6 @@ initialize_session <- function(session_name,
   )
 
   # Set db_src
-  if (!is_json) {
-    get_argos_default()$config("db_src", db_conn)
-  } else {
     if (jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_name == "src_bigquery") {
      # Read configuration data once to avoid repeated parsing
      config_data <- jsonlite::fromJSON(srcr::find_config_files(db_conn))
@@ -123,8 +120,8 @@ initialize_session <- function(session_name,
        ))
      })
    }
-    get_argos_default()$config("db_src", srcr::srcr(db_conn))
-  }
+  
+  get_argos_default()$config("db_src", srcr::srcr(db_conn))
 
   db_class <- class(get_argos_default()$config("db_src"))[1]
 
@@ -277,6 +274,8 @@ initialize_session <- function(session_name,
     "can_index",
     index_val
   )
+
+  init_message(query_title = query_title, db_conn = db_conn)
 }
 
 #' Load Query Files
@@ -315,7 +314,7 @@ load_query <- function(package) {
     )
 
   for (file in files) {
-    if (grepl("execute_req.R|renv|driver_ca.R", file)) {
+    if (grepl("execute_req.R|renv", file)) {
       next
     }
     source(file)
@@ -353,7 +352,7 @@ exit <- function(db = get_argos_default()$config("db_src")) {
   DBI::dbDisconnect(conn = db)
 }
 
-init_message <- function(query_title) {
+init_message <- function(query_title,db_conn) {
   # Print the formatted banner with newlines
   if (.Platform$OS.type == "windows") {
     cat(readLines("./tools/banner", warn = FALSE), sep = "\n")
@@ -376,12 +375,11 @@ init_message <- function(query_title) {
     )
   )
 
-  SiteName <- jsonlite::fromJSON(srcr::find_config_files(
-    "dbconfig"
+  SiteName <- jsonlite::fromJSON(srcr::find_config_files(db_conn
   ))$src_site$SiteName
-  src_name <- jsonlite::fromJSON(srcr::find_config_files("dbconfig"))$src_name
+  src_name <- jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_name
   Driver <- jsonlite::fromJSON(srcr::find_config_files(
-    "dbconfig"
+    db_conn
   ))$src_args$Driver
 
   mklist <- function() {
