@@ -18,7 +18,6 @@ run <- function() {
 
   .GlobalEnv$total_steps <- 0L
   .GlobalEnv$test_stat <- init_sum(Test = "Start of Query", N = as.numeric(0), set_default = NULL)
-  .GlobalEnv$query_start_time <- Sys.time()
 
   start_log()
 
@@ -49,18 +48,9 @@ run <- function() {
   #' **Standard code DO NOT EDIT**
   # ===================================================================================================
 
-  end_log()
-  on.exit(exit())
   render_report()
-
-  .GlobalEnv$query_end_time <- Sys.time()
-
-  signature <-
-    tibble(
-      `Query Start Time` =  .GlobalEnv$query_start_time,
-      `Query End Time` =  .GlobalEnv$query_end_time,
-      `Total Run Time` = .GlobalEnv$query_end_time - .GlobalEnv$query_start_time
-    )
-  output_tbl(rslt$signature,
-             name = paste0('signature'))
+  
+  end_log()
+  
+  on.exit(exit())
 }

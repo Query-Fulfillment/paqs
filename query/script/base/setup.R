@@ -314,7 +314,7 @@ load_query <- function(package) {
     )
 
   for (file in files) {
-    if (grepl("execute_req.R|renv|driver_ca.R", file)) {
+    if (grepl("execute_req.R|renv", file)) {
       next
     }
     source(file)

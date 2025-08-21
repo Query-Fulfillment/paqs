@@ -268,6 +268,7 @@ show_progress <- function(step, message) {
 #' @export
 #' @examples
 start_log <- function() {
+
 logFile <- file(file.path(
     get_argos_default()$config("base_dir"),
     get_argos_default()$config("subdirs")$result_dir,
@@ -276,6 +277,8 @@ logFile <- file(file.path(
 
   sink(file = logFile, type = "message", append = TRUE)
   sink(file = logFile, type = "output", append = TRUE)
+
+	.GlobalEnv$query_start_time <- Sys.time()
 }
 
 
@@ -286,9 +289,21 @@ logFile <- file(file.path(
 #' @export
 #' @examples
 end_log <- function() {
+
 	sink(type = "output")
   sink(type = "message")
 	close.connection(logFile)
+
+	.GlobalEnv$query_end_time <- Sys.time()
+
+  signature <-
+    tibble(
+      `Query Start Time` =  .GlobalEnv$query_start_time,
+      `Query End Time` =  .GlobalEnv$query_end_time,
+      `Total Run Time` = .GlobalEnv$query_end_time - .GlobalEnv$query_start_time
+    )
+  output_tbl(rslt$signature,
+             name = paste0('signature'))
 }
 
 
