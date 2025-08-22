@@ -14,11 +14,11 @@ req_name=$(basename "$PWD")
 #   exit 1
 # fi
 #
-# grep -q "dbconfig" "query/execute_req.R"
-# if [ $? -ne 0 ]; then
-#   echo -e "\033[1;31m \nERROR: Non-standard db_conn arguement for packaging. Please set the db_conn arguement to 'dbconfig' in execute_req.R for # packaging. See example below\n\033[0;0m\n\ninitialize_session(\nsession_name = 'qf_query_session',\n\033[0;36mdb_conn = 'dbconfig',\033[0# ;0m\nbase_directory ='./query',\nis_json = TRUE,\nresults_schema = NA,\nretain_intermediates = FALSE,\ndefault_file_output = TRUE,\nprep_dir = FALSE# ,\nmode = "production")"
-#   exit 1
-# fi
+ grep -q "dbconfig" "query/execute_req.R"
+ if [ $? -ne 0 ]; then
+   echo -e "\033[1;31m \nERROR: Non-standard db_conn arguement for packaging. Please set the db_conn arguement to 'dbconfig' in execute_req.R for # packaging. See example below\n\033[0;0m\n\ninitialize_session(\nsession_name = 'qf_query_session',\n\033[0;36mdb_conn = 'dbconfig',\033[0# ;0m\nbase_directory ='./query',\nis_json = TRUE,\nresults_schema = NA,\nretain_intermediates = FALSE,\ndefault_file_output = TRUE,\nprep_dir = FALSE# ,\nmode = "production")"
+   exit 1
+ fi
 
 
 # Create workplan directory

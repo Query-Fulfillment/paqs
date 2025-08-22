@@ -1,0 +1,403 @@
+concept_id,code,codetype,descrip
+372636,2589008,PR00,3 ML insulin glargine-aglr 100 UNT/ML Pen Injector
+701381,2563970,PR00,insulin glargine-yfgn 100 UNT/ML
+701382,2563972,PR00,insulin glargine-yfgn 100 UNT/ML [Semglee]
+701383,2563974,PR00,insulin glargine-yfgn 100 UNT/ML Pen Injector
+701384,2563975,PR00,insulin glargine-yfgn 100 UNT/ML Pen Injector [Semglee]
+701385,2563976,PR00,insulin glargine-yfgn 100 UNT/ML Injectable Solution
+701386,2563977,PR00,insulin glargine-yfgn 100 UNT/ML Injectable Solution [Semglee]
+702583,2563971,PR00,3 ML insulin glargine-yfgn 100 UNT/ML Pen Injector
+702584,2563973,PR00,3 ML insulin glargine-yfgn 100 UNT/ML Pen Injector [Semglee]
+741831,2619151,PR00,semaglutide 0.68 MG/ML
+741832,2619152,PR00,"0.25 MG, 0.5 MG Dose 3 ML semaglutide 0.68 MG/ML Pen Injector"
+741833,2619153,PR00,semaglutide 0.68 MG/ML [Ozempic]
+741834,2619154,PR00,"0.25 MG, 0.5 MG Dose 3 ML semaglutide 0.68 MG/ML Pen Injector [Ozempic]"
+746313,2644395,PR00,tirzepatide Injection
+746314,2644397,PR00,tirzepatide 15 MG/ML Injection
+746315,2644398,PR00,tirzepatide Injection [Mounjaro]
+746316,2644400,PR00,tirzepatide 15 MG/ML Injection [Mounjaro]
+746317,2644402,PR00,tirzepatide 10 MG/ML Injection
+746318,2644404,PR00,tirzepatide 10 MG/ML Injection [Mounjaro]
+746319,2644406,PR00,tirzepatide 5 MG/ML Injection
+746320,2644408,PR00,tirzepatide 5 MG/ML Injection [Mounjaro]
+746321,2644410,PR00,tirzepatide 30 MG/ML Injection
+746322,2644412,PR00,tirzepatide 30 MG/ML Injection [Mounjaro]
+746323,2644414,PR00,tirzepatide 25 MG/ML Injection
+746324,2644416,PR00,tirzepatide 25 MG/ML Injection [Mounjaro]
+746325,2644418,PR00,tirzepatide 20 MG/ML Injection
+746326,2644420,PR00,tirzepatide 20 MG/ML Injection [Mounjaro]
+747139,2669703,PR00,tirzepatide 5 MG/ML [Zepbound]
+747140,2669704,PR00,Zepbound Injectable Product
+747141,2669705,PR00,tirzepatide Auto-Injector [Zepbound]
+747142,2669707,PR00,tirzepatide 5 MG/ML Auto-Injector [Zepbound]
+747143,2669708,PR00,tirzepatide 10 MG/ML [Zepbound]
+747144,2669710,PR00,tirzepatide 10 MG/ML Auto-Injector [Zepbound]
+747145,2669711,PR00,tirzepatide 15 MG/ML [Zepbound]
+747146,2669713,PR00,tirzepatide 15 MG/ML Auto-Injector [Zepbound]
+747147,2669714,PR00,tirzepatide 20 MG/ML [Zepbound]
+747148,2669716,PR00,tirzepatide 20 MG/ML Auto-Injector [Zepbound]
+747149,2669717,PR00,tirzepatide 25 MG/ML [Zepbound]
+747150,2669719,PR00,tirzepatide 25 MG/ML Auto-Injector [Zepbound]
+747151,2669720,PR00,tirzepatide 30 MG/ML [Zepbound]
+747152,2669722,PR00,tirzepatide 30 MG/ML Auto-Injector [Zepbound]
+747773,2644396,PR00,0.5 ML tirzepatide 15 MG/ML Injection
+747774,2644399,PR00,0.5 ML tirzepatide 15 MG/ML Injection [Mounjaro]
+747775,2644401,PR00,0.5 ML tirzepatide 10 MG/ML Injection
+747776,2644403,PR00,0.5 ML tirzepatide 10 MG/ML Injection [Mounjaro]
+747777,2644405,PR00,0.5 ML tirzepatide 5 MG/ML Injection
+747778,2644407,PR00,0.5 ML tirzepatide 5 MG/ML Injection [Mounjaro]
+747779,2644409,PR00,0.5 ML tirzepatide 30 MG/ML Injection
+747780,2644411,PR00,0.5 ML tirzepatide 30 MG/ML Injection [Mounjaro]
+747781,2644413,PR00,0.5 ML tirzepatide 25 MG/ML Injection
+747782,2644415,PR00,0.5 ML tirzepatide 25 MG/ML Injection [Mounjaro]
+747783,2644417,PR00,0.5 ML tirzepatide 20 MG/ML Injection
+747784,2644419,PR00,0.5 ML tirzepatide 20 MG/ML Injection [Mounjaro]
+747888,2669706,PR00,0.5 ML tirzepatide 5 MG/ML Auto-Injector [Zepbound]
+747889,2669709,PR00,0.5 ML tirzepatide 10 MG/ML Auto-Injector [Zepbound]
+747890,2669712,PR00,0.5 ML tirzepatide 15 MG/ML Auto-Injector [Zepbound]
+747891,2669715,PR00,0.5 ML tirzepatide 20 MG/ML Auto-Injector [Zepbound]
+747892,2669718,PR00,0.5 ML tirzepatide 25 MG/ML Auto-Injector [Zepbound]
+747893,2669721,PR00,0.5 ML tirzepatide 30 MG/ML Auto-Injector [Zepbound]
+779478,2599361,PR00,semaglutide 2.68 MG/ML
+779479,2599363,PR00,semaglutide 2.68 MG/ML Pen Injector
+779480,2599364,PR00,semaglutide 2.68 MG/ML [Ozempic]
+779481,2599366,PR00,semaglutide 2.68 MG/ML Pen Injector [Ozempic]
+779705,2601723,PR00,tirzepatide
+779710,2601730,PR00,tirzepatide Injectable Product
+779711,2601731,PR00,tirzepatide Auto-Injector
+779713,2601736,PR00,Mounjaro Injectable Product
+779714,2601737,PR00,tirzepatide Auto-Injector [Mounjaro]
+779717,2601742,PR00,tirzepatide 10 MG/ML
+779718,2601744,PR00,tirzepatide 10 MG/ML Auto-Injector
+779719,2601745,PR00,tirzepatide 10 MG/ML [Mounjaro]
+779720,2601747,PR00,tirzepatide 10 MG/ML Auto-Injector [Mounjaro]
+779721,2601754,PR00,tirzepatide 30 MG/ML
+779722,2601756,PR00,tirzepatide 30 MG/ML Auto-Injector
+779723,2601757,PR00,tirzepatide 30 MG/ML [Mounjaro]
+779724,2601759,PR00,tirzepatide 30 MG/ML Auto-Injector [Mounjaro]
+779725,2601760,PR00,tirzepatide 5 MG/ML
+779726,2601762,PR00,tirzepatide 5 MG/ML Auto-Injector
+779727,2601763,PR00,tirzepatide 5 MG/ML [Mounjaro]
+779728,2601765,PR00,tirzepatide 5 MG/ML Auto-Injector [Mounjaro]
+779729,2601766,PR00,tirzepatide 20 MG/ML
+779730,2601768,PR00,tirzepatide 20 MG/ML Auto-Injector
+779731,2601769,PR00,tirzepatide 20 MG/ML [Mounjaro]
+779732,2601771,PR00,tirzepatide 20 MG/ML Auto-Injector [Mounjaro]
+779733,2601772,PR00,tirzepatide 25 MG/ML
+779734,2601774,PR00,tirzepatide 25 MG/ML Auto-Injector
+779735,2601775,PR00,tirzepatide 25 MG/ML [Mounjaro]
+779736,2601777,PR00,tirzepatide 25 MG/ML Auto-Injector [Mounjaro]
+779737,2601778,PR00,tirzepatide 15 MG/ML
+779738,2601780,PR00,tirzepatide 15 MG/ML Auto-Injector
+779739,2601781,PR00,tirzepatide 15 MG/ML [Mounjaro]
+779740,2601783,PR00,tirzepatide 15 MG/ML Auto-Injector [Mounjaro]
+780248,2599362,PR00,3 ML semaglutide 2.68 MG/ML Pen Injector
+780249,2599365,PR00,3 ML semaglutide 2.68 MG/ML Pen Injector [Ozempic]
+780255,2601743,PR00,0.5 ML tirzepatide 10 MG/ML Auto-Injector
+780256,2601746,PR00,0.5 ML tirzepatide 10 MG/ML Auto-Injector [Mounjaro]
+780257,2601755,PR00,0.5 ML tirzepatide 30 MG/ML Auto-Injector
+780258,2601758,PR00,0.5 ML tirzepatide 30 MG/ML Auto-Injector [Mounjaro]
+780259,2601761,PR00,0.5 ML tirzepatide 5 MG/ML Auto-Injector
+780260,2601764,PR00,0.5 ML tirzepatide 5 MG/ML Auto-Injector [Mounjaro]
+780261,2601767,PR00,0.5 ML tirzepatide 20 MG/ML Auto-Injector
+780262,2601770,PR00,0.5 ML tirzepatide 20 MG/ML Auto-Injector [Mounjaro]
+780263,2601773,PR00,0.5 ML tirzepatide 25 MG/ML Auto-Injector
+780264,2601776,PR00,0.5 ML tirzepatide 25 MG/ML Auto-Injector [Mounjaro]
+780265,2601784,PR00,0.5 ML tirzepatide 15 MG/ML Auto-Injector
+780266,2601785,PR00,0.5 ML tirzepatide 15 MG/ML Auto-Injector [Mounjaro]
+793109,1990864,PR00,exenatide 2.35 MG/ML
+793110,1990865,PR00,exenatide Auto-Injector
+793111,1990866,PR00,0.85 ML exenatide 2.35 MG/ML Auto-Injector
+793112,1990867,PR00,exenatide 2.35 MG/ML [Bydureon]
+793113,1990868,PR00,exenatide Auto-Injector [Bydureon]
+793114,1990869,PR00,0.85 ML exenatide 2.35 MG/ML Auto-Injector [Bydureon]
+793115,1990870,PR00,exenatide 2.35 MG/ML Auto-Injector
+793116,1990871,PR00,exenatide 2.35 MG/ML Auto-Injector [Bydureon]
+793143,1991302,PR00,semaglutide
+793144,1991303,PR00,semaglutide 1.34 MG/ML
+793145,1991304,PR00,semaglutide Injectable Product
+793146,1991305,PR00,semaglutide Pen Injector
+793147,1991306,PR00,"0.25 MG, 0.5 MG Dose 1.5 ML semaglutide 1.34 MG/ML Pen Injector"
+793149,1991308,PR00,semaglutide 1.34 MG/ML [Ozempic]
+793150,1991309,PR00,semaglutide Pen Injector [Ozempic]
+793151,1991310,PR00,Ozempic Injectable Product
+793152,1991311,PR00,"0.25 MG, 0.5 MG Dose 1.5 ML semaglutide 1.34 MG/ML Pen Injector [Ozempic]"
+793153,1991316,PR00,1 MG Dose 1.5 ML semaglutide 1.34 MG/ML Pen Injector
+793154,1991317,PR00,1 MG Dose 1.5 ML semaglutide 1.34 MG/ML Pen Injector [Ozempic]
+793405,1994307,PR00,insulin degludec 70 UNT/ML
+793406,1994308,PR00,"insulin aspart, human / insulin degludec Injectable Product"
+793407,1994309,PR00,"insulin aspart, human / insulin degludec Pen Injector"
+793408,1994311,PR00,"3 ML insulin aspart, human 30 UNT/ML / insulin degludec 70 UNT/ML Pen Injector"
+793410,1994313,PR00,"insulin aspart, human 30 UNT/ML / insulin degludec 70 UNT/ML [Ryzodeg]"
+793411,1994314,PR00,"insulin aspart, human / insulin degludec Pen Injector [Ryzodeg]"
+793412,1994315,PR00,Ryzodeg Injectable Product
+793413,1994316,PR00,"3 ML insulin aspart, human 30 UNT/ML / insulin degludec 70 UNT/ML Pen Injector [Ryzodeg]"
+793498,1994317,PR00,"insulin aspart, human 30 UNT/ML / insulin degludec 70 UNT/ML Pen Injector"
+793499,1994318,PR00,"insulin aspart, human 30 UNT/ML / insulin degludec 70 UNT/ML Pen Injector [Ryzodeg]"
+1146282,2377131,PR00,insulin glargine 100 UNT/ML [Semglee]
+1146283,2377132,PR00,insulin glargine Injectable Solution [Semglee]
+1146284,2377133,PR00,Semglee Injectable Product
+1146285,2377134,PR00,insulin glargine 100 UNT/ML Injectable Solution [Semglee]
+1146286,2377230,PR00,insulin glargine Pen Injector [Semglee]
+1146287,2377232,PR00,insulin glargine 100 UNT/ML Pen Injector [Semglee]
+1146756,2377231,PR00,3 ML insulin glargine 100 UNT/ML Pen Injector [Semglee]
+1356056,2107519,PR00,insulin degludec Injectable Solution
+1356057,2107520,PR00,insulin degludec 100 UNT/ML Injectable Solution
+1356058,2107521,PR00,insulin degludec Injectable Solution [Tresiba]
+1356059,2107522,PR00,insulin degludec 100 UNT/ML Injectable Solution [Tresiba]
+1502905,274783,PR00,insulin glargine
+1502908,343226,PR00,insulin glargine 100 UNT/ML
+1502910,847232,PR00,3 ML insulin glargine 100 UNT/ML Pen Injector [Lantus]
+1537020,2553400,PR00,semaglutide 0.5 MG/ML
+1537021,2553500,PR00,semaglutide Auto-Injector
+1537023,2553503,PR00,semaglutide 0.5 MG/ML [Wegovy]
+1537024,2553504,PR00,semaglutide Auto-Injector [Wegovy]
+1537025,2553505,PR00,Wegovy Injectable Product
+1537026,2553507,PR00,semaglutide 0.5 MG/ML Auto-Injector
+1537027,2553508,PR00,semaglutide 0.5 MG/ML Auto-Injector [Wegovy]
+1537028,2553600,PR00,semaglutide 1 MG/ML
+1537029,2553602,PR00,semaglutide 1 MG/ML [Wegovy]
+1537030,2553604,PR00,semaglutide 1 MG/ML Auto-Injector
+1537031,2553605,PR00,semaglutide 1 MG/ML Auto-Injector [Wegovy]
+1537032,2553606,PR00,semaglutide 2 MG/ML
+1537033,2553607,PR00,semaglutide 2 MG/ML Auto-Injector
+1537034,2553608,PR00,semaglutide 2 MG/ML [Wegovy]
+1537035,2553700,PR00,semaglutide 2 MG/ML Auto-Injector [Wegovy]
+1537036,2553900,PR00,semaglutide 2.27 MG/ML
+1537037,2553902,PR00,semaglutide 2.27 MG/ML [Wegovy]
+1537038,2553904,PR00,semaglutide 2.27 MG/ML Auto-Injector
+1537039,2553905,PR00,semaglutide 2.27 MG/ML Auto-Injector [Wegovy]
+1537040,2554101,PR00,semaglutide 3.2 MG/ML
+1537041,2554103,PR00,semaglutide 3.2 MG/ML [Wegovy]
+1537042,2554105,PR00,semaglutide 3.2 MG/ML Auto-Injector
+1537043,2554106,PR00,semaglutide 3.2 MG/ML Auto-Injector [Wegovy]
+1537596,2553501,PR00,0.5 ML semaglutide 0.5 MG/ML Auto-Injector
+1537597,2553506,PR00,0.5 ML semaglutide 0.5 MG/ML Auto-Injector [Wegovy]
+1537598,2553601,PR00,0.5 ML semaglutide 1 MG/ML Auto-Injector
+1537599,2553603,PR00,0.5 ML semaglutide 1 MG/ML Auto-Injector [Wegovy]
+1537600,2553802,PR00,0.5 ML semaglutide 2 MG/ML Auto-Injector
+1537601,2553803,PR00,0.5 ML semaglutide 2 MG/ML Auto-Injector [Wegovy]
+1537602,2553901,PR00,0.75 ML semaglutide 2.27 MG/ML Auto-Injector
+1537603,2553903,PR00,0.75 ML semaglutide 2.27 MG/ML Auto-Injector [Wegovy]
+1537604,2554102,PR00,0.75 ML semaglutide 3.2 MG/ML Auto-Injector
+1537605,2554104,PR00,0.75 ML semaglutide 3.2 MG/ML Auto-Injector [Wegovy]
+1583722,60548,PR00,exenatide
+1583727,847913,PR00,60 ACTUAT exenatide 0.01 MG/ACTUAT Pen Injector [Byetta]
+1583728,847914,PR00,exenatide 0.005 MG/ACTUAT
+1583729,847915,PR00,60 ACTUAT exenatide 0.005 MG/ACTUAT Pen Injector
+1583730,847917,PR00,60 ACTUAT exenatide 0.005 MG/ACTUAT Pen Injector [Byetta]
+1718596,1858991,PR00,lixisenatide 0.033 MG/ML
+1718597,1858992,PR00,insulin glargine / lixisenatide Injectable Product
+1718598,1858993,PR00,insulin glargine / lixisenatide Pen Injector
+1718599,1858995,PR00,3 ML insulin glargine 100 UNT/ML / lixisenatide 0.033 MG/ML Pen Injector
+1718601,1858997,PR00,insulin glargine 100 UNT/ML / lixisenatide 0.033 MG/ML [Soliqua]
+1718602,1858998,PR00,insulin glargine / lixisenatide Pen Injector [Soliqua]
+1718603,1858999,PR00,Soliqua Injectable Product
+1718604,1859000,PR00,3 ML insulin glargine 100 UNT/ML / lixisenatide 0.033 MG/ML Pen Injector [Soliqua]
+1718605,1859001,PR00,insulin glargine 100 UNT/ML / lixisenatide 0.033 MG/ML Pen Injector
+1718606,1859002,PR00,insulin glargine 100 UNT/ML / lixisenatide 0.033 MG/ML Pen Injector [Soliqua]
+1718703,1860164,PR00,liraglutide 3.6 MG/ML
+1718704,1860165,PR00,insulin degludec / liraglutide Injectable Product
+1718705,1860166,PR00,insulin degludec / liraglutide Pen Injector
+1718706,1860167,PR00,3 ML insulin degludec 100 UNT/ML / liraglutide 3.6 MG/ML Pen Injector
+1718708,1860169,PR00,insulin degludec 100 UNT/ML / liraglutide 3.6 MG/ML [Xultophy]
+1718709,1860170,PR00,insulin degludec / liraglutide Pen Injector [Xultophy]
+1718710,1860171,PR00,Xultophy Injectable Product
+1718711,1860172,PR00,3 ML insulin degludec 100 UNT/ML / liraglutide 3.6 MG/ML Pen Injector [Xultophy]
+1718712,1860173,PR00,insulin degludec 100 UNT/ML / liraglutide 3.6 MG/ML Pen Injector
+1718713,1860174,PR00,insulin degludec 100 UNT/ML / liraglutide 3.6 MG/ML Pen Injector [Xultophy]
+1758672,2589007,PR00,insulin glargine-aglr 100 UNT/ML
+1758673,2589009,PR00,insulin glargine-aglr 100 UNT/ML Pen Injector
+1758675,2589011,PR00,insulin glargine-aglr 100 UNT/ML [Rezvoglar]
+1758676,2589012,PR00,Rezvoglar Injectable Product
+1758677,2589013,PR00,insulin glargine Pen Injector [Rezvoglar]
+1758678,2589015,PR00,insulin glargine-aglr 100 UNT/ML Pen Injector [Rezvoglar]
+1759242,2589008,PR00,3 ML insulin glargine-aglr 100 UNT/ML Pen Injector
+1759243,2589014,PR00,3 ML insulin glargine-aglr 100 UNT/ML Pen Injector [Rezvoglar]
+3275155,2589008,PR00,3 ML insulin glargine-aglr 100 UNT/ML Pen Injector
+19071700,285018,PR00,insulin glargine 100 UNT/ML Injectable Solution [Lantus]
+19078559,311041,PR00,insulin glargine 100 UNT/ML Injectable Solution
+19083253,847911,PR00,exenatide 0.01 MG/ACTUAT [Byetta]
+19083254,847916,PR00,exenatide 0.005 MG/ACTUAT [Byetta]
+19120790,575068,PR00,insulin glargine 100 UNT/ML [Lantus]
+19135276,847230,PR00,3 ML insulin glargine 100 UNT/ML Pen Injector
+19135404,847908,PR00,exenatide 0.01 MG/ACTUAT
+19135405,847910,PR00,60 ACTUAT exenatide 0.01 MG/ACTUAT Pen Injector
+35602717,1670007,PR00,insulin degludec
+35602718,1670008,PR00,insulin degludec 100 UNT/ML
+35602719,1670010,PR00,insulin degludec Pen Injector
+35602720,1670011,PR00,3 ML insulin degludec 100 UNT/ML Pen Injector
+35602722,1670013,PR00,insulin degludec 100 UNT/ML [Tresiba]
+35602723,1670014,PR00,insulin degludec Pen Injector [Tresiba]
+35602724,1670016,PR00,3 ML insulin degludec 100 UNT/ML Pen Injector [Tresiba]
+35602725,1670017,PR00,insulin degludec 100 UNT/ML Pen Injector
+35602726,1670018,PR00,insulin degludec 100 UNT/ML Pen Injector [Tresiba]
+35602728,1670020,PR00,insulin degludec 200 UNT/ML
+35602729,1670021,PR00,3 ML insulin degludec 200 UNT/ML Pen Injector
+35602730,1670022,PR00,insulin degludec 200 UNT/ML [Tresiba]
+35602731,1670023,PR00,3 ML insulin degludec 200 UNT/ML Pen Injector [Tresiba]
+35602732,1670024,PR00,insulin degludec 200 UNT/ML Pen Injector
+35602733,1670025,PR00,insulin degludec 200 UNT/ML Pen Injector [Tresiba]
+35604092,1736860,PR00,insulin glargine 100 UNT/ML [Basaglar]
+35604093,1736861,PR00,insulin glargine Pen Injector [Basaglar]
+35604094,1736863,PR00,3 ML insulin glargine 100 UNT/ML Pen Injector [Basaglar]
+35604095,1736864,PR00,insulin glargine 100 UNT/ML Pen Injector [Basaglar]
+36214699,1157459,PR00,insulin glargine Injectable Product
+36220119,1163230,PR00,liraglutide Injectable Product
+36222278,1163790,PR00,exenatide Injectable Product
+36229086,1175624,PR00,Lantus Injectable Product
+36234709,1169415,PR00,Byetta Injectable Product
+36238252,1242967,PR00,Bydureon Injectable Product
+36241903,1186578,PR00,Victoza Injectable Product
+36247185,1551293,PR00,dulaglutide Injectable Product
+36247186,1551299,PR00,Trulicity Injectable Product
+36247618,1440053,PR00,lixisenatide Injectable Product
+36248195,1670009,PR00,insulin degludec Injectable Product
+36248196,1670015,PR00,Tresiba Injectable Product
+36248425,1736862,PR00,Basaglar Injectable Product
+36248870,1604543,PR00,Toujeo Injectable Product
+36248956,1598267,PR00,Saxenda Injectable Product
+36644160,274783,PR00,insulin glargine
+36797422,2554103,PR00,semaglutide 3.2 MG/ML [Wegovy]
+36799494,2200640,PR00,semaglutide 14 MG
+37002813,2395776,PR00,dulaglutide 6 MG/ML
+37002814,2395778,PR00,dulaglutide 6 MG/ML [Trulicity]
+37002815,2395780,PR00,dulaglutide 6 MG/ML Auto-Injector
+37002816,2395781,PR00,dulaglutide 6 MG/ML Auto-Injector [Trulicity]
+37002817,2395782,PR00,dulaglutide 9 MG/ML
+37002818,2395784,PR00,dulaglutide 9 MG/ML [Trulicity]
+37002819,2395786,PR00,dulaglutide 9 MG/ML Auto-Injector
+37002820,2395787,PR00,dulaglutide 9 MG/ML Auto-Injector [Trulicity]
+37003015,2398843,PR00,semaglutide 1.34 MG/ML Pen Injector
+37003016,2398844,PR00,semaglutide 1.34 MG/ML Pen Injector [Ozempic]
+37003606,2395777,PR00,0.5 ML dulaglutide 6 MG/ML Auto-Injector
+37003607,2395779,PR00,0.5 ML dulaglutide 6 MG/ML Auto-Injector [Trulicity]
+37003608,2395783,PR00,0.5 ML dulaglutide 9 MG/ML Auto-Injector
+37003609,2395785,PR00,0.5 ML dulaglutide 9 MG/ML Auto-Injector [Trulicity]
+37003616,2398841,PR00,3 ML semaglutide 1.34 MG/ML Pen Injector
+37003617,2398842,PR00,3 ML semaglutide 1.34 MG/ML Pen Injector [Ozempic]
+37496746,2200658,PR00,semaglutide 7 MG Oral Tablet [Rybelsus]
+37496828,2200640,PR00,semaglutide 14 MG
+37496829,2200641,PR00,semaglutide Oral Product
+37496830,2200642,PR00,semaglutide Pill
+37496831,2200643,PR00,semaglutide Oral Tablet
+37496832,2200644,PR00,semaglutide 14 MG Oral Tablet
+37496834,2200646,PR00,semaglutide 14 MG [Rybelsus]
+37496835,2200647,PR00,semaglutide Oral Tablet [Rybelsus]
+37496836,2200648,PR00,Rybelsus Oral Product
+37496837,2200649,PR00,Rybelsus Pill
+37496838,2200650,PR00,semaglutide 14 MG Oral Tablet [Rybelsus]
+37496839,2200651,PR00,semaglutide 3 MG
+37496840,2200652,PR00,semaglutide 3 MG Oral Tablet
+37496841,2200653,PR00,semaglutide 3 MG [Rybelsus]
+37496842,2200654,PR00,semaglutide 3 MG Oral Tablet [Rybelsus]
+37496843,2200655,PR00,semaglutide 7 MG
+37496844,2200656,PR00,semaglutide 7 MG Oral Tablet
+37496845,2200657,PR00,semaglutide 7 MG [Rybelsus]
+37498226,2268064,PR00,Sensor 3 ML insulin glargine 100 UNT/ML Pen Injector
+37498227,2268065,PR00,Sensor 3 ML insulin glargine 100 UNT/ML Pen Injector [Basaglar]
+40051347,378864,PR00,insulin glargine Injectable Solution
+40051348,362585,PR00,insulin glargine Injectable Solution [Lantus]
+40169222,897122,PR00,3 ML liraglutide 6 MG/ML Pen Injector
+40169223,897126,PR00,3 ML liraglutide 6 MG/ML Pen Injector [Victoza]
+40170911,475968,PR00,liraglutide
+40170912,897120,PR00,liraglutide 6 MG/ML
+40170913,897124,PR00,liraglutide 6 MG/ML [Victoza]
+40220770,1803903,PR00,{1 (3 ML lixisenatide 0.05 MG/ML Pen Injector [Adlyxin]) / 1 (3 ML lixisenatide 0.1 MG/ML Pen Injector [Adlyxin]) } Pack [Adlyxin Starter Kit]
+40220851,1803885,PR00,lixisenatide Pen Injector
+40220852,1803886,PR00,lixisenatide 0.05 MG/ML Pen Injector
+40220854,1803888,PR00,lixisenatide 0.05 MG/ML [Adlyxin]
+40220855,1803889,PR00,lixisenatide Pen Injector [Adlyxin]
+40220856,1803890,PR00,Adlyxin Injectable Product
+40220857,1803891,PR00,lixisenatide 0.05 MG/ML Pen Injector [Adlyxin]
+40220858,1803892,PR00,3 ML lixisenatide 0.05 MG/ML Pen Injector
+40220859,1803893,PR00,3 ML lixisenatide 0.05 MG/ML Pen Injector [Adlyxin]
+40220860,1803894,PR00,3 ML lixisenatide 0.1 MG/ML Pen Injector
+40220861,1803895,PR00,lixisenatide 0.1 MG/ML [Adlyxin]
+40220862,1803896,PR00,3 ML lixisenatide 0.1 MG/ML Pen Injector [Adlyxin]
+40220863,1803897,PR00,lixisenatide 0.1 MG/ML Pen Injector
+40220864,1803898,PR00,lixisenatide 0.1 MG/ML Pen Injector [Adlyxin]
+40221118,1803902,PR00,{1 (3 ML lixisenatide 0.05 MG/ML Pen Injector) / 1 (3 ML lixisenatide 0.1 MG/ML Pen Injector) } Pack
+41934452,2553503,PR00,semaglutide 0.5 MG/ML [Wegovy]
+41934596,2395783,PR00,0.5 ML dulaglutide 9 MG/ML Auto-Injector
+41936802,2554104,PR00,0.75 ML semaglutide 3.2 MG/ML Auto-Injector [Wegovy]
+41942995,2200642,PR00,semaglutide Pill
+41947122,2599362,PR00,3 ML semaglutide 2.68 MG/ML Pen Injector
+41974149,2395786,PR00,dulaglutide 9 MG/ML Auto-Injector
+42021678,343226,PR00,insulin glargine 100 UNT/ML
+42046648,1860171,PR00,Xultophy Injectable Product
+42061967,2395776,PR00,dulaglutide 6 MG/ML
+42081288,2395778,PR00,dulaglutide 6 MG/ML [Trulicity]
+42544059,2002419,PR00,3 ML insulin glargine 300 UNT/ML Pen Injector
+42544060,2002420,PR00,3 ML insulin glargine 300 UNT/ML Pen Injector [Toujeo]
+42609592,2679316,PR00,tirzepatide Injection [Zepbound]
+42609593,2679318,PR00,tirzepatide 20 MG/ML Injection [Zepbound]
+42609594,2679320,PR00,tirzepatide 25 MG/ML Injection [Zepbound]
+42609595,2679322,PR00,tirzepatide 30 MG/ML Injection [Zepbound]
+42609596,2679324,PR00,tirzepatide 5 MG/ML Injection [Zepbound]
+42609597,2679326,PR00,tirzepatide 10 MG/ML Injection [Zepbound]
+42609598,2679328,PR00,tirzepatide 15 MG/ML Injection [Zepbound]
+42609778,2679317,PR00,0.5 ML tirzepatide 20 MG/ML Injection [Zepbound]
+42609779,2679319,PR00,0.5 ML tirzepatide 25 MG/ML Injection [Zepbound]
+42609780,2679321,PR00,0.5 ML tirzepatide 30 MG/ML Injection [Zepbound]
+42609781,2679323,PR00,0.5 ML tirzepatide 5 MG/ML Injection [Zepbound]
+42609782,2679325,PR00,0.5 ML tirzepatide 10 MG/ML Injection [Zepbound]
+42609783,2679327,PR00,0.5 ML tirzepatide 15 MG/ML Injection [Zepbound]
+42705839,1242961,PR00,exenatide 3.08 MG/ML
+42705842,1242965,PR00,exenatide 3.08 MG/ML [Bydureon]
+42708078,1242963,PR00,exenatide 2 MG Injection
+42708079,1242968,PR00,exenatide 2 MG Injection [Bydureon]
+42902527,1359640,PR00,exenatide 0.005 MG/ACTUAT Pen Injector
+42902689,1359802,PR00,exenatide 0.005 MG/ACTUAT Pen Injector [Byetta]
+42902742,1359855,PR00,insulin glargine 100 UNT/ML Pen Injector
+42902743,1359856,PR00,insulin glargine 100 UNT/ML Pen Injector [Lantus]
+42902866,1359979,PR00,exenatide 0.01 MG/ACTUAT Pen Injector [Byetta]
+42902992,1360105,PR00,liraglutide 6 MG/ML Pen Injector
+42903341,1360454,PR00,exenatide 0.01 MG/ACTUAT Pen Injector
+42903382,1360495,PR00,liraglutide 6 MG/ML Pen Injector [Victoza]
+44506518,1440052,PR00,lixisenatide 0.1 MG/ML
+44506520,1440056,PR00,lixisenatide 0.05 MG/ML
+44506754,1440051,PR00,lixisenatide
+44584054,897124,PR00,liraglutide 6 MG/ML [Victoza]
+44608680,2398842,PR00,3 ML semaglutide 1.34 MG/ML Pen Injector [Ozempic]
+45774435,1551291,PR00,dulaglutide
+45774436,1551292,PR00,dulaglutide 1.5 MG/ML
+45774438,1551295,PR00,0.5 ML dulaglutide 1.5 MG/ML Auto-Injector
+45774440,1551297,PR00,dulaglutide 1.5 MG/ML [Trulicity]
+45774442,1551300,PR00,0.5 ML dulaglutide 1.5 MG/ML Auto-Injector [Trulicity]
+45774443,1551301,PR00,dulaglutide 1.5 MG/ML Auto-Injector
+45774444,1551302,PR00,dulaglutide 1.5 MG/ML Auto-Injector [Trulicity]
+45774445,1551303,PR00,dulaglutide 3 MG/ML
+45774446,1551304,PR00,0.5 ML dulaglutide 3 MG/ML Auto-Injector
+45774447,1551305,PR00,dulaglutide 3 MG/ML [Trulicity]
+45774448,1551306,PR00,0.5 ML dulaglutide 3 MG/ML Auto-Injector [Trulicity]
+45774449,1551307,PR00,dulaglutide 3 MG/ML Auto-Injector
+45774450,1551308,PR00,dulaglutide 3 MG/ML Auto-Injector [Trulicity]
+45774531,1544916,PR00,0.65 ML exenatide 3.08 MG/ML Pen Injector
+45774533,1544918,PR00,0.65 ML exenatide 3.08 MG/ML Pen Injector [Bydureon]
+45774534,1544919,PR00,exenatide 3.08 MG/ML Pen Injector
+45774535,1544920,PR00,exenatide 3.08 MG/ML Pen Injector [Bydureon]
+45892684,1598265,PR00,liraglutide 6 MG/ML [Saxenda]
+45892686,1598268,PR00,3 ML liraglutide 6 MG/ML Pen Injector [Saxenda]
+45892687,1598269,PR00,liraglutide 6 MG/ML Pen Injector [Saxenda]
+46221552,1604538,PR00,insulin glargine 300 UNT/ML
+46221553,1604539,PR00,1.5 ML insulin glargine 300 UNT/ML Pen Injector
+46221555,1604541,PR00,insulin glargine 300 UNT/ML [Toujeo]
+46221557,1604544,PR00,1.5 ML insulin glargine 300 UNT/ML Pen Injector [Toujeo]
+46221558,1604545,PR00,insulin glargine 300 UNT/ML Pen Injector
+46221559,1604546,PR00,insulin glargine 300 UNT/ML Pen Injector [Toujeo]
+46234097,1653497,PR00,insulin glargine Pen Injector
+46234098,1653499,PR00,insulin glargine Pen Injector [Lantus]
+46234099,1653506,PR00,insulin glargine Pen Injector [Toujeo]
+46234110,1653594,PR00,liraglutide Pen Injector
+46234111,1653597,PR00,liraglutide Pen Injector [Victoza]
+46234112,1653600,PR00,liraglutide Pen Injector [Saxenda]
+46234116,1653610,PR00,exenatide 2 MG
+46234117,1653611,PR00,exenatide Injection
+46234118,1653613,PR00,exenatide 2 MG [Bydureon]
+46234119,1653614,PR00,exenatide Injection [Bydureon]
+46234120,1653616,PR00,exenatide Pen Injector
+46234121,1653619,PR00,exenatide Pen Injector [Bydureon]
+46234122,1653625,PR00,exenatide Pen Injector [Byetta]
+46234470,1649584,PR00,dulaglutide Auto-Injector
+46234471,1649586,PR00,dulaglutide Auto-Injector [Trulicity]

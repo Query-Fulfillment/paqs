@@ -32,6 +32,6 @@ cp renv/activate.R renv/settings.json "$target_path"/renv
 
 cd "$target_path"
 
-Rscript -e "usethis::create_project(path = getwd(),rstudio = TRUE)"
+# Rscript -e "usethis::create_project(path = getwd(),rstudio = TRUE)"
 
-rm -rf R
+# rm -rf R
