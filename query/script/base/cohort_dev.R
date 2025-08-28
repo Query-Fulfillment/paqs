@@ -20,50 +20,61 @@ set_cdm_config <- function(cdm_type) {
     code_column = "dx",
     type_column = "dx_type",
     primary_date_column = "dx_date",
-    fallback_date_column = "admit_date"
+    fallback_date_column = "admit_date",
+    permitted_codetype = c('DX09','DX10','DX11','DXSM')
   ),
   procedures = list(
     table = "procedures",
     code_column = "px",
     type_column = "px_type",
     primary_date_column = "px_date",
-    fallback_date_column = "admit_date"
+    fallback_date_column = "admit_date",
+    permitted_codetype = c('PX09','PX10','PX11','PXCH','PXLC','PXND','PXRE')
   ),
-  dispensing = list(
-    table = "dispensing",
-    code_column = "ndc",
-    primary_date_column = "dispense_date",
-    fallback_date_column = "admit_date"
-  ),
-  prescribing = list(
-    table = "prescribing",
-    code_column = "rxnorm_cui",
-    primary_date_column = "rx_order_date",
-    fallback_date_column = "admit_date"
+  medication = list(
+   dispensing = list(
+     table = "dispensing",
+     code_column = "ndc",
+     primary_date_column = "dispense_date",
+     fallback_date_column = "admit_date",
+     permitted_codetype = c("RX01","RX11","RX09")
+   ),
+   prescribing = list(
+     table = "prescribing",
+     code_column = "rxnorm_cui",
+     primary_date_column = "rx_order_date",
+     fallback_date_column = "admit_date",
+     permitted_codetype = c("PR00")
+   ),
+   med_admin = list(
+     table = "med_admin",
+     code_column = "medadmin_code",
+     primary_date_column = "medadmin_start_date",
+     fallback_date_column = "admit_date",
+     permitted_codetype = c('MA09','MA11','MA00')
+   ),
+   primary_date_column = c("medication_date")
   ),
   lab_result_cm = list(
     table = "lab_result_cm",
     code_column = "lab_loinc",
     primary_date_column = "result_date",
-    fallback_date_column = "lab_order_date"
-  ),
-  med_admin = list(
-    table = "med_admin",
-    code_column = "medadmin_code",
-    primary_date_column = "medadmin_start_date",
-    fallback_date_column = "admit_date"
+    fallback_date_column = "lab_order_date",
+    permitted_codetype = c('LBLC','LBCH','LB09','LB10','LB11')
   ),
   obs_clin = list(
     table = "obs_clin",
     code_column = "obsclin_code",
     primary_date_column = "obsclin_date",
-    fallback_date_column = "admit_date"
+    fallback_date_column = "admit_date",
+    permitted_codetype = c('OCSM','OCLC')
   ),
   immunization = list(
     table = "immunization",
     code_column = "vx_code",
     primary_date_column = "vx_admin_date",
-    fallback_date_column = "admit_date"
+    fallback_date_column = "admit_date",
+    permitted_codetype = c('VXCX','VXND','VXCH','VXRX')
   ),
   death = list(
     table = "death",
@@ -221,9 +232,9 @@ match_codetype_to_table <- function() {
     'DX11', 'diagnosis',"11",
     'DXSM', 'diagnosis',"SM",
     # dispensing
-    'RX01', 'dispensing',"",
-    'RX11', 'dispensing',"",
-    'RX09', 'dispensing',"",
+    'RX01', 'medication',"",
+    'RX11', 'medication',"",
+    'RX09', 'medication',"",
     # procedure
     'PX09', 'procedures',"09",
     'PX10', 'procedures',"10",
@@ -233,7 +244,7 @@ match_codetype_to_table <- function() {
     'PXND', 'procedures',"ND",
     'PXRE', 'procedures',"RE",
     # prescribing
-    'PR00', 'prescribing',"",
+    'PR00', 'medication',"",
     # lab_result_cm
     'LBLC', 'lab_result_cm',"LC",
     'LBCH', 'lab_result_cm',"CH",
@@ -241,9 +252,9 @@ match_codetype_to_table <- function() {
     'LB10', 'lab_result_cm',"10",
     'LB11', 'lab_result_cm',"11",
     # med_admin
-    'MA09', 'med_admin',"",
-    'MA11', 'med_admin',"",
-    'MA00', 'med_admin',"",
+    'MA09', 'medication',"",
+    'MA11', 'medication',"",
+    'MA00', 'medication',"",
     # obs_clin
     'OCSM', 'obs_clin',"",
     'OCLC', 'obs_clin',"",
@@ -607,6 +618,98 @@ define_criteria.procedures <- function(cohort = NULL, codeset, start_date, end_d
 }
 
 #' @export
+define_criteria.medication <- function(cohort = NULL, codeset, start_date, end_date,
+                                       min_codes_required = 1, min_days_separation = 0,
+                                       qualifying_event = "first", criterion_suffix, enc_type_fil = NULL) {
+
+  # Get table configuration
+  med_table_config <- get_table_config(codeset)
+  med_tables <- list()
+  # Identify which medication tables to hit based on codetype
+  med_codetypes <- unique(codeset %>% select(codetype) %>% pull(codetype))
+
+  for (table in names(med_table_config)) {
+   if (any(med_codetypes %in% med_table_config[[table]]$permitted_codetype)) med_tables[[table]] <- table
+  }
+
+  message(sprintf("Processing %s table \n", table_name))
+
+  # Get input table with optional cohort filtering
+  combined_meds <- list()
+  cohort_with_codes_list <- list()
+  for (table_name in names(med_tables)) {
+
+    table_config <- med_table_config[[table_name]]
+
+    if (!is.null(cohort)) {
+      input_tbl <- cdm_tbl(table_name) %>%
+        inner_join(cohort, by = "patid")
+    } else {
+      input_tbl <- cdm_tbl(table_name)
+    }
+      # Joining by code to `table_config$code_column`
+      cohort_with_codes_list[[table_name]] <- input_tbl %>%
+        inner_join(
+          codeset %>%
+            filter(codetype %in% table_config$permitted_codetype),
+          by = setNames("code", table_config$code_column)
+        ) %>%
+        select(patid, matches('encounterid'), !!sym(table_config$code_column),medication_date = table_config$primary_date_column) %>%
+        compute_new(indexes = list('patid'))
+  }
+
+  cohort_with_codes <- reduce(cohort_with_codes_list, union) %>%
+    compute_new(indexes = list('patid'))
+
+  if (.GlobalEnv$cdm_type == "pcornet") {
+    if (!is.null(enc_type_fil)) {
+        cohort_with_codes <- cohort_with_codes %>%
+          inner_join(cdm_tbl('encounter') %>% select(patid, encounterid, enc_type)) %>%
+          filter(enc_type %in% enc_type_fil)
+      }
+  } else {
+
+  }
+
+  # Step 2: Apply date filters
+  cohort_in_query_period <- apply_date_filters(
+    cohort_data = cohort_with_codes,
+    table_config = med_table_config,
+    start_date = start_date,
+    end_date = end_date,
+    criterion_suffix = criterion_suffix
+  )
+
+  echo_text("Filtered patients within query period")
+
+  # Step 3: Apply minimum codes requirement
+  date_col_name <- paste0("criterion_", criterion_suffix, "_date")
+  distinct_events_summary <- obtain_first_last_events(
+    cohort_data = cohort_in_query_period,
+    date_col = date_col_name,
+    min_codes_required = min_codes_required
+  )
+
+  echo_text("Applied minimum codes requirement")
+
+  # Step 4: Apply days separation requirement
+  encounterid_criterion <- paste0("encounterid_", criterion_suffix)
+  final_cohort <- apply_days_separation(
+    summary_data = distinct_events_summary,
+    cohort_data = cohort_in_query_period,
+    date_col = date_col_name,
+    start_date = start_date,
+    end_date = end_date,
+    min_days_separation = min_days_separation,
+    qualifying_event = qualifying_event,
+    encounterid_criterion = encounterid_criterion
+  )
+
+  # Step 5: Validate and return
+  return(validate_final_cohort(final_cohort, table_name))
+}
+
+#' @export
 define_criteria.dispensing <- function(cohort = NULL, codeset, start_date, end_date,
                                      min_codes_required = 1, min_days_separation = 0,
                                      qualifying_event = "first", criterion_suffix, enc_type_fil = NULL) {
@@ -633,7 +736,7 @@ define_criteria.med_admin <- function(cohort = NULL, codeset, start_date, end_da
                          qualifying_event, criterion_suffix, enc_type_fil)
 }
 
-
+#' @export
 define_criteria.drug_exposure <- function(cohort = NULL, codeset, start_date, end_date,
                                     min_codes_required = 1, min_days_separation = 0,
                                     qualifying_event = "first", criterion_suffix, enc_type_fil = NULL) {
