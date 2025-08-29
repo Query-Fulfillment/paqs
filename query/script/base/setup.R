@@ -53,12 +53,13 @@
 #' @export
 initialize_session <- function(session_name,
                                db_conn,
-                               is_json = FALSE,
+                               query_title = "",
                                base_directory = "./query/",
                                specs_subdirectory = "code_sets",
                                results_subdirectory = "results",
                                default_file_output = FALSE,
                                cdm_schema = NA,
+                               table_names,
                                results_schema = NA,
                                vocabulary_schema = NA,
                                results_tag = NULL,
@@ -80,14 +81,11 @@ initialize_session <- function(session_name,
     "duckdb",
     "quarto",
     "tidyverse",
-    "scuba.gen"
+    "squba.gen"
   )
 
   for (pak in packages) {
-    suppressWarnings(suppressPackageStartupMessages(require(
-      pak,
-      character.only = TRUE
-    )))
+    suppressWarnings(suppressPackageStartupMessages(require(pak,character.only = TRUE)))
   }
 
   suppressMessages(conflicted::conflict_prefer_all("dplyr"))
@@ -100,10 +98,11 @@ initialize_session <- function(session_name,
 
   set_argos_default(argos_session)
 
+  get_argos_default()$config(
+    'table_names', table_names
+  )
+
   # Set db_src
-  if (!is_json) {
-    get_argos_default()$config("db_src", db_conn)
-  } else {
     if (jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_name == "src_bigquery") {
      # Read configuration data once to avoid repeated parsing
      config_data <- jsonlite::fromJSON(srcr::find_config_files(db_conn))
@@ -121,8 +120,8 @@ initialize_session <- function(session_name,
        ))
      })
    }
-    get_argos_default()$config("db_src", srcr::srcr(db_conn))
-  }
+
+  get_argos_default()$config("db_src", srcr::srcr(db_conn))
 
   db_class <- class(get_argos_default()$config("db_src"))[1]
 
@@ -209,6 +208,7 @@ initialize_session <- function(session_name,
   )
 
   get_argos_default()$config("temp_table_schema", temp_schema)
+  get_argos_default()$config('temp_table_drop_me', character(0))
 
   get_argos_default()$config(
     "qry_site",
@@ -248,7 +248,7 @@ initialize_session <- function(session_name,
   ## Drop path to base directory if present
   specs_drop_wd <- str_remove(specs_subdirectory, base_directory)
   results_drop_wd <- str_remove(results_subdirectory, base_directory)
-  
+
   get_argos_default()$config(
     "subdirs",
     list(
@@ -275,11 +275,7 @@ initialize_session <- function(session_name,
     index_val
   )
 
-  if (prep_dir) {
-    dir.create("code")
-    dir.create("specs")
-    dir.create("results")
-  }
+  init_message(query_title = query_title, db_conn = db_conn)
 }
 
 #' Load Query Files
@@ -318,7 +314,7 @@ load_query <- function(package) {
     )
 
   for (file in files) {
-    if (grepl("execute_req.R|renv|driver_ca.R", file)) {
+    if (grepl("execute_req.R|renv|locode", file)) {
       next
     }
     source(file)
@@ -347,15 +343,16 @@ create_paqs_package <- function() {
   system2("tools/build_package.sh")
 }
 
+
 exit <- function(db = get_argos_default()$config("db_src")) {
-  if (class(db)[1] %in% c("Oracle")) {
-    get_argos_default()$.__enclos_env__$private$.ora_env_cleanup(db = db)
+  if (class(db)[1] %in% c("Oracle","src_BigQueryConnection","Spark SQL")) {
+    get_argos_default()$.__enclos_env__$private$.ora_bq_db_env_cleanup(db = db)
   }
 
   DBI::dbDisconnect(conn = db)
 }
 
-init_message <- function(query_title) {
+init_message <- function(query_title,db_conn) {
   # Print the formatted banner with newlines
   if (.Platform$OS.type == "windows") {
     cat(readLines("./tools/banner", warn = FALSE), sep = "\n")
@@ -378,12 +375,11 @@ init_message <- function(query_title) {
     )
   )
 
-  SiteName <- jsonlite::fromJSON(srcr::find_config_files(
-    "dbconfig"
+  SiteName <- jsonlite::fromJSON(srcr::find_config_files(db_conn
   ))$src_site$SiteName
-  src_name <- jsonlite::fromJSON(srcr::find_config_files("dbconfig"))$src_name
+  src_name <- jsonlite::fromJSON(srcr::find_config_files(db_conn))$src_name
   Driver <- jsonlite::fromJSON(srcr::find_config_files(
-    "dbconfig"
+    db_conn
   ))$src_args$Driver
 
   mklist <- function() {
@@ -637,9 +633,9 @@ utils::assignInNamespace(
 
 patch_argos <- function() {
   argos$public_methods$load_codeset <- function(name,
-                                                col_types = "cccc",
+                                                col_types = "iccc",
                                                 table_name = name,
-                                                indexes = list("Code"),
+                                                indexes = list("concept_code"),
                                                 full_path = FALSE,
                                                 db = self$config("db_src")) {
     conn_class <- class(db)[1]
@@ -654,9 +650,9 @@ patch_argos <- function() {
   }
 
   argos$public_methods$`load_codeset.default` <- function(name,
-                                                          col_types = "cccc",
+                                                          col_types = "iccc",
                                                           table_name = name,
-                                                          indexes = list("Code"),
+                                                          indexes = list("concept_code"),
                                                           full_path = FALSE,
                                                           db = self$config("db_src")) {
     if (self$config("cache_enabled")) {
@@ -696,7 +692,7 @@ patch_argos <- function() {
 
 
   argos$public_methods$`load_codeset.Oracle` <- function(name,
-                                                         col_types = "cccc",
+                                                         col_types = "iccc",
                                                          table_name = name,
                                                          indexes = list("concept_code"),
                                                          full_path = FALSE,
@@ -738,7 +734,7 @@ patch_argos <- function() {
   }
 
   argos$public_methods$`load_codeset.src_BigQueryConnection` <- function(name,
-                                                                         col_types = "cccc",
+                                                                         col_types = "iccc",
                                                                          table_name = name,
                                                                          indexes = list("concept_code"),
                                                                          full_path = FALSE,
@@ -1111,7 +1107,7 @@ patch_argos <- function() {
 
   argos$private_methods$.ora_env_setup <-
     function(db) {
-      if(class(db) == "Oracle") {
+      if(class(db)[1] == "Oracle") {
       DBI::dbExecute(db, "alter session set nls_date_format = 'YYYY-MM-DD'")
       DBI::dbExecute(
         db,
@@ -1196,6 +1192,7 @@ patch_argos <- function() {
 
 
 
+
 pkgLoad <- function() {
   if (is.na(match("pak", utils::installed.packages()[, 1]))) {
     install.packages("pak")
@@ -1264,35 +1261,3 @@ pkgLoad <- function() {
     }
   }
 }
-
-utils::assignInNamespace(
-    x = "getPass",
-    value =
-      function(msg="PASSWORD: ", noblank=FALSE, forcemask=FALSE)
-{
-  if (!is.character(msg) || length(msg) != 1 || is.na(msg))
-    stop("argument 'msg' must be a single string")
-  if (!is.logical(noblank) || length(noblank) != 1 || is.na(noblank))
-    stop("argument 'noblank' must be one of 'TRUE' or 'FALSE'")
-  if (!is.logical(forcemask) || length(forcemask) != 1 || is.na(forcemask))
-    stop("argument 'forcemask' must be one of 'TRUE' or 'FALSE'")
-  
-  if (tolower(.Platform$GUI) %in% c("rstudio", 'x11'))
-    pw <- getPass:::readline_masked_rstudio(msg=msg, noblank=noblank, forcemask=forcemask)
-  else if (getPass:::isaterm())
-    pw <- getPass:::readline_masked_term(msg=msg, showstars=TRUE, noblank=noblank)
-  else if (getPass:::os_windows())
-    pw <- getPass:::readline_masked_wincred(msg=msg, noblank=noblank)
-  else if (getPass:::hastcltk())
-    pw <- getPass:::readline_masked_tcltk(msg=msg, noblank=noblank)
-  else if (!forcemask)
-    pw <- getPass:::readline_nomask(msg, noblank=noblank)
-  else
-    stop("Masking is not supported on your platform!")
-  
-  
-  if (is.null(pw))
-    invisible()
-  else
-    pw
-},ns = "getPass")
