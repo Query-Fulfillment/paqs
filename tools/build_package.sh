@@ -16,7 +16,7 @@ req_name=$(basename "$PWD")
 #
  grep -q "dbconfig" "query/execute_req.R"
  if [ $? -ne 0 ]; then
-   echo -e "\033[1;31m \nERROR: Non-standard db_conn arguement for packaging. Please set the db_conn arguement to 'dbconfig' in execute_req.R for # packaging. See example below\n\033[0;0m\n\ninitialize_session(\nsession_name = 'qf_query_session',\n\033[0;36mdb_conn = 'dbconfig',\033[0# ;0m\nbase_directory ='./query',\nis_json = TRUE,\nresults_schema = NA,\nretain_intermediates = FALSE,\ndefault_file_output = TRUE,\nprep_dir = FALSE# ,\nmode = "production")"
+   echo -e "\033[1;31m \nERROR: Non-standard db_conn arguement for packaging. Please set the db_conn arguement to 'dbconfig' in execute_req.R for # packaging. See example below\n\033[0;0m\n\ninitialize_session(\nsession_name = 'qf_query_session',\n\033[0;36mdb_conn = 'dbconfig',\033[0# ;0m\nbase_directory ='./query',\nis_json = TRUE,\nresults_schema = NA,\nretain_intermediates = FALSE,\ndefault_file_output = TRUE,\nprep_dir = FALSE)"
    exit 1
  fi
 
@@ -36,11 +36,12 @@ cp -r tools/banner tools/pcornet-style-sheet.css tools/handler.sh tools/parse_lo
 cp -r  query/script query/code_sets query/execute_req.R temp_dir_docker/query
 
 
+
 cd temp_dir_docker
-echo -e "\n\nSys.setenv(native_execution = FALSE)\n" >> .Rprofile
+sed -i "s/Sys\.setenv('execution_mode' *= *'development')/Sys.setenv('execution_mode' = 'container')/" query/execute_req.R
 
 # Create zip file with necessary contents
-zip -r9X "${req_name}_docker.zip" * .Rprofile
+zip -r9X "${req_name}_docker.zip" *
 mv "${req_name}_docker.zip" ../package
 cd ..
 
@@ -51,10 +52,8 @@ cd ..
 mkdir temp_dir_native
 mkdir temp_dir_native/query
 mkdir temp_dir_native/query/results
-mkdir temp_dir_native/renv
 mkdir temp_dir_native/tools
-cp -r renv/activate.R temp_dir_native/renv
-cp -r renv.lock .Rprofile *.Rproj config_template temp_dir_native
+cp -r  *.Rproj config_template temp_dir_native
 cp -r tools/banner tools/pcornet-style-sheet.css tools/PCORnet-logo-resize.png temp_dir_native/tools
 cp -r  query/script query/code_sets query/execute_req.R temp_dir_native/query
 
@@ -66,10 +65,9 @@ quarto render workplan.qmd --to html
 mv workplan.html "package/${req_name}_workplan.html"
 
 
-cp -r argos temp_dir_native/
-
 cd temp_dir_native
-echo -e "\n\nsource('renv/activate.R')\n\nSys.setenv(native_execution = TRUE)\n\nexecute_request <- function() {source('query/execute_req.R')}" >> .Rprofile
+echo -e "execute_request <- function()  source('query/execute_req.R') " >> .Rprofile
+sed -i "s/Sys\.setenv('execution_mode' *= *'development')/Sys.setenv('execution_mode' = 'nativeR')/" query/execute_req.R
 
 # Create zip file with necessary contents
 zip -r9X "${req_name}_nativeR.zip" * .Rprofile
