@@ -1,37 +1,97 @@
 #!/bin/bash
+set -euo pipefail
 
-# Set up new directory for new request for masking and creating reports
+# ==============================================================================
+# new_request.sh — Set up a new request directory for masking and reports
+# ==============================================================================
+# Usage:
+#   ./new_request.sh <new_dir_name>
 #
-# Usage: /path/to/new_request.sh dir_name
+# Example:
+#   ./new_request.sh cohort_2025_10_30
+# ==============================================================================
 
-target=${1:-new_request}
-if [[ ! -z $(ls -d "$target"/* 2>/dev/null)  || \
-      ! -z $(ls -d "$target"/.[a-zA-Z0-9]* 2>/dev/null | grep -v /.git\$ ) ]]
-then
-    echo >&2 "Target directory $target already has content."
-    exit 1
+# --- Colors for pretty output ---
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+RED='\033[1;31m'
+NC='\033[0m' # No Color
+
+# --- Help function ---
+usage() {
+  cat <<EOF
+Usage: $(basename "$0") <new_dir_name>
+
+Creates a new request directory for masking and report generation.
+
+Options:
+  -h, --help     Show this help message and exit
+
+Example:
+  $(basename "$0") my_new_request
+EOF
+  exit 0
+}
+
+# --- Argument parsing ---
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  usage
 fi
-if [[ ! -d "$target" ]]; then mkdir -p "$target"; fi
-target_path=$(cd "$target"; pwd)
 
-src=$(dirname $0)
-src=${src:-$PWD}
-if [[ ! -d "$src" || ! -e "$src/new_request.sh" ]]
-then
-    echo >&2 "Unable to find paqs"
-    exit 1
+target=${1:-}
+if [[ -z "$target" ]]; then
+  echo -e "${RED}Error:${NC} No directory name provided."
+  echo "Run with --help for usage information."
+  exit 1
 fi
 
-cd "$src"
+# --- Check if target directory exists and is empty ---
+if [[ -d "$target" && ( ! -z "$(ls -A "$target" 2>/dev/null)" ) ]]; then
+  echo -e "${RED}Error:${NC} Target directory '$target' already exists and is not empty."
+  exit 1
+fi
 
-cp -r config_template package query results renv.lock tools Dockerfile workplan.qmd .gitignore .Rprofile "$target_path"
+# --- Create directory if needed ---
+echo -e "${BLUE}▶ Setting up new request directory: ${YELLOW}$target${NC}"
+mkdir -p "$target"
+target_path=$(cd "$target" && pwd)
 
-mkdir "$target_path"/renv
+# --- Locate source directory (this script’s location) ---
+src_dir=$(cd "$(dirname "$0")" && pwd)
+if [[ ! -f "$src_dir/new_request.sh" ]]; then
+  echo -e "${RED}Error:${NC} Unable to find source files in '$src_dir'."
+  exit 1
+fi
 
-cp renv/activate.R renv/settings.json "$target_path"/renv
+# --- Verify required files exist ---
+required_items=(config_template package query results renv.lock tools Dockerfile workplan.qmd .gitignore .Rprofile paqs.Rproj renv/activate.R renv/settings.json)
+for item in "${required_items[@]}"; do
+  if [[ ! -e "$src_dir/$item" ]]; then
+    echo -e "${RED}Error:${NC} Missing required file or directory: $item"
+    exit 1
+  fi
+done
 
-cd "$target_path"
+# --- Copy main project components ---
+echo -e "${BLUE}▶ Copying core project files...${NC}"
+cp -r "$src_dir"/{config_template,package,query,results,renv.lock,tools,Dockerfile,workplan.qmd,.gitignore,.Rprofile} "$target_path"
 
-# Rscript -e "usethis::create_project(path = getwd(),rstudio = TRUE)"
+# --- Set up renv directory ---
+echo -e "${BLUE}▶ Setting up renv environment...${NC}"
+mkdir -p "$target_path/renv"
+cp "$src_dir/renv/activate.R" "$src_dir/renv/settings.json" "$target_path/renv/"
 
-# rm -rf R
+# --- Copy and rename R project file ---
+echo -e "${BLUE}▶ Creating R project file...${NC}"
+cp "$src_dir/paqs.Rproj" "$target_path/${target}.Rproj"
+
+# --- Final summary ---
+echo -e "${GREEN}✅ Successfully created new request directory!${NC}"
+echo -e "Location: ${YELLOW}$target_path${NC}"
+echo -e "Project file: ${YELLOW}${target}.Rproj${NC}"
+echo -e "\nNext steps:"
+echo -e "  1. cd ${YELLOW}$target${NC}"
+echo -e "  2. Open ${YELLOW}${target}.Rproj${NC} in RStudio"
+echo -e "  3. Start Query Development"
+echo

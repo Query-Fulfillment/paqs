@@ -1,4 +1,4 @@
-# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS) <a><img src="hex.png" align="right" height="138" /></a>
+# PARAMETERIZED ADVANCED QUERYING SYSTEM (PAQS)
 
 This repository provides scripts for developing PAQS queries. Follow the steps below to set up your local environment, develop and test PAQS queries.
 
@@ -105,3 +105,18 @@ For more details on pre-built docker image see [here](https://github.com/Query-F
 ```sh
 path/to/new_request.sh fd1000
 ```
+
+
+# Grants and funding
+
+This package was developed to support activities of the PCORnet® Query
+Fulfillment team as well as to support research conducted within
+PEDSnet, A Pediatric Clinical Research Network. PCORnet® Query
+Fulfillment is funded through Patient-Centered Outcomes Research
+Institute (PCORI®) award RI-CHOP-01-PS2. PEDSnet has been developed with
+funding from the PCORI®; PEDSnet’s participation in PCORnet® is funded
+through PCORI® award RI-CHOP-01-PS1.
+
+The package and its documentation do not necessarily represent the
+opinions of PCORI® or other organizations participating in,
+collaborating with, or funding PCORnet®.
