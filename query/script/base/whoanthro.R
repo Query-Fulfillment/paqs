@@ -1,0 +1,216 @@
+# -------------------------------------------------------------------------
+# SOURCE ATTRIBUTION
+# -------------------------------------------------------------------------
+# Original Script Name: whoanthro.R
+# Source Repository:    https://github.com/CDC-DNPAO/WHOanthro
+# Original Author:      David Freedman (https://github.com/CDC-DNPAO)
+# Retrieval Date:       11/26/2025
+#
+# DESCRIPTION:
+# This script was downloaded from the https://github.com/CDC-DNPAO/WHOanthro to 
+# implement GENERATE SEX- AND AGE (or LENGTH)-STANDARDIZED WEIGHT, 
+# HEIGHT/LENGTH, AND BMI METRICS FROM THE WHO GROWTH CHARTS
+#
+# -------------------------------------------------------------------------
+
+# need data in wide format for BMIz and WFLz
+# need to have all variables in data; agedays,wt,lenhei,headc, and bmi
+# but can run as wanthro(data, agedays, wt, lenhei, bmi, headc=NA);
+
+# lenhei is length up to age 2.0 y and height for >2 y
+# http://www.who.int/childgrowth/standards/technical_report/en/
+
+# WHO: The WHO length- and height-based BMI-for-age standards do not 
+# overlap, i.e. the length-based interval ends at 730 days and the 
+# height-based interval starts at 731 days.
+# there is a 'big' jump in M between 730 and 731 days
+
+# who_ref_data <- fread('~/Sync/R/Anal/Growth_Charts/Data/WHOref_d.csv'); 
+
+#############################
+# this is for children between 0 and <24 months of age
+# computes z-scores and modified z-scores based on the WHO growth charts
+# weight,height,WFL, head circ, and BMI
+
+# Note - sex can be coded as 1 (boys) or 2 (girs) OR BOYS/GIRLS or b/g
+# Alen_so need wt (kg), length (cm), and age in *** days ***
+
+# About the WHO reference values for the L M and S parameters:
+# refdata_dir is folder that contains 'CDCref_d.csv' - this file can be download from  
+# https://www.cdc.gov/nccdphp/dnpao/growthcharts/resources/sas.htm
+# (4th paragraph, before 'Instructions for SAS Users)
+
+# note that who0607 in the sitar package contains ref data for older kids, but
+# 1) the older data is given in 2-week intervals, 
+# 2) the wt data goes up to only 10 y of age
+# 3) the younger data is given in 1-week intervals
+
+
+.c <- function (...) as.character(substitute(c(...))[-1L])
+
+fvalid <- function(x){
+   length(x[!is.na(x)])
+}
+
+set_cols_first <- function (DT, colen_s, intersection = TRUE) # thanks to hutils
+   {
+      if (intersection) {
+         return(setcolorder(DT, c(intersect(colen_s, names(DT)), 
+                                  setdiff(names(DT), colen_s))))
+      }
+      else {
+         return(setcolorder(DT, c(colen_s, setdiff(names(DT), colen_s))))
+      }
+}
+
+# for length and headcirc.  No adjustment for z-scores outside [-3, +3]
+whoz_1=function(var, l, m, s){ 
+   invl=1/l
+   z = (((var/m) ^ l) -1) / (l*s) # z-score formula
+   sdp2 = (m * (1 + 2*l*s) ^ (invl)) 
+   sdp3 = (m * (1 + 3*l*s) ^ (invl))
+   sdm2 = (m * (1 - 2*l*s) ^ (invl)) 
+   sdm3 = (m * (1 - 3*l*s) ^ (invl))
+   # z=fcase(
+   #    z >= -3 & z < 3, z,
+   #    z > 3, 3 + (var - sdp3)/(sdp3 - sdp2),
+   #    z < (-3), -3 - abs((var - sdm3)/(sdm2 - sdm3))
+   # )
+   list(z, sdp2, sdp3, sdm2,sdm3)
+}
+
+# for WAZ, WFL, and BMI
+whoz_2=function(var, l, m, s){ 
+   invl=1/l
+   z = (((var/m) ^ l) -1) / (l*s) # z-score formula
+   sdp2 = (m * (1 + 2*l*s) ^ (invl)) 
+   sdp3 = (m * (1 + 3*l*s) ^ (invl))
+   sdm2 = (m * (1 - 2*l*s) ^ (invl)) 
+   sdm3 = (m * (1 - 3*l*s) ^ (invl))
+   z=fcase(
+      z >= -3 & z < 3, z,
+      z > 3, 3 + (var - sdp3)/(sdp3 - sdp2),
+      z < (-3), -3 - abs((var - sdm3)/(sdm2 - sdm3))
+   )
+   list(z, sdp2, sdp3, sdm2,sdm3)
+}
+
+
+whoanthro <- function(data,
+               agedays = agedays, 
+               wt = wt, 
+               lenhei = lenhei,
+               headc = headc,
+               bmi = bmi
+               )
+{
+      wfl_m <- seq_ <- denom <- sexn <- sex <- 
+      waz <- sdp2 <- sdp3 <- sdm2 <- sdm3 <- len <- 
+      lhaz <- bmiz <- headcz <- lhaz <- wfl_l <- wflm <- wfl_s <- wflz <- 
+      weight <- height <- bmi_l <- bmi_s <-  bmi_m <- NULL
+   
+   if (is.data.table(data) == FALSE) data <- as.data.table(data) 
+   data$seq_ <- 1L:nrow(data) # for merging back with original data
+   set_cols_first(data,'seq_')
+   dorig <- copy(data)    
+   
+   nms <- grep('^sex$',names(data),ignore.case = TRUE, value = TRUE)
+   if (length(nms) != 1) {
+      stop ("A child's sex MUST be named 'sex' or 'SEX'; this is case insensitive.
+             Also, you cannot have both 'sex' and 'SEX' as variables in your data.")
+   }
+   if (nms!='sex') {names(data)[which(names(data)==nms)] <- 'sex'}
+   
+   data$agedays <- data[[deparse(substitute(agedays))]]
+   data$wt <- data[[deparse(substitute(wt))]]
+   data$bmi <- data[[deparse(substitute(bmi))]]
+   data$lenhei <- data[[deparse(substitute(lenhei))]]
+  
+   if ('headc' %in% names(data)) {
+      data$headc <- data[[deparse(substitute(headc))]]
+   } else {
+      data$headc <- NA
+   }
+   
+   if (('agedays' %chin% names(data)) == FALSE){
+      stop('There must be an variable for age in days in the data')
+   }
+   
+   # sex can be coded almost any way
+   data[,sexn:=toupper(substr(sex,1,1))]
+   data[,sexn:=fcase(
+      sexn %in% c(1,'B','M'), 1L,
+      sexn %in% c(2,'G','F'), 2L
+   )]
+   
+   data <- data[agedays<=1856, .(seq_, sex,sexn,agedays,wt,lenhei,headc,bmi)]; 
+   # WFL calculations do not go over 110 cm because they're 'for length'
+   # (same as WFH calculation in CRAN anthro)
+
+   dref1 <- who_ref_data[(denom=='forage' & agedays<1857) | denom=='forlen']
+   # setkey(data,sexn,agedays); setkey(dref1,sexn,agedays)
+   dt1 <- dref1[data, on=c('sexn','agedays'),nomatch=0]; 
+   
+   # waz
+   dt1[,.c(waz, sdp2,sdp3,sdm2,sdm3):= 
+         whoz_2(dt1$wt, dt1$wei_l, dt1$wei_m, dt1$wei_s)]
+ 
+   # lhaz length/height for age z-score
+   if (fvalid(dt1$lenhei) > 0){
+   dt1[,.c(lhaz, sdp2,sdp3,sdm2,sdm3):= 
+         whoz_1(dt1$lenhei, dt1$len_l, dt1$len_m, dt1$len_s)]
+   }
+   
+   # bmiz
+   if (fvalid(dt1$bmi) > 0){
+   dt1[,.c(bmiz, sdp2,sdp3,sdm2,sdm3):= 
+         whoz_2(dt1$bmi, dt1$bmi_l, dt1$bmi_m, dt1$bmi_s)]
+   }
+   
+   # head circumference z-score
+   if (fvalid(dt1$headc) > 0){
+   dt1[,.c(headcz, sdp2,sdp3,sdm2,sdm3):= 
+         whoz_1(dt1$headc, dt1$headc_l, dt1$headc_m, dt1$headc_s)]
+   }
+   
+   # wflz (weight-for-length z-score)
+   dref2 <- who_ref_data[denom=='forlen',.(sexn,len,wfl_l,wfl_m,wfl_s)]
+   
+   setkey(data,sexn,lenhei); setkey(dref2,sexn,len)
+   dt2 <- dref2[data,nomatch=0]; 
+   dt2[,.c(wflz, sdp2,sdp3,sdm2,sdm3):= 
+         whoz_2(dt2$wt, dt2$wfl_l, dt2$wfl_m, dt2$wfl_s)]
+   
+   x <- unique(grep('sd[mp]|[incl]_|sexn', names(dt1), value=T)); 
+   dt1[,(x):=NULL] 
+   x2 <- unique(grep('sd[mp]|wfl_|sexn', names(dt2), value=T)); 
+   dt2[,(x2):=NULL] 
+ 
+   dt <- merge(dt1,dt2[,.(seq_,wflz)], by='seq_', all=T)
+   dt[,wflz:=fifelse(agedays>730,NA_real_,wflz)] 
+   vars<- grep('seq_|z$', names(dt), value=TRUE); 
+   dt <- dt[,..vars]
+   
+   dtot <- dt[dorig, on='seq_']; 
+   set_cols_first(dtot,names(dorig))
+   dtot[,seq_:=NULL]
+   
+   dtot[]
+}
+
+# -------------------------------------------------------------------------
+# Additions to the source code to load refrence tables
+# -------------------------------------------------------------------------
+
+suppressPackageStartupMessages(library(data.table))
+
+load_who_refs <- function() {
+  e <- new.env()
+  load("./query/script/base/who_ref_data.rda", envir = e)
+  
+  e$who_ref_data %>% as_tibble()
+  
+  .GlobalEnv$who_ref_data <- e$who_ref_data %>% as.data.table()
+}
+
+load_who_refs()

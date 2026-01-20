@@ -1,0 +1,10 @@
+﻿code,codetype,descrip
+N18.1,DX10,"Chronic kidney disease, stage 1"
+N18.2,DX10,"Chronic kidney disease, stage 2 (mild)"
+N18.30,DX10,"Chronic kidney disease, stage 3 unspecified"
+N18.31,DX10,"Chronic kidney disease, stage 3a"
+N18.32,DX10,"Chronic kidney disease, stage 3b"
+N18.4,DX10,"Chronic kidney disease, stage 4 (severe)"
+N18.5,DX10,"Chronic kidney disease, stage 5"
+N18.6,DX10,End stage renal disease
+N18.9,DX10,"Chronic kidney disease, unspecified"

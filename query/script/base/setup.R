@@ -156,9 +156,8 @@ initialize_session <- function(
   get_argos_default()$config("all_available_schemas", temp_schema)
   get_argos_default()$config("temp_table_schema", temp_schema[1])
 
-
-  if(db_class == 'Spark SQL') {
-    local_test <- ifelse(is.null(config_data$src_site$local_test),FALSE,TRUE)
+  if (db_class == 'Spark SQL') {
+    local_test <- ifelse(is.null(config_data$src_site$local_test), FALSE, TRUE)
     get_argos_default()$config("local_test", local_test)
   }
 
@@ -291,25 +290,26 @@ srcr_helper <- function(db_conn) {
 
   # If found, return the path
   if (!is.null(config_path) && file.exists(config_path)) {
-    src_name <- tryCatch({
-      jsonlite::fromJSON(config_path)$src_name
-    }, error = function(e) {
-      cli::cli_alert_warning("Config search error: {conditionMessage(e)}")
-      NULL
-    })
-
+    src_name <- tryCatch(
+      {
+        jsonlite::fromJSON(config_path)$src_name
+      },
+      error = function(e) {
+        cli::cli_alert_warning("Config search error: {conditionMessage(e)}")
+        NULL
+      }
+    )
 
     if (!is.null(src_name)) {
       cli::cli_alert_success("Found configuration: {.file {config_path}}")
       cli::cli_alert_info("Connection type: {.strong {src_name}}")
 
-    if (src_name == "src_bigquery") {
-      authenticate_bigquery()
-    }
-    Sys.setenv('config_path' = config_path)
+      if (src_name == "src_bigquery") {
+        authenticate_bigquery()
+      }
+      Sys.setenv('config_path' = config_path)
 
-    return(srcr::srcr(db_conn))
-
+      return(srcr::srcr(db_conn))
     } else {
       if (Sys.getenv('execution_mode') == "container") {
         cli_div(theme = list(span.emph = list(color = "red")))
@@ -673,7 +673,7 @@ patch_srcr <- function() {
         }
 
         config <- .read_json_config(paths)
-        
+
         # Helper function to get password from environment (case-insensitive)
         .get_env_password <- function() {
           # Try common case variations
@@ -685,7 +685,7 @@ patch_srcr <- function() {
           }
           return("")
         }
-        
+
         if (config$src_name == "Postgres") {
           # Check for environment variable first, then prompt if not found
           env_password <- .get_env_password()
@@ -697,7 +697,7 @@ patch_srcr <- function() {
             )
           }
         }
-        
+
         if (config$src_name == "odbc") {
           if (!is.null(config$src_args$Trusted_Connection)) {
             if (config$src_args$Trusted_Connection == "yes") {
@@ -711,7 +711,11 @@ patch_srcr <- function() {
                 config$src_args$PWD <- env_password
               } else {
                 config$src_args$PWD <- getPass::getPass(
-                  msg = paste0("Enter Password for ", config$src_args$UID, " : ")
+                  msg = paste0(
+                    "Enter Password for ",
+                    config$src_args$UID,
+                    " : "
+                  )
                 )
               }
             }
@@ -1194,14 +1198,6 @@ patch_argos <- function() {
         # Query actual table count from the schema
         tryCatch(
           {
-            table_count_query <- paste0(
-              "SELECT COUNT(*) as table_count FROM ",
-              current_schema,
-              ".information_schema.tables WHERE table_schema = '",
-              current_schema,
-              "'"
-            )
-
             # Alternative query for Databricks (more reliable)
             table_count_query <- paste0(
               "SHOW TABLES IN ",
@@ -1608,25 +1604,25 @@ patch_argos <- function() {
     }
 
     ellipsis_args <- list(...)
-    ellipsis_args$.chunk_size = c()
     if (self$config_exists("can_index")) {
       if (!self$config("can_index")) {
         ellipsis_args$indexes <- c()
       }
     }
 
-    rslt <- do.call(
-      dplyr::copy_to,
-      (c(
-        list(
-          dest = dest,
-          df = df,
-          name = name,
-          overwrite = overwrite,
-          temporary = temporary
-        ),
-        ellipsis_args
-      ))
+    schema_qualfied_name <- DBI::Id(
+      schema = self$config('temp_table_schema'),
+      table = name
+    )
+    rslt <- batch_write_databricks(
+      data = df,
+      conn = dest,
+      table_id = schema_qualfied_name
+    )
+
+    self$config(
+      "temp_table_drop_me",
+      append(self$config("temp_table_drop_me"), schema_qualfied_name)
     )
 
     if (self$config("db_trace")) {
@@ -2460,4 +2456,97 @@ if (requireNamespace("getPass", quietly = TRUE)) {
     },
     ns = "getPass"
   )
+}
+
+#' @export
+batch_write_databricks <- function(
+  data,
+  conn,
+  table_id,
+  max_sql_chars = 10000000,
+  avg_chars_per_row = 100,
+  batch_size = NULL
+) {
+  # 1. Convert Id to string for logging purposes only
+  # This prevents the "no method for coercing this S4 class" error
+  table_id_log <- tryCatch(
+    as.character(DBI::dbQuoteIdentifier(conn, table_id)),
+    error = function(e) "Target Table" # Fallback if quoting fails
+  )
+
+  # Calculate batch size if not provided
+  if (is.null(batch_size)) {
+    batch_size <- floor(max_sql_chars / avg_chars_per_row * 0.8)
+  }
+
+  n_rows <- nrow(data)
+  n_batches <- ceiling(n_rows / batch_size)
+
+  # Start CLI reporting (Using the string version for display)
+  cli::cli_alert_info("Starting batch write to {.field {table_id_log}}")
+  cli::cli_alert_info(
+    "Total rows: {.val {n_rows}}, Batch size: {.val {batch_size}}, Batches: {.val {n_batches}}"
+  )
+
+  cli::cli_progress_bar(
+    format = "Writing batches {cli::pb_current}/{cli::pb_total} [{cli::pb_bar}] {cli::pb_percent}",
+    total = n_batches,
+    clear = FALSE
+  )
+
+  for (i in 1:n_batches) {
+    start_idx <- (i - 1) * batch_size + 1
+    end_idx <- min(i * batch_size, n_rows)
+    batch <- data[start_idx:end_idx, ]
+
+    tryCatch(
+      {
+        DBI::dbWriteTable(
+          conn,
+          table_id, # We still pass the S4 Id object here for the actual write
+          batch,
+          append = (i > 1),
+          overwrite = (i == 1)
+        )
+
+        cli::cli_progress_update()
+      },
+      error = function(e) {
+        cli::cli_progress_done()
+
+        # 2. Extract Error Message
+        err_msg <- conditionMessage(e)
+
+        cli::cli_alert_danger(
+          "Error writing batch {.val {i}} (rows {start_idx}-{end_idx})"
+        )
+
+        # Clean up partial table if first batch failed
+        if (i == 1) {
+          cli::cli_alert_warning("Attempting to clean up failed table creation")
+          tryCatch(
+            {
+              # FIX: Changed 'target_id' to 'table_id'
+              DBI::dbRemoveTable(conn, table_id)
+            },
+            error = function(cleanup_error) {
+              cli::cli_alert_warning("Could not clean up table")
+            }
+          )
+        }
+
+        stop(
+          paste0("Batch write failed at batch ", i, ". ODBC Error: ", err_msg),
+          call. = FALSE
+        )
+      }
+    )
+  }
+
+  cli::cli_progress_done()
+  cli::cli_alert_success(
+    "Successfully wrote {.val {n_rows}} rows to {.field {table_id_log}}"
+  )
+
+  return(dplyr::tbl(conn, table_id))
 }

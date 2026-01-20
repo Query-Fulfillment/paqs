@@ -65,7 +65,7 @@ if [[ ! -f "$src_dir/new_request.sh" ]]; then
 fi
 
 # --- Verify required files exist ---
-required_items=(config_template package query results renv.lock tools Dockerfile workplan.qmd .gitignore .Rprofile paqs.Rproj renv/activate.R renv/settings.json)
+required_items=(config_template package query results tools Dockerfile workplan.qmd .gitignore paqs.Rproj)
 for item in "${required_items[@]}"; do
   if [[ ! -e "$src_dir/$item" ]]; then
     echo -e "${RED}Error:${NC} Missing required file or directory: $item"
@@ -75,12 +75,8 @@ done
 
 # --- Copy main project components ---
 echo -e "${BLUE}▶ Copying core project files...${NC}"
-cp -r "$src_dir"/{config_template,package,query,results,renv.lock,tools,Dockerfile,workplan.qmd,.gitignore,.Rprofile} "$target_path"
+cp -r "$src_dir"/{config_template,package,query,results,tools,Dockerfile,workplan.qmd,.gitignore} "$target_path"
 
-# --- Set up renv directory ---
-echo -e "${BLUE}▶ Setting up renv environment...${NC}"
-mkdir -p "$target_path/renv"
-cp "$src_dir/renv/activate.R" "$src_dir/renv/settings.json" "$target_path/renv/"
 
 # --- Copy and rename R project file ---
 echo -e "${BLUE}▶ Creating R project file...${NC}"

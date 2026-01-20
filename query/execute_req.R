@@ -25,59 +25,59 @@
 
 Sys.setenv('execution_mode' = 'development')
 source("query/script/base/setup.R")
-
 initialize_session(
-  session_name = "qf_query_session",
-  db_conn = "dbconfig",
-  base_directory = './query',
-  results_schema = NA,
-  retain_intermediates = FALSE,
-  default_file_output = TRUE,
-  prep_dir = FALSE,
+	session_name = "",
+	query_title = "",
+	db_conn = "dbconfig",
+	base_directory = './query',
+	results_schema = NA,
+	retain_intermediates = FALSE,
+	default_file_output = TRUE,
+	prep_dir = FALSE,
 
-  #' Names of standard tables used in queries.
-  #' @md
-  #'
-  #' [IMPORTANT]
-  #' [Please edit only the right-hand side of each assignment.]
-  #' [IMPORTANT All table names both on LHS and RHS must be lower-case;*]
-  #' regardless of the case on your database. [cdm_case] parameter
-  #' from the config file will determine which case should the
-  #' SQL query be sent in.
-  #'
-  #' E.g.1 : If your table name is `DEMOGRAPHIC` the corresponding value should be
-  #' `demographic = 'demographic'` and  `cdm_case` in the config file should be `upper`
-  #'
-  #' E.g.2  :If your table name is `pcor_demographic` the corresponding value should be
-  #' `demographic = 'pcor_demographic'` and  `cdm_case` in the config file should be `lower`
-  #'
-  #'   #' E.g.3  :If your table name is `PCOR_DEMOGRAPHIC` the corresponding value should be
-  #' `demographic = 'pcor_demographic'` and  `cdm_case` in the config file should be `upper`
-  #'
-  table_names = list(
-    condition = 'condition',
-    death = 'death',
-    death_cause = 'death_cause',
-    demographic = 'demographic',
-    diagnosis = 'diagnosis',
-    dispensing = 'dispensing',
-    encounter = 'encounter',
-    enrollment = 'enrollment',
-    harvest = 'harvest',
-    hash_token = 'hash_token',
-    immunizaiotn = 'immunization',
-    lab_result_cm = 'lab_result_cm',
-    lds_address_history = 'lds_address_history',
-    med_admin = 'med_admin',
-    obs_clin = 'obs_clin',
-    obs_gen = 'obs_gen',
-    pcornet_trial = 'pcornet_trial',
-    prescribing = 'prescribing',
-    pro_cm = 'pro_cm',
-    procedures = 'procedures',
-    provider = 'provider',
-    vital = 'vital'
-  )
+	#' Names of standard tables used in queries.
+	#' @md
+	#'
+	#' [IMPORTANT]
+	#' [Please edit only the right-hand side of each assignment.]
+	#' [IMPORTANT All table names both on LHS and RHS must be lower-case;*]
+	#' regardless of the case on your database. [cdm_case] parameter
+	#' from the config file will determine which case should the
+	#' SQL query be sent in.
+	#'
+	#' E.g.1 : If your table name is `DEMOGRAPHIC` the corresponding value should be
+	#' `demographic = 'demographic'` and  `cdm_case` in the config file should be `upper`
+	#'
+	#' E.g.2  :If your table name is `pcor_demographic` the corresponding value should be
+	#' `demographic = 'pcor_demographic'` and  `cdm_case` in the config file should be `lower`
+	#'
+	#'   #' E.g.3  :If your table name is `PCOR_DEMOGRAPHIC` the corresponding value should be
+	#' `demographic = 'pcor_demographic'` and  `cdm_case` in the config file should be `upper`
+	#'
+	table_names = list(
+		condition = 'condition',
+		death = 'death',
+		death_cause = 'death_cause',
+		demographic = 'demographic',
+		diagnosis = 'diagnosis',
+		dispensing = 'dispensing',
+		encounter = 'encounter',
+		enrollment = 'enrollment',
+		harvest = 'harvest',
+		hash_token = 'hash_token',
+		immunization = 'immunization',
+		lab_result_cm = 'lab_result_cm',
+		lds_address_history = 'lds_address_history',
+		med_admin = 'med_admin',
+		obs_clin = 'obs_clin',
+		obs_gen = 'obs_gen',
+		pcornet_trial = 'pcornet_trial',
+		prescribing = 'prescribing',
+		pro_cm = 'pro_cm',
+		procedures = 'procedures',
+		provider = 'provider',
+		vital = 'vital'
+	)
 )
 
 

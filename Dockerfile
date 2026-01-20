@@ -3,7 +3,6 @@ FROM pcornetqf/qf-r-base:2.0.1
 RUN mkdir /app
 
 
-COPY .Rprofile /app/.Rprofile
 COPY query /app/query
 COPY tools /app/tools
 
