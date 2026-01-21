@@ -849,7 +849,7 @@ define_criteria.generic <- function(
 
   if (.GlobalEnv$cdm_type == "pcornet") {
     if (!is.null(enc_type_fil)) {
-      if (table_name %in% c('diagnosis', 'procedure')) {
+      if (table_name %in% c('diagnosis', 'procedures')) {
         cohort_with_codes <- cohort_with_codes %>%
           filter(enc_type %in% enc_type_fil)
       } else {
@@ -1054,7 +1054,7 @@ define_criteria.medication <- function(
     cohort_with_codes_list[[table_name]] <- input_tbl %>%
       inner_join(
         codeset %>%
-          filter(codetype %in% table_config$permitted_codetype),
+          filter(codetype %in% !!table_config$permitted_codetype),
         by = setNames("code", table_config$code_column)
       ) %>%
       select(
@@ -1162,7 +1162,7 @@ define_criteria.medication <- function(
     cohort_with_codes_list[[table_name]] <- input_tbl %>%
       inner_join(
         codeset %>%
-          filter(codetype %in% table_config$permitted_codetype),
+          filter(codetype %in% !!table_config$permitted_codetype),
         by = setNames("code", table_config$code_column)
       ) %>%
       select(
