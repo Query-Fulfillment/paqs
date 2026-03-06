@@ -7,10 +7,17 @@
 .DS_STore?
 **/results/**/*.csv
 **/results/**/*.log
+**/results/**/*.rds
 **/local/**
 *.nb.html
 *.pdf
 *.html
+*.csv
+*.sas7bdat
+*.xlsx
+*.parquet
+*.rds
+*.rda
 *.gpg
 .#*
 .Rproj.user

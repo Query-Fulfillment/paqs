@@ -87,4 +87,3 @@ load_query(package = './query')
 run()
 
 clean_up()
-

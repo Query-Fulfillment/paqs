@@ -31,7 +31,7 @@ mkdir temp_dir_docker/results
 mkdir temp_dir_docker/query
 mkdir temp_dir_docker/query/results
 mkdir temp_dir_docker/tools
-cp -r Dockerfile config_template .Rprofile temp_dir_docker
+cp -r Dockerfile config_template temp_dir_docker
 cp -r tools/banner tools/pcornet-style-sheet.css tools/handler.sh tools/parse_log.sh tools/PCORnet-logo-resize.png temp_dir_docker/tools
 cp -r  query/script query/code_sets query/execute_req.R temp_dir_docker/query
 

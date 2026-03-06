@@ -10,7 +10,7 @@
 #' @examples
 set_cdm_config <- function(cdm_type) {
   .GlobalEnv$cdm_type <- cdm_type
-  
+
   .GlobalEnv$TABLE_CONFIGS <-
     if (cdm_type == 'pcornet') {
       list(
@@ -133,66 +133,66 @@ set_cdm_config <- function(cdm_type) {
 #' @examples
 
 validate_all_inputs <- function(
-    codeset,
-    start_date,
-    end_date,
-    min_codes_required,
-    min_days_separation,
-    qualifying_event,
-    criterion_suffix
+  codeset,
+  start_date,
+  end_date,
+  min_codes_required,
+  min_days_separation,
+  qualifying_event,
+  criterion_suffix
 ) {
   # Validate codeset
   if (is.null(codeset)) {
     stop("codeset cannot be null")
   }
-  
+
   if (!is.data.frame(codeset) && !is.tbl(codeset)) {
     stop("codeset must be a data frame or tibble")
   }
-  
+
   if (pull(count(codeset)) == 0) {
     stop("codeset cannot be empty")
   }
-  
+
   if (!"codetype" %in% colnames(codeset)) {
     stop("codeset must contain a column named 'codetype'")
   }
-  
+
   if (!"code" %in% colnames(codeset)) {
     stop("codeset must contain a column named 'code'")
   }
-  
+
   # Validate numeric parameters
   if (
     !is.numeric(min_codes_required) ||
-    min_codes_required < 1 ||
-    min_codes_required != as.integer(min_codes_required)
+      min_codes_required < 1 ||
+      min_codes_required != as.integer(min_codes_required)
   ) {
     stop("min_codes_required must be a positive integer >= 1")
   }
-  
+
   if (
     !is.numeric(min_days_separation) ||
-    min_days_separation < 0 ||
-    min_days_separation != as.integer(min_days_separation)
+      min_days_separation < 0 ||
+      min_days_separation != as.integer(min_days_separation)
   ) {
     stop("min_days_separation must be a non-negative integer >= 0")
   }
-  
+
   # Validate qualifying_event
   if (!qualifying_event %in% c("first", "last", "random", "all")) {
     stop("qualifying_event must be one of: 'first', 'last', 'random' or 'all'")
   }
-  
+
   # Validate criterion_suffix
   if (
     !is.character(criterion_suffix) ||
-    length(criterion_suffix) != 1 ||
-    nchar(criterion_suffix) == 0
+      length(criterion_suffix) != 1 ||
+      nchar(criterion_suffix) == 0
   ) {
     stop("criterion_suffix must be a non-empty character string")
   }
-  
+
   # Validate date inputs (allow NULL values)
   if (!is.null(start_date)) {
     tryCatch(
@@ -204,7 +204,7 @@ validate_all_inputs <- function(
       }
     )
   }
-  
+
   if (!is.null(end_date)) {
     tryCatch(
       {
@@ -222,10 +222,10 @@ validate_date_range <- function(start_date, end_date) {
   if (is.null(start_date) || is.null(end_date)) {
     return(invisible(NULL))
   }
-  
+
   start_val <- resolve_date_input(start_date)
   end_val <- resolve_date_input(end_date)
-  
+
   # Only validate if both are actual dates (not column references)
   if (inherits(start_val, "Date") && inherits(end_val, "Date")) {
     if (start_val >= end_val) {
@@ -391,24 +391,24 @@ get_table_config <- function(codeset) {
     inner_join(codeset, by = "codetype") %>%
     distinct(table) %>%
     pull()
-  
+
   if (length(codetype_mapping) == 0) {
     stop("No valid codetype found in codeset")
   }
-  
+
   if (length(codetype_mapping) > 1) {
     warning(
       "Multiple codetypes found in codeset. Using the first one for method dispatch."
     )
     codetype_mapping <- codetype_mapping[1]
   }
-  
+
   table_name <- codetype_mapping
-  
+
   if (!table_name %in% names(TABLE_CONFIGS)) {
     stop(sprintf("No configuration found for table: %s", table_name))
   }
-  
+
   return(TABLE_CONFIGS[[table_name]])
 }
 
@@ -427,15 +427,15 @@ get_table_config <- function(codeset) {
 #' @return A tibble with patid, encounterid, and criterion date
 #' @export
 define_criteria <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL, # Now defaults to NULL
-    end_date = NULL, # Now defaults to NULL
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL, # Now defaults to NULL
+  end_date = NULL, # Now defaults to NULL
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   # Comprehensive input validation
   validate_all_inputs(
@@ -447,9 +447,9 @@ define_criteria <- function(
     qualifying_event,
     criterion_suffix
   )
-  
+
   validate_date_range(start_date, end_date)
-  
+
   # Provide informative messaging about date filtering
   if (is.null(start_date) && is.null(end_date)) {
     message("No date restrictions applied - analyzing all available data")
@@ -466,17 +466,17 @@ define_criteria <- function(
   } else {
     message(sprintf("Analyzing data from %s to %s", start_date, end_date))
   }
-  
+
   # Get table configuration for dispatch
   table_config <- get_table_config(codeset)
   table_name <- codesets$crosswalk %>%
     inner_join(codeset, by = "codetype") %>%
     distinct(table) %>%
     pull()
-  
+
   # Set class for S3 dispatch
   class(codeset) <- c(table_name, class(codeset))
-  
+
   # Log automatic adjustment for single code requirement
   if (min_codes_required == 1) {
     message(
@@ -484,7 +484,7 @@ define_criteria <- function(
     )
     min_days_separation <- 0
   }
-  
+
   # Use S3 method dispatch
   UseMethod("define_criteria", codeset)
 }
@@ -493,61 +493,61 @@ define_criteria <- function(
 
 #' Apply date filters with robust error handling
 apply_date_filters <- function(
-    cohort_data,
-    table_config,
-    start_date,
-    end_date,
-    criterion_suffix,
-    enc_type_fil
+  cohort_data,
+  table_config,
+  start_date,
+  end_date,
+  criterion_suffix,
+  enc_type_fil
 ) {
   primary_date_col <- table_config$primary_date_column
   fallback_date_col <- table_config$fallback_date_column
   event_code_col <- table_config$code_column
-  
+
   coalesced_date_col_name <- paste0("criterion_", criterion_suffix, "_date")
   criterion_encounterid <- paste0("encounterid_", criterion_suffix)
-  
+
   event_code_col_criterion_suffix <- paste0(
     event_code_col,
     '_',
     criterion_suffix
   )
-  
+
   criterion_enc_type <- paste0("enc_type_", criterion_suffix)
-  
+
   start_val <- resolve_date_input(start_date)
   end_val <- resolve_date_input(end_date)
-  
+
   # Helper function to create date filter conditions
   create_date_filter <- function(data, date_col) {
     conditions <- list()
-    
+
     if (!is.null(start_val)) {
       conditions <- append(
         conditions,
         list(expr(!!sym(date_col) >= !!start_val))
       )
     }
-    
+
     if (!is.null(end_val)) {
       conditions <- append(conditions, list(expr(!!sym(date_col) <= !!end_val)))
     }
-    
+
     # If no date filters, return data as-is
     if (length(conditions) == 0) {
       return(data)
     }
-    
+
     # Combine conditions with & operator
     if (length(conditions) == 1) {
       filter_expr <- conditions[[1]]
     } else {
       filter_expr <- reduce(conditions, function(x, y) expr(!!x & !!y))
     }
-    
+
     return(data %>% filter(!!filter_expr))
   }
-  
+
   # Attempt coalescing if fallback column exists
   if (!is.null(fallback_date_col)) {
     coalesce_attempt <- tryCatch(
@@ -559,21 +559,21 @@ apply_date_filters <- function(
               !!sym(fallback_date_col)
             )
           )
-        
+
         # Apply date filters
         result <- create_date_filter(result, coalesced_date_col_name)
-        
+
         cols <- c(
           "patid",
           "encounterid",
           event_code_col,
           coalesced_date_col_name
         )
-        
+
         if (!is.null(enc_type_fil)) {
           cols <- c(cols, "enc_type")
         }
-        
+
         result <- result %>%
           distinct(across(all_of(cols))) %>%
           rename(
@@ -581,7 +581,7 @@ apply_date_filters <- function(
             !!sym(event_code_col_criterion_suffix) := !!sym(event_code_col),
             !!sym(criterion_enc_type) := any_of("enc_type")
           )
-        
+
         #'  result <- result %>%
         #'    distinct(
         #'      patid,
@@ -596,7 +596,7 @@ apply_date_filters <- function(
         #'      !!sym(criterion_enc_type) := any_of("enc_type")
         #'    ) %>%
         #'    compute_new(., indexes = list("patid"))
-        
+
         result
       },
       error = function(e) {
@@ -609,11 +609,11 @@ apply_date_filters <- function(
         NULL
       }
     )
-    
+
     # Check if coalescing was successful and returned patients
     if (
       !is.null(coalesce_attempt) &&
-      distinct_ct(coalesce_attempt, id_col = "patid") > 0
+        distinct_ct(coalesce_attempt, id_col = "patid") > 0
     ) {
       echo_text(sprintf(
         "Successfully coalesced %s and %s",
@@ -629,25 +629,25 @@ apply_date_filters <- function(
       ))
     }
   }
-  
+
   # Use primary date column only
   result <- cohort_data %>%
     mutate(!!sym(coalesced_date_col_name) := !!sym(primary_date_col))
-  
+
   # Apply date filters
   result <- create_date_filter(result, coalesced_date_col_name)
-  
+
   cols <- c(
     "patid",
     "encounterid",
     event_code_col,
     coalesced_date_col_name
   )
-  
+
   if (!is.null(enc_type_fil)) {
     cols <- c(cols, "enc_type")
   }
-  
+
   result <- result %>%
     distinct(across(all_of(cols))) %>%
     rename(
@@ -656,19 +656,19 @@ apply_date_filters <- function(
       !!sym(event_code_col_criterion_suffix) := !!sym(event_code_col)
     ) %>%
     compute_new(., indexes = list("patid"))
-  
+
   return(result)
 }
 
 #' Create summary of distinct dates by patient
 obtain_first_last_events <- function(
-    cohort_data,
-    date_col,
-    min_codes_required
+  cohort_data,
+  date_col,
+  min_codes_required
 ) {
   first_col_name <- paste0("first_", date_col)
   last_col_name <- paste0("last_", date_col)
-  
+
   result <- cohort_data %>%
     group_by(patid) %>%
     summarize(
@@ -679,30 +679,30 @@ obtain_first_last_events <- function(
     ) %>%
     filter(distinct_dates >= min_codes_required) %>%
     compute_new(., indexes = list("patid"))
-  
+
   return(result)
 }
 
 #' Apply days separation logic with support for random selection
 apply_days_separation <- function(
-    summary_data,
-    cohort_data,
-    table_config,
-    date_col,
-    start_date,
-    end_date,
-    min_days_separation,
-    qualifying_event,
-    encounterid_criterion,
-    event_code_criterion,
-    enc_type_criterion
+  summary_data,
+  cohort_data,
+  table_config,
+  date_col,
+  start_date,
+  end_date,
+  min_days_separation,
+  qualifying_event,
+  encounterid_criterion,
+  event_code_criterion,
+  enc_type_criterion
 ) {
   first_col_name <- paste0("first_", date_col)
   last_col_name <- paste0("last_", date_col)
-  
+
   start_val <- resolve_date_input(start_date)
   end_val <- resolve_date_input(end_date)
-  
+
   # Join and calculate days separation
   summarized <- summary_data %>%
     inner_join(cohort_data, by = "patid") %>%
@@ -728,9 +728,9 @@ apply_days_separation <- function(
       days_sep_from_first >= min_days_separation &
         days_sep_from_last >= min_days_separation
     )
-  
+
   # Apply qualifying event selection
-  
+
   # Select final columns
   result <- filter_events(
     summarized,
@@ -745,7 +745,7 @@ apply_days_separation <- function(
       !!sym(event_code_criterion)
     ) %>%
     compute_new(., indexes = list("patid"))
-  
+
   return(result)
 }
 
@@ -778,7 +778,7 @@ filter_events <- function(summarized, qualifying_event, date_col) {
 #' Validate final cohort with enhanced messaging
 validate_final_cohort <- function(final_cohort, table_name) {
   patient_count <- distinct_ct(final_cohort, id_col = "patid")
-  
+
   if (patient_count == 0) {
     warning(sprintf(
       "No patients qualified the cohort definition for table '%s'. This may result in empty results.
@@ -791,7 +791,7 @@ validate_final_cohort <- function(final_cohort, table_name) {
       table_name
     ))
   }
-  
+
   return(final_cohort)
 }
 
@@ -799,22 +799,22 @@ validate_final_cohort <- function(final_cohort, table_name) {
 #' Generic method for define_criteria using table configuration
 #' @export
 define_criteria.generic <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   # Get table configuration
   table_config <- get_table_config(codeset)
   table_name <- table_config$table
-  
+
   message(sprintf("Processing %s table using generic method...", table_name))
-  
+
   # Get input table with optional cohort filtering
   if (!is.null(cohort)) {
     input_tbl <- cdm_tbl(table_name) %>%
@@ -822,19 +822,19 @@ define_criteria.generic <- function(
   } else {
     input_tbl <- cdm_tbl(table_name)
   }
-  
+
   # Step 1: Filter for codes of interest
   if (.GlobalEnv$cdm_type == "pcornet") {
     # Check if there is a wild card request
     if (all(pull(codeset, code) == "*")) {
       echo_text('Wild card request detected')
-      
+
       codetype_value <- codeset %>% pull(codetype)
-      
+
       type_value <- codesets$crosswalk %>%
         filter(codetype %in% codetype_value) %>%
         pull()
-      
+
       cohort_with_codes <- input_tbl %>%
         filter(!!sym(table_config$type_column) %in% type_value)
     } else {
@@ -846,10 +846,10 @@ define_criteria.generic <- function(
     cohort_with_codes <- input_tbl %>%
       inner_join(codeset, by = setNames("concept_id", table_config$code_column))
   }
-  
+
   if (.GlobalEnv$cdm_type == "pcornet") {
     if (!is.null(enc_type_fil)) {
-      if (table_name %in% c('diagnosis', 'procedure')) {
+      if (table_name %in% c('diagnosis', 'procedures')) {
         cohort_with_codes <- cohort_with_codes %>%
           filter(enc_type %in% enc_type_fil)
       } else {
@@ -861,12 +861,12 @@ define_criteria.generic <- function(
       }
     }
   } else {}
-  
+
   echo_text(sprintf(
     "Filtered for at least one %s code of interest",
     table_config$code_column
   ))
-  
+
   # Step 2: Apply date filters
   cohort_in_query_period <- apply_date_filters(
     cohort_data = cohort_with_codes,
@@ -876,11 +876,11 @@ define_criteria.generic <- function(
     criterion_suffix = criterion_suffix,
     enc_type_fil = enc_type_fil
   )
-  
+
   echo_text("Filtered patients within query period")
-  
+
   date_col_name <- paste0("criterion_", criterion_suffix, "_date")
-  
+
   if (min_codes_required == 1) {
     final_cohort <- filter_events(
       cohort_in_query_period,
@@ -891,19 +891,19 @@ define_criteria.generic <- function(
         name = glue("{table_name}_{criterion_suffix}"),
         indexes = list('patid')
       )
-    
+
     return(validate_final_cohort(final_cohort, table_name))
   } else {
     # Step 3: Apply minimum codes requirement
-    
+
     distinct_events_summary <- obtain_first_last_events(
       cohort_data = cohort_in_query_period,
       date_col = date_col_name,
       min_codes_required = min_codes_required
     )
-    
+
     echo_text("Applied minimum codes requirement")
-    
+
     # Step 4: Apply days separation requirement
     encounterid_criterion <- paste0("encounterid_", criterion_suffix)
     event_code_criterion <- paste0(
@@ -912,7 +912,7 @@ define_criteria.generic <- function(
       criterion_suffix
     )
     enc_type_criterion <- paste0("enc_type_", criterion_suffix)
-    
+
     final_cohort <- apply_days_separation(
       summary_data = distinct_events_summary,
       cohort_data = cohort_in_query_period,
@@ -926,7 +926,7 @@ define_criteria.generic <- function(
       event_code_criterion = event_code_criterion,
       enc_type_criterion = enc_type_criterion
     )
-    
+
     # Step 5: Validate and return
     return(validate_final_cohort(final_cohort, table_name))
   }
@@ -936,15 +936,15 @@ define_criteria.generic <- function(
 
 #' @export
 define_criteria.diagnosis <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -963,15 +963,15 @@ define_criteria.diagnosis <- function(
 
 #' @export
 define_criteria.condition_occurrence <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -989,15 +989,15 @@ define_criteria.condition_occurrence <- function(
 
 #' @export
 define_criteria.procedures <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1014,22 +1014,22 @@ define_criteria.procedures <- function(
 
 #' @export
 define_criteria.medication <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   # Get table configuration
   med_table_config <- get_table_config(codeset)
   med_tables <- list()
   # Identify which medication tables to hit based on codetype
   med_codetypes <- unique(codeset %>% select(codetype) %>% pull(codetype))
-  
+
   for (table in names(med_table_config)) {
     if (table %in% c("primary_date_column", "code_column")) {
       next
@@ -1038,15 +1038,15 @@ define_criteria.medication <- function(
       med_tables[[table]] <- table
     }
   }
-  
+
   # Get input table with optional cohort filtering
   combined_meds <- list()
   cohort_with_codes_list <- list()
   for (table_name in names(med_tables)) {
     message(sprintf("Processing %s table \n", table_name))
-    
+
     table_config <- med_table_config[[table_name]]
-    
+
     if (!is.null(cohort)) {
       input_tbl <- cdm_tbl(table_name) %>%
         inner_join(cohort, by = "patid")
@@ -1057,7 +1057,7 @@ define_criteria.medication <- function(
     cohort_with_codes_list[[table_name]] <- input_tbl %>%
       inner_join(
         codeset %>%
-          filter(codetype %in% table_config$permitted_codetype),
+          filter(codetype %in% !!table_config$permitted_codetype),
         by = setNames("code", table_config$code_column)
       ) %>%
       select(
@@ -1072,20 +1072,20 @@ define_criteria.medication <- function(
         indexes = list('patid')
       )
   }
-  
+
   cohort_with_codes <- reduce(cohort_with_codes_list, union_all) %>%
     compute_new(
       name = glue("medications_{criterion_suffix}"),
       indexes = list('patid')
     )
-  
+
   for (table_name in names(med_tables)) {
     if (db_exists_table(name = glue("{table_name}_{criterion_suffix}"))) {
       db_remove_table(name = glue("{table_name}_{criterion_suffix}"))
       echo_text(glue("removed intermediate {table_name}_{criterion_suffix}"))
     }
   }
-  
+
   if (.GlobalEnv$cdm_type == "pcornet") {
     if (!is.null(enc_type_fil)) {
       cohort_with_codes <- cohort_with_codes %>%
@@ -1095,7 +1095,7 @@ define_criteria.medication <- function(
         filter(enc_type %in% enc_type_fil)
     }
   } else {}
-  
+
   # Step 2: Apply date filters
   cohort_in_query_period <- apply_date_filters(
     cohort_data = cohort_with_codes,
@@ -1105,10 +1105,10 @@ define_criteria.medication <- function(
     criterion_suffix = criterion_suffix,
     enc_type_fil = enc_type_fil
   )
-  
+
   echo_text("Filtered patients within query period")
   date_col_name <- paste0("criterion_", criterion_suffix, "_date")
-  
+
   if (min_codes_required == 1) {
     final_cohort <- filter_events(
       cohort_in_query_period,
@@ -1116,12 +1116,12 @@ define_criteria.medication <- function(
       date_col = date_col_name
     ) %>%
       compute_new(., indexes = list('patid'))
-    
+
     if (db_exists_table(name = glue("medications_{criterion_suffix}"))) {
       db_remove_table(name = glue("medications_{criterion_suffix}"))
       echo_text(glue("removed intermediate medications_{criterion_suffix}"))
     }
-    
+
     return(validate_final_cohort(final_cohort, table_name))
   } else {
     # Step 3: Apply minimum codes requirement
@@ -1130,14 +1130,14 @@ define_criteria.medication <- function(
       date_col = date_col_name,
       min_codes_required = min_codes_required
     )
-    
+
     echo_text("Applied minimum codes requirement")
-    
+
     # Step 4: Apply days separation requirement
     encounterid_criterion <- paste0("encounterid_", criterion_suffix)
     medication_criterion <- paste0("medication_code_", criterion_suffix)
     enc_type_criterion <- paste0("enc_type_", criterion_suffix)
-    
+
     final_cohort <- apply_days_separation(
       summary_data = distinct_events_summary,
       cohort_data = cohort_in_query_period,
@@ -1151,7 +1151,7 @@ define_criteria.medication <- function(
       event_code_criterion = medication_criterion,
       enc_type_criterion = enc_type_criterion
     )
-    
+
     # Step 5: Validate and return
     return(validate_final_cohort(final_cohort, table_name))
   }
@@ -1159,15 +1159,15 @@ define_criteria.medication <- function(
 
 #' @export
 define_criteria.dispensing <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1184,15 +1184,15 @@ define_criteria.dispensing <- function(
 
 #' @export
 define_criteria.prescribing <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1209,15 +1209,15 @@ define_criteria.prescribing <- function(
 
 #' @export
 define_criteria.med_admin <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1234,15 +1234,15 @@ define_criteria.med_admin <- function(
 
 #' @export
 define_criteria.drug_exposure <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1259,15 +1259,15 @@ define_criteria.drug_exposure <- function(
 
 #' @export
 define_criteria.obs_clin <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1284,15 +1284,15 @@ define_criteria.obs_clin <- function(
 
 #' @export
 define_criteria.immunization <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1309,15 +1309,15 @@ define_criteria.immunization <- function(
 
 #' @export
 define_criteria.death <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required = 1,
+  min_days_separation = 0,
+  qualifying_event = "first",
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   define_criteria.generic(
     cohort,
@@ -1336,7 +1336,7 @@ define_criteria.death <- function(
 #' #' Lab results may need special handling for lab values, ranges, etc.
 #' #' @export
 #' define_criteria.lab_result_cm <- function(
-    #' 		cohort = NULL,
+#' 		cohort = NULL,
 #' 		codeset,
 #' 		start_date = NULL,
 #' 		end_date = NULL,
@@ -1370,19 +1370,19 @@ define_criteria.death <- function(
 #' Default method with enhanced error messaging
 #' @export
 define_criteria.default <- function(
-    cohort = NULL,
-    codeset,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required,
-    min_days_separation,
-    qualifying_event,
-    criterion_suffix,
-    enc_type_fil = NULL
+  cohort = NULL,
+  codeset,
+  start_date = NULL,
+  end_date = NULL,
+  min_codes_required,
+  min_days_separation,
+  qualifying_event,
+  criterion_suffix,
+  enc_type_fil = NULL
 ) {
   # Get available codetypes from the codeset
   available_codetypes <- unique(codeset %>% distinct(codetype) %>% pull())
-  
+
   cli_abort(
     c(
       "✗" = "Error: Unknown or unsupported codetype value(s)",
