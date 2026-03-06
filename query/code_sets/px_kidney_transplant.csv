@@ -1,0 +1,25 @@
+code,codetype,descrip
+1008104,PXCH,Backbench reconstruction of cadaver or living donor renal allograft prior to transplantation
+50328,PXCH,"Backbench reconstruction of cadaver or living donor renal allograft prior to transplantation; arterial anastomosis, each"
+50329,PXCH,"Backbench reconstruction of cadaver or living donor renal allograft prior to transplantation; ureteral anastomosis, each"
+50327,PXCH,"Backbench reconstruction of cadaver or living donor renal allograft prior to transplantation; venous anastomosis, each"
+50325,PXCH,"Backbench standard preparation of living donor renal allograft (open or laparoscopic) prior to transplantation, including dissection and removal of perinephric fat and preparation of ureter(s), renal vein(s), and renal artery(s), ligating branches, as nec"
+1008109,PXCH,"Renal allotransplantation, implantation of graft"
+50360,PXCH,"Renal allotransplantation, implantation of graft; without recipient nephrectomy"
+50365,PXCH,"Renal allotransplantation, implantation of graft; with recipient nephrectomy"
+1008098,PXCH,Renal Transplantation Procedures
+S2065,PXCH,Simultaneous pancreas kidney transplantation
+0TY1,PX10,"Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Left"
+0TY10,PX10,"Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Left @ Open"
+0TY10Z,PX10,"Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Left @ Open @ No Device"
+0TY0,PX10,"Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Right"
+0TY00,PX10,"Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Right @ Open"
+0TY00Z,PX10,"Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Right @ Open @ No Device"
+0TY10Z0,PX10,"Transplantation of Left Kidney, Allogeneic, Open Approach"
+0TY10Z1,PX10,"Transplantation of Left Kidney, Syngeneic, Open Approach"
+0TY10Z2,PX10,"Transplantation of Left Kidney, Zooplastic, Open Approach"
+0TY00Z0,PX10,"Transplantation of Right Kidney, Allogeneic, Open Approach"
+0TY00Z1,PX10,"Transplantation of Right Kidney, Syngeneic, Open Approach"
+0TY00Z2,PX10,"Transplantation of Right Kidney, Zooplastic, Open Approach"
+50380,PXCH,REMOVAL WITH RELOCATION OF KIDNEY
+93503,PXCH,INSERTION OF TUBE IN PULMONARY ARTERY FOR MONITORING

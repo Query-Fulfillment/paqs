@@ -1,29 +1,32 @@
-if(Sys.getenv('execution_mode') %in% c('development','container')) {
-# call libraries
-packages <- c(
-  "argos",
-  "DBI",
-  "dbplyr",
-  "RPostgres",
-  "odbc",
-  "bigrquery",
-  "cli",
-  "pak",
-  "duckdb",
-  "quarto",
-  "tidyverse"
-)
+if (Sys.getenv('execution_mode') %in% c('development', 'container')) {
+  # call libraries
+  packages <- c(
+    "argos",
+    "DBI",
+    "dbplyr",
+    "RPostgres",
+    "odbc",
+    "bigrquery",
+    "cli",
+    "pak",
+    "duckdb",
+    "quarto",
+    "tidyverse",
+    "glue"
+  )
 
-for (pak in packages) {
-  suppressWarnings(suppressPackageStartupMessages(require(
-    pak,
-    character.only = TRUE
-  )))
-}
+  for (pak in packages) {
+    suppressWarnings(suppressPackageStartupMessages(require(
+      pak,
+      character.only = TRUE
+    )))
+  }
 } else if (Sys.getenv('execution_mode') %in% c('nativeR')) {
   pkgLoad()
 } else {
-  cli_abort("Incorrect execution mode. Permitted values are `development`, `container` and `nativeR`")
+  cli_abort(
+    "Incorrect execution mode. Permitted values are `development`, `container` and `nativeR`"
+  )
 }
 
 

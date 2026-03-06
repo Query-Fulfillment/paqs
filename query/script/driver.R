@@ -43,7 +43,7 @@ run <- function() {
 
   rslt <- list()
 
-  codesets <- load_all_codesets()
+  .GlobalEnv$codesets <- load_all_codesets()
 
   rslt$any_dx_2024 <- define_criteria(
     codeset = codesets$dx_any_icd,
@@ -74,6 +74,4 @@ run <- function() {
   end_log()
 
   render_report()
-
-
 }

@@ -11,7 +11,8 @@
           "LogLevel": 2,
           "HTTPPath": "myHTTPPath",
           "Schema": "my_cdm_schema",
-          "Catalog": "my_catalog"
+          "Catalog": "my_catalog",
+          "bigint":"numeric"
      },
      "src_site": {
         "SiteName" : "DataMart ID",

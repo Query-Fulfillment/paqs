@@ -380,6 +380,7 @@ echo_text <- function(text, style = "info") {
 	r_styles[[style]](text)
 }
 
+#' @export
 show_progress <- function(step, message) {
 	progress_pct <- round(step / .GlobalEnv$total_steps * 100, 0)
 
