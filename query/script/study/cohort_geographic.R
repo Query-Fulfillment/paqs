@@ -1,3 +1,13 @@
+#' Retrieve geographic information for a cohort
+#'
+#' Joins the `lds_address_history` table to the provided cohort (if any) and returns the most recent address per patient, handling fallbacks for missing ZIPs.
+#'
+#' @param cohort Optional cohort table to join on `patid`.
+#' @param end_date End date for the look‑back period (default "2024-12-31").
+#' @param lookback_years Number of years to look back from `end_date` (default 5).
+#' @return A validated cohort table with the latest address fields.
+#' @examples
+#' get_geog_info(cohort = my_cohort)
 get_geog_info <- function(
 		cohort = NULL,
 		end_date = "2024-12-31",
@@ -32,14 +42,14 @@ get_geog_info <- function(
 	echo_text("Rank addresses by recency")
 	all_addresses <- input_tbl %>%
 		filter(!is.na(address_zip5),
-					 !address_zip5 %in% bad_zip,
-					 !is.na(address_state),
-					 !address_state %in% bad_state,
-					 (is.na(address_period_end) | address_period_end > lookback_date),
-					 !is.na(address_period_start)) %>%
+				!address_zip5 %in% bad_zip,
+				!is.na(address_state),
+				!address_state %in% bad_state,
+				(is.na(address_period_end) | address_period_end > lookback_date),
+				!is.na(address_period_start)) %>%
 		mutate(recency_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
 		window_order(patid, desc(recency_flag), desc(address_period_end),
-								 desc(address_period_start), desc(addressid)) %>%
+						 desc(address_period_start), desc(addressid)) %>%
 		group_by(patid) %>%
 		mutate(recency_rank = row_number()) %>%
 		ungroup() %>%
@@ -54,12 +64,12 @@ get_geog_info <- function(
 	valid_zip <- input_tbl %>%
 		anti_join(select(top_address, patid), by = 'patid') %>%
 		filter(!is.na(address_zip5),
-					 !address_zip5 %in% bad_zip,
-					 (is.na(address_period_end) | address_period_end > lookback_date),
-					 !is.na(address_period_start)) %>%
+				!address_zip5 %in% bad_zip,
+				(is.na(address_period_end) | address_period_end > lookback_date),
+				!is.na(address_period_start)) %>%
 		mutate(recency_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
 		window_order(patid, desc(recency_flag), desc(address_period_end),
-								 desc(address_period_start), desc(addressid)) %>%
+						 desc(address_period_start), desc(addressid)) %>%
 		group_by(patid) %>%
 		mutate(recency_rank = row_number()) %>%
 		ungroup() %>%
@@ -75,11 +85,18 @@ get_geog_info <- function(
 		distinct(patid, address_zip5, address_state, address_period_end, address_period_start, addressid) %>%
 		compute_new(indexes = list("patid"))
 
-
 	return(validate_final_cohort(final_addresses, table_name))
 }
 
-
+#' Map geographic variables to address data
+#'
+#' Joins the appropriate mapping table (ADI, RUCA, or state) to an address table.
+#'
+#' @param address_tbl Address table containing `patid` and location identifiers.
+#' @param geo_var One of "adi", "ruca", or "state" indicating which mapping to apply.
+#' @return A table with `patid` and the mapped geographic variable.
+#' @examples
+#' map_geographic_variables(address_tbl, geo_var = "adi")
 map_geographic_variables <- function(
 		address_tbl,
 		geo_var = c("adi", "ruca", "state")
@@ -128,4 +145,34 @@ map_geographic_variables <- function(
 	}
 
 	return(mapped_tbl)
+}
+
+#' Validate geographic data completeness
+#'
+#' Flags valid ZIP and state values for a cohort.
+#'
+#' @param cohort Cohort table containing address fields.
+#' @return A table with boolean flags for ZIP and state validity.
+#'
+#' @examples
+#' get_valid_geog(cohort)
+get_valid_geog <- function(
+		cohort = NULL) {
+
+	message("Starting get_valid_geog()...")
+
+	valid_geog <- cohort %>%
+		mutate(valid_zip = if_else(address_zip5 != "99999" &
+							 address_zip5 != "00000" &
+							 address_zip5 != "Missing" & !is.na(address_zip5), 'Yes', NA)) %>%
+		mutate(valid_state = if_else(address_state != "NI" &
+							 address_state != "Missing" &
+							 address_state != "YY" &
+							 address_state != "ZZ" &
+							 address_state != "UN" & !is.na(address_state), 'Yes', NA)) %>%
+		mutate(valid_zip_or_state = if_else(valid_zip == 'Yes' | valid_state == 'Yes', 'Yes', NA)) %>%
+		mutate(valid_zip_and_state = if_else(valid_zip == 'Yes' & valid_state == 'Yes', 'Yes', NA)) %>%
+		select(patid, valid_zip, valid_state, valid_zip_or_state, valid_zip_and_state)
+
+	return(valid_geog)
 }

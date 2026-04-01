@@ -1,16 +1,20 @@
 
-#' Get BMI for cohort
+#' Compute BMI for a cohort
 #'
-#' @param cohort cohort table with patid and index or anchor date for function to reference
-#' @param vital_tbl vital cdm table
-#' @param demographic_tbl demographic cdm table
-#' @param cohort_date_col column name for index or anchor date for function to reference
-#' @param adult_wt_days max number of days to look back for weight for adults (must be negative)
-#' @param child_ht_days max number of days to look back for height for pediatrics (must be negative)
-#' @param child_wt_days max number of days to look back for weight for pediatrics (must be negative)
-#' @param infant_ht_days max number of days to look back for height for infants (must be negative)
-#' @param infant_wt_days max number of days to look back for weight for infant (must be negative)
+#' Joins cohort demographics and vitals, calculates age categories, selects the most recent height and weight measurements per patient (adult, pediatric, infant), computes BMI, and assigns appropriate BMI categories.
 #'
+#' @param cohort Cohort table with `patid` and an index/anchor date column.
+#' @param vital_tbl Vital CDM table (default `cdm_tbl('vital')`).
+#' @param demographic_tbl Demographic CDM table (default `cdm_tbl('demographic')`).
+#' @param cohort_date_col Name of the column in `cohort` that holds the index/anchor date.
+#' @param adult_wt_days Maximum look‑back days for adult weight (negative value).
+#' @param adult_ht_days Maximum look‑back days for adult height (negative value).
+#' @param child_ht_days Maximum look‑back days for pediatric height (negative value).
+#' @param child_wt_days Maximum look‑back days for pediatric weight (negative value).
+#' @param infant_ht_days Maximum look‑back days for infant height (negative value).
+#' @param infant_wt_days Maximum look‑back days for infant weight (negative value).
+#' @return A validated cohort table with BMI category and age group.
+#' @export
 get_bmi <- function(cohort,
 										vital_tbl = cdm_tbl('vital'),
 										demographic_tbl = cdm_tbl('demographic'),

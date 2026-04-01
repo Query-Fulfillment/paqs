@@ -1,3 +1,12 @@
+#' Retrieve demographic information for a cohort
+#'
+#' Joins the `demographic` table to the provided cohort (if any) and calculates age, sex, race, and ethnicity labels, as well as enrollment date components.
+#'
+#' @param cohort Optional cohort table to join on `patid`.
+#' @param end_date End date for age calculation (optional).
+#' @param ce_date Column name for enrollment date (optional, used for year/month extraction).
+#' @return A validated cohort table with demographic fields.
+#' @export
 get_demographic <- function(
     cohort = NULL,
     end_date = NULL,

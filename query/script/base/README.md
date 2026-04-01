@@ -47,12 +47,18 @@ define_criteria(
 | ----------------------- | ------------------------------ | ------------- | ----------- | ----------------------------------------------------------------- |
 | `cohort`              | data.frame/tibble/remote table | No            | `NULL`    | Optional existing cohort to filter. Must contain `patid` column |
 | `codeset`             | data.frame/tibble/remote table | **Yes** | -           | Codeset with `codetype` and `code` columns                    |
-| `start_date`          | Date/character                 | **Yes** | -           | Start date for analysis period                                    |
-| `end_date`            | Date/character                 | **Yes** | -           | End date for analysis period                                      |
+| `start_date`          | Date/character/NULL            | Optional | -           | Start date for analysis period (NULL = no lower bound)      |
+| `end_date`            | Date/character/NULL            | Optional | -           | End date for analysis period (NULL = no upper bound)        |
 | `min_codes_required`  | integer                        | No            | `1`       | Minimum number of distinct events required                        |
 | `min_days_separation` | integer                        | No            | `0`       | Minimum days between first and last event                         |
 | `qualifying_event`    | character                      | No            | `"first"` | Which event to return: "first", "last", or "random"               |
 | `criterion_suffix`    | character                      | **Yes** | -           | Suffix for output column names                                    |
+
+### Note on `min_codes_required` and `min_days_separation`
+
+When `min_codes_required` is set to **1**, the function automatically forces `min_days_separation` to **0** (see the implementation at lines 480‑486). This ensures that a single qualifying event is always returned regardless of any day‑separation requirement.
+
+---
 
 ### Return Value
 
