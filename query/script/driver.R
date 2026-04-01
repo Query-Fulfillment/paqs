@@ -33,39 +33,19 @@ run <- function() {
   #' **SET YOUR CONNECTION CDM TYPE | Permitted Values are `pcornet` or `omop`->**
   #'
   set_cdm_config('pcornet')
+  # Adding a list object to store results on the global environment ====
 
+   rslt <- list()
+
+  .GlobalEnv$codesets <- load_all_codesets()
   # ===================================================================================================
 
   # ===================================================================================================
   #' **WRITE YOUR QUERY FROM HERE ->**
   # ===================================================================================================
-  # Adding a list object to store results on the global environment ====
 
-  rslt <- list()
 
-  .GlobalEnv$codesets <- load_all_codesets()
-
-  rslt$any_dx_2024 <- define_criteria(
-    codeset = codesets$dx_any_icd,
-    start_date = NULL,
-    end_date = NULL,
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix = "any_dx",
-    enc_type_fil = c('AV', 'TH', 'ED', 'IP')
-  )
-
-  rslt$and_dx_any_glp <- define_criteria(
-    cohort = rslt$any_dx_2024,
-    codeset = codesets$rx_any_glp,
-    start_date = "01-01-2013",
-    end_date = "12-31-2024",
-    min_codes_required = 1,
-    min_days_separation = 0,
-    qualifying_event = "first",
-    criterion_suffix = "any_glp"
-  )
+ 
 
   # ===================================================================================================
   #' **Standard code DO NOT EDIT**
