@@ -1,0 +1,15 @@
+{
+  "name": "PAQS Dev Container for Positron",
+  "image": "pcornetqf/qf-r-base:2.0.1",
+  "mounts": [
+    "source=/Users/masters2,target=/host-home,type=bind,consistency=cached",
+    "source=/Users/masters2/.positron-server,target=/root/.positron-server,type=bind"
+  ],
+  "customizations": {
+    "positron": {
+      "settings": {
+        "r.alwaysUseActiveTerminal": true
+      }
+    }
+  }
+}
