@@ -1,3 +1,10 @@
+# Documentation developed using Claude Code and gpt-oss-120b model
+# ------------------------------------------------------------
+# File: cohort_dev.R
+# Purpose: Core utilities for cohort definition, input validation, and table dispatch.
+# ------------------------------------------------------------
+# Documentation developed using Claude Code and gpt-oss-120b model
+# File: cohort_dev.R – Core utilities for cohort definition and validation
 # Table configurations for different code types
 
 #' Setting PCORnet or OMOP Table Configs
@@ -8,6 +15,13 @@
 #'
 #' @export
 #' @examples
+#' @title Set CDM Configuration
+#' @description Set the global CDM type and table configurations for the session.
+#' @param cdm_type Character string, either 'pcornet' or 'omop'.
+#' @return No return value; populates `.GlobalEnv$cdm_type` and `.GlobalEnv$TABLE_CONFIGS`.
+#' @export
+#' @examples
+#' set_cdm_config('pcornet')
 set_cdm_config <- function(cdm_type) {
   .GlobalEnv$cdm_type <- cdm_type
 
@@ -86,9 +100,8 @@ set_cdm_config <- function(cdm_type) {
         ),
         death = list(
           table = "death",
-          code_column = "death_cause_code",
           primary_date_column = "death_date",
-          fallback_date_column = "admit_date"
+          permitted_codetype = c('DTH')
         )
       )
     } else {
@@ -115,24 +128,23 @@ set_cdm_config <- function(cdm_type) {
     }
 }
 
-
-# Input validation functions
-#' Title
-#'
-#' @param codeset
-#' @param start_date
-#' @param end_date
-#' @param min_codes_required
-#' @param min_days_separation
-#' @param qualifying_event
-#' @param criterion_suffix
-#'
-#' @returns
-#'
+#' @title Validate All Inputs
+#' @description Perform comprehensive validation of arguments passed to `define_criteria`.
+#' @param codeset A tibble or data.frame containing at least `codetype` and `code` columns.
+#' @param start_date Start date for the cohort (Date, character string, column name, or NULL).
+#' @param end_date End date for the cohort (same types as `start_date`).
+#' @param min_codes_required Positive integer specifying the minimum distinct codes per patient.
+#' @param min_days_separation Non‑negative integer for required separation between events.
+#' @param qualifying_event One of "first", "last", "random", "all" indicating which event to keep.
+#' @param criterion_suffix Non‑empty character string used to suffix output column names.
+#' @return No return value; throws errors if validation fails.
 #' @export
 #' @examples
-
+#' # Dummy codeset example
+#' cs <- tibble::tibble(codetype = "DX09", code = "12345")
+#' validate_all_inputs(cs, NULL, NULL, 1, 0, "first", "test")
 validate_all_inputs <- function(
+
   codeset,
   start_date,
   end_date,
@@ -235,6 +247,14 @@ validate_date_range <- function(start_date, end_date) {
 }
 
 # Enhanced resolve_date_input to handle NULL
+#' @title Resolve Date Input
+#' @description Convert various date specifications (Date objects, character strings, column symbols, or NULL) into a standard `Date` or symbolic reference.
+#' @param x Date, character string, column name (symbol), or NULL.
+#' @return Returns a `Date` object, a column symbol, or `NULL` if the input is `NULL`.
+#' @export
+#' @examples
+#' resolve_date_input("2022-01-01")
+#' resolve_date_input(NULL)
 resolve_date_input <- function(x) {
   if (is.null(x)) {
     return(NULL)
@@ -623,16 +643,16 @@ apply_date_filters <- function(
       return(coalesce_attempt)
     } else {
       echo_text(sprintf(
-        "Coalescing %s and %s yielded no patients, using primary date column only",
+        "Coalescing %s and %s yielded no patients, using fallback date column only",
         primary_date_col,
         fallback_date_col
       ))
     }
   }
 
-  # Use primary date column only
+  # Use fallback date column only
   result <- cohort_data %>%
-    mutate(!!sym(coalesced_date_col_name) := !!sym(primary_date_col))
+    mutate(!!sym(coalesced_date_col_name) := !!sym(fallback_date_col))
 
   # Apply date filters
   result <- create_date_filter(result, coalesced_date_col_name)

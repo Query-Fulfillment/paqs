@@ -1,6 +1,16 @@
 #' Capture death record
-#' add in a parameter in define_criteria - to filter for alive/deceased patients
-
+#'
+#' Adds a parameter in `define_criteria` to filter for alive/deceased patients.
+#'
+#' @param cohort Optional cohort table to join with death records.
+#' @param codeset Unused placeholder for codeset.
+#' @param start_date Start date for the death date filter.
+#' @param end_date End date for the death date filter.
+#' @param min_codes_required Minimum number of codes required (default 1).
+#' @param min_days_separation Minimum days separation between codes (default 0).
+#' @param qualifying_event Qualifying event type (default "first").
+#' @param criterion_suffix Suffix for the output criterion column name.
+#' @return A validated cohort table with death date column.
 #' @export
 define_criteria.death <- function(
     cohort = NULL,

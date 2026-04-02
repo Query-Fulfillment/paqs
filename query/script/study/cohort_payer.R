@@ -1,7 +1,11 @@
-#' Define payer type criteria
+#' Summarize primary payer types for a cohort
 #'
-#' Summarizes primary payer types for each patient within a cohort and assigns category ranks.
+#' Joins the `encounter` table to the provided cohort and selects the most recent encounter with non‑missing primary or secondary payer type, then ranks payer categories.
 #'
+#' @param cohort Cohort table containing patient IDs.
+#' @param cohort_encounterid_col Name of the column in `cohort` that holds the encounter ID to join on.
+#' @return A validated cohort table with payer category and rank.
+#' @export
 get_payer_info <- function(
 		cohort,
 		cohort_encounterid_col
