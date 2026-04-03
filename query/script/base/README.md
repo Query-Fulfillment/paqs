@@ -67,6 +67,8 @@ Returns a tibble with the following columns:
 - `patid`: Patient identifier
 - `encounterid_{criterion_suffix}`: Encounter identifier for the qualifying event
 - `criterion_{criterion_suffix}_date`: Date of the qualifying event
+- `enc_type_{criterion_suffix}` : Encounter type of the qualifying event
+- `dx_{criterion_suffix}/px_/rx_ (code)` : Qualified code value of the qualifying event
 
 ---
 
@@ -183,30 +185,7 @@ refined_cohort <- define_criteria(
 )
 ```
 
-### Example 5: Lab Results with Custom Logic
-
-```r
-# HbA1c lab codes
-hba1c_codes <- tibble(
-  codetype = "LBLC",
-  code = "4548-4"
-)
-
-hba1c_cohort <- define_criteria(
-  codeset = hba1c_codes,
-  start_date = "2021-01-01",
-  end_date = "2023-12-31",
-  min_codes_required = 2,
-  min_days_separation = 90,  # At least 90 days between tests
-  qualifying_event = "last",
-  criterion_suffix = "hba1c",
-  # Lab-specific parameters (if using lab_result_cm method)
-  lab_value_filter = list(min_value = 7.0),
-  normal_range_only = FALSE
-)
-```
-
-### Example 6: Multiple Criteria Workflow
+### Example 5: Multiple Criteria Workflow
 
 ```r
 # Build complex cohort with multiple criteria
@@ -271,7 +250,7 @@ results$metformin <- define_criteria(
 - **PXCH/PXLC/PXND/PXRE**: CPT, LOINC, NDC, Revenue procedure codes
 - **RX01/RX11/RX09**: NDC, RxNorm drug codes
 - **LBLC/LBCH**: LOINC, CPT lab codes
-- **MA09/MA11/MA00**:
+- **MA09/MA11/MA00**: 
 
 ---
 
