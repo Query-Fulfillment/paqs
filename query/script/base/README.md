@@ -346,4 +346,4 @@ min_days_separation = -10   # Must be >= 0
 
 ---
 
-This documentation provides comprehensive guidance for using the `define_criteria` function effectively. For additional questions or issues, please refer to the troubleshooting section or contact qf@pcornet.org.
+This documentation provides comprehensive guidance for using the `define_criteria` function effectively.
