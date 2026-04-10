@@ -120,3 +120,5 @@ through PCORI® award RI-CHOP-01-PS1.
 The package and its documentation do not necessarily represent the
 opinions of PCORI® or other organizations participating in,
 collaborating with, or funding PCORnet®.
+
+> **Note:** This repository is under active development; the code is subjected to change.

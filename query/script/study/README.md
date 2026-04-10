@@ -37,6 +37,7 @@ get_geog_info(
   * `lookback_years` – Number of years to look back from `end_date` (default 5).
 * **Return** – Validated cohort tibble containing `patid`, `address_zip5`, `address_state`, and address‑period columns.
 * **Example**
+
 ```r
 latest_addr <- get_geog_info(cohort = my_cohort)
 ```
@@ -58,6 +59,7 @@ map_geographic_variables(
   * `geo_var` – One of "adi", "ruca", or "state" indicating the mapping to apply.
 * **Return** – Tibble with `patid` and the mapped variable (`adi_quartile`, `ruca_code`, or `state_name`).
 * **Example**
+
 ```r
 adi_tbl <- map_geographic_variables(address_tbl = latest_addr, geo_var = "adi")
 ```
@@ -77,6 +79,7 @@ get_valid_geog(
   * `cohort` – Cohort tibble containing `address_zip5` and `address_state`.
 * **Return** – Tibble with boolean flags: `valid_zip`, `valid_state`, `valid_zip_or_state`, `valid_zip_and_state`.
 * **Example**
+
 ```r
 geog_flags <- get_valid_geog(cohort = latest_addr)
 ```
@@ -98,6 +101,7 @@ get_payer_info(
   * `cohort_encounterid_col` – Column name in `cohort` that holds the encounter identifier.
 * **Return** – Validated cohort tibble with columns `payer_cat`, `payer_rank`, and associated encounter information.
 * **Example**
+
 ```r
 payer_tbl <- get_payer_info(cohort = my_cohort, cohort_encounterid_col = "encounterid")
 ```
@@ -130,6 +134,7 @@ get_bmi(
   * Look‑back day arguments – Negative integers defining how far back to search for measurements.
 * **Return** – Tibble with `patid`, `bmi_category`, and age group (`bmi_age`).
 * **Example**
+
 ```r
 bmi_results <- get_bmi(
   cohort = my_cohort,
@@ -156,6 +161,7 @@ get_demographic(
   * `ce_date` – Column name for enrollment date used to extract year/month components.
 * **Return** – Validated tibble with `patid`, age, `sex_label`, `race_label`, `hispanic_label`, and enrollment date components.
 * **Example**
+
 ```r
 demo_tbl <- get_demographic(cohort = my_cohort, end_date = "2023-12-31")
 ```
@@ -181,6 +187,7 @@ define_criteria.death(
 * **Parameters** – Same as `define_criteria` (see base README) with `cohort` optional.
 * **Return** – Tibble with `patid` and a death date column named `criterion_<suffix>_date`.
 * **Example**
+
 ```r
 death_cohort <- define_criteria.death(
   start_date = "2020-01-01",
@@ -195,4 +202,3 @@ death_cohort <- define_criteria.death(
 
 * All functions rely on the `cdm_tbl()` abstraction and return **validated** cohort tables via `validate_final_cohort()`, ensuring consistent downstream usage.
 * The `echo_text()` calls provide runtime logging for debugging within the framework.
-* To generate the latest documentation after editing, run `Rscript -e "devtools::document()"` at the project root.
