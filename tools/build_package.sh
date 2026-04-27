@@ -6,7 +6,12 @@ if [[ ! -d 'tools' ]]; then
     exit 1
 fi
 
-req_name=$(basename "$PWD")
+if [ -n "$1" ]; then
+  req_name="$1"
+else
+  req_name=$(basename "$PWD")
+fi
+export REQ_NAME="$req_name"
 
 # grep -q "production" "query/execute_req.R"
 # if [ $? -ne 0 ]; then

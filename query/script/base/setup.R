@@ -474,8 +474,14 @@ load_query <- function(package) {
 #' create_paqs_package()
 #' }
 #' @export
-create_paqs_package <- function() {
-	system2("tools/build_package.sh")
+create_paqs_package <- function(pkg_name = NULL) {
+  if (is.null(pkg_name) || nzchar(pkg_name) == FALSE) {
+    # No name supplied → keep original behaviour
+    system2("tools/build_package.sh")
+  } else {
+    # Pass the name as the first argument to the script
+    system2("tools/build_package.sh", args = pkg_name)
+  }
 }
 
 clean_up <- function(db = get_argos_default()$config("db_src")) {

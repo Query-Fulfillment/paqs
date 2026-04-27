@@ -32,7 +32,13 @@ library(knitr)
 library(fs)
 library(htmltools)
 params <- list()
-params$query_name <- basename(getwd())
+# Use REQ_NAME environment variable if set, otherwise fallback to directory name
+req_name_env <- Sys.getenv('REQ_NAME')
+if (nzchar(req_name_env)) {
+  params$query_name <- req_name_env
+} else {
+  params$query_name <- basename(getwd())
+}
 ```
 
 

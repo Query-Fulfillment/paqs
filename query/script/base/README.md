@@ -613,4 +613,4 @@ results$metformin_post_dx <- define_criteria(
 
 ---
 
-This documentation provides comprehensive guidance for using the `define_criteria` function effectively.
+This documentation provides comprehensive guidance for using the `define_criteria` function effectively. For additional function to characterize a developed cohort, refer to [study functions](https://github.com/Query-Fulfillment/paqs/blob/main/query/script/study/README.md)
