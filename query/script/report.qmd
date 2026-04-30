@@ -1,6 +1,6 @@
 ---
-title: ""
-description: ""
+title: "FD0000 Query Title"
+description: "Please treat content as confidential"
 author: Query Fulfillment Center for PCORnet®
 date: last-modified
 date-format: "MM-DD-YYYY"
@@ -9,18 +9,25 @@ title-block-style: default
 title-block-banner-color: "#272A59FF"
 format:
   html:
+    include-in-header:
+      - text: |
+           <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+           <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+           <script src="https://unpkg.com/topojson-client@3"></script>
+           <script src="https://unpkg.com/topojson@3"></script>
     output-file: paqs_query_0_report
     grid: 
       body-width: 2160px
       gutter-width: 10px
       sidebar-width: 300px
-      margin-width: 600px
+      margin-width: 0px
     embed-resources: true
     smooth-scroll: true
     toc: true
     toc-location: left
     toc-depth: 3
     toc-expand: true
+    fig-format: svg
 backgroundcolor: "#fff"
 css: ../../tools/pcornet-style-sheet.css
 ---
@@ -31,18 +38,12 @@ css: ../../tools/pcornet-style-sheet.css
 #### Description
 
 
-
-#### Inclusion Criteria
-
-N/A
-
 #### Planned Use
-
 
 
 #### Recipients 
 
-Query is sent to the participating volunteer pilot DataMarts on the most recently approved PCORnet CDM 6.1 Data Curation (or your currently approved CDM version).
+Query is sent to the participating volunteer pilot DataMarts on the most recently approved PCORnet CDM 7.0 Data Curation (or your currently approved CDM version).
 
 #### Confidentiality
 
@@ -58,6 +59,7 @@ Low cell count masking is not permitted in DataMart output returned to the CC; h
 
 
 
+
 ```{r include=FALSE}
 library(tibble)
 library(knitr)
@@ -66,9 +68,11 @@ library(htmltools)
 library(reactable)
 library(dplyr)
 library(readr)
+library(purrr)
+library(cohortattrition)
 
 
-
+source('../script/base/reporting.R')
 load_results <- function(name) {
     rslt <-  tryCatch(
     {read_csv(name)},
@@ -78,7 +82,54 @@ load_results <- function(name) {
   )
   rslt
 }
+```
+
+```{r include=FALSE}
+rslt <- readRDS(file = "../results/fd0000_table1.rds") %>%
+  prettify_table(.,cohort = TRUE, domain = TRUE,characteristics = TRUE,percentage = TRUE)
+
+```
+
+```{r include=FALSE}
+attrition <- readRDS('../results/fd0000_attrition.rds') %>%
+  as_tibble() %>%
+	rename(site = any_of("qry_site")) %>% 
+  prettify_table(., cohort = TRUE)
+```
+
+```{r include=FALSE}
+attrition <- reduce(lapply(split(attrition, attrition$Cohort), function(x) x %>% cohortattrition::ca_process(multi_or_single_site = "single",anomaly_or_exploratory = "exploratory",start_step_num = 1) ), bind_rows)
+```
+
+```{r include=FALSE}
+signature <- load_results('../results/signature.csv') %>%
+  mutate(
+    `Total Run Time (in minutes)` = `Query End Time` - `Query Start Time`
+  ) %>%
+  select(-`Total Run Time`)
+
+```
+
+## Query Execution Time
+```{r}
+#| message: false
+#| warning: false
+#| errors: false
+#| echo: false
+
+kable(signature)
 
 ```
 
 &nbsp;
+
+
+```{r}
+#| message: false
+#| warning: false
+#| errors: false
+#| echo: false
+
+browsable(observable_plots_table(rslt,attrition))
+
+```
