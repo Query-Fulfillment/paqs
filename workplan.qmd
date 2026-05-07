@@ -71,7 +71,7 @@ knitr::kable(  tibble::tribble( ~Item, ~Value,
 
 #### Recipients 
 
-Query is sent to the participating DataMarts with PCORnet® on the most recently approved PCORnet® CDM 6.1 Data Curation (or your currently approved CDM version).
+Query is sent to the participating DataMarts with PCORnet® on the most recently approved PCORnet® CDM 7.0 Data Curation (or your currently approved CDM version).
 
 #### Confidentiality
 
