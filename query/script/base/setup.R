@@ -545,7 +545,7 @@ cli_heading() {
   echo -e "${BOLD}----------------------------------------${RESET}"
 }
 '
-	script
+script
 }
 
 
@@ -930,7 +930,7 @@ patch_argos <- function() {
 				name,
 				col_types = col_types,
 				full_path = full_path
-			), -any_of('descrip')),
+			), -any_of(c('descrip'))),
 			name = table_name,
 			overwrite = TRUE,
 			indexes = indexes
@@ -977,7 +977,7 @@ patch_argos <- function() {
 				name,
 				col_types = col_types,
 				full_path = full_path
-			), -any_of('descrip')),
+			), -any_of(c('descrip'))),
 			name = dbplyr::in_schema(self$config("temp_table_schema"), name),
 			overwrite = TRUE,
 			temporary = FALSE,
@@ -1048,7 +1048,7 @@ patch_argos <- function() {
 				name,
 				col_types = col_types,
 				full_path = full_path
-			), -any_of('descrip'))
+			), -any_of(c('descrip')))
 			fields <- as_bq_fields(df)
 			# Upload data to BigQuery table
 			bigrquery::bq_table_upload(
@@ -1235,6 +1235,11 @@ patch_argos <- function() {
 			)
 			start <- Sys.time()
 			message(start)
+		}
+
+		if (self$db_exists_table(con, name)) {
+			self$db_remove_table(con, name)
+			cli::cli_alert_success("Removed table {.val {name}}")
 		}
 
 		ellipsis_args <- list(...)
