@@ -10,7 +10,7 @@
 #' get_geog_info(cohort = my_cohort)
 get_geog_info <- function(
 		cohort = NULL,
-		end_date = "2024-12-31",
+		end_date = "2025-12-31",
 		lookback_years = 5
 ) {
 	message("Starting get_geog_info()...")
@@ -42,14 +42,14 @@ get_geog_info <- function(
 	echo_text("Rank addresses by recency")
 	all_addresses <- input_tbl %>%
 		filter(!is.na(address_zip5),
-				!address_zip5 %in% bad_zip,
-				!is.na(address_state),
-				!address_state %in% bad_state,
-				(is.na(address_period_end) | address_period_end > lookback_date),
-				!is.na(address_period_start)) %>%
-		mutate(recency_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
-		window_order(patid, desc(recency_flag), desc(address_period_end),
-						 desc(address_period_start), desc(addressid)) %>%
+					 !address_zip5 %in% bad_zip,
+					 !is.na(address_state),
+					 !address_state %in% bad_state,
+					 (is.na(address_period_end) | address_period_end > lookback_date),
+					 !is.na(address_period_start)) %>%
+		mutate(current_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
+		window_order(patid, desc(current_flag), desc(address_period_end),
+								 desc(address_period_start), desc(addressid)) %>%
 		group_by(patid) %>%
 		mutate(recency_rank = row_number()) %>%
 		ungroup() %>%
@@ -59,17 +59,38 @@ get_geog_info <- function(
 	top_address <- all_addresses %>% filter(recency_rank == 1) %>%
 		compute_new(indexes = list("patid"))
 
+	# Case where address_period_start is missing but current_address_flag = Y
+	echo_text("Get addresses where current_address_flag = Y")
+	current_addresses <- input_tbl %>%
+		anti_join(select(top_address, patid), by = 'patid') %>%
+		filter(!is.na(address_zip5),
+					 !address_zip5 %in% bad_zip,
+					 !is.na(address_state),
+					 !address_state %in% bad_state,
+					 current_address_flag == 'Y') %>%
+		window_order(patid, desc(address_period_end),
+								 desc(address_period_start), desc(addressid)) %>%
+		group_by(patid) %>%
+		mutate(recency_rank = row_number()) %>%
+		ungroup() %>%
+		compute_new(indexes = list("patid"))
+
+	echo_text("Selecting current address")
+	top_current_address <- current_addresses %>% filter(recency_rank == 1) %>%
+		compute_new(indexes = list("patid"))
+
 	# Fallbacks
 	echo_text("Identifying fallback ZIPs...")
 	valid_zip <- input_tbl %>%
 		anti_join(select(top_address, patid), by = 'patid') %>%
+		anti_join(select(top_current_address, patid), by = 'patid') %>%
 		filter(!is.na(address_zip5),
-				!address_zip5 %in% bad_zip,
-				(is.na(address_period_end) | address_period_end > lookback_date),
-				!is.na(address_period_start)) %>%
-		mutate(recency_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
-		window_order(patid, desc(recency_flag), desc(address_period_end),
-						 desc(address_period_start), desc(addressid)) %>%
+					 !address_zip5 %in% bad_zip,
+					 (is.na(address_period_end) | address_period_end > lookback_date),
+					 !is.na(address_period_start)) %>%
+		mutate(current_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
+		window_order(patid, desc(current_flag), desc(address_period_end),
+								 desc(address_period_start), desc(addressid)) %>%
 		group_by(patid) %>%
 		mutate(recency_rank = row_number()) %>%
 		ungroup() %>%
@@ -79,11 +100,78 @@ get_geog_info <- function(
 	top_address_zip <- valid_zip %>% filter(recency_rank == 1) %>%
 		compute_new(indexes = list("patid"))
 
+	echo_text("Identifying fallback states...")
+	valid_state <- input_tbl %>%
+		anti_join(select(top_address, patid), by = 'patid') %>%
+		anti_join(select(top_current_address, patid), by = 'patid') %>%
+		anti_join(select(top_address_zip, patid), by = 'patid') %>%
+		filter(!is.na(address_state),
+					 !address_state %in% bad_state,
+					 (is.na(address_period_end) | address_period_end > lookback_date),
+					 !is.na(address_period_start)) %>%
+		mutate(current_flag = if_else((!is.na(address_period_start) & is.na(address_period_end)), 1L, 0L)) %>%
+		window_order(patid, desc(current_flag), desc(address_period_end),
+								 desc(address_period_start), desc(addressid)) %>%
+		group_by(patid) %>%
+		mutate(recency_rank = row_number()) %>%
+		ungroup() %>%
+		compute_new(indexes = list("patid"))
+
+	echo_text("Selecting the most recent address for fallback states")
+	top_address_state <- valid_state %>% filter(recency_rank == 1) %>%
+		compute_new(indexes = list("patid"))
+
+	echo_text("Get addresses where current_address_flag = Y and nonmissing zip")
+	current_addresses_zip <- input_tbl %>%
+		anti_join(select(top_address, patid), by = 'patid') %>%
+		anti_join(select(top_current_address, patid), by = 'patid') %>%
+		anti_join(select(top_address_zip, patid), by = 'patid') %>%
+		anti_join(select(top_address_state, patid), by = 'patid') %>%
+		filter(!is.na(address_zip5),
+					 !address_zip5 %in% bad_zip,
+					 current_address_flag == 'Y') %>%
+		window_order(patid, desc(address_period_end),
+								 desc(address_period_start), desc(addressid)) %>%
+		group_by(patid) %>%
+		mutate(recency_rank = row_number()) %>%
+		ungroup() %>%
+		compute_new(indexes = list("patid"))
+
+	echo_text("Selecting current address with zip")
+	top_current_address_zip <- current_addresses_zip %>% filter(recency_rank == 1) %>%
+		compute_new(indexes = list("patid"))
+
+	echo_text("Get addresses where current_address_flag = Y and nonmissing state")
+	current_addresses_state <- input_tbl %>%
+		anti_join(select(top_address, patid), by = 'patid') %>%
+		anti_join(select(top_current_address, patid), by = 'patid') %>%
+		anti_join(select(top_address_zip, patid), by = 'patid') %>%
+		anti_join(select(top_address_state, patid), by = 'patid') %>%
+		anti_join(select(top_current_address_zip, patid), by = 'patid') %>%
+		filter(!is.na(address_state),
+					 !address_state %in% bad_state,
+					 current_address_flag == 'Y') %>%
+		window_order(patid, desc(address_period_end),
+								 desc(address_period_start), desc(addressid)) %>%
+		group_by(patid) %>%
+		mutate(recency_rank = row_number()) %>%
+		ungroup() %>%
+		compute_new(indexes = list("patid"))
+
+	echo_text("Selecting current address")
+	top_current_address_state <- current_addresses_state %>% filter(recency_rank == 1) %>%
+		compute_new(indexes = list("patid"))
+
 	# Final addresses
 	final_addresses <- top_address %>%
+		union_all(top_current_address) %>%
 		union_all(top_address_zip) %>%
+		union_all(top_address_state) %>%
+		union_all(top_current_address_zip) %>%
+		union_all(top_current_address_state) %>%
 		distinct(patid, address_zip5, address_state, address_period_end, address_period_start, addressid) %>%
 		compute_new(indexes = list("patid"))
+
 
 	return(validate_final_cohort(final_addresses, table_name))
 }
@@ -137,16 +225,15 @@ map_geographic_variables <- function(
 		mapped_tbl <- address_tbl %>%
 			left_join(
 				state_map %>%
-					select(address_state = CDM_Value, state_name = MAP_Value),
+					select(address_state = CDM_Value, state_name = MAP_Value, us_census_region = US_Census_Region),
 				by = c("address_state")
 			) %>%
-			select(patid, state_name) %>%
+			select(patid, state_name, us_census_region) %>%
 			compute_new(indexes = list("patid"))
 	}
 
 	return(mapped_tbl)
 }
-
 #' Validate geographic data completeness
 #'
 #' Flags valid ZIP and state values for a cohort.
