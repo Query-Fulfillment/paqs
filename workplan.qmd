@@ -42,7 +42,7 @@ params$query_name <- basename(getwd())
 knitr::kable(  tibble::tribble( ~Item, ~Value,
                'Title', "",
                'Requester', "",
-               'PCORnet® CDM Version', "6.1",
+               'PCORnet® CDM Version', "7.0",
                'Package Version', "1",
 			         'Due Date', "",
 			    	   "Runtime" , "",
