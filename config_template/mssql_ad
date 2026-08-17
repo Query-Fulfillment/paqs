@@ -6,7 +6,8 @@
           "Port": 1433,
           "Database": "my_database",
           "Trusted_Connection": "yes",
-          "TrustServerCertificate": "yes"
+          "TrustServerCertificate": "yes",
+          "bigint" : "numeric"
      },
      "src_site": {
         "SiteName" : "DataMart ID",

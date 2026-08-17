@@ -39,15 +39,17 @@ params$query_name <- basename(getwd())
 # Query Metadata 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-knitr::kable(  tibble::tribble( ~Item, ~Value,
-               'Title', "",
-               'Requester', "",
-               'PCORnet® CDM Version', "7.0",
-               'Package Version', "1",
-			         'Due Date', "",
-			    	   "Runtime" , "",
-			   	     "Level of PHI Disclosure" , "Aggregate",
-		    		   "Level(s) of aggregation", "Network-level (total counts within PCORnet®)"))
+knitr::kable(tibble::tribble(
+  ~Item                     , ~Value                                         ,
+  'Title'                   , ""                                             ,
+  'Requester'               , ""                                             ,
+  'PCORnet® CDM Version'    , "7.0"                                          ,
+  'Package Version'         , "1"                                            ,
+  'Due Date'                , ""                                             ,
+  "Runtime"                 , ""                                             ,
+  "Level of PHI Disclosure" , "Aggregate"                                    ,
+  "Level(s) of aggregation" , "Network-level (total counts within PCORnet®)"
+))
 ```
 
 &nbsp;
@@ -261,104 +263,83 @@ document.addEventListener('DOMContentLoaded', function() {
 library(htmltools)
 
 tags$div(
-    style = "display: flex; flex-direction: row;",
- tags$div(style = "width: 33%;",
+  style = "display: flex; flex-direction: row;",
+  tags$div(
+    style = "width: 33%;",
     tags$h3(HTML("Select Operating <br> System: ")),
-    
+
     # Radio buttons (form)
     tags$form(
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "os-option", 
-        					 value = "mac_linux"),
+        tags$input(type = "radio", name = "os-option", value = "mac_linux"),
         "UNIX (Mac OS, Linux)"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "os-option",
-        					 value = "windows"),
+        tags$input(type = "radio", name = "os-option", value = "windows"),
         "Windows"
       )
     )
   ),
-  tags$div(style = "width: 33%;",
-  tags$h3(HTML("Select Query Execution <br> Method: ")),
+  tags$div(
+    style = "width: 33%;",
+    tags$h3(HTML("Select Query Execution <br> Method: ")),
     # Radio buttons (form)
     tags$form(
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "exec-meth", 
-        					 value = "container"),
+        tags$input(type = "radio", name = "exec-meth", value = "container"),
         "Containerized (Docker, Podman)"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "exec-meth",
-        					 value = "native"),
+        tags$input(type = "radio", name = "exec-meth", value = "native"),
         "Native R"
       )
     )
   ),
- tags$div(style = "width: 33%;",
+  tags$div(
+    style = "width: 33%;",
     tags$h3(HTML("Select Relational Database <br> Management System:")),
-    
+
     # Radio buttons (form)
     tags$form(
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "mssql_db"),
+        tags$input(type = "radio", name = "db-option", value = "mssql_db"),
         "MS SQL - Database Authenticated User"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option",
-        					 value = "mssql_ad"),
+        tags$input(type = "radio", name = "db-option", value = "mssql_ad"),
         "MS SQL - Active Directory Authenticated User"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "postgres"),
+        tags$input(type = "radio", name = "db-option", value = "postgres"),
         "Postgres"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "snowflake"),
+        tags$input(type = "radio", name = "db-option", value = "snowflake"),
         "Snowflake"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "oracle"),
+        tags$input(type = "radio", name = "db-option", value = "oracle"),
         "Oracle"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "duckdb"),
+        tags$input(type = "radio", name = "db-option", value = "duckdb"),
         "DuckDB"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "databricks"),
+        tags$input(type = "radio", name = "db-option", value = "databricks"),
         "Databricks"
       ),
       tags$br(),
       tags$label(
-        tags$input(type = "radio", 
-        					 name = "db-option", 
-        					 value = "bigquery"),
+        tags$input(type = "radio", name = "db-option", value = "bigquery"),
         "BigQuery"
       )
     )
@@ -379,50 +360,48 @@ tags$div(
 #| warning: false
 #| error: false
 
- tags$div(
-    tags$h3("Does your machine satisfy the below mentioned pre-requisites to execute this query?"),
-    
-    # Radio buttons (form)
-    tags$form(
-      tags$label(
-        tags$input(type = "radio", 
-        					 name = "pre-req", 
-        					 value = "Yes"),
-        "Yes"
-      ),
-      tags$br(),
-      tags$label(
-        tags$input(type = "radio", 
-        					 name = "pre-req",
-        					 value = "No"),
-        "No"
-      )
+tags$div(
+  tags$h3(
+    "Does your machine satisfy the below mentioned pre-requisites to execute this query?"
+  ),
+
+  # Radio buttons (form)
+  tags$form(
+    tags$label(
+      tags$input(type = "radio", name = "pre-req", value = "Yes"),
+      "Yes"
+    ),
+    tags$br(),
+    tags$label(
+      tags$input(type = "radio", name = "pre-req", value = "No"),
+      "No"
     )
   )
-
+)
 ```
 
 ### pre_req_native {style="display: none;"}
 
 ```{r include=FALSE}
 # Replace with current versions if updated
-params$r_version = "4.4.0 or higher"
-params$sql_odbc = "18"
-params$snowflake_odbc = "3.2.0"
-params$oracle_odbc = "23"
-params$databricks_odbc = "2.9.1"
+params$r_version <- "4.4.0 or higher"
+params$sql_odbc <- "18"
+params$snowflake_odbc <- "3.2.0"
+params$oracle_odbc <- "23"
+params$databricks_odbc <- "2.9.1"
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
-native_r_data  <- tibble::tribble( ~Item, ~Version, ~Description,
-               'R', params$r_version, 'Software environment and programming language of the query',
-							 'RStudio', '', 'R integrated development environment (IDE)',
-							 'ODBC Driver', '', 'ODBC driver specific to your RDBMS or cloud platform',
-							 'ODBC Driver Manager', "", 'Library for managing communication between applications and drivers')
+native_r_data <- tibble::tribble(
+  ~Item                 , ~Version         , ~Description                                                          ,
+  'R'                   , params$r_version , 'Software environment and programming language of the query'          ,
+  'RStudio'             , ''               , 'R integrated development environment (IDE)'                          ,
+  'ODBC Driver'         , ''               , 'ODBC driver specific to your RDBMS or cloud platform'                ,
+  'ODBC Driver Manager' , ""               , 'Library for managing communication between applications and drivers'
+)
 
 knitr::kable(native_r_data)
-
 ```
 
 1. **R & RStudio**
@@ -632,10 +611,9 @@ The unzipped file contains several folders to organize program inputs and output
 
 #' `DO NOT EDIT ANYTHING IN THIS CHUNK`
 
-
 tree <- capture.output(fs::dir_tree("temp_dir_docker/"))
-tree[1] <- paste0('path/to/',params$query_name,'_docker')
-cat(tree,sep='\n')
+tree[1] <- paste0('path/to/', params$query_name, '_docker')
+cat(tree, sep = '\n')
 # query_folder_names <- strsplit(list.files(getwd(),pattern= "driver.R",recursive = T),"/")[[1]][[2]]
 # **`{query-folder}` for this request:** ``r paste0(query_folder_names)``
 ```
@@ -674,8 +652,8 @@ tree <- capture.output(
   fs::dir_tree("temp_dir_native/", all = TRUE)
 )
 #tree <- capture.output(fs::dir_tree("temp_dir/"))
-tree[1] <- paste0('path/to/',params$query_name, '_nativeR')
-cat(tree,sep='\n')
+tree[1] <- paste0('path/to/', params$query_name, '_nativeR')
+cat(tree, sep = '\n')
 #query_folder_names <- strsplit(list.files(getwd(),pattern= "driver.R",recursive = T),"/")[[1]][[2]]
 #**`{query-folder}` for this request:** ``r paste0(params$query_name)``
 ```
@@ -718,7 +696,8 @@ cat(tree,sep='\n')
           "Database": "my_database",
           "UID": "my_username",
           "Trusted_Connection": "N/A",
-          "TrustServerCertificate": "yes"
+          "TrustServerCertificate": "yes",
+          "bigint": "numeric"
      },
      "src_site": {
         "SiteName" : "DataMart ID",
@@ -751,7 +730,8 @@ cat(tree,sep='\n')
           "Database": "my_database",
           "UID": "my_username",
           "Trusted_Connection": "yes",
-          "TrustServerCertificate": "yes"
+          "TrustServerCertificate": "yes",
+          "bigint": "numeric"
      },
      "src_site": {
         "SiteName" : "DataMart ID",
@@ -1200,7 +1180,7 @@ docker run --rm -it -v secured\path\to\dbconfig:/root/dbconfig -v .\results:/app
 # This is a custom step that is specific to each query. Please make sure to add the right path that can populate the files that the query will return.
 res_tree <- capture.output(fs::dir_tree("query/results/"))
 res_tree[1] <- paste0('results/')
-cat(res_tree,sep='\n')
+cat(res_tree, sep = '\n')
 ```
 
 #### Step 1: Total output files inspection
