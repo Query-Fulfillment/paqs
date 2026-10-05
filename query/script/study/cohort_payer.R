@@ -2,6 +2,9 @@
 #'
 #' Joins the `encounter` table to the provided cohort and selects the most recent encounter with non‑missing primary or secondary payer type, then ranks payer categories.
 #'
+#' Note: This function returns admit_date from the encounter associated with the insurance payer selected by the function. If you would like to keep the original dates from the
+#' cohort table, you will need to join back to that table afterwards to use the same index date.
+#'
 #' @param cohort Cohort table containing patient IDs.
 #' @param cohort_encounterid_col Name of the column in `cohort` that holds the encounter ID to join on.
 #' @return A validated cohort table with payer category and rank.
